@@ -287,9 +287,11 @@
       .gallery-item img { height:50vw; }
     }
     @media(max-width:700px) {
-      .stats-inner { grid-template-columns:1fr 1fr; }
-      .stat-item:nth-child(3) { border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
-      .stat-item--timer { grid-column:span 2; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
+      .stats-inner { grid-template-columns:1fr 1fr 1fr; }
+      .stat-item { padding:0.5rem 0.4rem; }
+      .stat-num { font-size:clamp(1.2rem,5.5vw,1.8rem); }
+      .stat-lbl { font-size:0.52rem; letter-spacing:0.08em; }
+      .stat-item--timer { grid-column:span 3; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
     }
   </style>
 </head>

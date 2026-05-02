@@ -58,6 +58,7 @@
     /* ── HERO ── */
     #hero { position:relative; height:85vh; overflow:hidden; cursor:none; }
     .hero-photo-layer { position:absolute; inset:-50px; will-change:transform; transition:transform 0.1s linear; }
+    .hero-photo-layer picture { width:100%; height:100%; display:block; }
     .hero-photo-layer img { width:100%; height:100%; object-fit:cover; object-position:center 45%; display:block; }
     #hero::after {
       content:''; position:absolute; inset:0; z-index:1;
@@ -213,6 +214,7 @@
       nav { padding:0 1.25rem; }
       .nav-links { display:none; }
       .nav-social { display:none; }
+      .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
       .photo-mosaic { grid-template-columns:1fr 1fr; }
       .mosaic-main { grid-row:span 1; }
@@ -279,7 +281,10 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo-layer" id="heroPhotoLayer">
-    <img src="Photos/Truck_Photos/P1380928.jpg" alt="Life on the Road" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="Photos/GalleryPortraits_plusHiking/8_WestMacs_NT.jpg" />
+      <img src="Photos/Truck_Photos/P1380928.jpg" alt="Life on the Road" />
+    </picture>
   </div>
   <div class="hero-overlay-content">
     <div class="hero-text-block">

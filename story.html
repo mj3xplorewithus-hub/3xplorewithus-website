@@ -71,6 +71,7 @@
       will-change:transform;
       transition:transform 0.1s linear;
     }
+    .hero-photo-layer picture { width:100%; height:100%; display:block; }
     .hero-photo-layer img {
       width:100%; height:100%;
       object-fit:cover;
@@ -330,6 +331,7 @@
       nav { padding:0 1.25rem; }
       .nav-links { display:none; }
       .nav-social { display:none; }
+      .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
       #hero-split { grid-template-columns:1fr; }
       .split-text { padding:3rem 1.5rem 2rem; min-height:auto; }
@@ -394,7 +396,10 @@
 <!-- HERO — parallax full bleed -->
 <section id="hero-split">
   <div class="hero-photo-layer" id="heroPhotoLayer">
-    <img src="Photos/OurStory/Others/DJI_0026_1.jpg" alt="Jason and Mareike" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="Photos/GalleryPortraits_plusHiking/1_BinnsTrack_NT.jpg" />
+      <img src="Photos/OurStory/Others/DJI_0026_1.jpg" alt="Jason and Mareike" />
+    </picture>
   </div>
   <div class="hero-overlay-content">
     <div class="hero-text-block">
@@ -625,6 +630,7 @@
   cursor.style.opacity = '0';
   ring.style.opacity   = '0';
 })();
+</script>
 
 <script>
 /* ── MOBILE NAV ── */

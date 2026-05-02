@@ -112,6 +112,7 @@
     /* ── HERO ───────────────────────────────────────────────────────── */
     #hero { position:relative; height:100vh; overflow:hidden; cursor:none; }
     .hero-photo-layer { position:absolute; inset:-50px; will-change:transform; transition:transform 0.1s linear; }
+    .hero-photo-layer picture { width:100%; height:100%; display:block; }
     .hero-photo-layer img { width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
     #hero::after {
       content:''; position:absolute; inset:0; z-index:1;
@@ -351,8 +352,8 @@
     .drawer-socials svg { width:24px; height:24px; }
 
     @media (max-width: 900px) {
-      nav { padding: 0.6rem 1.25rem; }
-      .nav-logo img { height: 72px; }
+      nav { padding: 0 1.25rem; }
+      .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-links { display: none; }
       .nav-social { display:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
@@ -435,7 +436,10 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo-layer" id="heroPhotoLayer">
-    <img src="Photos/Truck_Photos/P1356813.jpg" alt="Steyr 12M18 Expedition Truck" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="Photos/Truck_Photos/Mobile_truck.jpg" />
+      <img src="Photos/Truck_Photos/P1356813.jpg" alt="Steyr 12M18 Expedition Truck" />
+    </picture>
   </div>
   <div class="hero-overlay-content">
     <div class="hero-text-block">

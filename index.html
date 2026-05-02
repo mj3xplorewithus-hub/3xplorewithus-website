@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3xploreWithUs — Life Beyond the Ordinary</title>
+  <meta name="description" content="Jason, Mareike, Rocket and family — living full-time in a self-built 1986 Steyr 12M18 expedition truck. Natural living and the open road." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family:'TypoGraphica';
+      src:url('TypoGraphica_demo.otf') format('opentype');
+      font-display:swap;
+      /* Limit to letters & numbers only — punctuation (? ' - " etc.) falls through to Montserrat */
+      unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
+    }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    :root {
+      --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
+      --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
+      --text:#EDE8DC; --muted:#72888A; --white:#F5F2EC;
+      --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--dark); color:var(--text); font-family:var(--fb); line-height:1.7; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+      padding:0 2.5rem; height:72px;
+      background:rgba(13,21,21,0.0); backdrop-filter:blur(0px);
+      transition:background 0.4s, backdrop-filter 0.4s;
+      border-bottom:1px solid rgba(255,255,255,0);
+    }
+    nav.scrolled { background:rgba(13,21,21,0.96); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,0.05); }
+    .nav-logo img { height:55px; width:auto; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { font-family:var(--fd); font-size:0.63rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.72); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--sand-lt); }
+    .nav-socials { display:flex; gap:0.6rem; align-items:center; justify-self:end; }
+    .nav-social { color:rgba(245,242,236,0.6); transition:color 0.2s; display:flex; align-items:center; }
+    .nav-social:hover { color:var(--teal-lt); }
+    .nav-social svg { width:19px; height:19px; }
+
+    /* ── PAGE NAV ── */
+    #page-nav { background:var(--dark-2); border-bottom:1px solid rgba(255,255,255,0.05); padding:0 2rem; display:flex; justify-content:center; position:sticky; top:72px; z-index:100; }
+    .page-nav-inner { display:flex; gap:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+    .page-nav-inner::-webkit-scrollbar { display:none; }
+    .page-nav-link { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.45); padding:0.9rem 1.1rem; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s, border-color 0.2s; }
+    .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
+
+    /* ── HERO — 3-layer parallax ── */
+    #hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(transparent, var(--dark) 90%);
+      z-index: 10;
+      pointer-events: none;
+    }
+    .hero-content {
+      position:absolute; bottom:0; left:0; right:0; z-index:11;
+      padding:0 4rem 5rem; pointer-events:none;
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+    }
+    .hero-text-block { max-width:560px; }
+    .hero-content h1 {
+      font-family:var(--fd); font-size:clamp(3rem,8vw,6rem);
+      font-weight:900; color:var(--white); line-height:1.02;
+      letter-spacing:0.04em; margin-bottom:0;
+      opacity:0; transform:translateY(28px); animation:ix-fade-up 0.8s 0.25s forwards;
+    }
+    .hero-content h1 .ix-accent { color:var(--sand-lt); }
+    .hero-rule {
+      width:0; height:2px; background:var(--sand); border:none;
+      margin:1.25rem auto 0; animation:ix-grow 0.6s 0.7s forwards;
+    }
+    .hero-bottom { opacity:0; transform:translateY(16px); animation:ix-fade-up 0.7s 0.85s forwards; margin-top:1.5rem; }
+    .hero-lead {
+      font-family:var(--fb); font-size:clamp(0.95rem,1.8vw,1.1rem);
+      color:rgba(237,232,220,0.78); font-weight:300; line-height:1.85;
+    }
+    .hero-scroll { display:flex; align-items:center; gap:0.6rem; font-family:var(--fd); font-size:0.55rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(237,217,163,0.55); justify-content:center; margin-top:1.5rem; }
+    .hero-scroll-line { position:relative; width:1px; height:28px; background:rgba(237,217,163,0.18); overflow:hidden; }
+    .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--sand-lt); animation:ix-scroll-tick 2s 1.5s ease-in-out infinite; }
+    @keyframes ix-fade-up { to { opacity:1; transform:translateY(0); } }
+    @keyframes ix-grow    { to { width:44px; } }
+    @keyframes ix-scroll-tick { 0%{top:-100%} 100%{top:200%} }
+    @media(max-width:700px) {
+      .hero-content { padding:0 1.5rem 3.5rem; }
+    }
+    .hero-layer {
+      position: absolute;
+      top: -18%; left: -6%;
+      width: 112%; height: 136%;
+      will-change: transform;
+    }
+    #layer-bg { z-index: 1; }
+    #layer-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+    #layer-mid { z-index: 2; }
+    #layer-mid img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+    #layer-truck { z-index: 3; }
+    #layer-truck img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+
+    /* ── TITLE CARD — directly below hero ── */
+    #title-card {
+      background: var(--dark);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .title-inner { max-width: 800px; margin: 0 auto; }
+    .site-wordmark {
+      font-family: var(--fd);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 1.4rem;
+    }
+    .family-line {
+      font-family: var(--fd);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal-lt);
+      margin-bottom: 1.6rem;
+    }
+    .site-tagline {
+      font-size: 1.08rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── INTRO ── */
+    #intro { background:var(--dark); padding:6rem 2rem; text-align:center; }
+    .intro-inner { max-width:720px; margin:0 auto; }
+    .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.5rem; }
+    #intro h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); line-height:1.1; letter-spacing:0.04em; margin-bottom:1.5rem; }
+    #intro p { font-size:1.05rem; color:var(--muted); line-height:1.9; font-weight:300; max-width:620px; margin:0 auto 1rem; }
+    #intro p strong { color:var(--text); font-weight:500; }
+
+    /* ── STATS ── */
+    .stats-strip { background:var(--dark-2); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); padding:2.5rem 2rem; }
+    .stats-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr 1fr 1.6fr; text-align:center; }
+    .stat-item { padding:0.5rem 1rem; }
+    .stat-item+.stat-item { border-left:1px solid rgba(255,255,255,0.06); }
+    .stat-num { font-family:var(--fd); font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:900; color:var(--sand-lt); line-height:1; display:block; letter-spacing:0.04em; }
+    .stat-lbl { font-family:var(--fd); font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:0.4rem; display:block; }
+
+    /* ── TIMER STAT (4th column) ── */
+    .stat-item--timer { display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .tc-display { display:flex; align-items:flex-end; gap:0.6rem; justify-content:center; flex-wrap:wrap; margin-bottom:0.5rem; }
+    .tc-unit { display:flex; flex-direction:column; align-items:center; }
+    .tc-val { font-family:var(--fd); font-size:clamp(1.2rem,2.2vw,2rem); font-weight:900; color:var(--sand-lt); line-height:1; letter-spacing:0.04em; min-width:1.6ch; display:block; }
+    .tc-lbl { font-family:var(--fd); font-size:0.5rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:0.35rem; display:block; }
+    .tc-sep { color:rgba(255,255,255,0.12); font-size:0.9rem; padding-bottom:0.55rem; line-height:1; }
+
+    /* ── MAP SECTION ── */
+    #map-section { background:var(--dark-2); padding:3.5rem 2rem 3rem; }
+    .map-header { max-width:900px; margin:0 auto 2rem; text-align:center; }
+    .map-header-text .section-label { margin-bottom:0.75rem; }
+    .map-header-text h2 { font-family:var(--fd); font-size:clamp(1.4rem,2.8vw,2rem); font-weight:900; color:var(--white); line-height:1.3; letter-spacing:0.03em; max-width:700px; margin:0 auto; }
+    .map-wrap { max-width:900px; margin:0 auto; border-radius:4px; overflow:hidden; }
+    .map-wrap img, .map-wrap object { width:100%; height:auto; display:block; }
+    @media(max-width:700px) {
+      .map-header { flex-direction:column; align-items:flex-start; }
+      .map-caption { text-align:left; max-width:100%; }
+    }
+
+    /* ── GALLERY — two rows, infinite loop, auto-drift ── */
+    #gallery { background:var(--dark); padding:0; overflow:hidden; display:flex; flex-direction:column; gap:3px; }
+    .gallery-track {
+      display:flex; gap:3px;
+      overflow-x:scroll;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      cursor:grab;
+      user-select:none;
+    }
+    .gallery-track::-webkit-scrollbar { display:none; }
+    .gallery-track.dragging { cursor:grabbing; }
+    .gallery-item { flex:0 0 auto; }
+    .gallery-item img { height:43vh; width:auto; max-width:none; object-fit:cover; display:block; pointer-events:none; }
+    .gallery-hint { text-align:center; padding:0.75rem; font-family:var(--fd); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(114,136,138,0.4); }
+
+    /* ── THE TEAM ── */
+    #team { background:var(--dark); padding:4rem 2rem; }
+    .team-header { max-width:1200px; margin:0 auto 2.5rem; text-align:center; }
+    .team-header h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:0; }
+    .divider { width:40px; height:3px; background:var(--red); border-radius:2px; margin:1rem auto 0; }
+    .team-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(5,1fr); gap:1.5rem; }
+    .team-card { }
+    .team-photo { aspect-ratio:2/3; overflow:hidden; border-radius:2px; margin-bottom:1rem; background:var(--dark-3); }
+    .team-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform 0.5s; }
+    .team-card:hover .team-photo img { transform:scale(1.04); }
+    .team-name { font-family:var(--fd); font-size:0.78rem; font-weight:900; color:var(--white); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.25rem; }
+    .team-role { font-size:0.75rem; color:var(--muted); font-weight:300; line-height:1.5; }
+    /* Loading card */
+    .team-photo--loading { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.85rem; }
+    .team-photo--loading svg { width:42px; height:42px; stroke:var(--teal-lt); opacity:0.18; }
+    .loading-label { font-family:var(--fd); font-size:0.55rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal-lt); animation:loading-pulse 2s ease-in-out infinite; }
+    @keyframes loading-pulse { 0%,100%{opacity:0.25} 50%{opacity:0.65} }
+    @media(max-width:900px) { .team-grid { grid-template-columns:repeat(3,1fr); gap:1rem; } }
+    @media(max-width:560px) { .team-grid { grid-template-columns:repeat(2,1fr); gap:1rem; } }
+    .btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 2rem; border-radius:2px; font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.2s,opacity 0.2s; }
+    .btn:hover { transform:translateY(-2px); opacity:0.88; }
+    .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
+
+    /* ── FOLLOW ── */
+    #follow { background:var(--dark); padding:4rem 2rem; text-align:center; border-top:1px solid rgba(255,255,255,0.04); }
+    #follow h2 { font-family:var(--fd); font-size:clamp(2rem,4vw,3rem); font-weight:900; color:var(--white); letter-spacing:0.04em; margin-bottom:0.5rem; }
+    #follow p { color:var(--muted); font-size:1rem; font-weight:300; margin-bottom:2rem; }
+    .social-icons { display:flex; gap:2.5rem; justify-content:center; flex-wrap:wrap; }
+    .social-icon { display:flex; flex-direction:column; align-items:center; gap:0.75rem; color:var(--muted); transition:color 0.2s; }
+    .social-icon:hover { color:var(--teal-lt); }
+    .social-icon svg { width:36px; height:36px; }
+    .social-icon span { font-family:var(--fd); font-size:0.62rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
+
+    /* ── FOOTER ── */
+    footer { background:#080f0f; border-top:1px solid rgba(255,255,255,0.04); padding:2rem 2rem; text-align:center; }
+    .footer-logo img { height:42px; width:auto; margin:0 auto 1.5rem; }
+    .footer-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; list-style:none; margin-bottom:1.5rem; }
+    .footer-links a { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .footer-links a:hover { color:var(--sand-lt); }
+    .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      nav { padding:0 1.25rem; }
+      .nav-links { display:none; }
+      .gallery-item img { height:50vw; }
+    }
+    @media(max-width:700px) {
+      .stats-inner { grid-template-columns:1fr 1fr; }
+      .stat-item:nth-child(3) { border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
+      .stat-item--timer { grid-column:span 2; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="howwedoit.html">How We Do It</a></li>
+    <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
+    <li><a href="files.html">Files</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO — 3-layer parallax -->
+<section id="hero">
+  <div class="hero-layer" id="layer-bg">
+    <img src="Photos/Photos/hero_asset_4.png" alt="" aria-hidden="true" />
+  </div>
+  <div class="hero-layer" id="layer-mid">
+    <img src="Photos/Photos/hero_asset_2.png" alt="" aria-hidden="true" />
+  </div>
+  <div class="hero-layer" id="layer-truck">
+    <img src="Photos/Photos/hero_asset_1.png" alt="" aria-hidden="true" />
+  </div>
+  <div class="hero-content">
+    <div class="hero-text-block">
+      <h1>The <span class="ix-accent">Choice.</span></h1>
+      <div class="hero-rule"></div>
+      <div class="hero-bottom">
+        <p class="hero-lead">To do what everyone else does and dream of something better.<br />Or there's doing it.</p>
+        <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">30,000</span>
+      <span class="stat-lbl">km driven across Australia</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">5</span>
+      <span class="stat-lbl">Vehicles built &amp; lived in</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">∞</span>
+      <span class="stat-lbl">Countries to explore</span>
+    </div>
+    <div class="stat-item stat-item--timer">
+      <div class="tc-display">
+        <div class="tc-unit"><span class="tc-val" id="t-y">—</span><span class="tc-lbl">Yrs</span></div>
+        <span class="tc-sep">·</span>
+        <div class="tc-unit"><span class="tc-val" id="t-mo">—</span><span class="tc-lbl">Mo</span></div>
+        <span class="tc-sep">·</span>
+        <div class="tc-unit"><span class="tc-val" id="t-d">—</span><span class="tc-lbl">Days</span></div>
+        <span class="tc-sep">·</span>
+        <div class="tc-unit"><span class="tc-val" id="t-h">—</span><span class="tc-lbl">Hrs</span></div>
+        <span class="tc-sep">·</span>
+        <div class="tc-unit"><span class="tc-val" id="t-m">—</span><span class="tc-lbl">Min</span></div>
+        <span class="tc-sep">·</span>
+        <div class="tc-unit"><span class="tc-val" id="t-s">—</span><span class="tc-lbl">Sec</span></div>
+      </div>
+      <span class="stat-lbl">Time on the road</span>
+    </div>
+  </div>
+</div>
+
+<!-- THE TEAM -->
+<section id="team">
+  <div class="team-header">
+    <span class="section-label">The Team</span>
+    <h2>Four of us. One truck.</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-photo">
+        <img src="Photos/Team/Jason2.jpg" alt="Jason" loading="lazy" />
+      </div>
+      <span class="team-name">Jason</span>
+      <span class="team-role">Creative brain of the operation.</span>
+    </div>
+    <div class="team-card">
+      <div class="team-photo">
+        <img src="Photos/Team/Mareike1.jpg" alt="Mareike" loading="lazy" />
+      </div>
+      <span class="team-name">Mareike</span>
+      <span class="team-role">Organising wizard.</span>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-photo--loading">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span class="loading-label">Member loading</span>
+      </div>
+      <span class="team-name">Our Daughter</span>
+      <span class="team-role">Newest crew member. Arriving May 2026.</span>
+    </div>
+    <div class="team-card">
+      <div class="team-photo">
+        <img src="Photos/Team/Rocket2.jpg" alt="Rocket" loading="lazy" />
+      </div>
+      <span class="team-name">Rocket</span>
+      <span class="team-role">Cockapoo. Chief scout. Has visited more national parks than most humans.</span>
+    </div>
+    <div class="team-card">
+      <div class="team-photo" style="object-position:center center;">
+        <img src="Photos/VehicleCards/Truck.jpg" alt="The Steyr" loading="lazy" style="object-position:center center;" />
+      </div>
+      <span class="team-name">The Steyr</span>
+      <span class="team-role">1986 Steyr 12M18. Self-built expedition home. 8 months of work. Built to last a lifetime.</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section">
+  <div class="map-header">
+    <div class="map-header-text">
+      <span class="section-label">Our Journey</span>
+      <h2>Australia <span style="font-family:var(--fb);font-weight:300">taught us what we needed.</span><br />Europe <span style="font-family:var(--fb);font-weight:300">is teaching us what's possible.</span><br />The Journey <span style="font-family:var(--fb);font-weight:300">continues with our daughter and Rocket by our side.</span></h2>
+    </div>
+  </div>
+  <div class="map-wrap">
+    <img src="Photos/Photos/Map-World_AUS4.png" alt="World map showing our route across Australia" />
+  </div>
+</section>
+
+<!-- GALLERY — two rows, infinite loop, auto-drift -->
+<div id="gallery">
+  <!-- ROW 1: photos 1–19, drifts right -->
+  <div class="gallery-track" id="galleryTrack1">
+    <div class="gallery-item"><img src="Photos/169_landscape/1_Nullarbor_SouthAustralia.jpg"            alt="Nullarbor" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/2_TarnShelf_Tasmania.jpg"                  alt="Tarn Shelf, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/3_SouthCape_Tasmania.jpg"                  alt="South Cape, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/4_Freycinet_Tasmania.jpg"                  alt="Freycinet, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/5_MarionsLookout_Tasmania.jpg"             alt="Marions Lookout, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/6_LakeWill_Tasmania.jpg"                   alt="Lake Will, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/7_Acropolis_Tasmania.jpg"                  alt="Acropolis, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/8_FlindersRanges_SouthAustralia.jpg"       alt="Flinders Ranges" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/9_Arkaroola_SouthAustralia.jpg"            alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/10_FlindersRanges_SouthAustralia.jpg"      alt="Flinders Ranges" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/11_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/12_FlindersRanges_SouthAustralia.jpg"      alt="Flinders Ranges" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/13_Whales_BremerBay_WesternAustralia.jpg"  alt="Whales, Bremer Bay" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/14_DillionBeach_WesternAustralia.jpg"      alt="Dillion Beach, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/15_ElephantRocks_Denmark_WA.jpg"           alt="Elephant Rocks, Denmark WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/16_Outback.jpg"                            alt="Outback" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/17_GreatAustralianBight.jpg"               alt="Great Australian Bight" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/18_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/19_CapeRaoul_Tasmania.jpg"                 alt="Cape Raoul, Tasmania" /></div>
+  </div>
+  <!-- ROW 2: photos 20–37, drifts left -->
+  <div class="gallery-track" id="galleryTrack2">
+    <div class="gallery-item"><img src="Photos/169_landscape/20_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/21_CoralBay_WA.jpg"                        alt="Coral Bay, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/22_Uluru_NT.jpg"                           alt="Uluru" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/23_BinnsTrack_NT.jpg"                      alt="Binns Track, NT" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/24_KingsCanyon_NorthernTerritory.jpg"      alt="Kings Canyon, NT" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/25_Outback_SouthAustralia.jpg"             alt="Outback, SA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/26_NativeDogBeach_BremerBay_WA.jpg"        alt="Native Dog Beach, Bremer Bay" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/27_CooberPedy_PinkRoadhouse_SouthAustralia.jpg" alt="Coober Pedy" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/28_Oodnadatta_PinkRoadhouse_SouthAustralia.jpg" alt="Oodnadatta" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/29_Albany.jpg"                             alt="Albany, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/30_StacksBluff.jpg"                        alt="Stacks Bluff" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/31_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/31_Freycinet_Tas.jpg"                      alt="Freycinet, Tasmania" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/33_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/34_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/36_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="Photos/169_landscape/37_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+  </div>
+  <p class="gallery-hint">← drag to explore →</p>
+</div>
+
+<!-- FOLLOW -->
+<section id="follow">
+  <span class="section-label">Stay Connected</span>
+  <h2>Follow the journey.</h2>
+  <p>Long-form documentary on YouTube. The daily moments on Instagram.</p>
+  <div class="social-icons">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="social-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+      <span>YouTube</span>
+    </a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="social-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <span>Instagram</span>
+    </a>
+    <a href="mailto:adventure@3xplorewithus.com" class="social-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      <span>Email</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="howwedoit.html">How We Do It</a></li>
+    <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
+    <li><a href="files.html">Files</a></li>
+    <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
+    <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 3xploreWithUs</p>
+</footer>
+
+<script>
+  // ── NAV SCROLL ────────────────────────────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── 3-LAYER PARALLAX HERO ─────────────────────────────────────────────
+  const heroLayers = [
+    { el: document.getElementById('layer-bg'),    scrollSpeed: 0.07, gyroDepth: 5  },
+    { el: document.getElementById('layer-mid'),   scrollSpeed: 0.20, gyroDepth: 13 },
+    { el: document.getElementById('layer-truck'), scrollSpeed: 0.36, gyroDepth: 22 },
+  ];
+  let gyroX = 0, gyroY = 0, rafPending = false;
+  function renderLayers() {
+    const sy = window.scrollY;
+    heroLayers.forEach(({ el, scrollSpeed, gyroDepth }) => {
+      el.style.transform = `translate(${gyroX * gyroDepth}px, ${sy * scrollSpeed + gyroY * gyroDepth}px)`;
+    });
+    rafPending = false;
+  }
+  function scheduleRender() {
+    if (!rafPending) { rafPending = true; requestAnimationFrame(renderLayers); }
+  }
+  window.addEventListener('scroll', scheduleRender, { passive: true });
+  function initGyro() {
+    window.addEventListener('deviceorientation', e => {
+      gyroX = Math.max(-1, Math.min(1, (e.gamma || 0) / 28));
+      gyroY = Math.max(-1, Math.min(1, ((e.beta || 45) - 45) / 28));
+      scheduleRender();
+    }, true);
+  }
+  if (typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof DeviceOrientationEvent.requestPermission === 'function') {
+    document.getElementById('hero').addEventListener('click', () => {
+      DeviceOrientationEvent.requestPermission()
+        .then(s => { if (s === 'granted') initGyro(); }).catch(() => {});
+    }, { once: true });
+  } else if (window.DeviceOrientationEvent) {
+    initGyro();
+  }
+
+  // ── INFINITE GALLERY — two rows, auto-drift ──────────────────────────
+  function initGallery(trackId, driftDir) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+
+    // Clone items for seamless infinite loop
+    const origItems = Array.from(track.querySelectorAll('.gallery-item'));
+    origItems.forEach(item => track.appendChild(item.cloneNode(true)));
+    [...origItems].reverse().forEach(item => track.insertBefore(item.cloneNode(true), track.firstChild));
+
+    let setW = 0;
+    let pos = 0;
+    let isDragging = false;
+    let dragStartX = 0, scrollAtDragStart = 0;
+    let touchStartX = 0;
+
+    function wrap() {
+      if (!setW) return;
+      if (pos < setW * 0.05)   pos += setW;
+      if (pos > setW * 2.95)   pos -= setW;
+    }
+
+    function tick() {
+      if (!isDragging) {
+        pos += 0.4 * driftDir;
+        wrap();
+        track.scrollLeft = pos;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('load', () => {
+      setW = track.scrollWidth / 3;
+      pos = setW;
+      track.scrollLeft = pos;
+      requestAnimationFrame(tick);
+    });
+
+    // Mouse drag
+    track.addEventListener('mousedown', e => {
+      isDragging = true;
+      dragStartX = e.clientX;
+      scrollAtDragStart = pos;
+      track.classList.add('dragging');
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      pos = scrollAtDragStart - (e.clientX - dragStartX);
+      wrap();
+      track.scrollLeft = pos;
+    });
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.classList.remove('dragging');
+    });
+
+    // Touch drag
+    track.addEventListener('touchstart', e => {
+      isDragging = true;
+      touchStartX = e.touches[0].clientX;
+      scrollAtDragStart = pos;
+    }, { passive: true });
+    track.addEventListener('touchmove', e => {
+      pos = scrollAtDragStart - (e.touches[0].clientX - touchStartX);
+      wrap();
+      track.scrollLeft = pos;
+    }, { passive: true });
+    track.addEventListener('touchend', () => { isDragging = false; });
+  }
+
+  initGallery('galleryTrack1',  1);   // top row — drifts right
+  initGallery('galleryTrack2', -1);   // bottom row — drifts left
+
+  /* ── ROAD TIMER ── */
+  function updateRoadTimer() {
+    const start = new Date('2023-09-18T00:00:00');
+    const now = new Date();
+    let y = now.getFullYear() - start.getFullYear();
+    let mo = now.getMonth() - start.getMonth();
+    let d = now.getDate() - start.getDate();
+    if (d < 0) {
+      mo--;
+      d += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+    }
+    if (mo < 0) { y--; mo += 12; }
+    const h = now.getHours();
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('t-y').textContent  = y;
+    document.getElementById('t-mo').textContent = mo;
+    document.getElementById('t-d').textContent  = d;
+    document.getElementById('t-h').textContent  = h;
+    document.getElementById('t-m').textContent  = m;
+    document.getElementById('t-s').textContent  = s;
+  }
+  updateRoadTimer();
+  setInterval(updateRoadTimer, 1000);
+</script>
+</body>
+</html>

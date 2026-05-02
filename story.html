@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Story — 3xploreWithUs</title>
+  <meta name="description" content="From a chance meeting in a small brewery in Bremer Bay to a life built on the open road." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family:'TypoGraphica';
+      src:url('TypoGraphica_demo.otf') format('opentype');
+      font-display:swap;
+      unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
+    }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    :root {
+      --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
+      --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
+      --text:#EDE8DC; --muted:#72888A; --white:#F5F2EC;
+      --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+      /* Warm accent for this page */
+      --accent: var(--sand-lt);
+      --accent-bar: var(--sand);
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--dark); color:var(--text); font-family:var(--fb); line-height:1.7; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+      padding:0 2.5rem; height:72px;
+      background:rgba(13,21,21,0.96); backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo img { height:55px; width:auto; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { font-family:var(--fd); font-size:0.63rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.72); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--sand-lt); }
+    .nav-socials { display:flex; gap:0.6rem; align-items:center; justify-self:end; }
+    .nav-social { color:rgba(245,242,236,0.6); transition:color 0.2s; display:flex; align-items:center; }
+    .nav-social:hover { color:var(--teal-lt); }
+    .nav-social svg { width:19px; height:19px; }
+
+    /* ── PAGE NAV ── */
+    #page-nav { background:var(--dark-2); border-bottom:1px solid rgba(255,255,255,0.05); padding:0 2rem; display:flex; justify-content:center; position:sticky; top:72px; z-index:100; }
+    .page-nav-inner { display:flex; gap:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+    .page-nav-inner::-webkit-scrollbar { display:none; }
+    .page-nav-link { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.45); padding:0.9rem 1.1rem; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s, border-color 0.2s; }
+    .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
+
+    /* ── HERO — full bleed parallax ── */
+    #hero-split {
+      position:relative;
+      height:85vh;
+      overflow:hidden;
+      cursor:none;
+    }
+    .hero-photo-layer {
+      position:absolute;
+      inset:-50px;
+      will-change:transform;
+      transition:transform 0.1s linear;
+    }
+    .hero-photo-layer img {
+      width:100%; height:100%;
+      object-fit:cover;
+      object-position:center 35%;
+      display:block;
+    }
+    #hero-split::after {
+      content:''; position:absolute; inset:0; z-index:1;
+      background:linear-gradient(
+        150deg,
+        rgba(5,10,10,0.2) 0%,
+        rgba(5,10,10,0.05) 35%,
+        rgba(13,21,21,0.9) 100%
+      );
+      pointer-events:none;
+    }
+    .hero-overlay-content {
+      position:absolute; inset:0; z-index:2;
+      display:flex; flex-direction:column; justify-content:flex-end;
+      padding:0 4rem 5rem;
+    }
+    .hero-text-block {
+      margin-left:auto;
+      max-width:520px;
+    }
+    .section-label {
+      font-family:var(--fd); font-size:0.72rem; font-weight:700;
+      letter-spacing:0.22em; text-transform:uppercase;
+      color:var(--sand-lt);
+      display:block; margin-bottom:1.5rem;
+    }
+    .hero-eyebrow {
+      font-family:var(--fd); font-size:0.65rem; font-weight:700;
+      letter-spacing:0.28em; text-transform:uppercase;
+      color:var(--sand-lt); display:block; margin-bottom:1.5rem;
+      opacity:0; transform:translateY(18px);
+      animation:hero-fade-up 0.7s 0.1s forwards;
+    }
+    #hero-split h1 {
+      font-family:var(--fd);
+      font-size:clamp(3.5rem,7vw,6.5rem);
+      font-weight:900; color:var(--white);
+      line-height:0.92; letter-spacing:0.03em;
+      margin-bottom:0;
+      opacity:0; transform:translateY(28px);
+      animation:hero-fade-up 0.8s 0.25s forwards;
+    }
+    #hero-split h1 .accent { color:var(--sand-lt); }
+    .hero-rule {
+      width:0; height:2px; background:var(--sand);
+      border-radius:2px; margin:1.75rem 0;
+      animation:hero-grow 0.6s 0.7s forwards;
+    }
+    .hero-bottom {
+      display:flex; align-items:flex-end; justify-content:space-between; gap:2rem;
+      opacity:0; transform:translateY(16px);
+      animation:hero-fade-up 0.7s 0.85s forwards;
+    }
+    .hero-lead {
+      font-size:1rem; color:rgba(237,232,220,0.7);
+      line-height:1.85; font-weight:300;
+      border-left:2px solid rgba(212,169,106,0.35);
+      padding-left:1.1rem;
+    }
+    .hero-scroll {
+      display:flex; flex-direction:column; align-items:center; gap:0.5rem; flex-shrink:0;
+      font-family:var(--fd); font-size:0.55rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);
+    }
+    .hero-scroll-line {
+      width:1px; height:44px; background:rgba(255,255,255,0.1); position:relative; overflow:hidden;
+    }
+    .hero-scroll-line::after {
+      content:''; position:absolute; top:-100%; left:0; right:0; height:100%;
+      background:var(--sand-lt);
+      animation:hero-scroll-tick 1.8s 1.2s ease-in-out infinite;
+    }
+    /* Custom cursor */
+    .hero-cursor { position:fixed; width:7px; height:7px; border-radius:50%; background:var(--sand-lt); pointer-events:none; z-index:999; transform:translate(-50%,-50%); mix-blend-mode:difference; }
+    .hero-cursor-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(237,217,163,0.35); pointer-events:none; z-index:998; transform:translate(-50%,-50%); transition:left 0.18s ease, top 0.18s ease; }
+    @keyframes hero-fade-up { to { opacity:1; transform:translateY(0); } }
+    @keyframes hero-grow    { to { width:44px; } }
+    @keyframes hero-scroll-tick { 0%{top:-100%} 100%{top:200%} }
+    @media(max-width:800px) {
+      .hero-overlay-content { padding:0 1.75rem 3.5rem; }
+      .hero-text-block { margin-left:0; max-width:100%; }
+      #hero-split h1 { font-size:clamp(3rem,10vw,5rem); }
+      .hero-scroll { display:none; }
+    }
+
+    /* ── SHARED ── */
+    .warm-label {
+      font-family:var(--fd); font-size:0.72rem; font-weight:700;
+      letter-spacing:0.22em; text-transform:uppercase;
+      color:var(--sand-lt); display:block; margin-bottom:1.5rem;
+    }
+    .warm-divider {
+      width:36px; height:3px;
+      background:var(--sand); border-radius:2px;
+      margin:1.2rem 0 2rem;
+    }
+    .btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 2rem; border-radius:2px; font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.2s,opacity 0.2s; }
+    .btn:hover { transform:translateY(-2px); opacity:0.88; }
+    .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
+
+    /* ── HOW WE MET ── */
+    #how-we-met {
+      background:var(--dark);
+      padding:4rem 2rem;
+    }
+    .story-inner {
+      max-width:1040px; margin:0 auto;
+    }
+    #how-we-met h2 {
+      font-family:var(--fd);
+      font-size:clamp(1.8rem,4vw,3rem);
+      font-weight:900; color:var(--white);
+      line-height:1.1; letter-spacing:0.04em;
+      margin-bottom:0.5rem;
+    }
+    .story-body { font-size:1.05rem; color:var(--muted); line-height:1.95; font-weight:300; }
+    .story-body p { margin-bottom:1.5rem; }
+    .story-body p:last-child { margin-bottom:0; }
+    .story-body strong { color:var(--text); font-weight:500; }
+
+    /* ── STORY BEATS — 2-col alternating ── */
+    .story-beat {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:3rem 4.5rem;
+      align-items:center;
+      margin-bottom:3.5rem;
+    }
+    .story-beat-text { }
+    .story-beat--flip .story-beat-text { order:2; }
+    .story-beat--flip .story-beat-images { order:1; }
+    .story-closing { margin-top:1rem; }
+    @media(max-width:800px) {
+      .story-beat { grid-template-columns:1fr; gap:2rem; margin-bottom:3.5rem; }
+      .story-beat--flip .story-beat-text { order:0; }
+      .story-beat--flip .story-beat-images { order:0; }
+      .story-beat-images .story-polaroids,
+      .story-beat--flip .story-beat-images .story-polaroids { justify-content:center; }
+    }
+
+    /* ── WARM PHOTO BREAK — full bleed, no crop ── */
+    .photo-break-warm {
+      position:relative; overflow:hidden;
+    }
+    .photo-break-warm img {
+      width:100%; display:block; height:auto;
+    }
+    .photo-break-warm::after {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(to bottom, rgba(13,21,21,0.15) 0%, rgba(13,21,21,0.05) 50%, rgba(13,21,21,0.3) 100%);
+    }
+
+    /* ── INLINE STORY POLAROIDS ── */
+    .story-polaroids {
+      display:flex; gap:0; align-items:flex-start; justify-content:flex-start;
+      flex-wrap:nowrap; margin:0;
+    }
+    .s-pol {
+      background:#f5f0e8;
+      padding:12px 12px 44px 12px;
+      box-shadow:0 8px 32px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.25);
+      width:160px; flex-shrink:0; position:relative;
+      margin-right:-30px;
+      transition:transform 0.25s, box-shadow 0.25s;
+      z-index:1;
+    }
+    .s-pol:last-child { margin-right:0; }
+    .s-pol:hover {
+      transform:rotate(0deg) translateY(-10px) !important;
+      box-shadow:0 16px 40px rgba(0,0,0,0.65);
+      z-index:10;
+    }
+    .s-pol img { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; }
+    .s-pol-cap {
+      position:absolute; bottom:0; left:0; right:0; height:44px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Roboto', sans-serif; font-size:0.65rem; font-weight:400;
+      color:#4a3f35; letter-spacing:0.04em; text-align:center; padding:0 6px;
+    }
+    .story-polaroids .s-pol:nth-child(1) { transform:rotate(-3deg);   z-index:3; }
+    .story-polaroids .s-pol:nth-child(2) { transform:rotate(2deg);    z-index:2; }
+    .story-polaroids .s-pol:nth-child(3) { transform:rotate(-1.5deg); z-index:1; }
+    .story-beat--flip .story-beat-images .story-polaroids { justify-content:flex-end; }
+    @media(max-width:640px) {
+      .s-pol { width:120px; padding:9px 9px 36px 9px; margin-right:-20px; }
+      .s-pol-cap { height:36px; font-size:0.6rem; }
+    }
+
+    /* ── VEHICLES ── */
+    #vehicles { background:var(--dark); padding:3.5rem 2rem; }
+    .vehicles-header { max-width:1100px; margin:0 auto 2.5rem; }
+    .vehicles-header h2 { font-family:var(--fd); font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:0.8rem; }
+    .vehicles-header p { font-size:0.95rem; color:var(--muted); line-height:1.85; font-weight:300; max-width:580px; }
+    .v-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:rgba(255,255,255,0.05); }
+    .v-card { background:var(--dark-2); overflow:hidden; }
+    .v-img { aspect-ratio:4/3; overflow:hidden; background:var(--dark-3); position:relative; }
+    .v-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; display:block; }
+    .v-card:hover .v-img img { transform:scale(1.05); }
+    .v-placeholder { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; }
+    .v-placeholder svg { opacity:0.12; }
+    .v-placeholder span { font-family:var(--fd); font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(114,136,138,0.3); }
+    .v-body { padding:0.9rem 1rem 1.1rem; }
+    .v-num { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--sand-lt); margin-bottom:0.25rem; display:block; }
+    .v-name { font-family:var(--fd); font-size:0.8rem; font-weight:900; color:var(--white); letter-spacing:0.03em; margin-bottom:0.3rem; line-height:1.2; }
+    .v-desc { font-size:0.75rem; color:var(--muted); line-height:1.55; font-weight:300; }
+
+    /* ── CHOSE A TRUCK ── */
+    .chose-truck { max-width:1100px; margin:1px auto 0; border-left:3px solid var(--sand); padding:1.5rem 1.75rem; background:rgba(212,169,106,0.06); border-radius:0 3px 3px 0; }
+    .chose-truck .truck-word { font-family:var(--fd); font-size:1.5rem; font-weight:900; color:var(--white); letter-spacing:0.06em; display:block; margin-bottom:0.65rem; }
+    .chose-truck p { font-size:0.95rem; color:var(--muted); line-height:1.85; font-weight:300; }
+
+    /* ── VEHICLE LESSONS ── */
+    .vehicle-lessons { max-width:1100px; margin:2rem auto 0; display:flex; flex-direction:column; gap:1px; background:rgba(255,255,255,0.04); }
+    .vl-item { background:var(--dark-2); padding:1.5rem 2rem; display:grid; grid-template-columns:160px 1fr; gap:2rem; align-items:start; }
+    .vl-name { font-family:var(--fd); font-size:0.88rem; font-weight:900; color:var(--sand-lt); letter-spacing:0.06em; padding-top:0.1rem; }
+    .vl-desc { font-size:0.92rem; color:var(--muted); line-height:1.8; font-weight:300; }
+    @media(max-width:640px) { .vl-item { grid-template-columns:1fr; gap:0.4rem; } }
+
+    /* ── STEYR CTA ── */
+    #steyr-cta {
+      background:var(--dark-2); padding:3.5rem 2rem; text-align:center;
+      border-top:1px solid rgba(255,255,255,0.04);
+    }
+    #steyr-cta h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1rem; }
+    #steyr-cta p { font-size:1rem; color:var(--muted); font-weight:300; line-height:1.85; max-width:520px; margin:0 auto 2.5rem; }
+
+    /* ── FOOTER ── */
+    footer { background:#080f0f; border-top:1px solid rgba(255,255,255,0.04); padding:2rem 2rem; text-align:center; }
+    .footer-logo img { height:42px; width:auto; margin:0 auto 1.5rem; }
+    .footer-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; list-style:none; margin-bottom:1.5rem; }
+    .footer-links a { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .footer-links a:hover { color:var(--sand-lt); }
+    .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
+
+    @media(max-width:900px) {
+      nav { padding:0 1.25rem; }
+      .nav-links { display:none; }
+      #hero-split { grid-template-columns:1fr; }
+      .split-text { padding:3rem 1.5rem 2rem; min-height:auto; }
+      .split-photo { min-height:55vw; }
+      .v-grid { grid-template-columns:repeat(3,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="story.html" class="active">Our Story</a></li>
+    <li><a href="howwedoit.html">How We Do It</a></li>
+    <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
+    <li><a href="files.html">Files</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ANCHOR NAV -->
+<nav id="page-nav">
+  <div class="page-nav-inner">
+    <a href="#how-we-met" class="page-nav-link">How We Met</a>
+    <a href="#vehicles" class="page-nav-link">The Vehicles</a>
+  </div>
+</nav>
+
+<!-- Custom cursor -->
+<div class="hero-cursor" id="heroCursor"></div>
+<div class="hero-cursor-ring" id="heroCursorRing"></div>
+
+<!-- HERO — parallax full bleed -->
+<section id="hero-split">
+  <div class="hero-photo-layer" id="heroPhotoLayer">
+    <img src="Photos/OurStory/Others/DJI_0026_1.jpg" alt="Jason and Mareike" />
+  </div>
+  <div class="hero-overlay-content">
+    <div class="hero-text-block">
+      <span class="hero-eyebrow">Our Story</span>
+      <h1>Our<br /><span class="accent">Story.</span></h1>
+      <div class="hero-rule"></div>
+      <div class="hero-bottom">
+        <p class="hero-lead">What started as a chance meeting in a small brewery in Bremer Bay quickly became the beginning of the greatest adventure of our lives.</p>
+        <div class="hero-scroll">
+          <div class="hero-scroll-line"></div>
+          Scroll
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE MET — full story -->
+<section id="how-we-met">
+  <div class="story-inner">
+    <span class="warm-label">Our Story</span>
+    <h2>Bremer Bay, May 2023.</h2>
+    <div class="warm-divider"></div>
+
+    <!-- Beat 1: text left, images right -->
+    <div class="story-beat">
+      <div class="story-beat-text story-body">
+        <p>From the moment we met in May 2023, we just clicked. Easy conversations, plenty of laughter, and the strange feeling we'd known each other for years.</p>
+        <p>Just days after our first date, we started building a life together — exploring beaches, hiking, cooking, and dreaming big. We quickly realised we made a damn good team.</p>
+        <p>We had both already walked away from stable corporate jobs to chase something more meaningful. Jason left in January 2023, I handed in my notice in March. By the time we met in Bremer Bay, we were both fully committed to a different kind of life.</p>
+      </div>
+      <div class="story-beat-images">
+        <div class="story-polaroids">
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/BluffKnoll_WA.jpg" alt="Bluff Knoll, WA" loading="lazy" /><div class="s-pol-cap">Bluff Knoll, WA</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/Porongurup_WA.jpg" alt="Porongurup, WA" loading="lazy" /><div class="s-pol-cap">Porongurup, WA</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beat 2: images left, text right -->
+    <div class="story-beat story-beat--flip">
+      <div class="story-beat-text story-body">
+        <p>Together we bought an old troop carrier and turned it into our self-built home on wheels. We spent months roaming Australia and Tasmania — surprising family in Queensland, housesitting in a converted church, hiking wild trails, and completing the Overland Track. Every challenge only brought us closer.</p>
+      </div>
+      <div class="story-beat-images">
+        <div class="story-polaroids">
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/CapeRaoul_TAS.jpg" alt="Cape Raoul, TAS" loading="lazy" /><div class="s-pol-cap">Cape Raoul, TAS</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/StPatricksHead_TAS.jpg" alt="St Patrick's Head, TAS" loading="lazy" /><div class="s-pol-cap">St Patrick's Head, TAS</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/MtKosciuszko_NSW.jpg" alt="Mt Kosciuszko, NSW" loading="lazy" /><div class="s-pol-cap">Mt Kosciuszko, NSW</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beat 3: text left, images right -->
+    <div class="story-beat">
+      <div class="story-beat-text story-body">
+        <p>Travel showed us we belong side by side. Even when we spent time apart visiting family overseas, it only confirmed how much we wanted the same future — full of adventure, love, and freedom.</p>
+        <p>In January 2025 we got married in a simple sunrise ceremony on Bremer Bay beach. No fuss, just us and the ocean.</p>
+      </div>
+      <div class="story-beat-images">
+        <div class="story-polaroids">
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/BremerBay_WA.jpg" alt="Bremer Bay, WA" loading="lazy" /><div class="s-pol-cap">Bremer Bay, WA</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/AcaciaRidge_SA.jpg" alt="Acacia Ridge, SA" loading="lazy" /><div class="s-pol-cap">Acacia Ridge, SA</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/Uluru_NT.jpg" alt="Uluru, NT" loading="lazy" /><div class="s-pol-cap">Uluru, NT</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beat 4: images left, text right -->
+    <div class="story-beat story-beat--flip">
+      <div class="story-beat-text story-body">
+        <p>As our team grew — first with our dog Rocket, then with our daughter on the way — we realised the vehicles we had in Australia wouldn't cut it for long-term world travel. So we started researching serious expedition trucks in Europe… and found exactly what we needed: our Steyr 12M18.</p>
+      </div>
+      <div class="story-beat-images">
+        <div class="story-polaroids">
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/NewChapter.jpg" alt="A new chapter" loading="lazy" /><div class="s-pol-cap">A new chapter</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/BuyingSteyr.jpg" alt="Buying the Steyr" loading="lazy" /><div class="s-pol-cap">Buying the Steyr</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing — full width -->
+    <div class="story-body story-closing">
+      <p>Now we're preparing for our biggest journey yet — hitting the road as a family with our daughter and Rocket, travelling the world in our Steyr.</p>
+      <p>We believe the best things in life are built through shared experiences, real trust, and the courage to follow your dreams — wherever they lead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE VEHICLES -->
+<section id="vehicles">
+  <div class="vehicles-header">
+    <span class="warm-label">The Vehicles</span>
+    <h2>Five vehicles.<br />One destination.</h2>
+    <div class="warm-divider"></div>
+    <p>Before the Steyr, we explored Australia across five different vehicles — each one teaching us something new about what we really needed.</p>
+  </div>
+  <div class="v-grid">
+
+    <div class="v-card">
+      <div class="v-img"><img src="Photos/VehicleCards/ISZUZU2.jpg" alt="Isuzu Ute + Canopy" loading="lazy" /></div>
+      <div class="v-body">
+        <span class="v-num">01</span>
+        <div class="v-name">Isuzu Ute + Canopy</div>
+        <div class="v-desc">A rooftop tent and a big dream. The beginning of everything.</div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-img"><img src="Photos/VehicleCards/Troopy.jpg" alt="Toyota Troopcarrier Bruce" loading="lazy" /></div>
+      <div class="v-body">
+        <span class="v-num">02</span>
+        <div class="v-name">Toyota Troopcarrier "Bruce"</div>
+        <div class="v-desc">30,000 km. Seven months in Tasmania. Rocket joined us en route.</div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-img"><img src="Photos/VehicleCards/Hilux.jpg" alt="Single Cab Hilux" loading="lazy" /></div>
+      <div class="v-body">
+        <span class="v-num">03</span>
+        <div class="v-name">Single Cab Hilux</div>
+        <div class="v-desc">Slide-on camper, then stripped back to a swag under the stars.</div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-img"><img src="Photos/VehicleCards/79series.jpg" alt="Toyota 79 Series Land Cruiser" loading="lazy" /></div>
+      <div class="v-body">
+        <span class="v-num">04</span>
+        <div class="v-name">Toyota 79 Series</div>
+        <div class="v-desc">Extended chassis, GVM upgrade. Capable — but still not quite home.</div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      <div class="v-img"><img src="Photos/VehicleCards/Truck.jpg" alt="1986 Steyr 12M18" loading="lazy" /></div>
+      <div class="v-body">
+        <span class="v-num">05 — This is home.</span>
+        <div class="v-name">1986 Steyr 12M18</div>
+        <div class="v-desc">Eight months. 3,000+ hours. This truck is our life.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="vehicle-lessons">
+    <div class="vl-item">
+      <div class="vl-name">The Ute</div>
+      <div class="vl-desc">Perfect for quick trips out bush, but in cold weather and heavy rain it felt too exposed — with nowhere comfortable to retreat to.</div>
+    </div>
+    <div class="vl-item">
+      <div class="vl-name">The Troopy</div>
+      <div class="vl-desc">Incredible — capable, reliable, and full of character — but with three people and a dog, it simply became too small. It gave us shelter from the weather, but not the space we needed for full-time living.</div>
+    </div>
+    <div class="vl-item">
+      <div class="vl-name">The Slide-On Camper</div>
+      <div class="vl-desc">A fantastic setup that gave us more room, but it still felt like only part of the solution. We wanted a dedicated home on wheels — something built specifically for long-term travel and everyday life. Staying within the vehicle's GVM was always a challenge, and while there are some amazing camper setups out there, we realised that for a similar investment, we could build something that truly suited us.</div>
+    </div>
+  </div>
+
+  <div class="chose-truck">
+    <span class="truck-word">So we chose a truck.</span>
+    <p>We found a tired 1986 Steyr 12M18 that had been sitting in a yard for years. We weren't afraid of the hard work. With the right base, we knew we could build exactly the home we needed — tough enough for serious expedition travel, comfortable enough for full-time family life with our daughter and Rocket.</p>
+  </div>
+</section>
+
+<!-- STEYR CTA -->
+<section id="steyr-cta">
+  <span class="warm-label">The Build</span>
+  <h2>Want to see inside?</h2>
+  <p>Every system, every decision, every corner of the space we call home — all the details of how we built our life on wheels.</p>
+  <a href="home.html" class="btn btn-ghost">See our home →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="howwedoit.html">How We Do It</a></li>
+    <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
+    <li><a href="files.html">Files</a></li>
+    <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
+    <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 3xploreWithUs</p>
+</footer>
+
+<script>
+// ── HERO PARALLAX + CUSTOM CURSOR ────────────────────────────────
+(function () {
+  const section = document.getElementById('hero-split');
+  const photo   = document.getElementById('heroPhotoLayer');
+  const cursor  = document.getElementById('heroCursor');
+  const ring    = document.getElementById('heroCursorRing');
+  if (!section || !photo) return;
+
+  let mx = 0, my = 0;
+
+  section.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    const rect = section.getBoundingClientRect();
+    const dx = (e.clientX - rect.left  - rect.width  / 2) / rect.width;
+    const dy = (e.clientY - rect.top   - rect.height / 2) / rect.height;
+    photo.style.transform = 'translate(' + (dx * -24) + 'px, ' + (dy * -16) + 'px)';
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+    ring.style.left   = e.clientX + 'px';
+    ring.style.top    = e.clientY + 'px';
+  });
+
+  section.addEventListener('mouseleave', function () {
+    photo.style.transform = 'translate(0,0)';
+  });
+
+  // Show/hide cursor only inside the hero
+  section.addEventListener('mouseenter', function () {
+    cursor.style.opacity = '1';
+    ring.style.opacity   = '1';
+  });
+  section.addEventListener('mouseleave', function () {
+    cursor.style.opacity = '0';
+    ring.style.opacity   = '0';
+  });
+  cursor.style.opacity = '0';
+  ring.style.opacity   = '0';
+})();
+
+  // Vehicle card 3D tilt
+  const TILT_MAX = 8;
+  document.querySelectorAll('.v-card').forEach(card => {
+    const imgWrap = card.querySelector('.v-img');
+    if (!imgWrap) return;
+    const glare = document.createElement('div');
+    glare.className = 'v-glare';
+    glare.style.cssText = 'position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity 0.2s;';
+    imgWrap.appendChild(glare);
+
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const rx = ((e.clientY - r.top  - r.height/2) / (r.height/2)) * -TILT_MAX;
+      const ry = ((e.clientX - r.left - r.width /2) / (r.width /2)) *  TILT_MAX;
+      card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+      card.style.boxShadow = `${-ry*1.5}px ${rx*1.5}px 30px rgba(0,0,0,0.45)`;
+      const gx = (e.clientX - r.left) / r.width  * 100;
+      const gy = (e.clientY - r.top)  / r.height * 100;
+      glare.style.opacity = '1';
+      glare.style.background = `radial-gradient(circle at ${gx}% ${gy}%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+      glare.style.opacity = '0';
+    });
+  });
+</script>
+</body>
+</html>

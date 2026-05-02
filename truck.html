@@ -365,12 +365,11 @@
       .nav-links { display: none; }
       .nav-social { display:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
-      /* Fix sticky gap on mobile — switch page-nav to fixed and offset body */
-      #page-nav { position: fixed; top: 72px; left: 0; right: 0; z-index: 150; }
-      body { padding-top: 114px; } /* 72px nav + ~42px page-nav */
-      #hero { margin-top: -114px; } /* hero still fills screen edge-to-edge */
+      /* Fix gap between main nav and sub-nav on mobile */
+      #page-nav { position: fixed; top: 72px; left: 0; right: 0; z-index: 150; box-shadow: 0 -72px 0 0 #131C1C; }
+      body { padding-top: 115px; }
       section { padding: 4rem 1.25rem; }
-      #hero { padding: 0; } /* hero never gets section padding */
+      #hero { padding: 0; margin-top: 0; }
       .hero-overlay-content { padding: 0 1.25rem 3rem; }
       .build-grid, .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }

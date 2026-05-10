@@ -57,6 +57,7 @@
     .page-nav-inner::-webkit-scrollbar { display:none; }
     .page-nav-link { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.45); padding:0.9rem 1.1rem; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s, border-color 0.2s; }
     .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
+    .page-nav-link.active { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
 
     /* ── HERO — full bleed parallax ── */
     #hero-split {
@@ -297,6 +298,112 @@
     .vl-desc { font-size:0.92rem; color:var(--muted); line-height:1.8; font-weight:300; }
     @media(max-width:640px) { .vl-item { grid-template-columns:1fr; gap:0.4rem; } }
 
+    /* ── OUR CHOICE ── */
+    #our-choice {
+      background:var(--dark-2);
+      padding:5rem 2rem;
+      border-top:1px solid rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      position:relative;
+      overflow:hidden;
+    }
+    #our-choice::before {
+      content:'\201C';
+      position:absolute;
+      top:-2rem; left:2rem;
+      font-family:var(--fd);
+      font-size:20rem;
+      line-height:1;
+      color:rgba(212,169,106,0.04);
+      pointer-events:none;
+      user-select:none;
+    }
+    .choice-inner {
+      max-width:780px;
+      margin:0 auto;
+      position:relative;
+    }
+    .choice-questions {
+      margin:2rem 0 2.5rem;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+    .choice-q {
+      font-family:var(--fd);
+      font-size:clamp(1rem,2.2vw,1.35rem);
+      font-weight:700;
+      color:var(--white);
+      letter-spacing:0.02em;
+      line-height:1.45;
+    }
+    .choice-q span { color:var(--sand-lt); }
+    .choice-q-white {
+      font-family:'Roboto','Montserrat',sans-serif;
+      font-size:clamp(1rem,2.2vw,1.35rem);
+      font-weight:500;
+      color:var(--white);
+      letter-spacing:0.01em;
+      line-height:1.55;
+    }
+    .choice-q-white span { color:inherit; }
+    .choice-q-sand {
+      font-family:'Roboto','Montserrat',sans-serif;
+      font-size:clamp(1rem,2.2vw,1.35rem);
+      font-weight:500;
+      color:var(--sand);
+      letter-spacing:0.01em;
+      line-height:1.55;
+    }
+    .choice-q-sand span { color:var(--sand-lt); }
+    .choice-body {
+      font-size:1.05rem;
+      color:var(--muted);
+      line-height:1.95;
+      font-weight:300;
+    }
+    .choice-body p { margin-bottom:1.5rem; }
+    .choice-body p:last-child { margin-bottom:0; }
+    .choice-body strong { color:var(--text); font-weight:500; }
+    .choice-pull {
+      border-left:3px solid var(--sand);
+      padding:1rem 1.5rem;
+      margin:2rem 0;
+      background:rgba(212,169,106,0.05);
+      border-radius:0 3px 3px 0;
+    }
+    .choice-pull p {
+      font-size:1.1rem;
+      color:var(--sand-lt);
+      font-style:italic;
+      font-weight:300;
+      line-height:1.8;
+      margin:0;
+    }
+    .choice-closing {
+      margin-top:2.5rem;
+      padding-top:2rem;
+      border-top:1px solid rgba(255,255,255,0.07);
+      text-align:center;
+    }
+    .choice-closing-title {
+      font-family:var(--fd);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      color:var(--white);
+      letter-spacing:0.06em;
+      display:block;
+      margin-bottom:0.5rem;
+    }
+    .choice-closing-sub {
+      font-family:var(--fd);
+      font-size:0.85rem;
+      font-weight:700;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:var(--sand-lt);
+    }
+
     /* ── STEYR CTA ── */
     #steyr-cta {
       background:var(--dark-2); padding:3.5rem 2rem; text-align:center;
@@ -347,9 +454,9 @@
   <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="truck.html">The Truck</a></li>
     <li><a href="story.html" class="active">Our Story</a></li>
     <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="truck.html">The Truck</a></li>
     <li><a href="home.html">Our Home</a></li>
     <li><a href="files.html">Files</a></li>
   </ul>
@@ -371,9 +478,9 @@
 
 <div class="nav-drawer" id="nav-drawer">
   <a href="index.html">Home</a>
+  <a href="truck.html">The Truck</a>
   <a href="story.html" class="active">Our Story</a>
   <a href="howwedoit.html">How We Do It</a>
-  <a href="truck.html">The Truck</a>
   <a href="home.html">Our Home</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
@@ -381,14 +488,6 @@
     <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
   </div>
 </div>
-
-<!-- ANCHOR NAV -->
-<nav id="page-nav">
-  <div class="page-nav-inner">
-    <a href="#how-we-met" class="page-nav-link">How We Met</a>
-    <a href="#vehicles" class="page-nav-link">The Vehicles</a>
-  </div>
-</nav>
 
 <!-- Custom cursor -->
 <div class="hero-cursor" id="heroCursor"></div>
@@ -418,11 +517,20 @@
   </div>
 </section>
 
+<!-- ANCHOR NAV -->
+<nav id="page-nav">
+  <div class="page-nav-inner">
+    <a href="#how-we-met" class="page-nav-link">How We Met</a>
+    <a href="#our-choice" class="page-nav-link">Our Choice</a>
+    <a href="#vehicles" class="page-nav-link">The Vehicles</a>
+  </div>
+</nav>
+
 <!-- HOW WE MET — full story -->
 <section id="how-we-met">
   <div class="story-inner">
     <span class="warm-label">Our Story</span>
-    <h2>Bremer Bay, May 2023.</h2>
+    <h2>Western Australia, May 2023.</h2>
     <div class="warm-divider"></div>
 
     <!-- Beat 1: text left, images right -->
@@ -430,7 +538,7 @@
       <div class="story-beat-text story-body">
         <p>From the moment we met in May 2023, we just clicked. Easy conversations, plenty of laughter, and the strange feeling we'd known each other for years.</p>
         <p>Just days after our first date, we started building a life together — exploring beaches, hiking, cooking, and dreaming big. We quickly realised we made a damn good team.</p>
-        <p>We had both already walked away from stable corporate jobs to chase something more meaningful. Jason left in January 2023, Mareike left hers in March. By the time we met in <span class="accent">Bremer Bay</span>, we were both fully committed to a different kind of life.</p>
+        <p>We had both already <span class="accent">walked away from stable corporate jobs</span> to chase something more meaningful. Jason left in January 2023, Mareike left hers in March. By the time we met in Bremer Bay, we were both fully committed to a different kind of life.</p>
       </div>
       <div class="story-beat-images">
         <div class="story-polaroids">
@@ -443,7 +551,7 @@
     <!-- Beat 2: images left, text right -->
     <div class="story-beat story-beat--flip">
       <div class="story-beat-text story-body">
-        <p>Together we bought a <span class="accent">Toyota Troopy</span> and turned it into our self-built home on wheels. We spent months roaming <span class="accent">Australia</span> and <span class="accent">Tasmania</span> — surprising family in <span class="accent">Queensland</span>, housesitting in a converted church, hiking wild trails, and completing the <span class="accent">Overland Track</span>. Every challenge only brought us closer.</p>
+        <p>Together we bought a <span class="accent">Toyota Troopy</span> and turned it into our self-built home on wheels. We spent months roaming <span class="accent">Australia</span>, 7 of those in <span class="accent">Tasmania</span>, surprising family in <span class="accent">Queensland</span>, housesitting in a converted church, hiking wild trails, and completing the <span class="accent">Overland Track</span>. Every challenge only brought us closer.</p>
       </div>
       <div class="story-beat-images">
         <div class="story-polaroids">
@@ -469,8 +577,22 @@
       </div>
     </div>
 
-    <!-- Beat 4: images left, text right -->
+    <!-- Beat 4: images left, text right — The Decision -->
     <div class="story-beat story-beat--flip">
+      <div class="story-beat-text story-body">
+        <p>Bremer Bay had a hold on us. So much so that we genuinely started asking: <em>what if we just stayed?</em> We <span class="accent">bought a piece of land</span>. We looked seriously at taking over a small local business. For a moment, the town of 250 people where we first met looked like it might actually be our future.</p>
+        <p>But when we asked ourselves honestly — <em>is this what we really want?</em> — the answer surprised us. Something bigger was pulling at us. So we made a choice.</p>
+      </div>
+      <div class="story-beat-images">
+        <div class="story-polaroids">
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/OurLandBremer.jpg" alt="Our land in Bremer Bay" loading="lazy" /><div class="s-pol-cap">Our land, Bremer Bay</div></div>
+          <div class="s-pol"><img src="Photos/OurStory/Polaroid/PackingUp.jpg" alt="Packing up everything" loading="lazy" /><div class="s-pol-cap">Packing up everything</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beat 5: text left, images right — Finding the Steyr -->
+    <div class="story-beat">
       <div class="story-beat-text story-body">
         <p>As our team grew — first with our dog <span class="accent">Rocket</span>, then with our daughter on the way — we realised the vehicles we had in Australia wouldn't cut it for long-term world travel. So we started researching serious expedition trucks in Europe… and found exactly what we needed: our <span class="accent">Steyr 12M18</span>.</p>
       </div>
@@ -482,10 +604,23 @@
       </div>
     </div>
 
-    <!-- Closing — full width -->
-    <div class="story-body story-closing">
-      <p>Now we're preparing for our biggest journey yet — hitting the road as a family with our daughter and Rocket, travelling the world in our Steyr.</p>
-      <p>We believe the best things in life are built through shared experiences, real trust, and the courage to follow your dreams — wherever they lead.</p>
+  </div>
+</section>
+
+<!-- OUR CHOICE -->
+<section id="our-choice">
+  <div class="choice-inner">
+    <span class="warm-label">Our Choice</span>
+    <div class="warm-divider"></div>
+    <div class="choice-body">
+      <p>We almost took the safe path.</p>
+      <p>We bought a piece of land in Bremer Bay, the small town where we first met. We were ready to settle down, take over a local business, and do the "responsible" thing. On paper it looked perfect.</p>
+      <p>But when we stood on that land, something felt wrong.</p>
+      <p>The life most people live isn't really a choice — it's the default. Mortgage, car payments, a job you tolerate, weekends that disappear too fast. You follow the next logical step everyone around you is taking… until one day you realise the years are gone.</p>
+      <p>Jason's dad died relatively young, before he ever got to retire. It made one thing brutally clear: we don't know when our time runs out. We refuse to spend the best years of our lives building someone else's dream just to afford a life we barely get to live.</p>
+      <p>So we sold the land. We sold the vehicles. We bet on the unknown.</p>
+      <p>We chose to build the truck instead of the house. We chose time together. We chose to live now — not one day. Now.</p>
+      <p><em>This is not for everyone. But it's the only life that feels honest to us.</em></p>
     </div>
   </div>
 </section>
@@ -581,9 +716,9 @@
   <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="truck.html">The Truck</a></li>
     <li><a href="story.html">Our Story</a></li>
     <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="truck.html">The Truck</a></li>
     <li><a href="home.html">Our Home</a></li>
     <li><a href="files.html">Files</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
@@ -681,6 +816,39 @@
       glare.style.opacity = '0';
     });
   });
+</script>
+<script src="site-animations.js"></script>
+
+<script>
+/* ── PAGE NAV SCROLLSPY ── */
+(function () {
+  var links = document.querySelectorAll('.page-nav-link');
+  var sectionIds = Array.from(links).map(function(l){ return l.getAttribute('href').replace('#',''); });
+  var sections = sectionIds.map(function(id){ return document.getElementById(id); });
+
+  function setActive(id) {
+    links.forEach(function(l){
+      if (l.getAttribute('href') === '#' + id) {
+        l.classList.add('active');
+      } else {
+        l.classList.remove('active');
+      }
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        setActive(entry.target.id);
+      }
+    });
+  }, {
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(function(s){ if(s) observer.observe(s); });
+})();
 </script>
 </body>
 </html>

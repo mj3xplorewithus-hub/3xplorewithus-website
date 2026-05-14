@@ -54,23 +54,26 @@
     .nav-social:hover { color:var(--teal-lt); }
     .nav-social svg { width:19px; height:19px; }
 
-    /* ── HERO (3-layer parallax) ── */
-    #hero { position:relative; height:150vh; overflow:hidden; }
-    .hero-layer { position:absolute; inset:-60px; will-change:transform; }
-    .hero-layer img { width:100%; height:100%; object-fit:cover; display:block; }
-    #hero::after {
-      content:''; position:absolute; inset:0; z-index:3;
-      background:linear-gradient(to bottom, rgba(13,21,21,0.25) 0%, rgba(5,10,10,0.0) 18%, rgba(5,10,10,0.0) 50%, rgba(13,21,21,0.72) 100%);
-      pointer-events:none;
-    }
-    .hero-content { position:absolute; inset:0; z-index:4; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; padding:6rem 5rem 4rem; text-align:left; }
-    .hero-text-block { max-width:500px; }
+    /* ── HERO (two-column: video 60% / text 40%) ── */
+    #hero { position:relative; min-height:100vh; overflow:hidden; background:var(--dark); display:flex; }
+    .hero-grid { display:grid; grid-template-columns:3fr 2fr; width:100%; min-height:100vh; }
+    .hero-video-col { position:relative; overflow:hidden; cursor:pointer; }
+    .hero-video-col img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+    .hero-video-col:hover img { transform:scale(1.025); }
+    .hero-video-overlay { position:absolute; inset:0; background:rgba(5,10,10,0.28); display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+    .hero-video-col:hover .hero-video-overlay { background:rgba(5,10,10,0.42); }
+    .hero-video-col:hover .yt-play-btn { transform:scale(1.1); background:rgba(255,0,0,1); }
+    .hero-col-rule { position:absolute; top:0; bottom:0; right:0; width:3px; background:var(--teal); z-index:2; }
+    .hero-text-col { display:flex; flex-direction:column; justify-content:center; padding:7rem 3.5rem 4rem 3.5rem; background:var(--dark); position:relative; overflow:hidden; }
+    .hero-topo-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; opacity:0.18; pointer-events:none; z-index:0; }
+    .hero-text-block { position:relative; z-index:1; }
+    .hero-text-block { max-width:360px; }
     .hero-eyebrow { font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--teal-lt); margin-bottom:1rem; display:block; opacity:0; transform:translateY(18px); animation:hero-fade-up 0.7s 0.1s forwards; }
-    #hero h1 { font-family:var(--fd); font-size:clamp(1.6rem,2.4vw,2.4rem); font-weight:900; color:var(--white); line-height:1.15; letter-spacing:0.03em; opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards; }
+    #hero h1 { font-family:var(--fd); font-size:clamp(1.3rem,1.9vw,2rem); font-weight:900; color:var(--white); line-height:1.2; letter-spacing:0.03em; opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards; }
     .ix-accent { color:var(--sand-lt); }
     .hero-rule { width:0; height:2px; background:var(--sand); border:none; margin:1.25rem 0 0; animation:hero-grow 0.6s 0.7s forwards; }
     .hero-bottom { opacity:0; transform:translateY(16px); animation:hero-fade-up 0.7s 0.85s forwards; margin-top:1.5rem; }
-    .hero-lead { font-size:1rem; color:rgba(237,232,220,0.75); font-weight:300; line-height:1.85; max-width:520px; margin:0 0 1.5rem; }
+    .hero-lead { font-size:0.92rem; color:rgba(237,232,220,0.75); font-weight:300; line-height:1.85; margin:0 0 1.5rem; }
     .hero-scroll { display:flex; align-items:center; gap:0.6rem; font-family:var(--fd); font-size:0.55rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(237,217,163,0.55); justify-content:flex-start; }
     .hero-scroll-line { position:relative; width:1px; height:28px; background:rgba(237,217,163,0.18); overflow:hidden; }
     .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--sand-lt); animation:hero-scroll-tick 2s 1.5s ease-in-out infinite; }
@@ -211,9 +214,11 @@
       .nav-social { display:none; }
       .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
-      #layer-mid, #layer-truck { display:none; }
-      #layer-bg { top:0; left:0; width:100%; height:100%; }
-      #layer-bg img { transform: scale(1); }
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-video-col { aspect-ratio:16/9; min-height:0; }
+      .hero-col-rule { display:none; }
+      .hero-text-col { padding:2.5rem 1.5rem 3rem; }
+      .hero-text-block { max-width:100%; }
       .gallery-item img { height:50vw; }
     }
     @media(max-width:700px) {
@@ -221,8 +226,16 @@
       .stat-item { padding:0.5rem 0.4rem; }
       .stat-num { font-size:clamp(1.2rem,5.5vw,1.8rem); }
       .stat-lbl { font-size:0.52rem; letter-spacing:0.08em; }
+      .stat-item--truck-days { grid-column:span 2; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
       .stat-item--timer { grid-column:span 3; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
     }
+    /* ── FOLLOW CTA ── */
+    .follow-cta-wrap { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .follow-btn { display:inline-flex; align-items:center; gap:0.6rem; padding:0.75rem 1.75rem; border-radius:4px; font-family:var(--fd); font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; transition:opacity 0.2s, transform 0.15s; }
+    .follow-btn:hover { opacity:0.88; transform:translateY(-1px); }
+    .follow-btn--yt { background:#cc0000; color:#fff; }
+    .follow-btn--ig { background:transparent; color:var(--teal-lt); border:1px solid var(--teal); }
+
     /* ── YOUTUBE EMBED ── */
     .yt-embed-wrap { max-width:760px; margin:0 auto 2.5rem; }
     .yt-thumb-container { position:relative; aspect-ratio:16/9; border-radius:4px; overflow:hidden; cursor:pointer; background:#0D1515; }
@@ -235,6 +248,27 @@
     .yt-play-btn svg { width:26px; height:26px; fill:#fff; margin-left:4px; }
     .yt-thumb-container iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
 
+    /* ── HERO PLAY BUTTONS ── */
+    .hero-play-btns { display:flex; flex-direction:column; gap:0.6rem; margin-top:1.4rem; }
+    .hero-play-btn { display:inline-flex; align-items:center; gap:0.55rem; background:transparent; border:1px solid rgba(237,217,163,0.28); color:rgba(237,217,163,0.65); font-family:var(--fd); font-size:0.57rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.55rem 1rem; cursor:pointer; transition:border-color 0.2s,color 0.2s; border-radius:1px; width:fit-content; }
+    .hero-play-btn:hover { border-color:rgba(237,217,163,0.75); color:var(--sand-lt); }
+    .hero-play-btn svg { width:11px; height:11px; fill:currentColor; flex-shrink:0; }
+    .hero-play-btn--primary { border-color:rgba(237,217,163,0.5); color:var(--sand-lt); }
+
+    /* ── VIDEO LIGHTBOX ── */
+    #yt-modal { position:fixed; inset:0; background:rgba(5,8,8,0.95); z-index:9000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.25s; }
+    #yt-modal.open { opacity:1; pointer-events:auto; }
+    .yt-modal-inner { position:relative; width:min(92vw,1100px); aspect-ratio:16/9; }
+    .yt-modal-inner iframe { position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:2px; }
+    .yt-modal-close { position:absolute; top:-3rem; right:0; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); color:var(--white); width:38px; height:38px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+    .yt-modal-close:hover { background:rgba(255,255,255,0.18); }
+    .yt-modal-close svg { width:15px; height:15px; }
+
+  
+    /* ── HERO TOPO BACKGROUND ── */
+    .hero-topo-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+    .hero-text-col { position:relative; }
+    .hero-text-block { position:relative; z-index:1; }
   </style>
 </head>
 <body>
@@ -244,9 +278,9 @@
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
     <li><a href="story.html">Our Story</a></li>
     <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
     <li><a href="files.html">Files</a></li>
   </ul>
   <div class="nav-socials">
@@ -268,9 +302,9 @@
 <div class="nav-drawer" id="nav-drawer">
   <a href="index.html" class="active">Home</a>
   <a href="truck.html">The Truck</a>
+  <a href="home.html">Our Home</a>
   <a href="story.html">Our Story</a>
   <a href="howwedoit.html">How We Do It</a>
-  <a href="home.html">Our Home</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -278,32 +312,48 @@
   </div>
 </div>
 
-<!-- HERO — 3-layer parallax -->
+<!-- HERO — two-column: video left (60%), text right (40%) -->
 <section id="hero">
-  <div class="hero-layer" id="layer-bg">
-    <picture>
-      <source media="(max-width: 768px)" srcset="Photos/HeroPhotosMobile/Mobile_Index.jpg" />
-      <img src="Photos/Photos/hero_asset_4.png" alt="" aria-hidden="true" />
-    </picture>
-  </div>
-  <div class="hero-layer" id="layer-mid">
-    <img src="Photos/Photos/hero_asset_2.png" alt="" aria-hidden="true" />
-  </div>
-  <div class="hero-layer" id="layer-truck">
-    <img src="Photos/Photos/hero_asset_1.png" alt="" aria-hidden="true" />
-  </div>
-  <div class="hero-content">
+  <div class="hero-grid">
+    <div class="hero-video-col" id="hero-video-col" onclick="playInline()" role="button" aria-label="Play video inline">
+      <img src="Photos/Photos/SHORTS.00_22_21_19.Still002.jpg" alt="3xploreWithUs — Watch on YouTube" />
+      <div class="hero-video-overlay">
+        <div class="yt-play-btn" style="width:72px;height:72px;">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="hero-col-rule"></div>
+    </div>
+    <div class="hero-text-col">
+      <img src="mountain_topo.png" class="hero-topo-img" alt="" aria-hidden="true">
+      
     <div class="hero-text-block">
-      <span class="hero-eyebrow">Jason &amp; Mareike</span>
-      <h1>Full-time family life in a <span class="ix-accent">self-built</span> expedition truck.</h1>
-      <div class="hero-rule"></div>
-      <div class="hero-bottom">
-        <p class="hero-lead">We left the normal path, built our home on wheels from scratch, and travel with our dog Rocket — and soon our daughter. Honest filmmaking about a freer way of living.</p>
-        <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+        <span class="hero-eyebrow">Jason &amp; Mareike</span>
+        <h1>Full-time family life in a <span class="ix-accent">self-built</span> expedition truck.</h1>
+        <div class="hero-rule"></div>
+        <div class="hero-bottom">
+          <p class="hero-lead">We left the normal path, built our home on wheels from scratch, and travel with our dog Rocket and our daughter. Honest filmmaking about a freer way of living.</p>
+          <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+          <div class="hero-play-btns">
+            <button class="hero-play-btn hero-play-btn--primary" onclick="playInline()">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch our intro
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- VIDEO LIGHTBOX -->
+<div id="yt-modal" role="dialog" aria-modal="true" aria-label="Video player" onclick="if(event.target===this)closeModal()">
+  <div class="yt-modal-inner">
+    <button class="yt-modal-close" onclick="closeModal()" aria-label="Close video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <iframe id="yt-modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
 
 <!-- STATS -->
 <div class="stats-strip">
@@ -316,9 +366,9 @@
       <span class="stat-num">5</span>
       <span class="stat-lbl">Vehicles built &amp; lived in</span>
     </div>
-    <div class="stat-item">
-      <span class="stat-num">3</span>
-      <span class="stat-lbl">Countries explored together</span>
+<div class="stat-item stat-item--truck-days">
+      <span class="stat-num" id="truck-days">—</span>
+      <span class="stat-lbl">Days living in the truck</span>
     </div>
     <div class="stat-item stat-item--timer">
       <div class="tc-display">
@@ -353,14 +403,14 @@
         <img src="Photos/Team/Jason2.jpg" alt="Jason" loading="lazy" />
       </div>
       <span class="team-name">Jason</span>
-      <span class="team-role"><strong>Creative Force.</strong> Filmmaker, photographer, and the obsessive behind the camera and edit. Turns thousands of raw clips and late-night ideas into stories that make people question their own lives.</span>
+      <span class="team-role">Creative explorer, incurable optimist, and idealist at heart. A free-spirited adventurer who lives for the unknown. With a toolbox full of ideas and an endless thirst for discovery, he's the driving force behind turning dreams of remote wilderness into lived reality.</span>
     </div>
     <div class="team-card">
       <div class="team-photo">
         <img src="Photos/Team/Mareike1.jpg" alt="Mareike" loading="lazy" />
       </div>
       <span class="team-name">Mareike</span>
-      <span class="team-role"><strong>The Anchor.</strong> Keeps the whole operation moving. Logistics, planning, filming support — the one who turns Jason's wildest ideas into something that actually happens.</span>
+      <span class="team-role">Adventurous, creative, and endlessly organized. Mareike loves discovering new cultures, embracing the outdoors, and turning big dreams into lived reality — the one who keeps it all on track.</span>
     </div>
     <div class="team-card">
       <div class="team-photo team-photo--loading">
@@ -457,29 +507,15 @@
 <section id="follow">
   <span class="section-label">Stay Connected</span>
   <h2>Follow the journey.</h2>
-  <p>Long-form documentary on YouTube. The daily moments on Instagram.</p>
-  <div class="yt-embed-wrap">
-    <div class="yt-thumb-container" id="yt-thumb" onclick="loadYT()" role="button" aria-label="Play video">
-      <img src="Photos/169_landscape/YouTubeThumbnail.jpg" alt="3xploreWithUs — Watch on YouTube" />
-      <div class="yt-thumb-overlay">
-        <div class="yt-play-btn">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="social-icons">
-    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="social-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
-      <span>YouTube</span>
+  <p>Build series, truck life, travel, and the daily life.</p>
+  <div class="follow-cta-wrap">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="follow-btn follow-btn--yt">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+      Watch on YouTube
     </a>
-    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="social-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      <span>Instagram</span>
-    </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="social-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-      <span>Email</span>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="follow-btn follow-btn--ig">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Instagram
     </a>
   </div>
 </section>
@@ -490,9 +526,9 @@
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
     <li><a href="story.html">Our Story</a></li>
     <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
     <li><a href="files.html">Files</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
@@ -506,41 +542,6 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
-
-  // ── 3-LAYER PARALLAX HERO ─────────────────────────────────────────────
-  const heroLayers = [
-    { el: document.getElementById('layer-bg'),    scrollSpeed: 0.07, gyroDepth: 5  },
-    { el: document.getElementById('layer-mid'),   scrollSpeed: 0.20, gyroDepth: 13 },
-    { el: document.getElementById('layer-truck'), scrollSpeed: 0.36, gyroDepth: 22 },
-  ];
-  let gyroX = 0, gyroY = 0, rafPending = false;
-  function renderLayers() {
-    const sy = window.scrollY;
-    heroLayers.forEach(({ el, scrollSpeed, gyroDepth }) => {
-      el.style.transform = `translate(${gyroX * gyroDepth}px, ${sy * scrollSpeed + gyroY * gyroDepth}px)`;
-    });
-    rafPending = false;
-  }
-  function scheduleRender() {
-    if (!rafPending) { rafPending = true; requestAnimationFrame(renderLayers); }
-  }
-  window.addEventListener('scroll', scheduleRender, { passive: true });
-  function initGyro() {
-    window.addEventListener('deviceorientation', e => {
-      gyroX = Math.max(-1, Math.min(1, (e.gamma || 0) / 28));
-      gyroY = Math.max(-1, Math.min(1, ((e.beta || 45) - 45) / 28));
-      scheduleRender();
-    }, true);
-  }
-  if (typeof DeviceOrientationEvent !== 'undefined' &&
-      typeof DeviceOrientationEvent.requestPermission === 'function') {
-    document.getElementById('hero').addEventListener('click', () => {
-      DeviceOrientationEvent.requestPermission()
-        .then(s => { if (s === 'granted') initGyro(); }).catch(() => {});
-    }, { once: true });
-  } else if (window.DeviceOrientationEvent) {
-    initGyro();
-  }
 
   // ── INFINITE GALLERY — two rows, auto-drift ──────────────────────────
   function initGallery(trackId, driftDir) {
@@ -616,6 +617,13 @@
   initGallery('galleryTrack1',  1);   // top row — drifts right
   initGallery('galleryTrack2', -1);   // bottom row — drifts left
 
+  /* ── TRUCK DAYS COUNTER ── */
+  (function updateTruckDays() {
+    var start = new Date('2026-02-20T00:00:00');
+    var days = Math.floor((new Date() - start) / 86400000);
+    document.getElementById('truck-days').textContent = days;
+  })();
+
   /* ── ROAD TIMER ── */
   function updateRoadTimer() {
     const start = new Date('2023-09-18T00:00:00');
@@ -640,10 +648,38 @@
   }
   updateRoadTimer();
   setInterval(updateRoadTimer, 1000);
-  // ── YOUTUBE EMBED ────────────────────────────────────────────────────
-  function loadYT() {
-    window.open('https://youtu.be/aBMubgHYSc4', '_blank');
+  // ── YOUTUBE PLAYBACK ─────────────────────────────────────────────────
+  var YT_ID = 'aBMubgHYSc4';
+
+  // Option 1: swap thumbnail for inline iframe inside the hero column
+  function playInline() {
+    var col = document.getElementById('hero-video-col');
+    if (col.querySelector('iframe')) return; // already playing
+    col.innerHTML = '<iframe src="https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>';
+    col.style.cursor = 'default';
   }
+
+  // Option 2: open lightbox modal overlay
+  function playModal() {
+    document.getElementById('yt-modal-iframe').src =
+      'https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1';
+    var modal = document.getElementById('yt-modal');
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('yt-modal-iframe').src = '';
+    var modal = document.getElementById('yt-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
 
 </script>
 <script>

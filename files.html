@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Files &amp; Downloads — 3xploreWithUs</title>
-  <meta name="description" content="Guides, recipes, templates and more — coming soon from Jason and Mareike." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <meta name="description" content="Free guides, routes and from-scratch recipes from four years on the road."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
   <style>
-    @font-face { font-family:'TypoGraphica'; src:url('TypoGraphica_demo.otf') format('opentype'); font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    @font-face {
+      font-family:'TypoGraphica';
+      src:url('fonts/TypoGraphica_demo.otf') format('opentype');
+      font-display:swap;
+      unicode-range:U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
+    }
+    @font-face { font-family:'Roboto'; src:url('fonts/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('fonts/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('fonts/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
       --text:#EDE8DC; --muted:#72888A; --white:#F5F2EC;
-      --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+      --line:rgba(255,255,255,0.05); --line-2:rgba(255,255,255,0.08);
+      --fd:'TypoGraphica','Roboto','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+      --t-fast:0.2s;
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
@@ -42,40 +49,133 @@
     .nav-social:hover { color:var(--teal-lt); }
     .nav-social svg { width:19px; height:19px; }
 
-    /* ── MAIN ── */
-    main {
-      min-height:100vh; display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding:10rem 2rem 6rem; text-align:center;
-    }
+    /* ── HERO ── */
+    main { min-height:100vh; padding:10rem 2rem 6rem; }
+    .container { max-width:1180px; margin:0 auto; }
+
+    .hero { text-align:center; margin-bottom:4rem; }
     .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.5rem; }
     h1 { font-family:var(--fd); font-size:clamp(2.5rem,7vw,5.5rem); font-weight:900; color:var(--white); line-height:0.95; letter-spacing:0.04em; margin-bottom:1.5rem; }
     h1 .accent { color:var(--sand-lt); }
     .divider { width:40px; height:3px; background:var(--red); border-radius:2px; margin:1.5rem auto; }
-    .lead { font-size:1.1rem; color:var(--muted); line-height:1.9; font-weight:300; max-width:580px; margin:0 auto 3rem; }
+    .lead { font-size:1.1rem; color:var(--muted); line-height:1.9; font-weight:300; max-width:620px; margin:0 auto; }
 
-    /* ── DOWNLOAD CARDS — available now ── */
-    .section-sublabel { font-family:var(--fd); font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.5rem; opacity:0.8; }
-    .dl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.06); max-width:900px; width:100%; margin:0 auto 1rem; }
-    .dl-card { background:var(--dark-3); padding:2.5rem 2rem; text-align:left; border-top:2px solid var(--teal); display:flex; flex-direction:column; }
-    .dl-card-type { font-family:var(--fd); font-size:0.56rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--teal-lt); margin-bottom:1.25rem; }
-    .dl-card-icon { margin-bottom:1rem; opacity:0.6; }
-    .dl-card-icon svg { width:28px; height:28px; }
-    .dl-card-title { font-family:var(--fd); font-size:0.85rem; font-weight:900; color:var(--white); letter-spacing:0.04em; margin-bottom:0.5rem; }
-    .dl-card-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; font-weight:300; flex:1; }
-    .dl-btn { display:inline-flex; align-items:center; gap:0.4rem; margin-top:1.5rem; padding:0.6rem 1.25rem; background:rgba(26,144,144,0.12); border:1px solid rgba(90,200,200,0.3); border-radius:2px; font-family:var(--fd); font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-lt); transition:background 0.2s, color 0.2s; align-self:flex-start; }
-    .dl-btn:hover { background:rgba(26,144,144,0.25); color:var(--white); }
-    .dl-btn svg { width:13px; height:13px; }
+    .hero-meta {
+      display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;
+      margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line);
+      max-width:560px; margin-left:auto; margin-right:auto;
+      font-family:var(--fd); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); font-weight:700;
+    }
+    .hero-meta span strong { color:var(--white); margin-right:0.5rem; }
 
-    /* ── CATEGORY CARDS — coming soon ── */
-    .card-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.04); max-width:900px; width:100%; margin:0 auto 3rem; }
-    .coming-card { background:var(--dark-2); padding:2.5rem 2rem; text-align:left; }
-    .card-icon { margin-bottom:1.25rem; opacity:0.3; }
-    .card-icon svg { width:32px; height:32px; }
-    .card-title { font-family:var(--fd); font-size:0.85rem; font-weight:900; color:var(--white); letter-spacing:0.04em; margin-bottom:0.5rem; }
-    .card-desc { font-size:0.82rem; color:var(--muted); line-height:1.6; font-weight:300; }
-    .card-badge { display:inline-block; margin-top:1rem; font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(114,136,138,0.5); border:1px solid rgba(114,136,138,0.2); padding:0.25rem 0.75rem; border-radius:999px; }
+    /* ── CATEGORY ── */
+    .cat { margin-top:5rem; }
+    .cat-head {
+      display:grid; grid-template-columns:auto 1fr auto;
+      gap:1.75rem; align-items:end;
+      margin-bottom:1.5rem; padding-bottom:1.1rem;
+      border-bottom:1px solid var(--line-2);
+    }
+    .cat-num {
+      font-family:var(--fd); font-weight:900;
+      font-size:2.6rem; letter-spacing:0.04em; line-height:1; color:var(--white);
+      padding-bottom:4px;
+    }
+    .cat-eyebrow {
+      font-family:var(--fd); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:700;
+      margin-bottom:6px;
+    }
+    .cat-title {
+      font-family:var(--fd); font-weight:900;
+      font-size:1.85rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--white); line-height:1.05;
+    }
+    .cat-tally {
+      font-family:var(--fd); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--muted); font-weight:700;
+      text-align:right; padding-bottom:4px;
+    }
+    .cat-tally .dot { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+    .cat-blurb {
+      font-size:0.92rem; color:var(--muted); font-weight:300; line-height:1.65;
+      max-width:62ch; margin-bottom:1.75rem;
+    }
+    .cat.teal .cat-num, .cat.teal .cat-eyebrow { color:var(--teal-lt); }
+    .cat.sand .cat-num, .cat.sand .cat-eyebrow { color:var(--sand-lt); }
+    .cat.red  .cat-num, .cat.red  .cat-eyebrow { color:var(--red); }
+    .cat.teal .cat-tally .dot { background:var(--teal-lt); }
+    .cat.sand .cat-tally .dot { background:var(--sand-lt); }
+    .cat.red  .cat-tally .dot { background:var(--red); }
 
+    /* ── CARD GRID ── */
+    .grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:var(--line); border:1px solid var(--line);
+    }
+    .card {
+      background:var(--dark-2); padding:1.75rem 1.6rem 1.5rem;
+      display:flex; flex-direction:column; gap:0.85rem;
+      text-decoration:none; color:inherit;
+      transition:background var(--t-fast);
+      min-height:340px; position:relative;
+    }
+    .card.live { border-top:2px solid var(--teal); }
+    .cat.sand .card.live { border-top-color:var(--sand); }
+    .cat.red  .card.live { border-top-color:var(--red); }
+    .card.live:hover { background:var(--dark-3); }
+    .card.soon { background:rgba(19,28,28,0.55); cursor:default; }
+
+    .card-type {
+      font-family:var(--fd); font-size:0.56rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:700;
+      color:var(--teal-lt);
+    }
+    .cat.sand .card-type { color:var(--sand-lt); }
+    .cat.red  .card-type { color:var(--red); }
+    .card.soon .card-type { color:rgba(114,136,138,0.7); }
+
+    .icon-well {
+      width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+      margin-top:4px; opacity:0.9;
+    }
+    .icon-well svg { width:28px; height:28px; stroke:currentColor; }
+    .cat.teal .card.live .icon-well { color:var(--teal-lt); }
+    .cat.sand .card.live .icon-well { color:var(--sand-lt); }
+    .cat.red  .card.live .icon-well { color:var(--red); }
+    .card.soon .icon-well { color:var(--muted); opacity:0.45; }
+
+    .card-title {
+      font-family:var(--fd); font-weight:900;
+      font-size:1.2rem; letter-spacing:0.04em; text-transform:uppercase;
+      color:var(--white); line-height:1.1;
+    }
+    .card.soon .card-title { color:rgba(245,242,236,0.55); }
+
+    .card-desc {
+      font-size:0.85rem; color:var(--text); font-weight:300; line-height:1.6; flex:1;
+    }
+    .card-desc strong { color:var(--white); font-weight:500; }
+    .card.soon .card-desc { color:var(--muted); }
+
+    .card-foot {
+      display:flex; align-items:center; justify-content:space-between;
+      border-top:1px solid var(--line); padding-top:0.85rem;
+      font-family:var(--fd); font-size:0.56rem; letter-spacing:0.22em; text-transform:uppercase; font-weight:700;
+      color:var(--muted);
+    }
+    .card-foot .open { display:inline-flex; align-items:center; gap:6px; color:var(--sand-lt); }
+    .cat.teal .card.live .card-foot .open { color:var(--teal-lt); }
+    .cat.red  .card.live .card-foot .open { color:var(--red); }
+    .card-foot .arrow { font-weight:400; font-size:0.85rem; transform:translateY(-1px); }
+    .card.live:hover .card-foot .arrow { transform:translate(2px,-1px); transition:transform var(--t-fast); }
+
+    .soon-pill {
+      display:inline-flex; align-items:center;
+      font-family:var(--fd); font-size:0.54rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:700;
+      color:rgba(114,136,138,0.85);
+      border:1px solid rgba(114,136,138,0.3);
+      padding:4px 10px; border-radius:999px;
+    }
+
+    /* CTA */
+    .cta-row { text-align:center; margin-top:5rem; }
     .btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 2rem; border-radius:2px; font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.2s,opacity 0.2s; }
     .btn:hover { transform:translateY(-2px); opacity:0.88; }
     .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
@@ -83,128 +183,239 @@
     /* ── FOOTER ── */
     footer { background:#080f0f; border-top:1px solid rgba(255,255,255,0.04); padding:3rem 2rem; text-align:center; }
     .footer-logo img { height:42px; width:auto; margin:0 auto 1rem; }
-    .footer-tagline { font-family:var(--fd); font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
     .footer-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; list-style:none; margin-bottom:1.5rem; }
     .footer-links a { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
     .footer-links a:hover { color:var(--sand-lt); }
     .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
 
-    @media(max-width:900px) {
+    @media (max-width:900px) {
       nav { padding:0 1.25rem; }
       .nav-links { display:none; }
-      .nav-logo img { height:auto; max-height:44px; max-width:none; }
-      .dl-grid { grid-template-columns:1fr; max-width:420px; }
-      .card-grid { grid-template-columns:1fr; max-width:420px; }
+      .nav-logo img { height:auto; max-height:44px; }
+      .grid { grid-template-columns:1fr; }
+      .cat-head { grid-template-columns:1fr; gap:0.5rem; }
+      .cat-tally { text-align:left; }
     }
   </style>
-</head>
+<script type='text/javascript' nonce='VutYdz03taepTtIeITW7ZQ==' src='https://claude.ai/AAHjYAsOXiSTIwApTabrC2igkF-y0vEbNEjpikbX1F2SZZn7Kg0V-RHCN_TTeNyRVkmNZKwoDHQc6OPYcSQc7Hni80Fs34D2a1D1HKbhpGXl8JUaBnsUqvLlzXbCbYo7ZtImil1KuZNQEOuf7Erik6UTjLaVqMUXSt-t4_vn2rRocaZ64bbeeb422s25J646mnqE5oUcrVpaoMV98pDZvwAYEHxWXnGTgrl8SK4Lv8fG_dUplqJzfLiHBDAWGuXTnZ3F7pJ1Wg_w6vzGPxJft6Zks-FRYc4yOgazBFj8G8yPNrhRwffk1dU9lMdqW9quV7pZYvqRzxaluqAbltp1V1QXVpcgnD_EqmHalF01yH-WMvgEpotdBZd0kttfMwuR9w12ZoxeAlaEplP9Cxe2xU-3AaMjcKidWRrQwaaizaAcFKirysMQPX_rithg9wmKQKV8FHLyi2uWPp0eWMaX6Vnz2k718PDICe3ZZHAcqoXL5SR225dJSD6_8hKGUAdMmpsVtTTuS0X6TgnJewQTopWPMfUbRc-Tux9gTAVcY3HtaF4'></script></head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs"/></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="truck.html">The Truck</a></li>
+    <li><a href="home.html">Our Home</a></li>
     <li><a href="story.html">Our Story</a></li>
     <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
     <li><a href="files.html" class="active">Files</a></li>
   </ul>
   <div class="nav-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+      <svg viewbox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
     </a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    <a href="/cdn-cgi/l/email-protection#35545143505b4140475075064d45595a4750425c415d40461b565a58" class="nav-social" aria-label="Email">
+      <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
     </a>
   </div>
 </nav>
 
 <main>
-  <span class="section-label">Downloads</span>
-  <h1>Files &amp;<br /><span class="accent">Guides.</span></h1>
-  <div class="divider"></div>
-  <p class="lead">Guides, recipes, templates and resources from our life on the road. Everything we wish we'd had when we started. All free.</p>
+  <div class="container">
 
-  <!-- AVAILABLE NOW -->
-  <span class="section-sublabel">Available Now</span>
-  <div class="dl-grid">
-    <div class="dl-card">
-      <div class="dl-card-type">Free PDF &mdash; DIY Recipe</div>
-      <div class="dl-card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="#5AC8C8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </div>
-      <div class="dl-card-title">Gentle Hand Soap</div>
-      <div class="dl-card-desc">A simple liquid hand soap from grated natural bar soap, glycerin and distilled water. Gentle on sensitive skin — works in a pump or foaming dispenser.</div>
-      <a href="Files/Recipe_GentleHandSoap.pdf" download class="dl-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
-      </a>
+    <!-- ── HERO ────────────────────────────────────── -->
+    <div class="hero">
+      <span class="section-label">Free Downloads</span>
+      <h1>Files &amp;<br/><span class="accent">Guides.</span></h1>
+      <div class="divider"></div>
+      <p class="lead">Guides, routes, and from-scratch recipes from our life on the road. Everything we wish we'd had when we started. All free.</p>
     </div>
-    <div class="dl-card">
-      <div class="dl-card-type">Free PDF &mdash; DIY Recipe</div>
-      <div class="dl-card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="#5AC8C8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+
+
+    <!-- ═════════════════════════════════════════════
+         01 · TRAVEL
+         ═════════════════════════════════════════════ -->
+    <section class="cat sand" data-screen-label="01 Travel">
+      <div class="cat-head">
+        <div class="cat-num">01</div>
+        <div>
+          <div class="cat-eyebrow">Shelf 01</div>
+          <h2 class="cat-title">Travel</h2>
+        </div>
+        <div class="cat-tally"><span class="dot"></span>1 available &middot; 2 coming</div>
       </div>
-      <div class="dl-card-title">Liquid Dishwashing Soap</div>
-      <div class="dl-card-desc">An effective washing-up liquid from bar soap, washing soda and glycerin. Makes 500–600 ml. Cuts through grease without chemicals.</div>
-      <a href="Files/Recipe_LiquidDishwashingSoap.pdf" download class="dl-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
-      </a>
-    </div>
-    <div class="dl-card">
-      <div class="dl-card-type">Free PDF &mdash; DIY Recipe</div>
-      <div class="dl-card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="#5AC8C8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      <p class="cat-blurb">Routes, packing, and the practical side of being permanently on the move. What to bring, where to point the truck, and what we learned the hard way.</p>
+
+      <div class="grid">
+        <a class="card live" href="Files/_Online/3xWU_Packing List.html">
+          <div class="card-type">Guide &middot; 14 pages</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8h-3V6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2z"/><path d="M9 8V6h6v2"/><line x1="12" y1="12" x2="12" y2="18"/></svg>
+          </div>
+          <div class="card-title">Packing List<br/>Family + Dog</div>
+          <div class="card-desc">Everything we pack for two adults, a baby, and Rocket &mdash; <strong>12 categories, 150+ items</strong>, real-world tested across 30,000 km of Australia and one European winter.</div>
+          <div class="card-foot">
+            <span>HTML &middot; printable</span>
+            <span class="open">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <div class="card soon">
+          <div class="card-type">Guide &middot; in progress</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="card-title">Australian<br/>Travel Routes</div>
+          <div class="card-desc">Six routes we've driven, with campsite picks, water + fuel stops, and the bits no map will tell you. Every state and territory.</div>
+          <div class="card-foot">
+            <span>PDF &middot; multi-state</span>
+            <span class="soon-pill">Soon</span>
+          </div>
+        </div>
+
+        <div class="card soon">
+          <div class="card-type">Map pack &middot; in progress</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <div class="card-title">Wild Camping<br/>Spots</div>
+          <div class="card-desc">A curated list of free, quiet, dog-friendly overnighters. GPS pins, what to expect, and how to leave them better than you found them.</div>
+          <div class="card-foot">
+            <span>GPX + PDF</span>
+            <span class="soon-pill">Soon</span>
+          </div>
+        </div>
       </div>
-      <div class="dl-card-title">Laundry Detergent</div>
-      <div class="dl-card-desc">A dry powder detergent that makes 30–50 loads. Just bar soap, baking soda, and washing soda. Works in any machine and is safe for babies with the essential oils omitted.</div>
-      <a href="Files/Recipe_LaundryDetergent.pdf" download class="dl-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF
-      </a>
+    </section>
+
+
+    <!-- ═════════════════════════════════════════════
+         02 · HOW TO
+         ═════════════════════════════════════════════ -->
+    <section class="cat teal" data-screen-label="02 How To">
+      <div class="cat-head">
+        <div class="cat-num">02</div>
+        <div>
+          <div class="cat-eyebrow">Shelf 02</div>
+          <h2 class="cat-title">How&nbsp;To</h2>
+        </div>
+        <div class="cat-tally"><span class="dot"></span>1 available &middot; 1 coming</div>
+      </div>
+      <p class="cat-blurb">The practical stuff. Build knowledge, safety kit, and the electrical setups behind the truck &mdash; the bits no one tells you until you've already learned them the hard way.</p>
+
+      <div class="grid">
+        <a class="card live" href="Files/_Online/3xWU_First Aid Kit.html">
+          <div class="card-type">Guide &middot; 7 pages</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+          </div>
+          <div class="card-title">First Aid Kit<br/>Newborn Edition</div>
+          <div class="card-desc">The compact, multi-use kit we carry for a newborn in the truck &mdash; essentials, natural remedies, camper-specific extras, and the medical reminders worth keeping in mind.</div>
+          <div class="card-foot">
+            <span>HTML &middot; printable</span>
+            <span class="open">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <div class="card soon">
+          <div class="card-type">Build log &middot; in progress</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="card-title">Camper Electrical<br/>From Scratch</div>
+          <div class="card-desc">Solar, batteries, inverters, fusing &mdash; how our 12V system was put together, why we made each call, and what we'd do differently second time round.</div>
+          <div class="card-foot">
+            <span>PDF &middot; technical</span>
+            <span class="soon-pill">Soon</span>
+          </div>
+        </div>
+
+        <div class="card soon">
+          <div class="card-type">Build log &middot; in progress</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="card-title">Truck<br/>Build Log</div>
+          <div class="card-desc">3,000+ hours of work, condensed. The decisions, the regrets, the off-the-shelf bits and the custom welds. Bill of materials included.</div>
+          <div class="card-foot">
+            <span>PDF &middot; in depth</span>
+            <span class="soon-pill">Soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═════════════════════════════════════════════
+         03 · FROM SCRATCH
+         ═════════════════════════════════════════════ -->
+    <section class="cat red" data-screen-label="03 From Scratch">
+      <div class="cat-head">
+        <div class="cat-num">03</div>
+        <div>
+          <div class="cat-eyebrow">Shelf 03</div>
+          <h2 class="cat-title">From&nbsp;Scratch</h2>
+        </div>
+        <div class="cat-tally"><span class="dot"></span>3 available &middot; 0 coming</div>
+      </div>
+      <p class="cat-blurb">Recipes for the kitchen and the cleaning cupboard &mdash; the soaps, detergents and meals we make from a handful of ingredients in the back of the truck. Cooking volume landing next.</p>
+
+      <div class="grid">
+        <a class="card live" href="Files/_Online/3xWU_Recipe - Gentle Hand Soap.html">
+          <div class="card-type">Recipe &middot; DIY</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="card-title">Gentle<br/>Hand Soap</div>
+          <div class="card-desc">A simple liquid hand soap from grated natural bar soap, glycerin and distilled water. Gentle on sensitive skin &mdash; works in a pump or foaming dispenser.</div>
+          <div class="card-foot">
+            <span>HTML &middot; printable</span>
+            <span class="open">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a class="card live" href="Files/_Online/3xWU_Recipe - Liquid Dishwashing Soap.html">
+          <div class="card-type">Recipe &middot; DIY</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-1V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/><path d="M9 14c0 1.5 1 2.5 3 2.5s3-1 3-2.5"/></svg>
+          </div>
+          <div class="card-title">Liquid<br/>Dishwashing</div>
+          <div class="card-desc">An effective washing-up liquid from bar soap, washing soda and glycerin. Makes <strong>500&ndash;600&nbsp;ml</strong>. Cuts through grease without the chemicals.</div>
+          <div class="card-foot">
+            <span>HTML &middot; printable</span>
+            <span class="open">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+
+        <a class="card live" href="Files/_Online/3xWU_Recipe - Laundry Detergent.html">
+          <div class="card-type">Recipe &middot; DIY</div>
+          <div class="icon-well">
+            <svg viewbox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="7" cy="6" r="0.6" fill="currentColor"/></svg>
+          </div>
+          <div class="card-title">Laundry<br/>Detergent</div>
+          <div class="card-desc">A dry powder detergent that makes <strong>30&ndash;50 loads</strong>. Just bar soap, baking soda, and washing soda. Works in any machine &mdash; safe for babies with the essential oils omitted.</div>
+          <div class="card-foot">
+            <span>HTML &middot; printable</span>
+            <span class="open">Open <span class="arrow">&rarr;</span></span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+    <div class="cta-row">
+      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-ghost">Follow along on YouTube →</a>
     </div>
+
   </div>
-
-  <!-- COMING SOON -->
-  <span class="section-sublabel" style="margin-top:3rem;">Coming Soon</span>
-  <div class="card-grid">
-    <div class="coming-card">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <div class="card-title">Travel Guides</div>
-      <div class="card-desc">Routes, campsites, and insider knowledge from every Australian state and territory.</div>
-      <span class="card-badge">Coming soon</span>
-    </div>
-    <div class="coming-card">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </div>
-      <div class="card-title">Recipes</div>
-      <div class="card-desc">Simple, whole-food recipes we cook on two gas hobs from wherever we happen to be parked.</div>
-      <span class="card-badge">Coming soon</span>
-    </div>
-    <div class="coming-card">
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <div class="card-title">How-To Guides</div>
-      <div class="card-desc">Build instructions, electrical setups, van conversion tips — the practical knowledge from 3,000+ hours of work.</div>
-      <span class="card-badge">Coming soon</span>
-    </div>
-  </div>
-
-  <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-ghost">Follow along on YouTube →</a>
 </main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs"/></div>
 
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
@@ -219,6 +430,5 @@
   <p class="footer-copy">© 2026 3xploreWithUs</p>
 </footer>
 
-<script src="site-animations.js"></script>
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>

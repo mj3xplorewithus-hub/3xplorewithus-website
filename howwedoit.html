@@ -126,11 +126,11 @@
       /* Faint large number as background decoration */
       content:attr(data-num);
       position:absolute;
-      top:-0.15em; right:0.1em;
+      top:-0.1em; right:0.1em;
       font-family:var(--fd);
-      font-size:7rem;
+      font-size:5.5rem;
       font-weight:900;
-      color:rgba(255,255,255,0.03);
+      color:rgba(212,169,106,0.1);
       line-height:1;
       letter-spacing:0.08em;
       pointer-events:none;
@@ -138,7 +138,7 @@
     }
     .m-card-accent {
       width:28px; height:2px;
-      background:var(--teal);
+      background:var(--sand);
       border-radius:1px;
       margin-bottom:1.25rem;
     }
@@ -182,13 +182,11 @@
     #portrait-gallery { background:var(--dark); padding:0; overflow:hidden; }
     .portrait-track {
       display:flex; gap:3px;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      scrollbar-width:none;
+      overflow:visible;
       cursor:grab;
       user-select:none;
+      will-change:transform;
     }
-    .portrait-track::-webkit-scrollbar { display:none; }
     .portrait-track.dragging { cursor:grabbing; }
     .portrait-item { flex:0 0 auto; }
     .portrait-item img { height:70vh; width:auto; max-width:none; object-fit:cover; display:block; pointer-events:none; }
@@ -309,55 +307,55 @@
 
     <div class="manifesto-grid">
 
-      <div class="m-card" data-num="01">
+      <div class="m-card" data-num="1">
         <div class="m-card-accent"></div>
         <div class="m-title">We live humbly.</div>
         <p class="m-body">Not because we have to, but because we choose to. Simplicity creates space for what truly matters.</p>
       </div>
 
-      <div class="m-card" data-num="02">
+      <div class="m-card" data-num="2">
         <div class="m-card-accent"></div>
         <div class="m-title">We always cook.</div>
         <p class="m-body">Restaurants are rare. The food we make is healthier, tastes better, and we know exactly what goes into it.</p>
       </div>
 
-      <div class="m-card" data-num="03">
+      <div class="m-card" data-num="3">
         <div class="m-card-accent"></div>
         <div class="m-title">We opted out.</div>
         <p class="m-body">No brands, no status symbols, no shopping for the sake of it. We stepped off the consumerism treadmill — and put a truck and freedom in its place.</p>
       </div>
 
-      <div class="m-card" data-num="04">
+      <div class="m-card" data-num="4">
         <div class="m-card-accent"></div>
         <div class="m-title">Our version of success.</div>
         <p class="m-body">Time together, freedom to move, hikes we didn't plan, conversations with strangers. We live with each other 24/7 and we love it. Nobody handed us this life — we built it.</p>
       </div>
 
-      <div class="m-card" data-num="05">
+      <div class="m-card" data-num="5">
         <div class="m-card-accent"></div>
         <div class="m-title">The financial reality.</div>
         <p class="m-body">We live on less than most people spend on rent, track every euro, and our investments do the heavy lifting.</p>
       </div>
 
-      <div class="m-card" data-num="06">
+      <div class="m-card" data-num="6">
         <div class="m-card-accent"></div>
         <div class="m-title">We're not on holiday.</div>
         <p class="m-body">There are maintenance days, admin days, bad-weather days. Days when the truck breaks and you're waiting for a part in a town you didn't choose. This life is real — and it takes real work.</p>
       </div>
 
-      <div class="m-card" data-num="07">
+      <div class="m-card" data-num="7">
         <div class="m-card-accent"></div>
         <div class="m-title">We choose what comes in.</div>
         <p class="m-body">Handmade soap, homemade laundry detergent, natural cleaning products. Wood and metal over plastic, second-hand over new. We're not doing a dramatic overhaul — we replace things consciously as they wear out. One choice at a time.</p>
       </div>
 
-      <div class="m-card" data-num="08">
+      <div class="m-card" data-num="8">
         <div class="m-card-accent"></div>
         <div class="m-title">We're learning to be parents on the road from day one.</div>
         <p class="m-body">No nursery, no routine handed to us by a suburb, no family next door. Just the two of us, a newborn, a dog, and a truck. Figuring it out as we go — same as everything else.</p>
       </div>
 
-      <div class="m-card" data-num="09">
+      <div class="m-card" data-num="9">
         <div class="m-card-accent"></div>
         <div class="m-title">We film and edit as a team while living in ~8m². No externals hired.</div>
         <p class="m-body">Everything you see is planned, shot, and edited by the two of us — in a truck, between borders, while living our actual life. No crew. No agency. Just us.</p>
@@ -404,63 +402,113 @@
 
 <script>
   (function () {
-    const track = document.getElementById('portraitTrack');
-    if (!track) return;
+    function initGallery() {
+      const track = document.getElementById('portraitTrack');
+      if (!track) return;
 
-    // Clone for seamless loop
-    const origItems = Array.from(track.querySelectorAll('.portrait-item'));
-    origItems.forEach(item => track.appendChild(item.cloneNode(true)));
-    [...origItems].reverse().forEach(item => track.insertBefore(item.cloneNode(true), track.firstChild));
+      // Clone items for seamless infinite loop
+      const origItems = Array.from(track.querySelectorAll('.portrait-item'));
+      origItems.forEach(item => track.appendChild(item.cloneNode(true)));
+      origItems.forEach(item => track.appendChild(item.cloneNode(true)));
 
-    let setW = 0, pos = 0, isDragging = false;
-    let dragStartX = 0, scrollAtDragStart = 0;
-    let touchStartX = 0;
+      // Switch from overflow-scroll to transform-based movement
+      track.style.overflow = 'visible';
+      track.style.display = 'flex';
+      track.style.gap = '3px';
 
-    function wrap() {
-      if (!setW) return;
-      if (pos < setW * 0.05)  pos += setW;
-      if (pos > setW * 2.95)  pos -= setW;
-    }
+      const totalItems = track.querySelectorAll('.portrait-item').length;
+      const origCount = origItems.length;
 
-    function tick() {
-      if (!isDragging) {
-        pos += 0.4;
-        wrap();
-        track.scrollLeft = pos;
+      let offset = 0;
+      let isDragging = false;
+      let dragStartX = 0;
+      let offsetAtDragStart = 0;
+      let touchStartX = 0;
+      let singleSetWidth = 0;
+      let rafId = null;
+
+      function getSetWidth() {
+        const items = track.querySelectorAll('.portrait-item');
+        if (!items.length) return 0;
+        const first = items[0];
+        const last = items[origCount - 1];
+        return last.getBoundingClientRect().right - first.getBoundingClientRect().left + 3;
       }
-      requestAnimationFrame(tick);
+
+      function applyOffset() {
+        track.style.transform = 'translateX(' + (-offset) + 'px)';
+      }
+
+      function wrap() {
+        if (!singleSetWidth) return;
+        if (offset >= singleSetWidth * 2) offset -= singleSetWidth;
+        if (offset < 0) offset += singleSetWidth;
+      }
+
+      function tick() {
+        if (!isDragging) {
+          offset += 0.5;
+          wrap();
+          applyOffset();
+        }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function start() {
+        singleSetWidth = getSetWidth();
+        if (!singleSetWidth) {
+          // Images not yet loaded, retry
+          setTimeout(start, 100);
+          return;
+        }
+        offset = 0;
+        applyOffset();
+        if (rafId) cancelAnimationFrame(rafId);
+        tick();
+      }
+
+      // Mouse drag
+      track.addEventListener('mousedown', e => {
+        isDragging = true;
+        dragStartX = e.clientX;
+        offsetAtDragStart = offset;
+        track.classList.add('dragging');
+        e.preventDefault();
+      });
+      window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        offset = offsetAtDragStart - (e.clientX - dragStartX);
+        wrap();
+        applyOffset();
+      });
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+        track.classList.remove('dragging');
+      });
+
+      // Touch drag
+      track.addEventListener('touchstart', e => {
+        isDragging = true;
+        touchStartX = e.touches[0].clientX;
+        offsetAtDragStart = offset;
+      }, { passive: true });
+      track.addEventListener('touchmove', e => {
+        offset = offsetAtDragStart - (e.touches[0].clientX - touchStartX);
+        wrap();
+        applyOffset();
+      }, { passive: true });
+      track.addEventListener('touchend', () => { isDragging = false; });
+
+      window.addEventListener('load', start);
+      // Also try after a short delay in case load already fired
+      setTimeout(start, 300);
     }
 
-    window.addEventListener('load', () => {
-      setW = track.scrollWidth / 3;
-      pos = setW;
-      track.scrollLeft = pos;
-      requestAnimationFrame(tick);
-    });
-
-    // Mouse drag
-    track.addEventListener('mousedown', e => {
-      isDragging = true; dragStartX = e.clientX; scrollAtDragStart = pos;
-      track.classList.add('dragging'); e.preventDefault();
-    });
-    window.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      pos = scrollAtDragStart - (e.clientX - dragStartX);
-      wrap(); track.scrollLeft = pos;
-    });
-    window.addEventListener('mouseup', () => {
-      isDragging = false; track.classList.remove('dragging');
-    });
-
-    // Touch drag
-    track.addEventListener('touchstart', e => {
-      isDragging = true; touchStartX = e.touches[0].clientX; scrollAtDragStart = pos;
-    }, { passive: true });
-    track.addEventListener('touchmove', e => {
-      pos = scrollAtDragStart - (e.touches[0].clientX - touchStartX);
-      wrap(); track.scrollLeft = pos;
-    }, { passive: true });
-    track.addEventListener('touchend', () => { isDragging = false; });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGallery);
+    } else {
+      initGallery();
+    }
   })();
 </script>
 
@@ -510,8 +558,6 @@
   });
 })();
 </script>
-<script src="site-animations.js"></script>
-
 <!-- PORTRAIT GALLERY -->
 <div id="portrait-gallery">
   <div class="portrait-track" id="portraitTrack">
@@ -536,5 +582,7 @@
   </div>
   <p class="gallery-hint">← drag to explore →</p>
 </div>
+
+<script src="site-animations.js"></script>
 </body>
 </html>

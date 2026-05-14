@@ -80,11 +80,73 @@
     .btn-teal { background:var(--teal); color:var(--white); }
 
     /* ── INTRO ── */
-    #intro { background:var(--dark); padding:4rem 2rem 3rem; text-align:center; }
-    .intro-inner { max-width:720px; margin:0 auto; }
+    #intro { background:var(--dark); padding:4rem 2rem 3rem; }
+    .intro-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .intro-text { }
     #intro h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); line-height:1.1; letter-spacing:0.04em; margin-bottom:1.5rem; }
-    #intro p { font-size:1.05rem; color:var(--muted); line-height:1.9; font-weight:300; max-width:640px; margin:0 auto 1.2rem; }
+    #intro p { font-size:1.05rem; color:var(--muted); line-height:1.9; font-weight:300; margin-bottom:1.2rem; }
     #intro p strong { color:var(--text); font-weight:500; }
+    .intro-photo { border-radius:4px; overflow:hidden; }
+    .intro-photo img { width:100%; height:auto; display:block; object-fit:cover; }
+    @media(max-width:860px) {
+      .intro-inner { grid-template-columns:1fr; gap:2.5rem; }
+      .intro-photo { max-width:480px; }
+    }
+
+    /* ── INTERIOR PHOTO STRIP ── */
+    #interior-strip { background:var(--dark); padding:0 0 4rem; }
+    .int-strip-inner { max-width:1100px; margin:0 auto; padding:0 2rem; }
+    .int-strip-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem; }
+    .int-strip-hint { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.25); }
+    .int-strip-arrows { display:flex; gap:0.4rem; }
+    .int-arrow-btn { width:34px; height:34px; border-radius:50%; background:transparent; border:1px solid rgba(90,200,200,0.25); color:var(--teal-lt); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color 0.2s, background 0.2s; }
+    .int-arrow-btn:hover { border-color:rgba(90,200,200,0.6); background:rgba(90,200,200,0.06); }
+    .int-flow { overflow:hidden; border-radius:3px; }
+    .int-flow-track { display:flex; gap:8px; transition:transform 0.4s ease; will-change:transform; }
+    .int-flow-item { flex:0 0 auto; cursor:zoom-in; }
+    .int-flow-item img { height:360px; width:auto; object-fit:cover; display:block; border-radius:2px; transition:opacity 0.2s; }
+    .int-flow-item:hover img { opacity:0.85; }
+
+    /* ── LIGHTBOX ── */
+    .int-lightbox {
+      position:fixed; inset:0; z-index:1000;
+      background:rgba(5,10,10,0.94);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:opacity 0.25s;
+    }
+    .int-lightbox.open { opacity:1; pointer-events:auto; }
+    .int-lightbox-img-wrap { position:relative; max-width:90vw; max-height:88vh; display:flex; align-items:center; justify-content:center; }
+    .int-lightbox-img-wrap img { max-width:90vw; max-height:88vh; width:auto; height:auto; display:block; border-radius:3px; }
+    .int-lb-btn {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+      color:var(--white); font-size:1.1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s; z-index:2;
+    }
+    .int-lb-btn:hover { background:rgba(255,255,255,0.18); }
+    .int-lb-prev { left:-60px; }
+    .int-lb-next { right:-60px; }
+    .int-lb-close {
+      position:fixed; top:1.5rem; right:1.5rem;
+      width:40px; height:40px; border-radius:50%;
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+      color:var(--white); font-size:1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    }
+    .int-lb-close:hover { background:rgba(255,255,255,0.18); }
+    .int-lb-counter {
+      position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%);
+      font-family:var(--fd); font-size:0.58rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,242,236,0.4);
+    }
+    @media(max-width:600px) {
+      .int-lb-prev { left:-48px; } .int-lb-next { right:-48px; }
+      .int-lb-btn { width:36px; height:36px; }
+    }
+    @media(max-width:860px) { .int-flow-item img { height:52vw; } }
 
     /* ── SPEC CATEGORIES GRID ── */
     #specs { background:var(--dark-2); padding:3rem 2rem 4rem; }
@@ -92,6 +154,9 @@
     #specs h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1rem; }
     .cat-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.04); }
     .cat-card { background:var(--dark); padding:2rem 1.75rem; }
+    .cat-photo { overflow:hidden; }
+    .cat-photo img { width:100%; height:100%; object-fit:cover; display:block; min-height:200px; transition:transform 0.4s ease; }
+    .cat-photo img:hover { transform:scale(1.03); }
     .cat-icon { margin-bottom:1rem; }
     .cat-icon svg { width:28px; height:28px; stroke:var(--teal-lt); }
     .cat-title { font-family:var(--fd); font-size:0.82rem; font-weight:900; color:var(--white); letter-spacing:0.04em; margin-bottom:1.2rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.06); }
@@ -215,6 +280,7 @@
       .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
       .cat-grid { grid-template-columns:repeat(2,1fr); }
+      .cat-photo { display:none; }
       .power-grid { grid-template-columns:1fr; }
       .safety-inner { grid-template-columns:1fr; }
     }
@@ -293,17 +359,51 @@
     <a href="#intro" class="page-nav-link">The Living Quarters</a>
     <a href="#specs" class="page-nav-link">Systems &amp; Equipment</a>
     <a href="#power" class="page-nav-link">Electrical System</a>
-    <a href="#electrical-components" class="page-nav-link">Electrical Components</a>
   </div>
 </nav>
 
 <!-- INTRO -->
 <section id="intro">
   <div class="intro-inner">
-    <span class="section-label">The Living Quarters</span>
-    <h2>A 1981 military shelter.<br />Completely reimagined.</h2>
-    <p>The living quarters are built around an <strong>FM2 Zeppelin Shelter from 1981</strong> — an original German military box that came fitted to the truck. We kept the shell, stripped pretty much everything else, and rebuilt the interior to suit our needs.</p>
-    <p>Fully self-sufficient with a big electric setup, a composting toilet, hot shower, a washing machine, Starlink, and a 140×200cm bed. Double-glazed tempered glass windows with blinds and mosquito screens. 300 litres of fresh water. 900 watts of solar. Everything we need, nothing we don't.</p>
+    <div class="intro-text">
+      <span class="section-label">The Living Quarters</span>
+      <h2>A 1981 military shelter.<br />Completely reimagined.</h2>
+      <p>The living quarters are built around an <strong>FM2 Zeppelin Shelter from 1981</strong> — an original German military box that came fitted to the truck. We kept the shell, stripped pretty much everything else, and rebuilt the interior to suit our needs.</p>
+      <p>Fully self-sufficient with a big electric setup, a composting toilet, hot shower, a washing machine, Starlink, and a 140×200cm bed. Double-glazed tempered glass windows with blinds and mosquito screens. 300 litres of fresh water. 900 watts of solar. Everything we need, nothing we don't.</p>
+    </div>
+    <div class="intro-photo">
+      <img src="Photos/INTERIOR/P1392142.jpg" alt="Inside the Steyr living quarters" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- INTERIOR PHOTO STRIP -->
+<section id="interior-strip">
+  <div class="int-strip-inner">
+    <div class="int-strip-header">
+      <span class="int-strip-hint">Click any photo to enlarge</span>
+      <div class="int-strip-arrows">
+        <button class="int-arrow-btn" id="intArrowPrev" aria-label="Previous photos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="int-arrow-btn" id="intArrowNext" aria-label="Next photos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="int-flow" id="intFlow">
+      <div class="int-flow-track" id="intFlowTrack">
+        <div class="int-flow-item" data-index="0"><img src="Photos/INTERIOR/P1392085.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="1"><img src="Photos/INTERIOR/P1392162.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="2"><img src="Photos/INTERIOR/P1392127.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="3"><img src="Photos/INTERIOR/P1392133.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="4"><img src="Photos/INTERIOR/P1392156.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="5"><img src="Photos/INTERIOR/P1392139.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="6"><img src="Photos/INTERIOR/P1392070.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="7"><img src="Photos/INTERIOR/P1392075.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="8"><img src="Photos/INTERIOR/P1392073.jpg" alt="Interior" loading="lazy" /></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -402,63 +502,21 @@
 <section id="power">
   <div class="power-inner">
 
-    <!-- TOP: text left, diagram right -->
+    <!-- text left, diagram right -->
     <div class="power-top">
       <div>
-        <div class="power-header">
-          <span class="section-label">Electrical System</span>
-          <h2>24V Victron system.<br />Built for indefinite off-grid living.</h2>
-          <div class="divider"></div>
-          <p>The entire electrical system runs on 24V — chosen for efficiency over the standard 12V. The Victron ecosystem gives us real-time monitoring of every watt going in and out, and enough capacity to run the air conditioning, fridge, freezer and everything else without touching shore power for weeks.</p>
-        </div>
-        <div class="power-overview">
-          <span class="section-label">Electrical System Overview</span>
-          <h3>How it all connects.</h3>
-          <div class="divider"></div>
-          <p>Solar, shore power and the alternator all feed into 400Ah of 24V lithium storage. Three voltage rails distribute power to every system on board — all monitored in real time.</p>
-        </div>
+        <span class="section-label">Electrical System</span>
+        <h2>24V Victron system.<br />Built for indefinite off-grid living.</h2>
+        <div class="divider"></div>
+        <p>The entire system runs on 24V Victron — 400Ah of lithium storage fed by 900W of solar, a 5000W Victron inverter/charger, a DC-DC charger from the alternator, and shore power when we need it. A Victron Cerbo GX monitors every watt in real time. We can run the air conditioning, fridge, freezer, and full kitchen for weeks without plugging in.</p>
+        <p style="margin-top:1.25rem;">230V distribution is handled by a Schneider Electric panel with individual circuit breakers for every load.</p>
+        <p style="margin-top:2rem; font-style:italic; color:var(--muted);">Want the full breakdown of every component and how it all connects?</p>
+        <a href="Files/3xploreWithUs_Electrical_Spec.pdf" class="btn btn-ghost" style="margin-top:0.85rem; display:inline-flex;" download>Download full electrical spec sheet (PDF)</a>
       </div>
       <div class="power-diagram-wrap">
         <img class="diagram-lines" src="Photos/Truck_Photos/power_lines.png" alt="" aria-hidden="true" />
         <div class="pulse-ring"></div>
         <img class="diagram-base" src="Photos/Truck_Photos/steyr truck power setup_10.png" alt="Steyr 12M18 electrical system diagram" />
-      </div>
-    </div>
-
-    <!-- TABLES -->
-    <div id="electrical-components" style="margin-bottom:1.5rem; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.06);">
-      <span class="section-label">Electrical Components</span>
-    </div>
-    <div class="power-grid">
-      <div class="power-col">
-        <span class="power-col-title">Storage &amp; Monitoring</span>
-        <table class="spec-table">
-          <tr><td>Batteries</td><td>2 × 24V 200Ah Lithium — <strong>400Ah total</strong> at 24V</td></tr>
-          <tr><td>Distribution</td><td>Victron Lynx Distributor</td></tr>
-          <tr><td>Shunt</td><td>Victron 500A Smart Shunt</td></tr>
-          <tr><td>Monitor</td><td>Victron Cerbo GX + GX Touch 50 display</td></tr>
-        </table>
-      </div>
-      <div class="power-col">
-        <span class="power-col-title">Charging &amp; Conversion</span>
-        <table class="spec-table">
-          <tr><td>Inverter / Charger</td><td>Victron 24V 5000W 120A — charges from shore power, inverts to 230V</td></tr>
-          <tr><td>Solar</td><td>2 × 450W panels — 900W total, one through each MPPT</td></tr>
-          <tr><td>MPPT Controllers</td><td>2 × Victron 100/50</td></tr>
-          <tr><td>DC-DC (24→12V)</td><td>Victron DC-DC 24/12 30A — powers 12V accessories</td></tr>
-          <tr><td>DC-DC Charger</td><td>Victron DC-DC 1400 XS — charges from alternator while driving</td></tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="power-full">
-      <span class="power-full-title">230V Distribution — Schneider Electric</span>
-      <div class="schneider-list">
-        <span class="schneider-tag">40A Isolator</span>
-        <span class="schneider-tag">4× iDPN N Vigi 1P+N 16A</span>
-        <span class="schneider-tag">C-Characteristic</span>
-        <span class="schneider-tag">30mA · Type A SI</span>
-        <span class="schneider-tag">6kA Breaking Capacity</span>
       </div>
     </div>
 
@@ -536,6 +594,126 @@
       drawer.classList.remove('open');
       document.body.style.overflow = '';
     });
+  });
+})();
+</script>
+<!-- LIGHTBOX -->
+<div class="int-lightbox" id="intLightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="int-lb-close" id="intLbClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="int-lightbox-img-wrap">
+    <button class="int-lb-btn int-lb-prev" id="intLbPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img src="" alt="Interior photo" id="intLbImg" />
+    <button class="int-lb-btn int-lb-next" id="intLbNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="int-lb-counter" id="intLbCounter"></div>
+</div>
+
+<script>
+/* ── INTERIOR PHOTO STRIP — arrow nav + lightbox ── */
+(function () {
+  var track   = document.getElementById('intFlowTrack');
+  var wrap    = document.getElementById('intFlow');
+  var btnPrev = document.getElementById('intArrowPrev');
+  var btnNext = document.getElementById('intArrowNext');
+  if (!track) return;
+
+  /* collect srcs from original items */
+  var items = Array.from(track.querySelectorAll('.int-flow-item'));
+  var srcs  = items.map(function (el) { return el.querySelector('img').src; });
+  var total = srcs.length;
+  var offset = 0; /* how many items scrolled left */
+
+  function visibleCount() {
+    /* how many items fit in the container width */
+    if (!items[0]) return 3;
+    var itemW = items[0].offsetWidth + 8;
+    return Math.max(1, Math.floor(wrap.offsetWidth / itemW));
+  }
+
+  function maxOffset() {
+    return Math.max(0, total - visibleCount());
+  }
+
+  function applyOffset(animated) {
+    if (!animated) track.style.transition = 'none';
+    else track.style.transition = 'transform 0.4s ease';
+    var itemW = items[0] ? items[0].offsetWidth + 8 : 0;
+    track.style.transform = 'translateX(' + (-offset * itemW) + 'px)';
+    /* re-enable transition after instant jump */
+    if (!animated) requestAnimationFrame(function () { track.style.transition = 'transform 0.4s ease'; });
+  }
+
+  function goNext() {
+    if (offset < maxOffset()) { offset++; applyOffset(true); }
+  }
+  function goPrev() {
+    if (offset > 0) { offset--; applyOffset(true); }
+  }
+
+  btnNext.addEventListener('click', goNext);
+  btnPrev.addEventListener('click', goPrev);
+
+  /* touch swipe */
+  var touchStartX = 0;
+  wrap.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', function (e) {
+    var dx = touchStartX - e.changedTouches[0].clientX;
+    if (dx > 40) goNext();
+    else if (dx < -40) goPrev();
+  }, { passive: true });
+
+  /* recalc on resize */
+  window.addEventListener('resize', function () { applyOffset(false); });
+
+  /* ── LIGHTBOX ── */
+  var lb        = document.getElementById('intLightbox');
+  var lbImg     = document.getElementById('intLbImg');
+  var lbCounter = document.getElementById('intLbCounter');
+  var lbPrev    = document.getElementById('intLbPrev');
+  var lbNext    = document.getElementById('intLbNext');
+  var lbClose   = document.getElementById('intLbClose');
+  var current   = 0;
+
+  function openLightbox(idx) {
+    current = ((idx % total) + total) % total;
+    lbImg.src = srcs[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showIdx(idx) {
+    current = ((idx % total) + total) % total;
+    lbImg.src = srcs[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  track.addEventListener('click', function (e) {
+    var item = e.target.closest('.int-flow-item');
+    if (!item) return;
+    var raw = parseInt(item.dataset.index, 10);
+    if (isNaN(raw)) return;
+    openLightbox(raw);
+  });
+
+  lbPrev.addEventListener('click', function () { showIdx(current - 1); });
+  lbNext.addEventListener('click', function () { showIdx(current + 1); });
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  { showIdx(current - 1); }
+    if (e.key === 'ArrowRight') { showIdx(current + 1); }
+    if (e.key === 'Escape')     { closeLightbox(); }
   });
 })();
 </script>

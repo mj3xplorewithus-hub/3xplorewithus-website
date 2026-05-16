@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Guide Template (editable) · 3xploreWithUs</title>
+<link rel="stylesheet" href="pdfs/pdf.css"/>
+<script type='text/javascript' nonce='GxlyywPFDUZkxHU8gxvX2w==' src='https://claude.ai/-eBsxOhmFanxlCuvrlQz3FuvYbITCALGapvBIcSzX5Za1ptWgmhRkeOHTWw_8oF3-sFY6YC7KyWUPD20VTM4JlUN7uxybSGsp2ggoEqxfcxMs1njidQ4GBjea9I4ymIpyfmLNpFw42G14OBCVPPlNNaZtChLiE3YcNYpjX47NYbO1ryj7mlt5kPqHBbsFnMwQtOqlofQ5u_j-PPmjJYDpwdxpvc-VmhnJcAIBcLUq8YQ9TxccnpJ_IxS2YjH2cYBr6iKnVxH7HG7g6jD97QSeDXcb9fuk4KU5uzZm4UGuZl1hGvvrCKpm7j9rzARJd5VLCykO2M8BzVra8aWO94vpXPsBcGOsq7hbw5PW22NxmyJLPVFKE9X-gFYjJOqzGc5aFq0-nzZ9dt1D_8GIjx-HGo2Zjrow5rrpvCsqUpFz02cgyeyoYyIRrBaNO_a_bBjAaW8QnhgL5CBFOWKyNtycZLBZ0sGRMeOQs7NIWSbLsOzhgzeiveWSfvZOIAMh9hNaz6E_D4vnE39KeqfbeTaABg7v2tjyteSNZBtebBDUpTEavsY-U2wNToCrjebljE'></script><script src="pdfs/image-slot.js"></script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="pdfs/tweaks-panel.jsx"></script>
+</head>
+<body>
+
+<div class="toolbar" style="left: 16px; right: auto;">
+  <h5>Template</h5>
+  <button onclick="window.print()">Save as PDF</button>
+  <a href="Guides.html">&larr; All guides</a>
+</div>
+
+<!-- ============================================================
+     PAGE 1 — COVER
+     ============================================================ -->
+<section class="page dark" data-screen-label="01 Cover">
+  <div class="p-header">
+    <div class="brand"><img src="assets/logo_black.png" alt="3xploreWithUs"/></div>
+    <span class="tag-pill" data-key="freedl">Free download</span>
+  </div>
+  <div class="p-accent" data-key="accent-bar"></div>
+
+  <div class="p-body" style="padding-top: 36px; padding-bottom: 32px;">
+    <div class="cover-photo">
+      <image-slot id="tmpl-cover" style="width:100%;height:100%;display:block;" shape="rect" placeholder="[ REPLACE WITH YOUR PHOTO ]"></image-slot>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <span class="eyebrow" data-key="eyebrow">3xploreWithUs &middot; Guide</span>
+      <h1 class="h1" data-key="title">Your Guide<br/><span class="accent" data-key="title-accent">Title</span> Here</h1>
+      <hr class="rule"/>
+      <p class="lead" data-key="lead">A short description of what this guide covers, who it&rsquo;s for, and what they&rsquo;ll take away. Keep it to 1&ndash;2 sentences.</p>
+    </div>
+  </div>
+
+  <div class="p-footer cover">
+    <div class="who">
+      <div class="name" data-key="byline">Jason &amp; Mareike</div>
+      <div class="tag" data-key="tagline">Living life on the road, one border at a time.</div>
+    </div>
+    <div class="edition">
+      <div class="yr" data-key="edition">2026 Edition</div>
+      <span class="url">www.3xplorewithus.com</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PAGE 2 — CONTENTS
+     ============================================================ -->
+<section class="page light" data-screen-label="02 Contents">
+  <div class="p-header">
+    <div class="brand"><img src="assets/logo_black.png" alt="3xploreWithUs"/></div>
+    <span class="head-eyebrow">Contents</span>
+  </div>
+  <div class="p-accent teal"></div>
+
+  <div class="p-body">
+    <span class="eyebrow">In this guide</span>
+    <h2 class="h2">Contents</h2>
+    <hr class="rule"/>
+
+    <div class="toc">
+      <div class="toc-row">
+        <div class="toc-num">01</div>
+        <div>
+          <div class="toc-title">Introduction</div>
+          <div class="toc-desc">The story behind this guide and how to use it</div>
+        </div>
+        <div class="toc-pg">03</div>
+      </div>
+      <div class="toc-row">
+        <div class="toc-num">02</div>
+        <div>
+          <div class="toc-title">Getting Started</div>
+          <div class="toc-desc">What you need to know before you begin</div>
+        </div>
+        <div class="toc-pg">04</div>
+      </div>
+      <div class="toc-row">
+        <div class="toc-num">03</div>
+        <div>
+          <div class="toc-title">The Main Topic</div>
+          <div class="toc-desc">Deep-dive into the core information</div>
+        </div>
+        <div class="toc-pg">04</div>
+      </div>
+      <div class="toc-row">
+        <div class="toc-num">04</div>
+        <div>
+          <div class="toc-title">Practical Tips</div>
+          <div class="toc-desc">Hands-on advice you can use right away</div>
+        </div>
+        <div class="toc-pg">04</div>
+      </div>
+      <div class="toc-row">
+        <div class="toc-num">05</div>
+        <div>
+          <div class="toc-title">Common Mistakes</div>
+          <div class="toc-desc">What to avoid &mdash; and how to recover if you don&rsquo;t</div>
+        </div>
+        <div class="toc-pg">04</div>
+      </div>
+      <div class="toc-row">
+        <div class="toc-num">06</div>
+        <div>
+          <div class="toc-title">Resources &amp; Links</div>
+          <div class="toc-desc">Everything referenced, all in one place</div>
+        </div>
+        <div class="toc-pg">04</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer">
+    <span class="url">www.3xplorewithus.com</span>
+    <span class="center">Made with love by 3xploreWithUs</span>
+    <span class="pgnum">02</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PAGE 3 — SECTION ONE
+     ============================================================ -->
+<section class="page light" data-screen-label="03 Section One">
+  <div class="p-header">
+    <div class="brand"><img src="assets/logo_black.png" alt="3xploreWithUs"/></div>
+    <span class="head-eyebrow">Section One</span>
+  </div>
+  <div class="p-accent"></div>
+
+  <div class="p-body">
+    <span class="eyebrow">01 &mdash; Section One</span>
+    <h2 class="h2">Your Section<br/>Heading Here</h2>
+    <hr class="rule"/>
+
+    <p class="p">This is where your body content goes. Write clearly and directly &mdash; your readers are overlanders and adventurers who value honest, practical information over filler. Keep paragraphs short. Share what you actually know from experience.</p>
+
+    <p class="p">Continue with a second paragraph here. You can expand on the topic, add context, or transition into your next point. Aim for 3&ndash;5 sentences per block.</p>
+
+    <div style="height: 220px; margin: 8px 0 6px;">
+      <image-slot id="tmpl-p3-photo" style="width:100%;height:100%;display:block;" shape="rect" placeholder="[ REPLACE WITH YOUR PHOTO ]"></image-slot>
+    </div>
+    <div class="photo-caption">Caption: Location, year, any relevant note about the image.</div>
+
+    <div class="callout">
+      <div class="ctitle">Tip</div>
+      <p>Use this callout box for tips, pro advice, or things you wish someone had told you. Keep it brief &mdash; one clear, actionable point works best here.</p>
+    </div>
+
+    <p class="p">Pick up the main content again below the callout. This is a good place to transition to the next sub-section or wrap up the current point.</p>
+  </div>
+
+  <div class="p-footer">
+    <span class="url">www.3xplorewithus.com</span>
+    <span class="center">Made with love by 3xploreWithUs</span>
+    <span class="pgnum">03</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PAGE 4 — SECTION TWO (with pull quote)
+     ============================================================ -->
+<section class="page light" data-screen-label="04 Section Two">
+  <div class="p-header">
+    <div class="brand"><img src="assets/logo_black.png" alt="3xploreWithUs"/></div>
+    <span class="head-eyebrow">Section Two</span>
+  </div>
+  <div class="p-accent"></div>
+
+  <div class="p-body" style="padding-top: 0;">
+
+    <div class="pullquote" style="margin-top: 0;">
+      <div class="qt">The road doesn&rsquo;t care about your plans. It only cares that you&rsquo;re moving.</div>
+      <div class="src">&mdash; Jason &amp; Mareike, 3xploreWithUs</div>
+      <div style="font-size:0.75rem; color: var(--muted); margin-top: 8px; font-style: italic;">Replace with a quote from your guide content.</div>
+    </div>
+
+    <div style="padding-top: 28px;">
+      <span class="eyebrow">02 &mdash; Section Two</span>
+      <h2 class="h2">Sub-Section Heading</h2>
+      <hr class="rule"/>
+
+      <div class="two-col">
+        <div>
+          <p class="p">Column one goes here. This two-column layout works well when comparing two options, listing gear for different climates, or presenting parallel information side by side. Keep each column to one clear idea.</p>
+        </div>
+        <div>
+          <p class="p">Column two goes here. Aim to keep both columns roughly the same length so the page feels balanced. If one is much longer, split the content into separate sections instead.</p>
+        </div>
+      </div>
+
+      <div class="callout red">
+        <div class="ctitle">Important</div>
+        <p>Use this red box for warnings, legal notes, permit requirements, or anything time-sensitive. Keep it punchy &mdash; if it needs more than 2 sentences, it belongs in the main body text instead.</p>
+      </div>
+
+      <div class="callout teal">
+        <div class="ctitle">Useful Links</div>
+        <ul class="brand-list teal" style="margin-top: 6px;">
+          <li><strong>Resource or link name</strong> &mdash; one-line description of what it is</li>
+          <li><strong>Resource or link name</strong> &mdash; one-line description of what it is</li>
+          <li><strong>Resource or link name</strong> &mdash; one-line description of what it is</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-footer">
+    <span class="url">www.3xplorewithus.com</span>
+    <span class="center">Made with love by 3xploreWithUs</span>
+    <span class="pgnum">04</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PAGE 5 — BACK COVER + DISCLAIMER
+     ============================================================ -->
+<section class="page dark" data-screen-label="05 Back Cover">
+  <div class="p-header">
+    <div class="brand"><img src="assets/logo_black.png" alt="3xploreWithUs"/></div>
+    <span class="head-eyebrow"></span>
+  </div>
+  <div class="p-accent"></div>
+
+  <div class="back-hero">
+    <p class="tagline">Living life on the road, one border at a time.</p>
+    <hr class="rule" style="margin: 6px auto 14px;"/>
+    <div class="h-follow">Follow the journey</div>
+    <div class="social">
+      <span>@3xplorewithus</span>
+      <span class="dot">&middot;</span>
+      <span>YouTube</span>
+      <span class="dot">&middot;</span>
+      <span>Instagram</span>
+    </div>
+    <div class="url-big">www.3xplorewithus.com</div>
+    <p class="legal">Want more in-depth guides? Join our Patreon &mdash; coming soon. Made with love by 3xploreWithUs. Free to share with anyone who loves adventure. &copy; 2026 3xploreWithUs &mdash; not for commercial resale.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PAGE 6 — DISCLAIMER (separate page; can be deleted if unused)
+     ============================================================ -->
+<section class="page light" data-screen-label="06 Disclaimer">
+  <div class="p-header">
+    <div class="brand"><img src="assets/logo_black.png" alt="3xploreWithUs"/></div>
+    <span class="head-eyebrow">Fine print</span>
+  </div>
+  <div class="p-accent"></div>
+
+  <div class="p-body">
+    <span class="eyebrow">A note before you copy this</span>
+    <h2 class="h2">Disclaimer</h2>
+    <hr class="rule"/>
+    <p class="lead" style="margin-bottom: 18px;">Every guide we publish carries the same disclaimer. We&rsquo;re a family in a truck, not a regulator. Read this before you treat any of this as advice.</p>
+
+    <div class="callout disclaimer">
+      <div class="ctitle">Please read</div>
+      <p>What&rsquo;s in this guide is what we&rsquo;ve carried, packed, cooked with, or done on our own trips. It isn&rsquo;t professional advice and it isn&rsquo;t prescriptive for your trip, your family, or your vehicle. Laws, products, dosing, gear standards, and border rules change country to country and year to year &mdash; sometimes faster than we can update a PDF.</p>
+      <p style="margin-top: 10px;">Before you do anything in here that involves health, money, or a border, please talk to a qualified person about it &mdash; a doctor, a vet, a mechanic, your insurer, your local consulate. If your gut says no, trust it. We won&rsquo;t mind being wrong about something. We&rsquo;ll mind a lot if someone gets hurt because they took us at our word.</p>
+      <p style="margin-top: 10px;">These guides are free to share, copy, and pass on. They&rsquo;re not for commercial resale. If you spot something out of date or just plain wrong, write to us &mdash; we&rsquo;ll fix it in the next version.</p>
+    </div>
+  </div>
+
+  <div class="p-footer">
+    <span class="url">www.3xplorewithus.com</span>
+    <span class="center">Made with love by 3xploreWithUs</span>
+    <span class="pgnum">06</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TWEAKS PANEL
+     ============================================================ -->
+<div id="tweaks-root"></div>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "title_l1": "Your Guide",
+  "title_l2": "Here",
+  "title_accent": "Title",
+  "eyebrow": "3xploreWithUs · Guide",
+  "lead": "A short description of what this guide covers, who it's for, and what they'll take away. Keep it to 1–2 sentences.",
+  "byline": "Jason & Mareike",
+  "tagline": "Living life on the road, one border at a time.",
+  "edition": "2026 Edition",
+  "freedl": "Free download",
+  "accent": "teal"
+}/*EDITMODE-END*/;
+
+const ACCENT_OPTIONS = ['teal', 'sand', 'red'];
+
+const { useEffect } = React;
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    // Apply live edits to the cover page.
+    const set = (sel, val) => {
+      const el = document.querySelector(sel);
+      if (el) el.textContent = val;
+    };
+    set('[data-key="eyebrow"]', t.eyebrow);
+    set('[data-key="title-accent"]', t.title_accent);
+    set('[data-key="lead"]', t.lead);
+    set('[data-key="byline"]', t.byline);
+    set('[data-key="tagline"]', t.tagline);
+    set('[data-key="edition"]', t.edition);
+    set('[data-key="freedl"]', t.freedl);
+
+    // Title (which has the accent span inside)
+    const titleEl = document.querySelector('[data-key="title"]');
+    if (titleEl) {
+      titleEl.innerHTML = `${escapeHtml(t.title_l1)}<br/><span class="accent" data-key="title-accent">${escapeHtml(t.title_accent)}</span> ${escapeHtml(t.title_l2)}`;
+    }
+
+    // Accent bar colour
+    document.querySelectorAll('[data-key="accent-bar"]').forEach(el => {
+      el.classList.remove('sand', 'red');
+      if (t.accent !== 'teal') el.classList.add(t.accent);
+    });
+  }, [t]);
+
+  return (
+    <TweaksPanel title="Guide Tweaks">
+      <TweakSection title="Cover">
+        <TweakText label="Eyebrow"   value={t.eyebrow}   onChange={v => setTweak('eyebrow', v)} />
+        <TweakText label="Title L1"  value={t.title_l1}  onChange={v => setTweak('title_l1', v)} />
+        <TweakText label="Accent"    value={t.title_accent} onChange={v => setTweak('title_accent', v)} />
+        <TweakText label="Title L2"  value={t.title_l2}  onChange={v => setTweak('title_l2', v)} />
+        <TweakText label="Lead"      value={t.lead}      onChange={v => setTweak('lead', v)} multiline />
+      </TweakSection>
+      <TweakSection title="Meta">
+        <TweakText label="Byline"    value={t.byline}    onChange={v => setTweak('byline', v)} />
+        <TweakText label="Tagline"   value={t.tagline}   onChange={v => setTweak('tagline', v)} />
+        <TweakText label="Edition"   value={t.edition}   onChange={v => setTweak('edition', v)} />
+        <TweakText label="Top tag"   value={t.freedl}    onChange={v => setTweak('freedl', v)} />
+      </TweakSection>
+      <TweakSection title="Style">
+        <TweakRadio label="Cover accent bar" value={t.accent} options={ACCENT_OPTIONS} onChange={v => setTweak('accent', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+const root = ReactDOM.createRoot(document.getElementById('tweaks-root'));
+root.render(<App />);
+</script>
+
+</body>
+</html>

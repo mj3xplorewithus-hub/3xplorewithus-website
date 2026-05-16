@@ -171,7 +171,9 @@
       margin: 0 auto;
     }
 
-    #map-section { background:var(--dark-2); padding:3.5rem 2rem 3rem; }
+    #map-section { background:var(--dark-2); padding:3.5rem 2rem 3rem; position:relative; overflow:hidden; }
+    .map-nautical-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; opacity:0.18; pointer-events:none; z-index:0; }
+    .map-header, .map-wrap { position:relative; z-index:1; }
     .map-header { max-width:900px; margin:0 auto 2rem; text-align:center; }
     .map-header-text .section-label { margin-bottom:0.75rem; }
     .map-header-text h2 { font-family:var(--fd); font-size:clamp(1.4rem,2.8vw,2rem); font-weight:900; color:var(--white); line-height:1.3; letter-spacing:0.03em; max-width:700px; margin:0 auto; }
@@ -439,6 +441,7 @@
 
 <!-- MAP -->
 <section id="map-section">
+  <img src="Photos/Photos/WA909_bremer_bay1_tinted.png" class="map-nautical-bg" alt="" aria-hidden="true">
   <div class="map-header">
     <div class="map-header-text">
       <span class="section-label">Our Journey So Far</span>

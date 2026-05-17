@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJH04YSJMG"></script>
@@ -11,23 +11,22 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="EditingElements/Favicon_v1.png" />
-  <title>3xploreWithUs — Life Beyond the Ordinary</title>
-  <meta name="description" content="Jason, Mareike, Rocket and family — living full-time in a self-built 1986 Steyr 12M18 expedition truck. Natural living and the open road." />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>3xploreWithUs — Leben jenseits des Gewöhnlichen</title>
+  <meta name="description" content="Jason, Mareike, Rocket und Familie — leben Vollzeit in einem selbstgebauten 1986 Steyr 12M18 Expeditions-LKW. Natürliches Leben und die offene Straße." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family:'TypoGraphica';
-      src:url('TypoGraphica_demo.otf') format('opentype');
+      src:url('../TypoGraphica_demo.otf') format('opentype');
       font-display:swap;
-      /* Limit to letters & numbers only — punctuation (? ' - " etc.) falls through to Montserrat */
       unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
     }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
@@ -61,10 +60,12 @@
     .nav-social { color:rgba(245,242,236,0.6); transition:color 0.2s; display:flex; align-items:center; }
     .nav-social:hover { color:var(--teal-lt); }
     .nav-social svg { width:19px; height:19px; }
+
+    /* ── LANGUAGE SWITCHER ── */
     .lang-switch { font-family:var(--fd); font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.5); border:1px solid rgba(245,242,236,0.18); padding:0.3rem 0.55rem; border-radius:2px; transition:color 0.2s, border-color 0.2s; margin-left:0.4rem; }
     .lang-switch:hover { color:var(--sand-lt); border-color:rgba(237,217,163,0.45); }
 
-    /* ── HERO (two-column: video 60% / text 40%) ── */
+    /* ── HERO ── */
     #hero { position:relative; min-height:100vh; overflow:hidden; background:var(--dark); display:flex; }
     .hero-grid { display:grid; grid-template-columns:3fr 2fr; width:100%; min-height:100vh; }
     .hero-video-col { position:relative; overflow:hidden; cursor:pointer; }
@@ -147,40 +148,6 @@
     .page-nav-link { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.45); padding:0.9rem 1.1rem; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s, border-color 0.2s; }
     .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
 
-    #title-card {
-      background: var(--dark);
-      padding: 3rem 2rem 2.5rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .title-inner { max-width: 800px; margin: 0 auto; }
-    .site-wordmark {
-      font-family: var(--fd);
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 900;
-      color: var(--white);
-      letter-spacing: 0.04em;
-      line-height: 1;
-      margin-bottom: 1.4rem;
-    }
-    .family-line {
-      font-family: var(--fd);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--teal-lt);
-      margin-bottom: 1.6rem;
-    }
-    .site-tagline {
-      font-size: 1.08rem;
-      color: var(--muted);
-      font-weight: 300;
-      line-height: 1.85;
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
     #map-section { background:var(--dark-2); padding:3.5rem 2rem 3rem; position:relative; overflow:hidden; }
     .map-nautical-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; opacity:0.18; pointer-events:none; z-index:0; }
     .map-header, .map-wrap { position:relative; z-index:1; }
@@ -193,7 +160,6 @@
       .map-header { flex-direction:column; align-items:flex-start; }
       .map-caption { text-align:left; max-width:100%; }
     }
-
 
     #team { background:var(--dark); padding:4rem 2rem; }
     .team-header { max-width:1200px; margin:0 auto 2.5rem; text-align:center; }
@@ -218,7 +184,6 @@
     .social-icon svg { width:36px; height:36px; }
     .social-icon span { font-family:var(--fd); font-size:0.62rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
 
-
     /* ── RESPONSIVE ── */
     @media(max-width:900px) {
       nav { padding:0 1.25rem; }
@@ -233,7 +198,6 @@
       .hero-text-block { max-width:100%; }
       .gallery-item img { height:50vw; }
 
-      /* ── TEAM CARDS: horizontal rows on mobile ── */
       .team-grid { grid-template-columns:1fr; gap:0; }
       .team-card {
         display:grid;
@@ -259,6 +223,7 @@
     @media(max-width:700px) {
       .stats-strip { display:none; }
     }
+
     /* ── FOLLOW CTA ── */
     .follow-cta-wrap { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem; }
     .follow-btn { display:inline-flex; align-items:center; gap:0.6rem; padding:0.75rem 1.75rem; border-radius:4px; font-family:var(--fd); font-size:0.75rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; transition:opacity 0.2s, transform 0.15s; }
@@ -294,7 +259,6 @@
     .yt-modal-close:hover { background:rgba(255,255,255,0.18); }
     .yt-modal-close svg { width:15px; height:15px; }
 
-  
     /* ── HERO TOPO BACKGROUND ── */
     .hero-topo-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
     .hero-text-col { position:relative; }
@@ -304,14 +268,14 @@
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <a href="../index.html" class="nav-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html" class="active">Startseite</a></li>
+    <li><a href="truck.html">Der LKW</a></li>
+    <li><a href="home.html">Unser Zuhause</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie wir das machen</a></li>
+    <li><a href="files.html">Dateien</a></li>
   </ul>
   <div class="nav-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
@@ -320,36 +284,36 @@
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="E-Mail">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
     </a>
-    <a href="de/index.html" class="lang-switch" title="Auf Deutsch wechseln">DE</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+    <a href="../index.html" class="lang-switch" title="Switch to English">EN</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="nav-drawer" id="nav-drawer">
-  <a href="index.html" class="active">Home</a>
-  <a href="truck.html">The Truck</a>
-  <a href="home.html">Our Home</a>
-  <a href="story.html">Our Story</a>
-  <a href="howwedoit.html">How We Do It</a>
-  <a href="files.html">Files</a>
-  <a href="de/index.html" style="font-size:0.85rem; color:var(--muted);">🇩🇪 Deutsch</a>
+  <a href="index.html" class="active">Startseite</a>
+  <a href="truck.html">Der LKW</a>
+  <a href="home.html">Unser Zuhause</a>
+  <a href="story.html">Unsere Geschichte</a>
+  <a href="howwedoit.html">Wie wir das machen</a>
+  <a href="files.html">Dateien</a>
+  <a href="../index.html" style="font-size:0.85rem; color:var(--muted);">🇬🇧 English</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
   </div>
 </div>
 
-<!-- HERO — two-column: video left (60%), text right (40%) -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-grid">
-    <div class="hero-video-col" id="hero-video-col" onclick="playInline()" role="button" aria-label="Play video inline">
-      <img src="Photos/Photos/SHORTS.00_22_21_19.Still002.jpg" alt="3xploreWithUs — Watch on YouTube" />
+    <div class="hero-video-col" id="hero-video-col" onclick="playInline()" role="button" aria-label="Video abspielen">
+      <img src="../Photos/Photos/SHORTS.00_22_21_19.Still002.jpg" alt="3xploreWithUs — Auf YouTube ansehen" />
       <div class="hero-video-overlay">
         <div class="yt-play-btn" style="width:72px;height:72px;">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -358,18 +322,17 @@
       <div class="hero-col-rule"></div>
     </div>
     <div class="hero-text-col">
-      <img src="mountain_topo.png" class="hero-topo-img" alt="" aria-hidden="true">
-      
-    <div class="hero-text-block">
+      <img src="../mountain_topo.png" class="hero-topo-img" alt="" aria-hidden="true">
+      <div class="hero-text-block">
         <span class="hero-eyebrow">Jason &amp; Mareike</span>
-        <h1>Full-time family life in a <span class="ix-accent">self-built</span> expedition truck.</h1>
+        <h1>Familienleben in einem <span class="ix-accent">selbstgebauten</span> Expeditions-LKW.</h1>
         <div class="hero-rule"></div>
         <div class="hero-bottom">
-          <p class="hero-lead">We left the normal path, built our home on wheels from scratch, and travel with our dog Rocket and our daughter. Honest filmmaking about a freer way of living.</p>
-          <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+          <p class="hero-lead">Wir haben den normalen Weg hinter uns gelassen, unser Zuhause auf Rädern von Grund auf gebaut und reisen mit unserem Hund Rocket und unserer Tochter. Ehrliches Filmemachen über ein freieres Leben.</p>
+          <div class="hero-scroll"><div class="hero-scroll-line"></div>Scrollen</div>
           <div class="hero-play-btns">
             <button class="hero-play-btn hero-play-btn--primary" onclick="playInline()">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch our intro
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Unser Intro ansehen
             </button>
           </div>
         </div>
@@ -379,9 +342,9 @@
 </section>
 
 <!-- VIDEO LIGHTBOX -->
-<div id="yt-modal" role="dialog" aria-modal="true" aria-label="Video player" onclick="if(event.target===this)closeModal()">
+<div id="yt-modal" role="dialog" aria-modal="true" aria-label="Videoplayer" onclick="if(event.target===this)closeModal()">
   <div class="yt-modal-inner">
-    <button class="yt-modal-close" onclick="closeModal()" aria-label="Close video">
+    <button class="yt-modal-close" onclick="closeModal()" aria-label="Video schließen">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
     <iframe id="yt-modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -392,158 +355,157 @@
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
-      <span class="stat-num">30,000</span>
-      <span class="stat-lbl">km driven across Australia</span>
+      <span class="stat-num">30.000</span>
+      <span class="stat-lbl">km durch Australien gefahren</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">5</span>
-      <span class="stat-lbl">Vehicles built &amp; lived in</span>
+      <span class="stat-lbl">Fahrzeuge gebaut &amp; bewohnt</span>
     </div>
-<div class="stat-item stat-item--truck-days">
+    <div class="stat-item stat-item--truck-days">
       <span class="stat-num" id="truck-days">—</span>
-      <span class="stat-lbl">Days living in the truck</span>
+      <span class="stat-lbl">Tage im LKW gelebt</span>
     </div>
     <div class="stat-item stat-item--timer">
       <div class="tc-display">
-        <div class="tc-unit"><span class="tc-val" id="t-y">—</span><span class="tc-lbl">Yrs</span></div>
+        <div class="tc-unit"><span class="tc-val" id="t-y">—</span><span class="tc-lbl">Jahre</span></div>
         <span class="tc-sep">·</span>
-        <div class="tc-unit"><span class="tc-val" id="t-mo">—</span><span class="tc-lbl">Mo</span></div>
+        <div class="tc-unit"><span class="tc-val" id="t-mo">—</span><span class="tc-lbl">Mon</span></div>
         <span class="tc-sep">·</span>
-        <div class="tc-unit"><span class="tc-val" id="t-d">—</span><span class="tc-lbl">Days</span></div>
+        <div class="tc-unit"><span class="tc-val" id="t-d">—</span><span class="tc-lbl">Tage</span></div>
         <span class="tc-sep">·</span>
-        <div class="tc-unit"><span class="tc-val" id="t-h">—</span><span class="tc-lbl">Hrs</span></div>
+        <div class="tc-unit"><span class="tc-val" id="t-h">—</span><span class="tc-lbl">Std</span></div>
         <span class="tc-sep">·</span>
         <div class="tc-unit"><span class="tc-val" id="t-m">—</span><span class="tc-lbl">Min</span></div>
       </div>
-      <span class="stat-lbl">Time on the road</span>
+      <span class="stat-lbl">Zeit auf der Strasse</span>
     </div>
   </div>
 </div>
 
-
 <!-- THE TEAM -->
 <section id="team">
   <div class="team-header">
-    <span class="section-label">The Team</span>
-    <h2>Four of us. One truck.</h2>
+    <span class="section-label">Das Team</span>
+    <h2>Vier von uns. Ein LKW.</h2>
     <div class="divider"></div>
   </div>
   <div class="team-grid">
     <div class="team-card">
       <div class="team-photo">
-        <img src="Photos/Team/Jason2.jpg" alt="Jason" loading="lazy" />
+        <img src="../Photos/Team/Jason2.jpg" alt="Jason" loading="lazy" />
       </div>
       <span class="team-name">Jason</span>
-      <span class="team-role">Creative explorer, optimist, and idealist at heart. Refuses to grow up.</span>
+      <span class="team-role">Kreativer Entdecker, Optimist und Idealist durch und durch. Weigert sich, erwachsen zu werden.</span>
     </div>
     <div class="team-card">
       <div class="team-photo">
-        <img src="Photos/Team/Mareike1.jpg" alt="Mareike" loading="lazy" />
+        <img src="../Photos/Team/Mareike1.jpg" alt="Mareike" loading="lazy" />
       </div>
       <span class="team-name">Mareike</span>
-      <span class="team-role">Adventurous, creative, and endlessly organized.</span>
+      <span class="team-role">Abenteuerlustig, kreativ und unendlich organisiert.</span>
     </div>
     <div class="team-card">
       <div class="team-photo team-photo--loading">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        <span class="loading-label">Member loading</span>
+        <span class="loading-label">Mitglied wird geladen</span>
       </div>
-      <span class="team-name">Our Daughter</span>
-      <span class="team-role">On the way — May 2026.</span>
+      <span class="team-name">Unsere Tochter</span>
+      <span class="team-role">Angekommen — Mai 2026.</span>
     </div>
     <div class="team-card">
       <div class="team-photo">
-        <img src="Photos/Team/Rocket2.jpg" alt="Rocket" loading="lazy" />
+        <img src="../Photos/Team/Rocket2.jpg" alt="Rocket" loading="lazy" />
       </div>
       <span class="team-name">Rocket</span>
       <span class="team-role">Cockapoo &amp; Navigator.</span>
     </div>
     <div class="team-card">
       <div class="team-photo" style="object-position:center center;">
-        <img src="Photos/VehicleCards/Truck.jpg" alt="The Steyr" loading="lazy" style="object-position:center center;" />
+        <img src="../Photos/VehicleCards/Truck.jpg" alt="Der Steyr" loading="lazy" style="object-position:center center;" />
       </div>
-      <span class="team-name">The Steyr</span>
-      <span class="team-role">1986 Steyr 12M18. Self-built expedition home. 8 months of work. Built to last a lifetime.</span>
+      <span class="team-name">Der Steyr</span>
+      <span class="team-role">1986 Steyr 12M18. Selbstgebautes Expeditionsheim. 8 Monate Arbeit. Gebaut für ein Leben.</span>
     </div>
   </div>
 </section>
 
 <!-- MAP -->
 <section id="map-section">
-  <img src="Photos/Photos/WA909_bremer_bay1_tinted.png" class="map-nautical-bg" alt="" aria-hidden="true">
+  <img src="../Photos/Photos/WA909_bremer_bay1_tinted.png" class="map-nautical-bg" alt="" aria-hidden="true">
   <div class="map-header">
     <div class="map-header-text">
-      <span class="section-label">Our Journey So Far</span>
+      <span class="section-label">Unsere bisherige Reise</span>
       <ul style="list-style:none;padding:0;margin:1.5rem 0 0;font-family:var(--fb);font-size:1.05rem;font-weight:300;line-height:2;color:var(--text);">
-        <li>Australia → Europe</li>
-        <li>From a ute to a fully self-built 1986 Steyr 12M18</li>
-        <li>Rocket riding shotgun</li>
-        <li>Daughter due any day now</li>
+        <li>Australien → Europa</li>
+        <li>Vom Ute zum vollständig selbstgebauten 1986 Steyr 12M18</li>
+        <li>Rocket immer dabei</li>
+        <li>Tochter im Mai 2026 angekommen</li>
       </ul>
-      <p style="font-family:var(--fd);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:1.5rem;">The map below shows the route travelled.</p>
+      <p style="font-family:var(--fd);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-top:1.5rem;">Die Karte zeigt die zurückgelegte Route.</p>
     </div>
   </div>
   <div class="map-wrap">
-    <img src="Photos/Photos/Map-World_AUS4.png" alt="World map showing our route across Australia" style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));" />
+    <img src="../Photos/Photos/Map-World_AUS4.png" alt="Weltkarte mit unserer Route durch Australien" style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));" />
   </div>
 </section>
 
-<!-- GALLERY — two rows, infinite loop, auto-drift -->
+<!-- GALLERY -->
 <div id="gallery">
-  <!-- ROW 1: photos 1–19, drifts right -->
+  <!-- ROW 1: drifts right -->
   <div class="gallery-track" id="galleryTrack1">
-    <div class="gallery-item"><img src="Photos/169_landscape/1_Nullarbor_SouthAustralia.jpg"            alt="Nullarbor" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/2_TarnShelf_Tasmania.jpg"                  alt="Tarn Shelf, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/3_SouthCape_Tasmania.jpg"                  alt="South Cape, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/4_Freycinet_Tasmania.jpg"                  alt="Freycinet, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/5_MarionsLookout_Tasmania.jpg"             alt="Marions Lookout, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/6_LakeWill_Tasmania.jpg"                   alt="Lake Will, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/7_Acropolis_Tasmania.jpg"                  alt="Acropolis, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/8_FlindersRanges_SouthAustralia.jpg"       alt="Flinders Ranges" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/9_Arkaroola_SouthAustralia.jpg"            alt="Arkaroola" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/10_FlindersRanges_SouthAustralia.jpg"      alt="Flinders Ranges" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/11_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/12_FlindersRanges_SouthAustralia.jpg"      alt="Flinders Ranges" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/13_Whales_BremerBay_WesternAustralia.jpg"  alt="Whales, Bremer Bay" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/14_DillionBeach_WesternAustralia.jpg"      alt="Dillion Beach, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/15_ElephantRocks_Denmark_WA.jpg"           alt="Elephant Rocks, Denmark WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/16_Outback.jpg"                            alt="Outback" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/17_GreatAustralianBight.jpg"               alt="Great Australian Bight" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/18_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/19_CapeRaoul_Tasmania.jpg"                 alt="Cape Raoul, Tasmania" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/1_Nullarbor_SouthAustralia.jpg"            alt="Nullarbor" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/2_TarnShelf_Tasmania.jpg"                  alt="Tarn Shelf, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/3_SouthCape_Tasmania.jpg"                  alt="South Cape, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/4_Freycinet_Tasmania.jpg"                  alt="Freycinet, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/5_MarionsLookout_Tasmania.jpg"             alt="Marions Lookout, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/6_LakeWill_Tasmania.jpg"                   alt="Lake Will, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/7_Acropolis_Tasmania.jpg"                  alt="Akropolis, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/8_FlindersRanges_SouthAustralia.jpg"       alt="Flinders Ranges" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/9_Arkaroola_SouthAustralia.jpg"            alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/10_FlindersRanges_SouthAustralia.jpg"      alt="Flinders Ranges" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/11_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/12_FlindersRanges_SouthAustralia.jpg"      alt="Flinders Ranges" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/13_Whales_BremerBay_WesternAustralia.jpg"  alt="Wale, Bremer Bay" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/14_DillionBeach_WesternAustralia.jpg"      alt="Dillion Beach, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/15_ElephantRocks_Denmark_WA.jpg"           alt="Elephant Rocks, Denmark WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/16_Outback.jpg"                            alt="Outback" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/17_GreatAustralianBight.jpg"               alt="Great Australian Bight" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/18_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/19_CapeRaoul_Tasmania.jpg"                 alt="Cape Raoul, Tasmanien" /></div>
   </div>
-  <!-- ROW 2: photos 20–37, drifts left -->
+  <!-- ROW 2: drifts left -->
   <div class="gallery-track" id="galleryTrack2">
-    <div class="gallery-item"><img src="Photos/169_landscape/20_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/21_CoralBay_WA.jpg"                        alt="Coral Bay, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/22_Uluru_NT.jpg"                           alt="Uluru" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/23_BinnsTrack_NT.jpg"                      alt="Binns Track, NT" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/24_KingsCanyon_NorthernTerritory.jpg"      alt="Kings Canyon, NT" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/25_Outback_SouthAustralia.jpg"             alt="Outback, SA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/26_NativeDogBeach_BremerBay_WA.jpg"        alt="Native Dog Beach, Bremer Bay" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/27_CooberPedy_PinkRoadhouse_SouthAustralia.jpg" alt="Coober Pedy" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/28_Oodnadatta_PinkRoadhouse_SouthAustralia.jpg" alt="Oodnadatta" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/29_Albany.jpg"                             alt="Albany, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/30_StacksBluff.jpg"                        alt="Stacks Bluff" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/31_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/31_Freycinet_Tas.jpg"                      alt="Freycinet, Tasmania" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/33_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/34_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/36_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
-    <div class="gallery-item"><img src="Photos/169_landscape/37_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/20_Arkaroola_SouthAustralia.jpg"           alt="Arkaroola" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/21_CoralBay_WA.jpg"                        alt="Coral Bay, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/22_Uluru_NT.jpg"                           alt="Uluru" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/23_BinnsTrack_NT.jpg"                      alt="Binns Track, NT" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/24_KingsCanyon_NorthernTerritory.jpg"      alt="Kings Canyon, NT" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/25_Outback_SouthAustralia.jpg"             alt="Outback, SA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/26_NativeDogBeach_BremerBay_WA.jpg"        alt="Native Dog Beach, Bremer Bay" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/27_CooberPedy_PinkRoadhouse_SouthAustralia.jpg" alt="Coober Pedy" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/28_Oodnadatta_PinkRoadhouse_SouthAustralia.jpg" alt="Oodnadatta" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/29_Albany.jpg"                             alt="Albany, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/30_StacksBluff.jpg"                        alt="Stacks Bluff" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/31_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/31_Freycinet_Tas.jpg"                      alt="Freycinet, Tasmanien" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/33_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/34_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/36_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
+    <div class="gallery-item"><img src="../Photos/169_landscape/37_BremerBay_WA.jpg"                       alt="Bremer Bay, WA" /></div>
   </div>
-  <p class="gallery-hint">← drag to explore →</p>
+  <p class="gallery-hint">← ziehen zum Erkunden →</p>
 </div>
 
 <!-- FOLLOW -->
 <section id="follow">
-  <span class="section-label">Stay Connected</span>
-  <h2>Follow the journey.</h2>
-  <p>Build series, truck life, travel, and the daily life.</p>
+  <span class="section-label">In Verbindung bleiben</span>
+  <h2>Folg uns auf der Reise.</h2>
+  <p>Aufbau-Serie, LKW-Leben, Reisen und der Alltag.</p>
   <div class="follow-cta-wrap">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="follow-btn follow-btn--yt">
       <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
-      Watch on YouTube
+      Auf YouTube ansehen
     </a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="follow-btn follow-btn--ig">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -554,14 +516,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <div class="footer-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der LKW</a></li>
+    <li><a href="home.html">Unser Zuhause</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie wir das machen</a></li>
+    <li><a href="files.html">Dateien</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
   </ul>
@@ -569,85 +531,42 @@
 </footer>
 
 <script>
-  // ── NAV SCROLL ────────────────────────────────────────────────────────
+  // ── NAV SCROLL ──────────────────────────────────────────────────────
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── INFINITE GALLERY — two rows, auto-drift ──────────────────────────
+  // ── INFINITE GALLERY ────────────────────────────────────────────────
   function initGallery(trackId, driftDir) {
     const track = document.getElementById(trackId);
     if (!track) return;
-
-    // Clone items for seamless infinite loop
     const origItems = Array.from(track.querySelectorAll('.gallery-item'));
     origItems.forEach(item => track.appendChild(item.cloneNode(true)));
     [...origItems].reverse().forEach(item => track.insertBefore(item.cloneNode(true), track.firstChild));
-
-    let setW = 0;
-    let pos = 0;
-    let isDragging = false;
-    let dragStartX = 0, scrollAtDragStart = 0;
-    let touchStartX = 0;
-
+    let setW = 0, pos = 0, isDragging = false, dragStartX = 0, scrollAtDragStart = 0, touchStartX = 0;
     function wrap() {
       if (!setW) return;
-      if (pos < setW * 0.05)   pos += setW;
-      if (pos > setW * 2.95)   pos -= setW;
+      if (pos < setW * 0.05) pos += setW;
+      if (pos > setW * 2.95) pos -= setW;
     }
-
     function tick() {
-      if (!isDragging) {
-        pos += 0.4 * driftDir;
-        wrap();
-        track.scrollLeft = pos;
-      }
+      if (!isDragging) { pos += 0.4 * driftDir; wrap(); track.scrollLeft = pos; }
       requestAnimationFrame(tick);
     }
-
     window.addEventListener('load', () => {
-      setW = track.scrollWidth / 3;
-      pos = setW;
-      track.scrollLeft = pos;
+      setW = track.scrollWidth / 3; pos = setW; track.scrollLeft = pos;
       requestAnimationFrame(tick);
     });
-
-    // Mouse drag
-    track.addEventListener('mousedown', e => {
-      isDragging = true;
-      dragStartX = e.clientX;
-      scrollAtDragStart = pos;
-      track.classList.add('dragging');
-      e.preventDefault();
-    });
-    window.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      pos = scrollAtDragStart - (e.clientX - dragStartX);
-      wrap();
-      track.scrollLeft = pos;
-    });
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
-      track.classList.remove('dragging');
-    });
-
-    // Touch drag
-    track.addEventListener('touchstart', e => {
-      isDragging = true;
-      touchStartX = e.touches[0].clientX;
-      scrollAtDragStart = pos;
-    }, { passive: true });
-    track.addEventListener('touchmove', e => {
-      pos = scrollAtDragStart - (e.touches[0].clientX - touchStartX);
-      wrap();
-      track.scrollLeft = pos;
-    }, { passive: true });
+    track.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; scrollAtDragStart = pos; track.classList.add('dragging'); e.preventDefault(); });
+    window.addEventListener('mousemove', e => { if (!isDragging) return; pos = scrollAtDragStart - (e.clientX - dragStartX); wrap(); track.scrollLeft = pos; });
+    window.addEventListener('mouseup', () => { isDragging = false; track.classList.remove('dragging'); });
+    track.addEventListener('touchstart', e => { isDragging = true; touchStartX = e.touches[0].clientX; scrollAtDragStart = pos; }, { passive: true });
+    track.addEventListener('touchmove', e => { pos = scrollAtDragStart - (e.touches[0].clientX - touchStartX); wrap(); track.scrollLeft = pos; }, { passive: true });
     track.addEventListener('touchend', () => { isDragging = false; });
   }
-
-  initGallery('galleryTrack1',  1);   // top row — drifts right
-  initGallery('galleryTrack2', -1);   // bottom row — drifts left
+  initGallery('galleryTrack1',  1);
+  initGallery('galleryTrack2', -1);
 
   /* ── TRUCK DAYS COUNTER ── */
   (function updateTruckDays() {
@@ -663,10 +582,7 @@
     let y = now.getFullYear() - start.getFullYear();
     let mo = now.getMonth() - start.getMonth();
     let d = now.getDate() - start.getDate();
-    if (d < 0) {
-      mo--;
-      d += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-    }
+    if (d < 0) { mo--; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
     if (mo < 0) { y--; mo += 12; }
     const h = now.getHours();
     const m = String(now.getMinutes()).padStart(2,'0');
@@ -678,27 +594,22 @@
   }
   updateRoadTimer();
   setInterval(updateRoadTimer, 60000);
+
   // ── YOUTUBE PLAYBACK ─────────────────────────────────────────────────
   var YT_ID = 'aBMubgHYSc4';
-
-  // Option 1: swap thumbnail for inline iframe inside the hero column
   function playInline() {
     var col = document.getElementById('hero-video-col');
-    if (col.querySelector('iframe')) return; // already playing
+    if (col.querySelector('iframe')) return;
     col.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>';
     col.style.cursor = 'default';
   }
-
-  // Option 2: open lightbox modal overlay
   function playModal() {
-    document.getElementById('yt-modal-iframe').src =
-      'https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1';
+    document.getElementById('yt-modal-iframe').src = 'https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1';
     var modal = document.getElementById('yt-modal');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
-
   function closeModal() {
     document.getElementById('yt-modal-iframe').src = '';
     var modal = document.getElementById('yt-modal');
@@ -706,12 +617,9 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
-
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 </script>
+
 <script>
 /* ── MOBILE NAV ── */
 (function(){
@@ -731,15 +639,12 @@
   });
 })();
 </script>
-<script src="site-animations.js"></script>
+<script src="../site-animations.js"></script>
 
 <!-- ── TWEAKS PANEL ─────────────────────────────────────────────── -->
 <style>
-  /* Mood — palette shift */
   body[data-mood="sunrise"] { --dark:#170F0C; --dark-2:#1F1612; --dark-3:#2A1F1A; --teal:#C77A4A; --teal-lt:#E89B6A; --sand:#E8B870; --sand-lt:#F5D89A; --muted:#8A7060; }
   body[data-mood="midnight"] { --dark:#070C12; --dark-2:#0C131C; --dark-3:#121C28; --teal:#3D7AB8; --teal-lt:#7FB0E0; --sand:#9FB8D4; --sand-lt:#C8DCEC; --muted:#5A7088; }
-
-  /* Pace — rhythm & density */
   body[data-pace="cinematic"] #intro,
   body[data-pace="cinematic"] #team,
   body[data-pace="cinematic"] #map-section,
@@ -748,7 +653,6 @@
   body[data-pace="cinematic"] #team h2,
   body[data-pace="cinematic"] #intro h2 { font-size:clamp(2.4rem,5.5vw,4rem); }
   body[data-pace="cinematic"] .stats-strip { padding:4rem 2rem; }
-
   body[data-pace="compact"] #intro,
   body[data-pace="compact"] #team,
   body[data-pace="compact"] #map-section,
@@ -757,11 +661,6 @@
   body[data-pace="compact"] #team h2,
   body[data-pace="compact"] #intro h2 { font-size:clamp(1.4rem,3vw,2.2rem); }
   body[data-pace="compact"] .stats-strip { padding:1.5rem 2rem; }
-  body[data-pace="compact"] .choice-trio { gap:0.4rem; }
-  body[data-pace="compact"] .choice-paragraph,
-  body[data-pace="compact"] .choice-lead-in { line-height:1.7; }
-
-  /* Imagery — colour grade */
   body[data-grade="warm"] #hero img,
   body[data-grade="warm"] #gallery img,
   body[data-grade="warm"] .team-photo img,
@@ -775,7 +674,6 @@
   body[data-grade] .team-photo img,
   body[data-grade] .map-wrap img { transition:filter .9s cubic-bezier(.2,.7,.2,1); }
 
-  /* Panel */
   #tw-panel { position:fixed; right:1.25rem; bottom:1.25rem; width:280px; background:rgba(13,21,21,.94); backdrop-filter:blur(14px); border:1px solid rgba(237,217,163,.22); border-radius:3px; padding:1rem 1.1rem 1.1rem; z-index:9999; color:var(--text); font-family:var(--fb); display:none; box-shadow:0 18px 44px rgba(0,0,0,.5); }
   #tw-panel.is-open { display:block; }
   #tw-panel header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.9rem; padding-bottom:0.7rem; border-bottom:1px solid rgba(255,255,255,.05); }
@@ -794,48 +692,42 @@
 
 <div id="tw-panel" aria-hidden="true">
   <header>
-    <h3>Tweaks</h3>
-    <button class="tw-close" id="tw-close" aria-label="Close">
+    <h3>Einstellungen</h3>
+    <button class="tw-close" id="tw-close" aria-label="Schließen">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
   </header>
   <div class="tw-group" data-key="mood">
-    <div class="tw-label"><span>Mood</span><span class="tw-val">Dusk</span></div>
+    <div class="tw-label"><span>Stimmung</span><span class="tw-val">Daemmerung</span></div>
     <div class="tw-seg">
-      <button data-v="dusk" class="is-active">Dusk</button>
-      <button data-v="sunrise">Sunrise</button>
-      <button data-v="midnight">Midnight</button>
+      <button data-v="dusk" class="is-active">Daemmerung</button>
+      <button data-v="sunrise">Sonnenaufgang</button>
+      <button data-v="midnight">Mitternacht</button>
     </div>
   </div>
   <div class="tw-group" data-key="pace">
-    <div class="tw-label"><span>Pace</span><span class="tw-val">Editorial</span></div>
+    <div class="tw-label"><span>Tempo</span><span class="tw-val">Redaktionell</span></div>
     <div class="tw-seg">
-      <button data-v="cinematic">Cinematic</button>
-      <button data-v="editorial" class="is-active">Editorial</button>
-      <button data-v="compact">Compact</button>
+      <button data-v="cinematic">Kinematisch</button>
+      <button data-v="editorial" class="is-active">Redaktionell</button>
+      <button data-v="compact">Kompakt</button>
     </div>
   </div>
   <div class="tw-group" data-key="grade">
-    <div class="tw-label"><span>Imagery</span><span class="tw-val">Natural</span></div>
+    <div class="tw-label"><span>Bildstil</span><span class="tw-val">Natuerlich</span></div>
     <div class="tw-seg">
-      <button data-v="natural" class="is-active">Natural</button>
-      <button data-v="warm">Warm Film</button>
-      <button data-v="steel">Steel</button>
+      <button data-v="natural" class="is-active">Natuerlich</button>
+      <button data-v="warm">Warmer Film</button>
+      <button data-v="steel">Stahl</button>
     </div>
   </div>
 </div>
 
 <script>
 (function () {
-  var DEFAULTS = /*EDITMODE-BEGIN*/{
-    "mood": "dusk",
-    "pace": "compact",
-    "grade": "natural"
-  }/*EDITMODE-END*/;
-
+  var DEFAULTS = { "mood": "dusk", "pace": "compact", "grade": "natural" };
   var panel = document.getElementById('tw-panel');
   var state = Object.assign({}, DEFAULTS);
-
   function apply(key, v) {
     state[key] = v;
     if (key === 'mood')  document.body.setAttribute('data-mood',  v);
@@ -843,21 +735,13 @@
     if (key === 'grade') document.body.setAttribute('data-grade', v);
     var group = panel.querySelector('[data-key="' + key + '"]');
     if (group) {
-      group.querySelectorAll('button').forEach(function (b) {
-        b.classList.toggle('is-active', b.dataset.v === v);
-      });
+      group.querySelectorAll('button').forEach(function (b) { b.classList.toggle('is-active', b.dataset.v === v); });
+      var pretty = { dusk:'Daemmerung', sunrise:'Sonnenaufgang', midnight:'Mitternacht', cinematic:'Kinematisch', editorial:'Redaktionell', compact:'Kompakt', natural:'Natuerlich', warm:'Warmer Film', steel:'Stahl' };
       var lbl = group.querySelector('.tw-val');
-      if (lbl) lbl.textContent = v.charAt(0).toUpperCase() + v.slice(1).replace(/^.*$/, function(s){return s==='warm' ? 'Warm Film' : s.charAt(0).toUpperCase()+s.slice(1);});
-      // simpler: just set capitalised
-      var pretty = { dusk:'Dusk', sunrise:'Sunrise', midnight:'Midnight', cinematic:'Cinematic', editorial:'Editorial', compact:'Compact', natural:'Natural', warm:'Warm Film', steel:'Steel' };
       if (lbl) lbl.textContent = pretty[v] || v;
     }
   }
-
-  // initial
   Object.keys(state).forEach(function (k) { apply(k, state[k]); });
-
-  // wire segmented buttons
   panel.querySelectorAll('.tw-group').forEach(function (g) {
     var key = g.dataset.key;
     g.querySelectorAll('button[data-v]').forEach(function (btn) {
@@ -869,24 +753,15 @@
       });
     });
   });
-
-  // close
   document.getElementById('tw-close').addEventListener('click', function () {
     panel.classList.remove('is-open');
     panel.setAttribute('aria-hidden', 'true');
     try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (e) {}
   });
-
-  // host protocol
   window.addEventListener('message', function (e) {
     if (!e.data || !e.data.type) return;
-    if (e.data.type === '__activate_edit_mode') {
-      panel.classList.add('is-open');
-      panel.setAttribute('aria-hidden', 'false');
-    } else if (e.data.type === '__deactivate_edit_mode') {
-      panel.classList.remove('is-open');
-      panel.setAttribute('aria-hidden', 'true');
-    }
+    if (e.data.type === '__activate_edit_mode') { panel.classList.add('is-open'); panel.setAttribute('aria-hidden', 'false'); }
+    else if (e.data.type === '__deactivate_edit_mode') { panel.classList.remove('is-open'); panel.setAttribute('aria-hidden', 'true'); }
   });
   try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
 })();

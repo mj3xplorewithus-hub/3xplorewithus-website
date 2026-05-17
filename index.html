@@ -680,9 +680,15 @@
   setInterval(updateRoadTimer, 60000);
   // ── YOUTUBE PLAYBACK ─────────────────────────────────────────────────
   var YT_ID = 'aBMubgHYSc4';
+  var YT_SHORT_URL = 'https://www.youtube.com/shorts/' + YT_ID;
+
+  // Safari blocks third-party cookies in iframes (ITP), causing bot-check screens.
+  // Detect Safari and open YouTube directly instead of embedding.
+  var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
   // Option 1: swap thumbnail for inline iframe inside the hero column
   function playInline() {
+    if (isSafari) { window.open(YT_SHORT_URL, '_blank'); return; }
     var col = document.getElementById('hero-video-col');
     if (col.querySelector('iframe')) return; // already playing
     col.innerHTML = '<iframe src="https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>';
@@ -691,6 +697,7 @@
 
   // Option 2: open lightbox modal overlay
   function playModal() {
+    if (isSafari) { window.open(YT_SHORT_URL, '_blank'); return; }
     document.getElementById('yt-modal-iframe').src =
       'https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1';
     var modal = document.getElementById('yt-modal');

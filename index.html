@@ -685,14 +685,14 @@
   function playInline() {
     var col = document.getElementById('hero-video-col');
     if (col.querySelector('iframe')) return; // already playing
-    col.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>';
+    col.innerHTML = '<iframe src="https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>';
     col.style.cursor = 'default';
   }
 
   // Option 2: open lightbox modal overlay
   function playModal() {
     document.getElementById('yt-modal-iframe').src =
-      'https://www.youtube-nocookie.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1';
+      'https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0&modestbranding=1';
     var modal = document.getElementById('yt-modal');
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');

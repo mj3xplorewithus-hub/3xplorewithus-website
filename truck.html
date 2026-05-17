@@ -55,7 +55,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-      padding: 0.6rem 2.5rem;
+      padding: 0 2.5rem; height: 72px;
       background: rgba(13,21,21,0.92); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
@@ -365,9 +365,9 @@
       .nav-links { display: none; }
       .nav-social { display:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
-      /* Fix gap between main nav and sub-nav on mobile */
-      #page-nav { position: fixed; top: 72px; left: 0; right: 0; z-index: 150; box-shadow: 0 -72px 0 0 #131C1C; }
-      body { padding-top: 115px; }
+      /* Sub-nav sits flush under main nav */
+      #page-nav { position: fixed; top: 72px; left: 0; right: 0; z-index: 150; }
+      body { padding-top: 116px; }
       section { padding: 4rem 1.25rem; }
       #hero { padding: 0; margin-top: 0; }
       .hero-overlay-content { padding: 0 1.25rem 1.5rem; }

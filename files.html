@@ -21,7 +21,7 @@
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
-      --text:#EDE8DC; --muted:#72888A; --white:#F5F2EC;
+      --text:#F2EEE4; --muted:#9AAFB1; --white:#F5F2EC;
       --line:rgba(255,255,255,0.05); --line-2:rgba(255,255,255,0.08);
       --fd:'TypoGraphica','Roboto','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
       --t-fast:0.2s;
@@ -230,19 +230,99 @@
       .nav-links { display:none; }
       .nav-logo img { height:auto; max-height:44px; }
 
-      main { padding-top:7rem; }
+      main { padding:5rem 1rem 4rem; }
+      .hero { margin-bottom:3rem; }
+      h1 { font-size:clamp(2rem,12vw,3.5rem); }
 
-      .shelf-head { grid-template-columns:1fr; gap:1rem; padding:1.25rem 1.25rem 1.1rem; }
-      .shelf-num { font-size:2.4rem; padding-bottom:0; }
-      .shelf-title { font-size:1.85rem; }
+      /* ── SHELF: compact header ── */
+      .shelf { margin-top:2.5rem; }
+      .shelf-head {
+        grid-template-columns:auto 1fr;
+        gap:0.6rem 1rem;
+        padding:1rem 1.1rem 0.9rem;
+        align-items:center;
+      }
+      .shelf-num { font-size:1.8rem; padding-bottom:0; line-height:1; }
+      .shelf-title { font-size:1.4rem; }
+      .shelf-eyebrow { margin-bottom:0.25rem; }
 
-      .entries { padding:0 1.25rem; }
-      .entry { grid-template-columns:1fr; gap:0.75rem; padding:1.75rem 0 1.5rem; }
-      .entry::before { left:-1.25rem; }
-      .entry:hover { padding-left:0.5rem; }
-      .entry-num { font-size:1.2rem; padding-top:0; opacity:0.5; }
-      .entry-title { font-size:1.5rem; }
-      .entry-cta { align-items:flex-start; padding-top:0.5rem; }
+      /* shelf blurb: hidden by default, toggled by JS */
+      .shelf-blurb {
+        grid-column:1/-1;
+        font-size:0.85rem;
+        padding:0 0 0.5rem;
+        overflow:hidden;
+        max-height:0;
+        opacity:0;
+        transition:max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
+      }
+      .shelf-blurb.open {
+        max-height:8rem;
+        opacity:1;
+        padding-bottom:0.75rem;
+      }
+
+      /* ── ENTRIES: compact rows ── */
+      .entries { padding:0 0.75rem; }
+
+      .entry {
+        grid-template-columns:1fr auto;
+        grid-template-rows:auto auto;
+        gap:0;
+        padding:0;
+        border-bottom:1px solid var(--line-2);
+        align-items:stretch;
+        position:relative;
+        display:block; /* override to block so we can control inner layout */
+      }
+      .entry::before { left:-0.75rem; }
+      .entry:hover { padding-left:0; background:none; }
+      .entry:hover::before { transform:scaleY(0); }
+
+      /* compact always-visible row */
+      .entry-row {
+        display:grid;
+        grid-template-columns:1fr auto;
+        align-items:center;
+        gap:0.5rem;
+        padding:0.85rem 0;
+        cursor:pointer;
+      }
+      .entry-row-left { min-width:0; }
+      .entry-type { margin-bottom:0.2rem; font-size:0.54rem; }
+      .entry-title { font-size:1.05rem; margin-bottom:0; line-height:1.15; }
+
+      /* chevron */
+      .entry-chevron {
+        width:28px; height:28px; flex-shrink:0;
+        display:flex; align-items:center; justify-content:center;
+        color:var(--muted);
+        transition:transform 0.3s ease, color 0.2s;
+      }
+      .entry-chevron svg { width:14px; height:14px; }
+      .entry.open .entry-chevron { transform:rotate(180deg); color:var(--sand-lt); }
+      .shelf.teal .entry.open .entry-chevron { color:var(--teal-lt); }
+      .shelf.red  .entry.open .entry-chevron { color:var(--red); }
+
+      /* expandable detail */
+      .entry-detail {
+        overflow:hidden;
+        max-height:0;
+        opacity:0;
+        transition:max-height 0.38s ease, opacity 0.25s ease, padding 0.25s ease;
+        padding:0 0 0;
+      }
+      .entry.open .entry-detail {
+        max-height:20rem;
+        opacity:1;
+        padding:0 0 1rem;
+      }
+      .entry-desc { font-size:0.88rem; margin-bottom:0.65rem; }
+      .entry-meta { font-size:0.54rem; margin-bottom:0.75rem; }
+      .entry-cta { align-items:flex-start; padding-top:0; }
+
+      /* hide the old entry-num on mobile */
+      .entry-num { display:none; }
     }
   </style>
 <script type='text/javascript' nonce='DezhP6ADjPtKv3NYMjKmtA==' src='https://claude.ai/PG-Wa4AE6lFR7VFA1ZvcstzEIdCoYxia1ckS16USZOaJm-l-EKnvDD4O8OHfEP7vVvYEu7BQVfEkuwphW-li4Ay5qRwCTe77mcNLmBlTYUzrynxs2w1hnx1HFxsnq9t0fz4gVROj7k7aGp5FnVwNI6kZT6auk2Jq-9avKkF2HUPxQqj4B2rqqTntM5lVtSUFh5H0ApqF7hK7pHHV2BIMK8NJ-_Q-I0dLeSaTSGe4tM1RPGi8qzNzbm-W8iAI_MUQKyHSmlxqylFXQwMGEl6y33AB9JhUDuKRMx1h4HWEkqw1YEh_9pzRjs-l0JLpqro_-ZVL8pD-_ud9JiIPrG0ITaA42qzi4pu5ipZMISGAjexd_oDryamvIXyMznoA9jc3mSPTz9fab3cLWrTXPrwl_VPCDKZlR3Jqt62nLxZjGc0bEalD4Nhyi7k9xq6UQn56TO_ez_Pb5oIoxjrlz-tcU2Pg5XBljXtizkEbPisH2Vk_-7ME6LVLxYb1qiCVOCZfcvvL5YOqVXQ5XwkuhQnXUmAglX0eXu7aHPo8HY48WfwhR50'></script></head>
@@ -292,28 +372,34 @@ Information we wish we'd had when we started. 
       <header class="shelf-head">
         <div class="shelf-num">01</div>
         <div class="shelf-titleblock">
-          <div class="shelf-eyebrow">Shelf 01</div>
           <h2 class="shelf-title">Travel</h2>
         </div>
         <p class="shelf-blurb">Routes, packing, and the practical side of being permanently on the move. What to bring, where to point the truck, and what we learned the hard way.</p>
       </header>
 
       <div class="entries">
-        <a class="entry" href="Files/_Online/Packing List.html">
+        <a class="entry" href="Files/_Online/Packing List.html" data-href="Files/_Online/Packing List.html">
           <div class="entry-num">01</div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Guide</div>
-            <h3 class="entry-title">Packing List &mdash; Family + Dog</h3>
-            <p class="entry-desc">Everything we pack for two adults, a baby, and Rocket &mdash; <strong>12 categories, 150+ items</strong>, real-world tested across 30,000&nbsp;km of Australia and one European winter.</p>
-            <ul class="entry-meta">
-              <li>14 pages</li>
-              <li>HTML</li>
-              <li>A4 printable</li>
-              <li>Free</li>
-            </ul>
+          <div class="entry-row">
+            <div class="entry-row-left">
+              <div class="entry-type"><span class="swatch"></span>Guide</div>
+              <h3 class="entry-title">Packing List &mdash; Family + Dog</h3>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
-          <div class="entry-cta">
-            <span class="primary">Open <span class="arrow">&rarr;</span></span>
+          <div class="entry-body">
+            <div class="entry-detail">
+              <p class="entry-desc">Everything we pack for two adults, a baby, and Rocket &mdash; <strong>12 categories, 150+ items</strong>, real-world tested across 30,000&nbsp;km of Australia and one European winter.</p>
+              <ul class="entry-meta">
+                <li>14 pages</li>
+                <li>HTML</li>
+                <li>A4 printable</li>
+                <li>Free</li>
+              </ul>
+              <div class="entry-cta">
+                <span class="primary">Open <span class="arrow">&rarr;</span></span>
+              </div>
+            </div>
           </div>
         </a>
       </div>
@@ -327,28 +413,34 @@ Information we wish we'd had when we started. 
       <header class="shelf-head">
         <div class="shelf-num">02</div>
         <div class="shelf-titleblock">
-          <div class="shelf-eyebrow">Shelf 02</div>
           <h2 class="shelf-title">How To</h2>
         </div>
         <p class="shelf-blurb">The practical stuff. Build knowledge and safety kit &mdash; the bits no one tells you until you've already learned them the hard way.</p>
       </header>
 
       <div class="entries">
-        <a class="entry" href="Files/_Online/First Aid Kit.html">
+        <a class="entry" href="Files/_Online/First Aid Kit.html" data-href="Files/_Online/First Aid Kit.html">
           <div class="entry-num">01</div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Guide</div>
-            <h3 class="entry-title">First Aid Kit &mdash; Newborn Edition</h3>
-            <p class="entry-desc">The compact, multi-use kit we carry for a newborn in the truck &mdash; essentials, natural remedies, camper-specific extras, and the medical reminders worth keeping in mind.</p>
-            <ul class="entry-meta">
-              <li>7 pages</li>
-              <li>HTML</li>
-              <li>A4 printable</li>
-              <li>Free</li>
-            </ul>
+          <div class="entry-row">
+            <div class="entry-row-left">
+              <div class="entry-type"><span class="swatch"></span>Guide</div>
+              <h3 class="entry-title">First Aid Kit &mdash; Newborn Edition</h3>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
-          <div class="entry-cta">
-            <span class="primary">Open <span class="arrow">&rarr;</span></span>
+          <div class="entry-body">
+            <div class="entry-detail">
+              <p class="entry-desc">The compact, multi-use kit we carry for a newborn in the truck &mdash; essentials, natural remedies, camper-specific extras, and the medical reminders worth keeping in mind.</p>
+              <ul class="entry-meta">
+                <li>7 pages</li>
+                <li>HTML</li>
+                <li>A4 printable</li>
+                <li>Free</li>
+              </ul>
+              <div class="entry-cta">
+                <span class="primary">Open <span class="arrow">&rarr;</span></span>
+              </div>
+            </div>
           </div>
         </a>
       </div>
@@ -362,7 +454,6 @@ Information we wish we'd had when we started. 
       <header class="shelf-head">
         <div class="shelf-num">03</div>
         <div class="shelf-titleblock">
-          <div class="shelf-eyebrow">Shelf 03</div>
           <h2 class="shelf-title">From Scratch</h2>
         </div>
         <p class="shelf-blurb">Recipes for the kitchen and the cleaning cupboard &mdash; soaps, detergents and meals we make from a handful of ingredients in the back of the truck.</p>
@@ -370,60 +461,81 @@ Information we wish we'd had when we started. 
 
       <div class="entries">
 
-        <a class="entry" href="Recipe - Gentle Hand Soap.html">
+        <a class="entry" href="Recipe - Gentle Hand Soap.html" data-href="Recipe - Gentle Hand Soap.html">
           <div class="entry-num">01</div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Gentle Hand Soap</h3>
-            <p class="entry-desc">A simple liquid hand soap from grated natural bar soap, glycerin and distilled water. Gentle on sensitive skin &mdash; works in a pump or foaming dispenser. Makes <strong>250&ndash;300&nbsp;ml</strong>.</p>
-            <ul class="entry-meta">
-              <li>2 pages</li>
-              <li>HTML</li>
-              <li>3 ingredients</li>
-              <li>Free</li>
-            </ul>
+          <div class="entry-row">
+            <div class="entry-row-left">
+              <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
+              <h3 class="entry-title">Gentle Hand Soap</h3>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
-          <div class="entry-cta">
-            <span class="primary">Open <span class="arrow">&rarr;</span></span>
-            <a href="Files/Recipe_GentleHandSoap.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
+          <div class="entry-body">
+            <div class="entry-detail">
+              <p class="entry-desc">A simple liquid hand soap from grated natural bar soap, glycerin and distilled water. Gentle on sensitive skin &mdash; works in a pump or foaming dispenser. Makes <strong>250&ndash;300&nbsp;ml</strong>.</p>
+              <ul class="entry-meta">
+                <li>2 pages</li>
+                <li>HTML</li>
+                <li>3 ingredients</li>
+                <li>Free</li>
+              </ul>
+              <div class="entry-cta">
+                <span class="primary">Open <span class="arrow">&rarr;</span></span>
+                <a href="Files/Recipe_GentleHandSoap.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
+              </div>
+            </div>
           </div>
         </a>
 
-        <a class="entry" href="Recipe - Liquid Dishwashing Soap.html">
+        <a class="entry" href="Recipe - Liquid Dishwashing Soap.html" data-href="Recipe - Liquid Dishwashing Soap.html">
           <div class="entry-num">02</div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Liquid Dishwashing Soap</h3>
-            <p class="entry-desc">An effective washing-up liquid from bar soap, washing soda and glycerin. Makes <strong>500&ndash;600&nbsp;ml</strong>. Cuts through grease without the chemicals.</p>
-            <ul class="entry-meta">
-              <li>2 pages</li>
-              <li>HTML</li>
-              <li>3 ingredients + opt.</li>
-              <li>Free</li>
-            </ul>
+          <div class="entry-row">
+            <div class="entry-row-left">
+              <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
+              <h3 class="entry-title">Liquid Dishwashing Soap</h3>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
-          <div class="entry-cta">
-            <span class="primary">Open <span class="arrow">&rarr;</span></span>
-            <a href="Files/Recipe_LiquidDishwashingSoap.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
+          <div class="entry-body">
+            <div class="entry-detail">
+              <p class="entry-desc">An effective washing-up liquid from bar soap, washing soda and glycerin. Makes <strong>500&ndash;600&nbsp;ml</strong>. Cuts through grease without the chemicals.</p>
+              <ul class="entry-meta">
+                <li>2 pages</li>
+                <li>HTML</li>
+                <li>3 ingredients + opt.</li>
+                <li>Free</li>
+              </ul>
+              <div class="entry-cta">
+                <span class="primary">Open <span class="arrow">&rarr;</span></span>
+                <a href="Files/Recipe_LiquidDishwashingSoap.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
+              </div>
+            </div>
           </div>
         </a>
 
-        <a class="entry" href="Recipe - Laundry Detergent.html">
+        <a class="entry" href="Recipe - Laundry Detergent.html" data-href="Recipe - Laundry Detergent.html">
           <div class="entry-num">03</div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Laundry Detergent</h3>
-            <p class="entry-desc">A dry powder detergent that makes <strong>30&ndash;50 loads</strong>. Just bar soap, baking soda, and washing soda. Works in any machine &mdash; safe for babies with the essential oils omitted.</p>
-            <ul class="entry-meta">
-              <li>2 pages</li>
-              <li>HTML</li>
-              <li>3 ingredients + opt.</li>
-              <li>Free</li>
-            </ul>
+          <div class="entry-row">
+            <div class="entry-row-left">
+              <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
+              <h3 class="entry-title">Laundry Detergent</h3>
+            </div>
+            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
-          <div class="entry-cta">
-            <span class="primary">Open <span class="arrow">&rarr;</span></span>
-            <a href="Files/Recipe_LaundryDetergent.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
+          <div class="entry-body">
+            <div class="entry-detail">
+              <p class="entry-desc">A dry powder detergent that makes <strong>30&ndash;50 loads</strong>. Just bar soap, baking soda, and washing soda. Works in any machine &mdash; safe for babies with the essential oils omitted.</p>
+              <ul class="entry-meta">
+                <li>2 pages</li>
+                <li>HTML</li>
+                <li>3 ingredients + opt.</li>
+                <li>Free</li>
+              </ul>
+              <div class="entry-cta">
+                <span class="primary">Open <span class="arrow">&rarr;</span></span>
+                <a href="Files/Recipe_LaundryDetergent.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
+              </div>
+            </div>
           </div>
         </a>
 
@@ -455,5 +567,50 @@ Information we wish we'd had when we started. 
   <p class="footer-copy">© 2026 3xploreWithUs</p>
 </footer>
 
+<script>
+(function () {
+  var MOBILE_BP = 900;
+
+  function isMobile() { return window.innerWidth <= MOBILE_BP; }
+
+  /* ── ENTRY ACCORDION ── */
+  document.querySelectorAll('.entry').forEach(function (entry) {
+    entry.addEventListener('click', function (e) {
+      if (!isMobile()) return; // desktop: normal link behaviour
+
+      // Let PDF/secondary links through
+      if (e.target.closest('.secondary')) return;
+
+      e.preventDefault();
+
+      var isOpen = entry.classList.contains('open');
+
+      // Close all others
+      document.querySelectorAll('.entry.open').forEach(function (el) {
+        if (el !== entry) el.classList.remove('open');
+      });
+
+      if (isOpen) {
+        // Second tap on already-open entry → navigate
+        var href = entry.getAttribute('href');
+        if (href) window.location.href = href;
+      } else {
+        entry.classList.add('open');
+      }
+    });
+  });
+
+  /* ── SHELF BLURB TOGGLE ── */
+  document.querySelectorAll('.shelf-head').forEach(function (head) {
+    var blurb = head.querySelector('.shelf-blurb');
+    if (!blurb) return;
+    head.style.cursor = 'pointer';
+    head.addEventListener('click', function () {
+      if (!isMobile()) return;
+      blurb.classList.toggle('open');
+    });
+  });
+})();
+</script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>

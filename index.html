@@ -23,7 +23,7 @@
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
-      --text:#EDE8DC; --muted:#72888A; --white:#F5F2EC;
+      --text:#F2EEE4; --muted:#9AAFB1; --white:#F5F2EC;
       --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -222,14 +222,32 @@
       .hero-text-col { padding:2.5rem 1.5rem 3rem; }
       .hero-text-block { max-width:100%; }
       .gallery-item img { height:50vw; }
+
+      /* ── TEAM CARDS: horizontal rows on mobile ── */
+      .team-grid { grid-template-columns:1fr; gap:0; }
+      .team-card {
+        display:grid;
+        grid-template-columns:80px 1fr;
+        grid-template-rows:auto auto;
+        column-gap:1.1rem;
+        align-items:center;
+        padding:0.9rem 0;
+        border-bottom:1px solid rgba(255,255,255,0.05);
+      }
+      .team-card:last-child { border-bottom:none; }
+      .team-photo {
+        grid-row:span 2;
+        aspect-ratio:2/3;
+        width:80px;
+        height:120px;
+        margin-bottom:0;
+        flex-shrink:0;
+      }
+      .team-name { grid-column:2; align-self:end; margin-bottom:0.15rem; }
+      .team-role  { grid-column:2; align-self:start; font-size:0.72rem; }
     }
     @media(max-width:700px) {
-      .stats-inner { grid-template-columns:1fr 1fr 1fr; }
-      .stat-item { padding:0.5rem 0.4rem; }
-      .stat-num { font-size:clamp(1.2rem,5.5vw,1.8rem); }
-      .stat-lbl { font-size:0.52rem; letter-spacing:0.08em; }
-      .stat-item--truck-days { grid-column:span 2; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
-      .stat-item--timer { grid-column:span 3; border-left:none; border-top:1px solid rgba(255,255,255,0.06); }
+      .stats-strip { display:none; }
     }
     /* ── FOLLOW CTA ── */
     .follow-cta-wrap { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem; }
@@ -383,8 +401,6 @@
         <div class="tc-unit"><span class="tc-val" id="t-h">—</span><span class="tc-lbl">Hrs</span></div>
         <span class="tc-sep">·</span>
         <div class="tc-unit"><span class="tc-val" id="t-m">—</span><span class="tc-lbl">Min</span></div>
-        <span class="tc-sep">·</span>
-        <div class="tc-unit"><span class="tc-val" id="t-s">—</span><span class="tc-lbl">Sec</span></div>
       </div>
       <span class="stat-lbl">Time on the road</span>
     </div>
@@ -405,14 +421,14 @@
         <img src="Photos/Team/Jason2.jpg" alt="Jason" loading="lazy" />
       </div>
       <span class="team-name">Jason</span>
-      <span class="team-role">Creative explorer, incurable optimist, and idealist at heart. A free-spirited adventurer who lives for the unknown. With a toolbox full of ideas and an endless thirst for discovery, he's the driving force behind turning dreams of remote wilderness into lived reality.</span>
+      <span class="team-role">Creative explorer, optimist, and idealist at heart. Refuses to grow up.</span>
     </div>
     <div class="team-card">
       <div class="team-photo">
         <img src="Photos/Team/Mareike1.jpg" alt="Mareike" loading="lazy" />
       </div>
       <span class="team-name">Mareike</span>
-      <span class="team-role">Adventurous, creative, and endlessly organized. Mareike loves discovering new cultures, embracing the outdoors, and turning big dreams into lived reality — the one who keeps it all on track.</span>
+      <span class="team-role">Adventurous, creative, and endlessly organized.</span>
     </div>
     <div class="team-card">
       <div class="team-photo team-photo--loading">
@@ -427,7 +443,7 @@
         <img src="Photos/Team/Rocket2.jpg" alt="Rocket" loading="lazy" />
       </div>
       <span class="team-name">Rocket</span>
-      <span class="team-role">Cockapoo. Chief scout. Has visited more national parks than most humans.</span>
+      <span class="team-role">Cockapoo &amp; Navigator.</span>
     </div>
     <div class="team-card">
       <div class="team-photo" style="object-position:center center;">
@@ -455,7 +471,7 @@
     </div>
   </div>
   <div class="map-wrap">
-    <img src="Photos/Photos/Map-World_AUS4.png" alt="World map showing our route across Australia" />
+    <img src="Photos/Photos/Map-World_AUS4.png" alt="World map showing our route across Australia" style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.35));" />
   </div>
 </section>
 
@@ -641,16 +657,14 @@
     if (mo < 0) { y--; mo += 12; }
     const h = now.getHours();
     const m = String(now.getMinutes()).padStart(2,'0');
-    const s = String(now.getSeconds()).padStart(2,'0');
     document.getElementById('t-y').textContent  = y;
     document.getElementById('t-mo').textContent = mo;
     document.getElementById('t-d').textContent  = d;
     document.getElementById('t-h').textContent  = h;
     document.getElementById('t-m').textContent  = m;
-    document.getElementById('t-s').textContent  = s;
   }
   updateRoadTimer();
-  setInterval(updateRoadTimer, 1000);
+  setInterval(updateRoadTimer, 60000);
   // ── YOUTUBE PLAYBACK ─────────────────────────────────────────────────
   var YT_ID = 'aBMubgHYSc4';
 

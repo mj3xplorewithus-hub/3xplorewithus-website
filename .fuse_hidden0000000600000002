@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="EditingElements/Favicon_v1.png" />
+  <title>Our Home — 3xploreWithUs</title>
+  <meta name="description" content="How a 1986 Austrian military truck became a fully off-grid home for a family of four. Solar, kitchen, bathroom, and everything in between." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family:'TypoGraphica'; src:url('TypoGraphica_demo.otf') format('opentype'); font-display:swap; unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    :root {
+      --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
+      --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
+      --text:#F2EEE4; --muted:#9AAFB1; --white:#F5F2EC;
+      --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--dark); color:var(--text); font-family:var(--fb); line-height:1.7; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+      padding:0 2.5rem; height:72px;
+      background:rgba(13,21,21,0.96); backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo img { height:55px; width:auto; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { font-family:var(--fd); font-size:0.63rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.72); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--sand-lt); }
+    .nav-socials { display:flex; gap:0.6rem; align-items:center; justify-self:end; }
+    .nav-social { color:rgba(245,242,236,0.6); transition:color 0.2s; display:flex; align-items:center; }
+    .nav-social:hover { color:var(--teal-lt); }
+    .nav-social svg { width:19px; height:19px; }
+
+    /* ── HERO ── */
+    #hero { position:relative; height:85vh; overflow:hidden; cursor:none; }
+    .hero-photo-layer { position:absolute; inset:-50px; will-change:transform; transition:transform 0.1s linear; }
+    .hero-photo-layer picture { width:100%; height:100%; display:block; }
+    .hero-photo-layer img { width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
+    #hero::after {
+      content:''; position:absolute; inset:0; z-index:1;
+      background:linear-gradient(to bottom, rgba(5,10,10,0.2) 0%, rgba(5,10,10,0.05) 40%, rgba(13,21,21,0.88) 100%);
+      pointer-events:none;
+    }
+    .hero-overlay-content { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding:0 2rem 5rem; text-align:center; }
+    .hero-text-block { max-width:520px; }
+    .hero-eyebrow { font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--teal-lt); margin-bottom:1rem; display:block; opacity:0; transform:translateY(18px); animation:hero-fade-up 0.7s 0.1s forwards; }
+    #hero h1 { font-family:var(--fd); font-size:clamp(3rem,8vw,6.5rem); font-weight:900; color:var(--white); line-height:0.95; letter-spacing:0.03em; opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards; }
+    #hero h1 .accent { color:var(--sand-lt); }
+    .hero-rule { width:0; height:2px; background:var(--sand); border:none; margin:1.25rem auto 0; animation:hero-grow 0.6s 0.7s forwards; }
+    .hero-bottom { opacity:0; transform:translateY(16px); animation:hero-fade-up 0.7s 0.85s forwards; margin-top:1.5rem; }
+    .hero-scroll { display:flex; align-items:center; gap:0.6rem; font-family:var(--fd); font-size:0.55rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(237,217,163,0.55); justify-content:center; }
+    .hero-scroll-line { position:relative; width:1px; height:28px; background:rgba(237,217,163,0.18); overflow:hidden; }
+    .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--sand-lt); animation:hero-scroll-tick 2s 1.5s ease-in-out infinite; }
+    /* Custom cursor */
+    .hero-cursor { position:fixed; width:7px; height:7px; border-radius:50%; background:var(--sand-lt); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:difference; transition:opacity 0.2s; }
+    .hero-cursor-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(237,217,163,0.35); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:left 0.18s ease, top 0.18s ease, opacity 0.2s; }
+    @keyframes hero-fade-up { to { opacity:1; transform:translateY(0); } }
+    @keyframes hero-grow    { to { width:44px; } }
+    @keyframes hero-scroll-tick { 0%{top:-100%} 100%{top:200%} }
+
+    /* ── SHARED ── */
+    .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.5rem; }
+    .divider { width:40px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+    .divider.centered { margin:1rem auto 2rem; }
+    .btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 2rem; border-radius:2px; font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.2s,opacity 0.2s; }
+    .btn:hover { transform:translateY(-2px); opacity:0.88; }
+    .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
+    .btn-teal { background:var(--teal); color:var(--white); }
+
+    /* ── INTRO ── */
+    #intro { background:var(--dark); padding:4rem 0 3rem; overflow:hidden; }
+    .intro-inner { max-width:1300px; margin:0 auto; display:grid; grid-template-columns:2fr 3fr; gap:0; align-items:center; }
+    .intro-text { padding:0 3rem 0 3.5rem; }
+    #intro h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); line-height:1.1; letter-spacing:0.04em; margin-bottom:1.5rem; }
+    #intro p { font-size:1.05rem; color:var(--muted); line-height:1.9; font-weight:300; margin-bottom:1.2rem; }
+    #intro p strong { color:var(--text); font-weight:500; }
+    .intro-photo { position:relative; overflow:hidden; height:600px; }
+    .intro-photo img { width:100%; height:100%; display:block; object-fit:cover; object-position:center center; }
+    /* fade left edge into background (text is to the left) */
+    .intro-photo::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, var(--dark) 0%, rgba(13,21,21,0.4) 20%, transparent 55%);
+      pointer-events:none;
+    }
+    @media(max-width:860px) {
+      #intro { padding:3rem 2rem; }
+      .intro-inner { grid-template-columns:1fr; gap:2.5rem; }
+      .intro-text { padding:0; }
+      .intro-photo { height:300px; border-radius:4px; }
+      .intro-photo::after { background:linear-gradient(to top, var(--dark) 0%, transparent 50%); }
+    }
+
+    /* ── INTERIOR PHOTO STRIP ── */
+    #interior-strip { background:var(--dark); padding:0 0 4rem; }
+    .int-strip-inner { max-width:1100px; margin:0 auto; padding:0 2rem; }
+    .int-strip-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem; }
+    .int-strip-hint { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.25); }
+    .int-strip-arrows { display:flex; gap:0.4rem; }
+    .int-arrow-btn { width:34px; height:34px; border-radius:50%; background:transparent; border:1px solid rgba(90,200,200,0.25); color:var(--teal-lt); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color 0.2s, background 0.2s; }
+    .int-arrow-btn:hover { border-color:rgba(90,200,200,0.6); background:rgba(90,200,200,0.06); }
+    .int-flow { overflow:hidden; border-radius:3px; }
+    .int-flow-track { display:flex; gap:8px; transition:transform 0.4s ease; will-change:transform; }
+    .int-flow-item { flex:0 0 auto; cursor:zoom-in; }
+    .int-flow-item img { height:360px; width:auto; object-fit:cover; display:block; border-radius:2px; transition:opacity 0.2s; }
+    .int-flow-item:hover img { opacity:0.85; }
+
+    /* ── LIGHTBOX ── */
+    .int-lightbox {
+      position:fixed; inset:0; z-index:1000;
+      background:rgba(5,10,10,0.94);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:opacity 0.25s;
+    }
+    .int-lightbox.open { opacity:1; pointer-events:auto; }
+    .int-lightbox-img-wrap { position:relative; max-width:90vw; max-height:88vh; display:flex; align-items:center; justify-content:center; }
+    .int-lightbox-img-wrap img { max-width:90vw; max-height:88vh; width:auto; height:auto; display:block; border-radius:3px; }
+    .int-lb-btn {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+      color:var(--white); font-size:1.1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s; z-index:2;
+    }
+    .int-lb-btn:hover { background:rgba(255,255,255,0.18); }
+    .int-lb-prev { left:-60px; }
+    .int-lb-next { right:-60px; }
+    .int-lb-close {
+      position:fixed; top:1.5rem; right:1.5rem;
+      width:40px; height:40px; border-radius:50%;
+      background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+      color:var(--white); font-size:1rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background 0.2s;
+    }
+    .int-lb-close:hover { background:rgba(255,255,255,0.18); }
+    .int-lb-counter {
+      position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%);
+      font-family:var(--fd); font-size:0.58rem; font-weight:700;
+      letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,242,236,0.4);
+    }
+    @media(max-width:600px) {
+      .int-lb-prev { left:-48px; } .int-lb-next { right:-48px; }
+      .int-lb-btn { width:36px; height:36px; }
+    }
+    @media(max-width:860px) { .int-flow-item img { height:52vw; } }
+
+    /* ── SPEC CATEGORIES GRID ── */
+    #specs { background:var(--dark-2); padding:3rem 2rem 4rem; }
+    .specs-header { max-width:680px; margin:0 auto 2.5rem; text-align:center; }
+    #specs h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1rem; }
+    .cat-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.04); }
+    .cat-card { background:var(--dark); padding:2rem 1.75rem; }
+    .cat-photo { overflow:hidden; }
+    .cat-photo img { width:100%; height:100%; object-fit:cover; display:block; min-height:200px; transition:transform 0.4s ease; }
+    .cat-photo img:hover { transform:scale(1.03); }
+    .cat-icon { margin-bottom:1rem; }
+    .cat-icon svg { width:28px; height:28px; stroke:var(--teal-lt); }
+    .cat-title { font-family:var(--fd); font-size:0.82rem; font-weight:900; color:var(--white); letter-spacing:0.04em; margin-bottom:1.2rem; padding-bottom:0.75rem; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .spec-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+    .spec-list li { font-size:0.82rem; color:var(--muted); line-height:1.5; padding-left:1rem; position:relative; font-weight:300; }
+    .spec-list li::before { content:'—'; position:absolute; left:0; color:var(--teal-lt); font-size:0.7rem; }
+    .spec-list li strong { color:var(--text); font-weight:500; display:block; font-size:0.8rem; }
+
+    /* ── POWER SECTION ── */
+    #power { background:var(--dark); padding:5rem 2rem; }
+    .power-inner { max-width:1100px; margin:0 auto; }
+    .power-top { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-bottom:3rem; }
+    .power-header { margin-bottom:2rem; }
+    .power-overview { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06); }
+    .power-overview h3 { font-family:var(--fd); font-size:clamp(1.2rem,2.5vw,1.6rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:0.75rem; }
+    #power h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1rem; }
+    #power p { font-size:1rem; color:var(--muted); line-height:1.85; font-weight:300; }
+    @media(max-width:800px) { .power-top { grid-template-columns:1fr; gap:2.5rem; } }
+    .power-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; background:rgba(255,255,255,0.04); }
+    .power-col { background:var(--dark-2); padding:2.5rem 2rem; }
+    .power-col-title { font-family:var(--fd); font-size:0.75rem; font-weight:900; letter-spacing:0.12em; text-transform:uppercase; color:var(--white); margin-bottom:1.5rem; display:block; }
+    .spec-table { width:100%; border-collapse:collapse; }
+    .spec-table tr { border-bottom:1px solid rgba(255,255,255,0.04); }
+    .spec-table tr:last-child { border-bottom:none; }
+    .spec-table td { padding:0.65rem 0; font-size:0.82rem; vertical-align:top; line-height:1.5; }
+    .spec-table td:first-child { color:var(--teal-lt); font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; width:40%; padding-right:1rem; padding-top:0.75rem; }
+    .spec-table td:last-child { color:var(--muted); font-weight:300; }
+    .power-full { background:var(--dark-3); padding:2rem; margin-top:3px; }
+    .power-full-title { font-family:var(--fd); font-size:0.75rem; font-weight:900; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand-lt); margin-bottom:1.25rem; display:block; }
+    .schneider-list { display:flex; flex-wrap:wrap; gap:0.5rem; }
+    .schneider-tag { font-family:var(--fd); font-size:0.62rem; font-weight:700; letter-spacing:0.08em; padding:0.3rem 0.8rem; border-radius:999px; border:1px solid rgba(90,200,200,0.2); color:var(--teal-lt); background:rgba(26,144,144,0.06); }
+
+    /* ── ANCHOR NAV ── */
+    #page-nav { background:var(--dark-2); border-bottom:1px solid rgba(255,255,255,0.05); padding:0 2rem; display:flex; justify-content:center; position:sticky; top:72px; z-index:100; }
+    .page-nav-inner { display:flex; gap:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+    .page-nav-inner::-webkit-scrollbar { display:none; }
+    .page-nav-link { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.45); padding:0.9rem 1.1rem; white-space:nowrap; border-bottom:2px solid transparent; transition:color 0.2s, border-color 0.2s; }
+    .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
+
+    /* ── POWER DIAGRAM ── */
+    .power-diagram-wrap {
+      position:sticky;
+      top:110px;
+      background:transparent;
+      border-radius:4px; overflow:hidden;
+      box-shadow:0 12px 60px rgba(0,0,0,0.55), 0 2px 12px rgba(0,0,0,0.3);
+    }
+    /* Lines layer — sits behind the truck PNG */
+    .power-diagram-wrap .diagram-lines {
+      position:absolute; inset:0; width:100%; height:100%;
+      z-index:1;
+      pointer-events:none;
+      animation:line-pulse 2.8s ease-in-out infinite;
+    }
+    /* Radial pulse ring — travels from center outward, behind the truck PNG */
+    .pulse-ring {
+      position:absolute; inset:0; z-index:2;
+      pointer-events:none;
+      background:radial-gradient(circle at 50% 50%, rgba(90,200,200,0.28) 0%, transparent 52%);
+      animation:ring-expand 2.8s ease-out infinite;
+    }
+    /* Truck PNG — top layer, transparent background shows through */
+    .power-diagram-wrap .diagram-base {
+      display:block; width:100%;
+      position:relative; z-index:3;
+    }
+    @keyframes line-pulse {
+      0%, 100% {
+        filter:brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(145deg)
+               drop-shadow(0 0 3px rgba(90,200,200,0.45));
+        opacity:0.65;
+      }
+      50% {
+        filter:brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(145deg)
+               drop-shadow(0 0 8px rgba(90,200,200,0.95))
+               drop-shadow(0 0 18px rgba(90,200,200,0.55));
+        opacity:1;
+      }
+    }
+    @keyframes ring-expand {
+      0%   { transform:scale(0.05); opacity:0.85; }
+      70%  { transform:scale(1.9);  opacity:0.25; }
+      100% { transform:scale(2.4);  opacity:0; }
+    }
+
+    /* ── CTA ── */
+    #cta { background:var(--dark); padding:7rem 2rem; text-align:center; border-top:1px solid rgba(255,255,255,0.04); }
+    #cta h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1rem; }
+    #cta p { font-size:1rem; color:var(--muted); font-weight:300; line-height:1.85; max-width:540px; margin:0 auto 2.5rem; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* ── FOOTER ── */
+    footer { background:#080f0f; border-top:1px solid rgba(255,255,255,0.04); padding:3rem 2rem; text-align:center; }
+    .footer-logo img { height:42px; width:auto; margin:0 auto 1rem; }
+    .footer-tagline { font-family:var(--fd); font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+    .footer-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; list-style:none; margin-bottom:1.5rem; }
+    .footer-links a { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .footer-links a:hover { color:var(--sand-lt); }
+    .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
+
+    /* ── MOBILE NAV ── */
+    .nav-burger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px; background:none; border:none; margin-left:1rem; flex-shrink:0; }
+    .nav-burger span { display:block; width:22px; height:2px; background:var(--white); border-radius:2px; transition:transform 0.3s, opacity 0.3s; }
+    .nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity:0; }
+    .nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .nav-drawer { position:fixed; inset:0; top:72px; background:rgba(13,21,21,0.98); backdrop-filter:blur(14px); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+    .nav-drawer.open { opacity:1; pointer-events:auto; }
+    .nav-drawer a { font-family:var(--fd); font-size:1.2rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); transition:color 0.2s; }
+    .nav-drawer a:hover, .nav-drawer a.active { color:var(--teal-lt); }
+    .drawer-socials { display:flex; gap:1.5rem; margin-top:1rem; }
+    .drawer-socials a { color:var(--muted); transition:color 0.2s; display:flex; align-items:center; }
+    .drawer-socials a:hover { color:var(--teal-lt); }
+    .drawer-socials svg { width:24px; height:24px; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      nav { padding:0 1.25rem; }
+      .nav-links { display:none; }
+      .nav-social { display:none; }
+      .nav-logo img { height:auto; max-height:44px; max-width:none; }
+      .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
+      .cat-grid { grid-template-columns:repeat(2,1fr); }
+      .cat-photo { display:none; }
+      .power-grid { grid-template-columns:1fr; }
+      .safety-inner { grid-template-columns:1fr; }
+    }
+    @media(max-width:540px) {
+      .cat-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="truck.html">The Truck</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="howwedoit.html">How We Do It</a></li>
+    <li><a href="home.html" class="active">Our Home</a></li>
+    <li><a href="files.html">Files</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    </a>
+    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <a href="index.html">Home</a>
+  <a href="truck.html">The Truck</a>
+  <a href="story.html">Our Story</a>
+  <a href="howwedoit.html">How We Do It</a>
+  <a href="home.html" class="active">Our Home</a>
+  <div class="drawer-socials">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+  </div>
+</div>
+
+<div class="hero-cursor" id="heroCursor"></div>
+<div class="hero-cursor-ring" id="heroCursorRing"></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-photo-layer" id="heroPhotoLayer">
+    <picture>
+      <source media="(max-width: 768px)" srcset="Photos/OurHome/Mobile_OurHome.jpg" />
+      <img src="Photos/Truck_Photos/P1381298.jpg" alt="Our Home on the Road" />
+    </picture>
+  </div>
+  <div class="hero-overlay-content">
+    <div class="hero-text-block">
+      <span class="hero-eyebrow">Life on Board</span>
+      <h1>Our <span class="accent">Home.</span></h1>
+      <div class="hero-rule"></div>
+      <div class="hero-bottom">
+        <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANCHOR NAV -->
+<nav id="page-nav">
+  <div class="page-nav-inner">
+    <a href="#intro" class="page-nav-link">The Living Quarters</a>
+    <a href="#specs" class="page-nav-link">Systems &amp; Equipment</a>
+    <a href="#power" class="page-nav-link">Electrical System</a>
+  </div>
+</nav>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <span class="section-label">The Living Quarters</span>
+      <h2>A 1981 military shelter.<br />Completely reimagined.</h2>
+      <p>The living quarters are built around an <strong>FM2 Zeppelin Shelter from 1981</strong> — an original German military box that came fitted to the truck. We kept the shell, stripped pretty much everything else, and rebuilt the interior to suit our needs.</p>
+      <p>Fully self-sufficient with a big electric setup, a composting toilet, hot shower, a washing machine, Starlink, and a 140×200cm bed. Double-glazed tempered glass windows with blinds and mosquito screens. 300 litres of fresh water. 900 watts of solar. Everything we need, nothing we don't.</p>
+    </div>
+    <div class="intro-photo">
+      <img src="Photos/INTERIOR/P1392142.jpg" alt="Inside the Steyr living quarters" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- INTERIOR PHOTO STRIP -->
+<section id="interior-strip">
+  <div class="int-strip-inner">
+    <div class="int-strip-header">
+      <span class="int-strip-hint">Click any photo to enlarge</span>
+      <div class="int-strip-arrows">
+        <button class="int-arrow-btn" id="intArrowPrev" aria-label="Previous photos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="int-arrow-btn" id="intArrowNext" aria-label="Next photos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="int-flow" id="intFlow">
+      <div class="int-flow-track" id="intFlowTrack">
+        <div class="int-flow-item" data-index="0"><img src="Photos/INTERIOR/P1392085.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="1"><img src="Photos/INTERIOR/P1392162.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="2"><img src="Photos/INTERIOR/P1392127.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="3"><img src="Photos/INTERIOR/P1392133.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="4"><img src="Photos/INTERIOR/P1392156.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="5"><img src="Photos/INTERIOR/P1392139.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="6"><img src="Photos/INTERIOR/P1392070.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="7"><img src="Photos/INTERIOR/P1392075.jpg" alt="Interior" loading="lazy" /></div>
+        <div class="int-flow-item" data-index="8"><img src="Photos/INTERIOR/P1392073.jpg" alt="Interior" loading="lazy" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC CATEGORIES -->
+<section id="specs">
+  <div class="specs-header">
+    <span class="section-label">Systems &amp; Equipment</span>
+    <h2>Everything it takes<br />to live off-grid.</h2>
+    <div class="divider centered"></div>
+  </div>
+
+  <div class="cat-grid">
+
+    <!-- KITCHEN -->
+    <div class="cat-card" id="cat-kitchen">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <div class="cat-title">Kitchen &amp; Food</div>
+      <ul class="spec-list">
+        <li><strong>Dometic gas double hob &amp; sink combo</strong> 11 kg gas bottle stored under the bed</li>
+        <li><strong>90L upright fridge</strong></li>
+        <li><strong>32L Engel freezer</strong> Separate unit — always stocked</li>
+      </ul>
+    </div>
+
+    <!-- WATER -->
+    <div class="cat-card" id="cat-water">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 4 4 7.09 4 10a4 4 0 01-8 0c0-2.91 1.24-6 4-10z"/></svg>
+      </div>
+      <div class="cat-title">Water System</div>
+      <ul class="spec-list">
+        <li><strong>300L fresh water tank</strong></li>
+        <li><strong>85L grey water tank</strong></li>
+        <li><strong>Philippi water level sensors</strong> Monitor both tanks</li>
+        <li><strong>Elgena Nautic Therm Boiler E 24V</strong> Hot water on demand</li>
+      </ul>
+    </div>
+
+    <!-- SLEEPING -->
+    <div class="cat-card" id="cat-sleeping">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      </div>
+      <div class="cat-title">Sleeping</div>
+      <ul class="spec-list">
+        <li><strong>140 × 200 cm bed</strong> Fixed, not a fold-out</li>
+        <li><strong>Sitting area converts to a third bed</strong> Flexible layout for guests or a growing family</li>
+      </ul>
+    </div>
+
+    <!-- BATHROOM -->
+    <div class="cat-card" id="cat-bathroom">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 12a8 8 0 0116 0"/><rect x="6" y="12" width="12" height="8" rx="2"/><path d="M8 20v2M16 20v2"/></svg>
+      </div>
+      <div class="cat-title">Bathroom</div>
+      <ul class="spec-list">
+        <li><strong>Trelino composting toilet</strong> No tanks, no chemicals, no smell</li>
+        <li>Hot shower via the Elgena boiler</li>
+      </ul>
+    </div>
+
+    <!-- CLIMATE -->
+    <div class="cat-card" id="cat-climate">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+      </div>
+      <div class="cat-title">Climate Control</div>
+      <ul class="spec-list">
+        <li><strong>Dometic FreshJet FJX4 1500M</strong> Roof-mounted air conditioning unit</li>
+        <li><strong>Air 2D (Planar) diesel air heater</strong> 2 kW · 24V · with URAL altitude kit for high-elevation use</li>
+      </ul>
+    </div>
+
+    <!-- OTHERS -->
+    <div class="cat-card" id="cat-others">
+      <div class="cat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg>
+      </div>
+      <div class="cat-title">Others</div>
+      <ul class="spec-list">
+        <li><strong>Starlink Mini</strong> Satellite internet anywhere</li>
+        <li><strong>LED lighting throughout</strong> Low draw, long life — bright enough for late nights of cooking and map reading</li>
+        <li><strong>3 kg washer/dryer</strong> Stored under the bed</li>
+        <li><strong>Smoke Detector &amp; CO₂ Monitor</strong> Essential when sleeping in a sealed box with a diesel heater running</li>
+        <li><strong>Fire Extinguisher</strong> One in the living quarters, one in the cab — always within reach</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- POWER SECTION -->
+<section id="power">
+  <div class="power-inner">
+
+    <!-- text left, diagram right -->
+    <div class="power-top">
+      <div>
+        <span class="section-label">Electrical System</span>
+        <h2>24V Victron system.<br />Built for indefinite off-grid living.</h2>
+        <div class="divider"></div>
+        <p>The entire system runs on 24V Victron — 400Ah of lithium storage fed by 900W of solar, a 5000W Victron inverter/charger, a DC-DC charger from the alternator, and shore power when we need it. A Victron Cerbo GX monitors every watt in real time. We can run the air conditioning, fridge, freezer, and full kitchen for weeks without plugging in.</p>
+        <p style="margin-top:1.25rem;">230V distribution is handled by a Schneider Electric panel with individual circuit breakers for every load.</p>
+        <p style="margin-top:2rem; font-style:italic; color:var(--muted);">Want the full breakdown of every component and how it all connects?</p>
+        <a href="Files/3xploreWithUs_Electrical_Spec.pdf" class="btn btn-ghost" style="margin-top:0.85rem; display:inline-flex;" download>Download full electrical spec sheet (PDF)</a>
+      </div>
+      <div class="power-diagram-wrap">
+        <img class="diagram-lines" src="Photos/Truck_Photos/power_lines.png" alt="" aria-hidden="true" />
+        <div class="pulse-ring"></div>
+        <img class="diagram-base" src="Photos/Truck_Photos/steyr truck power setup_10.png" alt="Steyr 12M18 electrical system diagram" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <span class="section-label">The Machine Behind It</span>
+  <h2>Want to see the truck itself?</h2>
+  <p>The engine, the upgrades, the build gallery — everything that makes the Steyr 12M18 the ultimate expedition vehicle.</p>
+  <div class="cta-row">
+    <a href="truck.html" class="btn btn-teal">Explore the truck →</a>
+    <a href="story.html" class="btn btn-ghost">Our Story →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="truck.html">The Truck</a></li>
+    <li><a href="story.html">Our Story</a></li>
+    <li><a href="howwedoit.html">How We Do It</a></li>
+    <li><a href="home.html">Our Home</a></li>
+    <li><a href="files.html">Files</a></li>
+    <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
+    <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 3xploreWithUs</p>
+</footer>
+
+<script>
+/* ── HERO PARALLAX ── */
+(function () {
+  const section = document.getElementById('hero');
+  const photo   = document.getElementById('heroPhotoLayer');
+  const cursor  = document.getElementById('heroCursor');
+  const ring    = document.getElementById('heroCursorRing');
+  if (!section || !photo) return;
+  section.addEventListener('mousemove', function (e) {
+    const rect = section.getBoundingClientRect();
+    const dx = (e.clientX - rect.left - rect.width  / 2) / rect.width;
+    const dy = (e.clientY - rect.top  - rect.height / 2) / rect.height;
+    photo.style.transform = 'translate(' + (dx * -24) + 'px, ' + (dy * -16) + 'px)';
+    cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
+    ring.style.left   = e.clientX + 'px'; ring.style.top   = e.clientY + 'px';
+  });
+  section.addEventListener('mouseleave', function () {
+    photo.style.transform = 'translate(0,0)';
+    cursor.style.opacity = '0'; ring.style.opacity = '0';
+  });
+  section.addEventListener('mouseenter', function () {
+    cursor.style.opacity = '1'; ring.style.opacity = '1';
+  });
+  cursor.style.opacity = '0'; ring.style.opacity = '0';
+})();
+</script>
+
+<script>
+/* ── MOBILE NAV ── */
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  burger.addEventListener('click', function(){
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+<!-- LIGHTBOX -->
+<div class="int-lightbox" id="intLightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="int-lb-close" id="intLbClose" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <div class="int-lightbox-img-wrap">
+    <button class="int-lb-btn int-lb-prev" id="intLbPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img src="" alt="Interior photo" id="intLbImg" />
+    <button class="int-lb-btn int-lb-next" id="intLbNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="int-lb-counter" id="intLbCounter"></div>
+</div>
+
+<script>
+/* ── INTERIOR PHOTO STRIP — arrow nav + lightbox ── */
+(function () {
+  var track   = document.getElementById('intFlowTrack');
+  var wrap    = document.getElementById('intFlow');
+  var btnPrev = document.getElementById('intArrowPrev');
+  var btnNext = document.getElementById('intArrowNext');
+  if (!track) return;
+
+  /* collect srcs from original items */
+  var items = Array.from(track.querySelectorAll('.int-flow-item'));
+  var srcs  = items.map(function (el) { return el.querySelector('img').src; });
+  var total = srcs.length;
+  var offset = 0; /* how many items scrolled left */
+
+  function visibleCount() {
+    /* how many items fit in the container width */
+    if (!items[0]) return 3;
+    var itemW = items[0].offsetWidth + 8;
+    return Math.max(1, Math.floor(wrap.offsetWidth / itemW));
+  }
+
+  function maxOffset() {
+    return Math.max(0, total - visibleCount());
+  }
+
+  function applyOffset(animated) {
+    if (!animated) track.style.transition = 'none';
+    else track.style.transition = 'transform 0.4s ease';
+    var itemW = items[0] ? items[0].offsetWidth + 8 : 0;
+    track.style.transform = 'translateX(' + (-offset * itemW) + 'px)';
+    /* re-enable transition after instant jump */
+    if (!animated) requestAnimationFrame(function () { track.style.transition = 'transform 0.4s ease'; });
+  }
+
+  function goNext() {
+    if (offset < maxOffset()) { offset++; applyOffset(true); }
+  }
+  function goPrev() {
+    if (offset > 0) { offset--; applyOffset(true); }
+  }
+
+  btnNext.addEventListener('click', goNext);
+  btnPrev.addEventListener('click', goPrev);
+
+  /* touch swipe */
+  var touchStartX = 0;
+  wrap.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', function (e) {
+    var dx = touchStartX - e.changedTouches[0].clientX;
+    if (dx > 40) goNext();
+    else if (dx < -40) goPrev();
+  }, { passive: true });
+
+  /* recalc on resize */
+  window.addEventListener('resize', function () { applyOffset(false); });
+
+  /* ── LIGHTBOX ── */
+  var lb        = document.getElementById('intLightbox');
+  var lbImg     = document.getElementById('intLbImg');
+  var lbCounter = document.getElementById('intLbCounter');
+  var lbPrev    = document.getElementById('intLbPrev');
+  var lbNext    = document.getElementById('intLbNext');
+  var lbClose   = document.getElementById('intLbClose');
+  var current   = 0;
+
+  function openLightbox(idx) {
+    current = ((idx % total) + total) % total;
+    lbImg.src = srcs[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showIdx(idx) {
+    current = ((idx % total) + total) % total;
+    lbImg.src = srcs[current];
+    lbCounter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  track.addEventListener('click', function (e) {
+    var item = e.target.closest('.int-flow-item');
+    if (!item) return;
+    var raw = parseInt(item.dataset.index, 10);
+    if (isNaN(raw)) return;
+    openLightbox(raw);
+  });
+
+  lbPrev.addEventListener('click', function () { showIdx(current - 1); });
+  lbNext.addEventListener('click', function () { showIdx(current + 1); });
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft')  { showIdx(current - 1); }
+    if (e.key === 'ArrowRight') { showIdx(current + 1); }
+    if (e.key === 'Escape')     { closeLightbox(); }
+  });
+})();
+</script>
+<script src="site-animations.js"></script>
+</body>
+</html>

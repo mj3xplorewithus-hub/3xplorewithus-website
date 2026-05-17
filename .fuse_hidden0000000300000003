@@ -419,8 +419,6 @@ Information we wish we'd had when we started. 
             <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Guide</div>
-            <h3 class="entry-title">Packing List &mdash; Family + Dog</h3>
             <div class="entry-detail">
               <p class="entry-desc">Everything we pack for two adults, a baby, and Rocket &mdash; <strong>12 categories, 150+ items</strong>, real-world tested across 30,000&nbsp;km of Australia and one European winter.</p>
               <ul class="entry-meta">
@@ -463,8 +461,6 @@ Information we wish we'd had when we started. 
             <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Guide</div>
-            <h3 class="entry-title">First Aid Kit &mdash; Newborn Edition</h3>
             <div class="entry-detail">
               <p class="entry-desc">The compact, multi-use kit we carry for a newborn in the truck &mdash; essentials, natural remedies, camper-specific extras, and the medical reminders worth keeping in mind.</p>
               <ul class="entry-meta">
@@ -508,8 +504,6 @@ Information we wish we'd had when we started. 
             <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Gentle Hand Soap</h3>
             <div class="entry-detail">
               <p class="entry-desc">A simple liquid hand soap from grated natural bar soap, glycerin and distilled water. Gentle on sensitive skin &mdash; works in a pump or foaming dispenser. Makes <strong>250&ndash;300&nbsp;ml</strong>.</p>
               <ul class="entry-meta">
@@ -537,8 +531,6 @@ Information we wish we'd had when we started. 
             <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Liquid Dishwashing Soap</h3>
             <div class="entry-detail">
               <p class="entry-desc">An effective washing-up liquid from bar soap, washing soda and glycerin. Makes <strong>500&ndash;600&nbsp;ml</strong>. Cuts through grease without the chemicals.</p>
               <ul class="entry-meta">
@@ -566,8 +558,6 @@ Information we wish we'd had when we started. 
             <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Laundry Detergent</h3>
             <div class="entry-detail">
               <p class="entry-desc">A dry powder detergent that makes <strong>30&ndash;50 loads</strong>. Just bar soap, baking soda, and washing soda. Works in any machine &mdash; safe for babies with the essential oils omitted.</p>
               <ul class="entry-meta">
@@ -619,10 +609,12 @@ Information we wish we'd had when we started. 
 
   function isMobile() { return window.innerWidth <= MOBILE_BP; }
 
-  /* ── ENTRY ACCORDION (desktop + mobile) ── */
+  /* ── ENTRY ACCORDION ── */
   document.querySelectorAll('.entry').forEach(function (entry) {
     entry.addEventListener('click', function (e) {
-      // Let PDF/secondary links through always
+      if (!isMobile()) return; // desktop: normal link behaviour
+
+      // Let PDF/secondary links through
       if (e.target.closest('.secondary')) return;
 
       e.preventDefault();
@@ -635,7 +627,7 @@ Information we wish we'd had when we started. 
       });
 
       if (isOpen) {
-        // Second click on already-open entry → navigate
+        // Second tap on already-open entry → navigate
         var href = entry.getAttribute('href');
         if (href) window.location.href = href;
       } else {

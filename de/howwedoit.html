@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJH04YSJMG"></script>
@@ -11,22 +11,22 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="EditingElements/Favicon_v1.png" />
-  <title>How We Do It — 3xploreWithUs</title>
-  <meta name="description" content="There's the choice to follow the path everyone else takes while dreaming about something different. And then there's the choice to actually do it." />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>Wie Wir Es Machen — 3xploreWithUs</title>
+  <meta name="description" content="Ein anderes Leben — mit seinen Vor- und Nachteilen, Opfern und Freiheiten. So sieht unser Alltag wirklich aus." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family:'TypoGraphica';
-      src:url('TypoGraphica_demo.otf') format('opentype');
+      src:url('../TypoGraphica_demo.otf') format('opentype');
       font-display:swap;
       unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
     }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
@@ -85,37 +85,18 @@
     .hero-scroll { display:flex; align-items:center; gap:0.6rem; font-family:var(--fd); font-size:0.55rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(237,217,163,0.55); justify-content:flex-start; }
     .hero-scroll-line { position:relative; width:1px; height:28px; background:rgba(237,217,163,0.18); overflow:hidden; }
     .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--sand-lt); animation:hero-scroll-tick 2s 1.5s ease-in-out infinite; }
-    /* Custom cursor */
     .hero-cursor { position:fixed; width:7px; height:7px; border-radius:50%; background:var(--sand-lt); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:difference; transition:opacity 0.2s; }
     .hero-cursor-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(237,217,163,0.35); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:left 0.18s ease, top 0.18s ease, opacity 0.2s; }
     @keyframes hero-fade-up { to { opacity:1; transform:translateY(0); } }
     @keyframes hero-grow    { to { width:44px; } }
     @keyframes hero-scroll-tick { 0%{top:-100%} 100%{top:200%} }
 
-    /* ── PHOTO MOSAIC ── */
-    .photo-mosaic { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3px; }
-    .photo-mosaic img { width:100%; height:100%; object-fit:cover; display:block; }
-    .mosaic-main { grid-row:span 2; }
-    .mosaic-main img { height:480px; }
-    .mosaic-side img { height:237px; }
-
-    /* ── THE CHOICE ── */
-    .choice-inner { max-width:800px; margin:0 auto; }
-    .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:2rem; }
-    .choice-statement { font-size:clamp(1.15rem,2.5vw,1.4rem); color:var(--text); line-height:1.8; font-weight:300; margin-bottom:2.5rem; border-left:3px solid var(--teal); padding-left:1.5rem; }
-    .choice-body { font-size:1.05rem; color:var(--muted); line-height:1.95; font-weight:300; }
-    .choice-body p { margin-bottom:1.4rem; }
-    .choice-body p:last-child { margin-bottom:0; }
-
-    /* ── PHOTO STRIP ── */
-    .photo-strip { display:flex; gap:3px; overflow:hidden; }
-    .photo-strip img { flex:1 1 0; min-width:0; width:100%; height:auto; display:block; }
-
     /* ── THE LIFE ── */
     #the-life { background:var(--dark-2); padding:3.5rem 2rem; }
     .life-inner { max-width:1100px; margin:0 auto; }
     .life-header { max-width:700px; margin:0 auto 2.5rem; text-align:center; }
     #the-life h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1rem; }
+    .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:2rem; }
     .divider { width:40px; height:3px; background:var(--red); border-radius:2px; margin:1.2rem auto; }
     .life-intro { font-size:1.05rem; color:var(--muted); line-height:1.9; font-weight:300; }
 
@@ -133,7 +114,6 @@
       overflow:hidden;
     }
     .m-card::before {
-      /* Faint large number as background decoration */
       content:attr(data-num);
       position:absolute;
       top:-0.1em; right:0.1em;
@@ -146,27 +126,9 @@
       pointer-events:none;
       user-select:none;
     }
-    .m-card-accent {
-      width:28px; height:2px;
-      background:var(--sand);
-      border-radius:1px;
-      margin-bottom:1.25rem;
-    }
-    .m-title {
-      font-family:var(--fd);
-      font-size:0.95rem;
-      font-weight:900;
-      color:var(--white);
-      letter-spacing:0.04em;
-      margin-bottom:0.75rem;
-      line-height:1.3;
-    }
-    .m-body {
-      font-size:0.95rem;
-      color:var(--muted);
-      line-height:1.85;
-      font-weight:300;
-    }
+    .m-card-accent { width:28px; height:2px; background:var(--sand); border-radius:1px; margin-bottom:1.25rem; }
+    .m-title { font-family:var(--fd); font-size:0.95rem; font-weight:900; color:var(--white); letter-spacing:0.04em; margin-bottom:0.75rem; line-height:1.3; }
+    .m-body { font-size:0.95rem; color:var(--muted); line-height:1.85; font-weight:300; }
 
     /* ── CLOSING ── */
     #closing { background:var(--dark); padding:4rem 2rem; text-align:center; border-top:1px solid rgba(255,255,255,0.04); }
@@ -180,6 +142,14 @@
     .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
     .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.5rem; }
 
+    /* ── PORTRAIT GALLERY ── */
+    #portrait-gallery { background:var(--dark); padding:0; overflow:hidden; }
+    .portrait-track { display:flex; gap:3px; overflow:visible; cursor:grab; user-select:none; will-change:transform; }
+    .portrait-track.dragging { cursor:grabbing; }
+    .portrait-item { flex:0 0 auto; }
+    .portrait-item img { height:70vh; width:auto; max-width:none; object-fit:cover; display:block; pointer-events:none; }
+    .gallery-hint { text-align:center; padding:1rem; font-family:var(--fd); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(114,136,138,0.4); }
+
     /* ── FOOTER ── */
     footer { background:#080f0f; border-top:1px solid rgba(255,255,255,0.04); padding:2rem 2rem; text-align:center; }
     .footer-logo img { height:42px; width:auto; margin:0 auto 1.5rem; }
@@ -187,20 +157,6 @@
     .footer-links a { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
     .footer-links a:hover { color:var(--sand-lt); }
     .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
-
-    /* ── PORTRAIT GALLERY ── */
-    #portrait-gallery { background:var(--dark); padding:0; overflow:hidden; }
-    .portrait-track {
-      display:flex; gap:3px;
-      overflow:visible;
-      cursor:grab;
-      user-select:none;
-      will-change:transform;
-    }
-    .portrait-track.dragging { cursor:grabbing; }
-    .portrait-item { flex:0 0 auto; }
-    .portrait-item img { height:70vh; width:auto; max-width:none; object-fit:cover; display:block; pointer-events:none; }
-    .gallery-hint { text-align:center; padding:1rem; font-family:var(--fd); font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(114,136,138,0.4); }
 
     /* ── MOBILE NAV ── */
     .nav-burger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px; background:none; border:none; margin-left:1rem; flex-shrink:0; }
@@ -223,11 +179,7 @@
       .nav-social { display:none; }
       .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
-      .photo-mosaic { grid-template-columns:1fr 1fr; }
-      .mosaic-main { grid-row:span 1; }
-      .mosaic-main img, .mosaic-side img { height:200px; }
       .manifesto-grid { grid-template-columns:1fr; }
-      .photo-strip { flex-direction:column; }
       .portrait-item img { height:50vw; }
     }
   </style>
@@ -235,14 +187,14 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <a href="index.html" class="nav-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html" class="active">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html" class="active">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="files.html">Dateien</a></li>
   </ul>
   <div class="nav-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
@@ -251,26 +203,26 @@
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="E-Mail">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
     </a>
-    <a href="de/howwedoit.html" class="lang-switch" title="Auf Deutsch wechseln">🇩🇪</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+    <a href="../howwedoit.html" class="lang-switch" title="Switch to English">🇦🇺</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="nav-drawer" id="nav-drawer">
-  <a href="index.html">Home</a>
-  <a href="truck.html">The Truck</a>
-  <a href="story.html">Our Story</a>
-  <a href="howwedoit.html" class="active">How We Do It</a>
-  <a href="home.html">Our Home</a>
+  <a href="index.html">Startseite</a>
+  <a href="truck.html">Der Truck</a>
+  <a href="story.html">Unsere Geschichte</a>
+  <a href="howwedoit.html" class="active">Wie Wir Es Machen</a>
+  <a href="../home.html">Unser Zuhause</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
   </div>
 </div>
 
@@ -281,14 +233,14 @@
 <section id="hero">
   <div class="hero-photo-layer" id="heroPhotoLayer">
     <picture>
-      <source media="(max-width: 768px)" srcset="Photos/HeroPhotosMobile/Mobile_HowWeDoIt.jpg" />
-      <img src="Photos/Truck_Photos/P1380928.jpg" alt="Life on the Road" />
+      <source media="(max-width: 768px)" srcset="../Photos/HeroPhotosMobile/Mobile_HowWeDoIt.jpg" />
+      <img src="../Photos/Truck_Photos/P1380928.jpg" alt="Leben auf der Straße" />
     </picture>
   </div>
   <div class="hero-overlay-content">
     <div class="hero-text-block">
-      <span class="hero-eyebrow">Our Philosophy</span>
-      <h1>How we<br /><span class="accent">do it.</span></h1>
+      <span class="hero-eyebrow">Unsere Philosophie</span>
+      <h1>Wie wir<br /><span class="accent">es machen.</span></h1>
       <div class="hero-rule"></div>
       <div class="hero-bottom">
         <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
@@ -300,82 +252,81 @@
 <!-- ANCHOR NAV -->
 <nav id="page-nav">
   <div class="page-nav-inner">
-    <a href="#the-life" class="page-nav-link">A Different Life</a>
-    <a href="#closing" class="page-nav-link">Join the Journey</a>
+    <a href="#the-life" class="page-nav-link">Ein anderes Leben</a>
+    <a href="#closing" class="page-nav-link">Der Weg voraus</a>
   </div>
 </nav>
 
-
-<!-- THE LIFE -->
+<!-- EIN ANDERES LEBEN -->
 <section id="the-life">
   <div class="life-inner">
     <div class="life-header">
-      <span class="section-label">A Different Life</span>
-      <h2>It's a different way of living.</h2>
+      <span class="section-label">Ein anderes Leben</span>
+      <h2>Es ist eine andere Art zu leben.</h2>
       <div class="divider"></div>
-      <p class="life-intro">It comes with pros and cons, sacrifices and real freedoms most people never get to experience. This is what our daily life actually looks like — the choices we've made and why we wouldn't trade it.</p>
+      <p class="life-intro">Mit Vor- und Nachteilen, Opfern und echten Freiheiten, die die meisten Menschen nie erleben. So sieht unser Alltag wirklich aus — die Entscheidungen, die wir getroffen haben, und warum wir es nicht anders hätten wollen.</p>
     </div>
 
     <div class="manifesto-grid">
 
       <div class="m-card" data-num="1">
         <div class="m-card-accent"></div>
-        <div class="m-title">We live humbly.</div>
-        <p class="m-body">Not because we have to, but because we choose to. Simplicity creates space for what truly matters.</p>
+        <div class="m-title">Wir leben bescheiden.</div>
+        <p class="m-body">Nicht weil wir müssen, sondern weil wir es wählen. Einfachheit schafft Raum für das, was wirklich zählt.</p>
       </div>
 
       <div class="m-card" data-num="2">
         <div class="m-card-accent"></div>
-        <div class="m-title">We always cook.</div>
-        <p class="m-body">Restaurants are rare. The food we make is healthier, tastes better, and we know exactly what goes into it.</p>
+        <div class="m-title">Wir kochen immer selbst.</div>
+        <p class="m-body">Restaurants sind selten. Das Essen, das wir machen, ist gesünder, schmeckt besser, und wir wissen genau, was drin ist.</p>
       </div>
 
       <div class="m-card" data-num="3">
         <div class="m-card-accent"></div>
-        <div class="m-title">We opted out.</div>
-        <p class="m-body">No brands, no status symbols, no shopping for the sake of it. We stepped off the consumerism treadmill — and put a truck and freedom in its place.</p>
+        <div class="m-title">Wir haben ausgestiegen.</div>
+        <p class="m-body">Keine Marken, keine Statussymbole, kein Einkaufen um des Einkaufens willen. Wir sind vom Konsumismus-Laufband abgestiegen — und haben einen Truck und Freiheit dagegen eingetauscht.</p>
       </div>
 
       <div class="m-card" data-num="4">
         <div class="m-card-accent"></div>
-        <div class="m-title">Our version of success.</div>
-        <p class="m-body">Time together, freedom to move, hikes we didn't plan, conversations with strangers. We live with each other 24/7 and we love it. Nobody handed us this life — we built it.</p>
+        <div class="m-title">Unser Verständnis von Erfolg.</div>
+        <p class="m-body">Zeit zusammen, die Freiheit, uns zu bewegen, ungeplante Wanderungen, Gespräche mit Fremden. Wir leben 24/7 miteinander und lieben es. Niemand hat uns dieses Leben geschenkt — wir haben es aufgebaut.</p>
       </div>
 
       <div class="m-card" data-num="5">
         <div class="m-card-accent"></div>
-        <div class="m-title">The financial reality.</div>
-        <p class="m-body">We live on less than most people spend on rent, track every euro, and our investments do the heavy lifting.</p>
+        <div class="m-title">Die finanzielle Realität.</div>
+        <p class="m-body">Wir leben von weniger, als die meisten für Miete ausgeben, verfolgen jeden Euro und unsere Investitionen tragen die Hauptlast.</p>
       </div>
 
       <div class="m-card" data-num="6">
         <div class="m-card-accent"></div>
-        <div class="m-title">We're not on holiday.</div>
-        <p class="m-body">There are maintenance days, admin days, bad-weather days. Days when the truck breaks and you're waiting for a part in a town you didn't choose. This life is real — and it takes real work.</p>
+        <div class="m-title">Wir sind nicht im Urlaub.</div>
+        <p class="m-body">Es gibt Wartungstage, Verwaltungstage, Schlechtwettertage. Tage, an denen der Truck kaputt ist und man auf ein Ersatzteil wartet, in einer Stadt, die man sich nicht ausgesucht hat. Dieses Leben ist real — und es erfordert echte Arbeit.</p>
       </div>
 
       <div class="m-card" data-num="7">
         <div class="m-card-accent"></div>
-        <div class="m-title">We choose what comes in.</div>
-        <p class="m-body">Handmade soap, homemade laundry detergent, natural cleaning products. Wood and metal over plastic, second-hand over new. We're not doing a dramatic overhaul — we replace things consciously as they wear out. One choice at a time.</p>
+        <div class="m-title">Wir wählen aus, was hereinkommt.</div>
+        <p class="m-body">Selbstgemachte Seife, selbst gemachtes Waschmittel, natürliche Reinigungsprodukte. Holz und Metall statt Plastik, Second-Hand statt Neu. Wir machen keinen dramatischen Umbau — wir ersetzen Dinge bewusst, wenn sie sich abnutzen. Eine Entscheidung nach der anderen.</p>
       </div>
 
       <div class="m-card" data-num="8">
         <div class="m-card-accent"></div>
-        <div class="m-title">We're learning to be parents on the road from day one.</div>
-        <p class="m-body">No nursery, no routine handed to us by a suburb, no family next door. Just the two of us, a newborn, a dog, and a truck. Figuring it out as we go — same as everything else.</p>
+        <div class="m-title">Wir lernen, von Anfang an Eltern unterwegs zu sein.</div>
+        <p class="m-body">Kein Kinderzimmer, keine von einem Vorort vorgegebene Routine, keine Familie nebenan. Nur wir beide, ein Neugeborenes, ein Hund und ein Truck. Wir finden es wie immer heraus — unterwegs.</p>
       </div>
 
       <div class="m-card" data-num="9">
         <div class="m-card-accent"></div>
-        <div class="m-title">We film and edit as a team while living in ~8m². No externals hired.</div>
-        <p class="m-body">Everything you see is planned, shot, and edited by the two of us — in a truck, between borders, while living our actual life. No crew. No agency. Just us.</p>
+        <div class="m-title">Wir filmen und schneiden als Team, während wir auf ~8m² leben. Keine externen Mitarbeiter.</div>
+        <p class="m-body">Alles, was du siehst, ist von uns beiden geplant, gefilmt und geschnitten — in einem Truck, zwischen Grenzen, während wir unser echtes Leben leben. Keine Crew. Keine Agentur. Nur wir.</p>
       </div>
 
       <div class="m-card" data-num="10">
         <div class="m-card-accent"></div>
-        <div class="m-title">Our office moves every few days.</div>
-        <p class="m-body">We work when the light is right, not when the calendar says so. The location is the brief.</p>
+        <div class="m-title">Unser Büro zieht alle paar Tage um.</div>
+        <p class="m-body">Wir arbeiten, wenn das Licht stimmt, nicht wenn der Kalender es sagt. Der Ort ist das Briefing.</p>
       </div>
 
     </div>
@@ -385,30 +336,30 @@
 <!-- CLOSING -->
 <section id="closing">
   <div class="closing-inner">
-    <span class="section-label">Join the Journey</span>
-    <h2>We're only just<br /><span class="accent">getting started.</span></h2>
-    <p class="sub">If this resonates with you, come along for the ride. We share the real stuff on YouTube and Instagram — the wins, the breakdowns, the messy beautiful reality of raising a family in a self-built expedition truck. No filters. Just honest life on the road.</p>
+    <span class="section-label">Der Weg voraus</span>
+    <h2>Wir fangen gerade erst <span class="accent">an.</span></h2>
+    <p class="sub">Wenn das etwas in dir auslöst, komm mit auf die Reise. Wir teilen die echten Dinge auf YouTube und Instagram — die Erfolge, die Pannen, die chaotische wunderschöne Realität, eine Familie in einem selbst gebauten Expeditions-LKW großzuziehen. Keine Filter. Nur ehrliches Leben auf der Straße.</p>
     <div class="cta-row">
-      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-red">Subscribe on YouTube</a>
-      <a href="story.html" class="btn btn-ghost">Read our story →</a>
+      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-red">Auf YouTube abonnieren</a>
+      <a href="story.html" class="btn btn-ghost">Unsere Geschichte lesen &rarr;</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <div class="footer-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="files.html">Dateien</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
   </ul>
-  <p class="footer-copy">© 2026 3xploreWithUs</p>
+  <p class="footer-copy">&copy; 2026 3xploreWithUs</p>
 </footer>
 
 <script>
@@ -416,115 +367,44 @@
     function initGallery() {
       const track = document.getElementById('portraitTrack');
       if (!track) return;
-
-      // Clone items for seamless infinite loop
       const origItems = Array.from(track.querySelectorAll('.portrait-item'));
       origItems.forEach(item => track.appendChild(item.cloneNode(true)));
       origItems.forEach(item => track.appendChild(item.cloneNode(true)));
-
-      // Switch from overflow-scroll to transform-based movement
       track.style.overflow = 'visible';
       track.style.display = 'flex';
       track.style.gap = '3px';
-
-      const totalItems = track.querySelectorAll('.portrait-item').length;
       const origCount = origItems.length;
-
-      let offset = 0;
-      let isDragging = false;
-      let dragStartX = 0;
-      let offsetAtDragStart = 0;
-      let touchStartX = 0;
-      let singleSetWidth = 0;
-      let rafId = null;
-
+      let offset = 0, isDragging = false, dragStartX = 0, offsetAtDragStart = 0, touchStartX = 0, singleSetWidth = 0, rafId = null;
       function getSetWidth() {
         const items = track.querySelectorAll('.portrait-item');
         if (!items.length) return 0;
-        const first = items[0];
-        const last = items[origCount - 1];
+        const first = items[0], last = items[origCount - 1];
         return last.getBoundingClientRect().right - first.getBoundingClientRect().left + 3;
       }
-
-      function applyOffset() {
-        track.style.transform = 'translateX(' + (-offset) + 'px)';
-      }
-
-      function wrap() {
-        if (!singleSetWidth) return;
-        if (offset >= singleSetWidth * 2) offset -= singleSetWidth;
-        if (offset < 0) offset += singleSetWidth;
-      }
-
-      function tick() {
-        if (!isDragging) {
-          offset += 0.5;
-          wrap();
-          applyOffset();
-        }
-        rafId = requestAnimationFrame(tick);
-      }
-
+      function applyOffset() { track.style.transform = 'translateX(' + (-offset) + 'px)'; }
+      function wrap() { if (!singleSetWidth) return; if (offset >= singleSetWidth * 2) offset -= singleSetWidth; if (offset < 0) offset += singleSetWidth; }
+      function tick() { if (!isDragging) { offset += 0.5; wrap(); applyOffset(); } rafId = requestAnimationFrame(tick); }
       function start() {
         singleSetWidth = getSetWidth();
-        if (!singleSetWidth) {
-          // Images not yet loaded, retry
-          setTimeout(start, 100);
-          return;
-        }
-        offset = 0;
-        applyOffset();
+        if (!singleSetWidth) { setTimeout(start, 100); return; }
+        offset = 0; applyOffset();
         if (rafId) cancelAnimationFrame(rafId);
         tick();
       }
-
-      // Mouse drag
-      track.addEventListener('mousedown', e => {
-        isDragging = true;
-        dragStartX = e.clientX;
-        offsetAtDragStart = offset;
-        track.classList.add('dragging');
-        e.preventDefault();
-      });
-      window.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        offset = offsetAtDragStart - (e.clientX - dragStartX);
-        wrap();
-        applyOffset();
-      });
-      window.addEventListener('mouseup', () => {
-        isDragging = false;
-        track.classList.remove('dragging');
-      });
-
-      // Touch drag
-      track.addEventListener('touchstart', e => {
-        isDragging = true;
-        touchStartX = e.touches[0].clientX;
-        offsetAtDragStart = offset;
-      }, { passive: true });
-      track.addEventListener('touchmove', e => {
-        offset = offsetAtDragStart - (e.touches[0].clientX - touchStartX);
-        wrap();
-        applyOffset();
-      }, { passive: true });
+      track.addEventListener('mousedown', e => { isDragging = true; dragStartX = e.clientX; offsetAtDragStart = offset; track.classList.add('dragging'); e.preventDefault(); });
+      window.addEventListener('mousemove', e => { if (!isDragging) return; offset = offsetAtDragStart - (e.clientX - dragStartX); wrap(); applyOffset(); });
+      window.addEventListener('mouseup', () => { isDragging = false; track.classList.remove('dragging'); });
+      track.addEventListener('touchstart', e => { isDragging = true; touchStartX = e.touches[0].clientX; offsetAtDragStart = offset; }, { passive: true });
+      track.addEventListener('touchmove', e => { offset = offsetAtDragStart - (e.touches[0].clientX - touchStartX); wrap(); applyOffset(); }, { passive: true });
       track.addEventListener('touchend', () => { isDragging = false; });
-
       window.addEventListener('load', start);
-      // Also try after a short delay in case load already fired
       setTimeout(start, 300);
     }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initGallery);
-    } else {
-      initGallery();
-    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initGallery); } else { initGallery(); }
   })();
 </script>
 
 <script>
-/* ── HERO PARALLAX ── */
 (function () {
   const section = document.getElementById('hero');
   const photo   = document.getElementById('heroPhotoLayer');
@@ -539,19 +419,13 @@
     cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
     ring.style.left   = e.clientX + 'px'; ring.style.top   = e.clientY + 'px';
   });
-  section.addEventListener('mouseleave', function () {
-    photo.style.transform = 'translate(0,0)';
-    cursor.style.opacity = '0'; ring.style.opacity = '0';
-  });
-  section.addEventListener('mouseenter', function () {
-    cursor.style.opacity = '1'; ring.style.opacity = '1';
-  });
+  section.addEventListener('mouseleave', function () { photo.style.transform = 'translate(0,0)'; cursor.style.opacity = '0'; ring.style.opacity = '0'; });
+  section.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; ring.style.opacity = '1'; });
   cursor.style.opacity = '0'; ring.style.opacity = '0';
 })();
 </script>
 
 <script>
-/* ── MOBILE NAV ── */
 (function(){
   var burger = document.getElementById('nav-burger');
   var drawer = document.getElementById('nav-drawer');
@@ -569,31 +443,32 @@
   });
 })();
 </script>
+
 <!-- PORTRAIT GALLERY -->
 <div id="portrait-gallery">
   <div class="portrait-track" id="portraitTrack">
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/1_BinnsTrack_NT.jpg"                      alt="Binns Track, NT" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/2.jpg"                                    alt="On the road" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/3.jpg"                                    alt="On the road" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/4_PaintedDesert_SA.jpg"                   alt="Painted Desert, SA" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/5_EringaWaterhole_SA.jpg"                 alt="Eringa Waterhole, SA" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/6_PuppyRocket_Jason_BremerBay_WA.jpg"     alt="Rocket & Jason, Bremer Bay" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/7_Uluru_NT.jpg"                           alt="Uluru, NT" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/8_WestMacs_NT.jpg"                        alt="West Macs, NT" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/9_CooberPedy_SA.jpg"                      alt="Coober Pedy, SA" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/10_CooberPedy_SA.jpg"                     alt="Coober Pedy, SA" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/11_Outback_SA.jpg"                        alt="Outback, SA" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/12_MareikeSurfboard_BremerBayWA.jpg"      alt="Mareike, Bremer Bay" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/13_FlindersRanges_SA.jpg"                 alt="Flinders Ranges, SA" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/14_MtOssa_Tasmania.jpg"                   alt="Mt Ossa, Tasmania" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/15_Freycinet_WineglassBay_TAS.jpg"        alt="Wineglass Bay, Tasmania" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/16_MtWellington_TAS.jpg"                  alt="Mt Wellington, Tasmania" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/17_TarnShelf_TAS.jpg"                     alt="Tarn Shelf, Tasmania" /></div>
-    <div class="portrait-item"><img src="Photos/GalleryPortraits_plusHiking/18_TarnShelf_TAS.jpg"                     alt="Tarn Shelf, Tasmania" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/1_BinnsTrack_NT.jpg" alt="Binns Track, NT" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/2.jpg" alt="Unterwegs" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/3.jpg" alt="Unterwegs" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/4_PaintedDesert_SA.jpg" alt="Painted Desert, SA" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/5_EringaWaterhole_SA.jpg" alt="Eringa Waterhole, SA" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/6_PuppyRocket_Jason_BremerBay_WA.jpg" alt="Rocket & Jason, Bremer Bay" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/7_Uluru_NT.jpg" alt="Uluru, NT" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/8_WestMacs_NT.jpg" alt="West Macs, NT" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/9_CooberPedy_SA.jpg" alt="Coober Pedy, SA" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/10_CooberPedy_SA.jpg" alt="Coober Pedy, SA" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/11_Outback_SA.jpg" alt="Outback, SA" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/12_MareikeSurfboard_BremerBayWA.jpg" alt="Mareike, Bremer Bay" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/13_FlindersRanges_SA.jpg" alt="Flinders Ranges, SA" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/14_MtOssa_Tasmania.jpg" alt="Mt Ossa, Tasmanien" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/15_Freycinet_WineglassBay_TAS.jpg" alt="Wineglass Bay, Tasmanien" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/16_MtWellington_TAS.jpg" alt="Mt Wellington, Tasmanien" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/17_TarnShelf_TAS.jpg" alt="Tarn Shelf, Tasmanien" /></div>
+    <div class="portrait-item"><img src="../Photos/GalleryPortraits_plusHiking/18_TarnShelf_TAS.jpg" alt="Tarn Shelf, Tasmanien" /></div>
   </div>
-  <p class="gallery-hint">← drag to explore →</p>
+  <p class="gallery-hint">&larr; ziehen zum Erkunden &rarr;</p>
 </div>
 
-<script src="site-animations.js"></script>
+<script src="../site-animations.js"></script>
 </body>
 </html>

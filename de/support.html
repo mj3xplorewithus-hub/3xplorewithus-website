@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJH04YSJMG"></script>
@@ -11,22 +11,22 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="EditingElements/Favicon_v1.png" />
-  <title>3xploreWithUs — Support Us</title>
-  <meta name="description" content="No paid promotions. No agenda. Just honest filmmaking — supported by people who believe in what we're doing." />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>3xploreWithUs — Unterstütze Uns</title>
+  <meta name="description" content="Keine bezahlten Promotions. Keine Agenda. Nur ehrliches Filmemachen — getragen von Menschen, die glauben, was wir machen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family:'TypoGraphica';
-      src:url('TypoGraphica_demo.otf') format('opentype');
+      src:url('../TypoGraphica_demo.otf') format('opentype');
       font-display:swap;
       unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
     }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
@@ -75,292 +75,67 @@
 
     /* ── HERO ── */
     #hero {
-      position:relative;
-      height:70vh;
-      min-height:460px;
-      display:flex;
-      align-items:flex-end;
-      overflow:hidden;
-      background:var(--dark);
+      position:relative; height:70vh; min-height:460px;
+      display:flex; align-items:flex-end; overflow:hidden; background:var(--dark);
     }
     .hero-bg {
-      position:absolute;
-      inset:0;
-      background-image:url('Photos/VehicleCards/Truck.jpg');
-      background-size:cover;
-      background-position:center 40%;
-      transform:scale(1.04);
+      position:absolute; inset:0;
+      background-image:url('../Photos/VehicleCards/Truck.jpg');
+      background-size:cover; background-position:center 40%; transform:scale(1.04);
     }
-    .hero-overlay {
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to bottom, rgba(13,21,21,0.25) 0%, rgba(13,21,21,0.6) 55%, rgba(13,21,21,0.97) 100%);
-    }
-    .hero-content {
-      position:relative;
-      z-index:10;
-      padding:0 4rem 4.5rem;
-      max-width:640px;
-    }
-    .hero-eyebrow {
-      font-family:var(--fd);
-      font-size:0.68rem;
-      font-weight:700;
-      letter-spacing:0.28em;
-      text-transform:uppercase;
-      color:var(--teal-lt);
-      display:block;
-      margin-bottom:1.1rem;
-    }
-    .hero-content h1 {
-      font-family:var(--fd);
-      font-size:clamp(2.4rem,5.5vw,4.2rem);
-      font-weight:900;
-      color:var(--white);
-      line-height:1.05;
-      letter-spacing:0.04em;
-      margin-bottom:0;
-    }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(13,21,21,0.25) 0%, rgba(13,21,21,0.6) 55%, rgba(13,21,21,0.97) 100%); }
+    .hero-content { position:relative; z-index:10; padding:0 4rem 4.5rem; max-width:640px; }
+    .hero-eyebrow { font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.1rem; }
+    .hero-content h1 { font-family:var(--fd); font-size:clamp(2.4rem,5.5vw,4.2rem); font-weight:900; color:var(--white); line-height:1.05; letter-spacing:0.04em; margin-bottom:0; }
     .hero-content h1 .accent { color:var(--sand-lt); }
-    .hero-rule {
-      width:44px; height:2px;
-      background:var(--sand);
-      border:none;
-      margin:1.25rem 0 1.5rem;
-    }
-    .hero-lead {
-      font-family:var(--fb);
-      font-size:clamp(0.95rem,1.8vw,1.08rem);
-      color:rgba(237,232,220,0.78);
-      font-weight:300;
-      line-height:1.85;
-      max-width:520px;
-    }
+    .hero-rule { width:44px; height:2px; background:var(--sand); border:none; margin:1.25rem 0 1.5rem; }
+    .hero-lead { font-family:var(--fb); font-size:clamp(0.95rem,1.8vw,1.08rem); color:rgba(237,232,220,0.78); font-weight:300; line-height:1.85; max-width:520px; }
 
     /* ── SECTION LABEL ── */
-    .section-label {
-      font-family:var(--fd);
-      font-size:0.72rem;
-      font-weight:700;
-      letter-spacing:0.22em;
-      text-transform:uppercase;
-      color:var(--teal-lt);
-      display:block;
-      margin-bottom:1.25rem;
-    }
+    .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.25rem; }
 
-    /* ── WHY SECTION ── */
-    #why {
-      background:var(--dark);
-      padding:6rem 2rem;
-    }
-    .why-inner {
-      max-width:760px;
-      margin:0 auto;
-      text-align:center;
-    }
-    #why h2 {
-      font-family:var(--fd);
-      font-size:clamp(1.8rem,4vw,3rem);
-      font-weight:900;
-      color:var(--white);
-      line-height:1.1;
-      letter-spacing:0.04em;
-      margin-bottom:2rem;
-    }
+    /* ── WHY ── */
+    #why { background:var(--dark); padding:6rem 2rem; }
+    .why-inner { max-width:760px; margin:0 auto; text-align:center; }
+    #why h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:var(--white); line-height:1.1; letter-spacing:0.04em; margin-bottom:2rem; }
     #why h2 .accent { color:var(--sand-lt); }
-    .why-body {
-      font-size:1.05rem;
-      color:var(--muted);
-      line-height:1.95;
-      font-weight:300;
-      max-width:640px;
-      margin:0 auto 1.4rem;
-    }
+    .why-body { font-size:1.05rem; color:var(--muted); line-height:1.95; font-weight:300; max-width:640px; margin:0 auto 1.4rem; }
     .why-body strong { color:var(--text); font-weight:500; }
-    .why-rule {
-      width:40px; height:2px;
-      background:rgba(90,200,200,0.25);
-      border-radius:2px;
-      margin:2.5rem auto;
-    }
+    .why-rule { width:40px; height:2px; background:rgba(90,200,200,0.25); border-radius:2px; margin:2.5rem auto; }
 
-    /* ── PATREON BLOCK ── */
-    #patreon {
-      background:var(--dark-2);
-      border-top:1px solid rgba(255,255,255,0.04);
-      border-bottom:1px solid rgba(255,255,255,0.04);
-      padding:6rem 2rem;
-    }
-    .patreon-inner {
-      max-width:720px;
-      margin:0 auto;
-      text-align:center;
-    }
-    .patreon-icon {
-      width:56px;
-      height:56px;
-      margin:0 auto 2rem;
-      color:var(--sand-lt);
-    }
+    /* ── PATREON ── */
+    #patreon { background:var(--dark-2); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); padding:6rem 2rem; }
+    .patreon-inner { max-width:720px; margin:0 auto; text-align:center; }
+    .patreon-icon { width:56px; height:56px; margin:0 auto 2rem; color:var(--sand-lt); }
     .patreon-icon svg { width:100%; height:100%; }
-    #patreon h2 {
-      font-family:var(--fd);
-      font-size:clamp(1.8rem,4vw,2.8rem);
-      font-weight:900;
-      color:var(--white);
-      letter-spacing:0.04em;
-      line-height:1.1;
-      margin-bottom:1.5rem;
-    }
-    #patreon p {
-      font-size:1.05rem;
-      color:var(--muted);
-      line-height:1.9;
-      font-weight:300;
-      max-width:560px;
-      margin:0 auto 2.5rem;
-    }
+    #patreon h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1.5rem; }
+    #patreon p { font-size:1.05rem; color:var(--muted); line-height:1.9; font-weight:300; max-width:560px; margin:0 auto 2.5rem; }
     #patreon p strong { color:var(--text); font-weight:500; }
-    .patreon-btn {
-      display:inline-flex;
-      align-items:center;
-      gap:0.6rem;
-      padding:1.1rem 2.5rem;
-      background:var(--sand);
-      color:#0D1515;
-      border-radius:3px;
-      font-family:var(--fd);
-      font-size:0.76rem;
-      font-weight:700;
-      letter-spacing:0.14em;
-      text-transform:uppercase;
-      transition:transform 0.2s, background 0.2s;
-      border:none;
-      cursor:pointer;
-    }
-    .patreon-btn:hover {
-      transform:translateY(-2px);
-      background:var(--sand-lt);
-    }
+    .patreon-btn { display:inline-flex; align-items:center; gap:0.6rem; padding:1.1rem 2.5rem; background:var(--sand); color:#0D1515; border-radius:3px; font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; transition:transform 0.2s, background 0.2s; border:none; cursor:pointer; }
+    .patreon-btn:hover { transform:translateY(-2px); background:var(--sand-lt); }
     .patreon-btn svg { width:20px; height:20px; flex-shrink:0; }
-    .patreon-sub {
-      margin-top:1.25rem;
-      font-size:0.75rem;
-      color:rgba(114,136,138,0.5);
-      font-weight:300;
-      letter-spacing:0.04em;
-    }
+    .patreon-sub { margin-top:1.25rem; font-size:0.75rem; color:rgba(114,136,138,0.5); font-weight:300; letter-spacing:0.04em; }
 
-    /* ── WHAT YOU GET ── */
-    #perks {
-      background:var(--dark);
-      padding:6rem 2rem;
-    }
-    .perks-inner {
-      max-width:1000px;
-      margin:0 auto;
-    }
-    .perks-header {
-      text-align:center;
-      margin-bottom:3.5rem;
-    }
-    .perks-header h2 {
-      font-family:var(--fd);
-      font-size:clamp(1.6rem,3.5vw,2.4rem);
-      font-weight:900;
-      color:var(--white);
-      letter-spacing:0.04em;
-      line-height:1.1;
-    }
-    .perks-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1.5rem;
-    }
-    .perk-card {
-      background:var(--dark-2);
-      border:1px solid rgba(255,255,255,0.05);
-      border-radius:3px;
-      padding:2rem 1.75rem;
-    }
-    .perk-icon {
-      width:36px;
-      height:36px;
-      color:var(--teal-lt);
-      margin-bottom:1.25rem;
-    }
+    /* ── PERKS ── */
+    #perks { background:var(--dark); padding:6rem 2rem; }
+    .perks-inner { max-width:1000px; margin:0 auto; }
+    .perks-header { text-align:center; margin-bottom:3.5rem; }
+    .perks-header h2 { font-family:var(--fd); font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; }
+    .perks-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .perk-card { background:var(--dark-2); border:1px solid rgba(255,255,255,0.05); border-radius:3px; padding:2rem 1.75rem; }
+    .perk-icon { width:36px; height:36px; color:var(--teal-lt); margin-bottom:1.25rem; }
     .perk-icon svg { width:100%; height:100%; }
-    .perk-title {
-      font-family:var(--fd);
-      font-size:0.76rem;
-      font-weight:700;
-      letter-spacing:0.1em;
-      text-transform:uppercase;
-      color:var(--white);
-      display:block;
-      margin-bottom:0.75rem;
-    }
-    .perk-desc {
-      font-size:0.88rem;
-      color:var(--muted);
-      font-weight:300;
-      line-height:1.8;
-    }
+    .perk-title { font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--white); display:block; margin-bottom:0.75rem; }
+    .perk-desc { font-size:0.88rem; color:var(--muted); font-weight:300; line-height:1.8; }
 
-    /* ── FREE WAYS TO HELP ── */
-    #free-help {
-      background:var(--dark-2);
-      border-top:1px solid rgba(255,255,255,0.04);
-      padding:5rem 2rem;
-    }
-    .free-inner {
-      max-width:760px;
-      margin:0 auto;
-      text-align:center;
-    }
-    #free-help h2 {
-      font-family:var(--fd);
-      font-size:clamp(1.5rem,3vw,2.2rem);
-      font-weight:900;
-      color:var(--white);
-      letter-spacing:0.04em;
-      line-height:1.1;
-      margin-bottom:1.25rem;
-    }
-    #free-help p {
-      font-size:1rem;
-      color:var(--muted);
-      font-weight:300;
-      line-height:1.85;
-      max-width:560px;
-      margin:0 auto 2.5rem;
-    }
-    .free-actions {
-      display:flex;
-      gap:1rem;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn-outline {
-      display:inline-flex;
-      align-items:center;
-      gap:0.5rem;
-      padding:0.9rem 1.8rem;
-      border:1.5px solid rgba(90,200,200,0.3);
-      border-radius:3px;
-      color:var(--teal-lt);
-      font-family:var(--fd);
-      font-size:0.7rem;
-      font-weight:700;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      transition:border-color 0.2s, transform 0.2s;
-    }
-    .btn-outline:hover {
-      border-color:rgba(90,200,200,0.7);
-      transform:translateY(-2px);
-    }
+    /* ── FREE HELP ── */
+    #free-help { background:var(--dark-2); border-top:1px solid rgba(255,255,255,0.04); padding:5rem 2rem; }
+    .free-inner { max-width:760px; margin:0 auto; text-align:center; }
+    #free-help h2 { font-family:var(--fd); font-size:clamp(1.5rem,3vw,2.2rem); font-weight:900; color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:1.25rem; }
+    #free-help p { font-size:1rem; color:var(--muted); font-weight:300; line-height:1.85; max-width:560px; margin:0 auto 2.5rem; }
+    .free-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn-outline { display:inline-flex; align-items:center; gap:0.5rem; padding:0.9rem 1.8rem; border:1.5px solid rgba(90,200,200,0.3); border-radius:3px; color:var(--teal-lt); font-family:var(--fd); font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:border-color 0.2s, transform 0.2s; }
+    .btn-outline:hover { border-color:rgba(90,200,200,0.7); transform:translateY(-2px); }
     .btn-outline svg { width:18px; height:18px; flex-shrink:0; }
 
     /* ── FOOTER ── */
@@ -371,7 +146,6 @@
     .footer-links a:hover { color:var(--sand-lt); }
     .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
 
-    /* ── RESPONSIVE ── */
     @media(max-width:900px) {
       nav { padding:0 1.25rem; }
       .nav-links { display:none; }
@@ -389,16 +163,15 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <a href="index.html" class="nav-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="support.html" class="active">Support Us</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="support.html" class="active">Unterstütze Uns</a></li>
   </ul>
   <div class="nav-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
@@ -407,28 +180,28 @@
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="E-Mail">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
     </a>
-    <a href="de/support.html" class="lang-switch" title="Auf Deutsch wechseln">🇩🇪</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+    <a href="../support.html" class="lang-switch" title="Switch to English">🇦🇺</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="nav-drawer" id="nav-drawer">
-  <a href="index.html">Home</a>
-  <a href="truck.html">The Truck</a>
-  <a href="story.html">Our Story</a>
-  <a href="howwedoit.html">How We Do It</a>
-  <a href="home.html">Our Home</a>
-  <a href="files.html">Files</a>
-  <a href="support.html" class="active">Support Us</a>
+  <a href="index.html">Startseite</a>
+  <a href="truck.html">Der Truck</a>
+  <a href="story.html">Unsere Geschichte</a>
+  <a href="howwedoit.html">Wie Wir Es Machen</a>
+  <a href="../home.html">Unser Zuhause</a>
+  <a href="files.html">Dateien</a>
+  <a href="support.html" class="active">Unterstütze Uns</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
   </div>
 </div>
 
@@ -437,100 +210,97 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">No Paid Promotions. No Agenda. Just Us.</span>
-    <h1>Support the <span class="accent">Journey.</span></h1>
+    <span class="hero-eyebrow">Keine bezahlten Promotions. Keine Agenda. Nur wir.</span>
+    <h1>Unterstütze die <span class="accent">Reise.</span></h1>
     <div class="hero-rule"></div>
-    <p class="hero-lead">If what we make means something to you, there's now a way to be part of it.</p>
+    <p class="hero-lead">Wenn das, was wir machen, dir etwas bedeutet, gibt es jetzt eine Möglichkeit, ein Teil davon zu sein.</p>
   </div>
 </section>
 
-<!-- WHY -->
+<!-- WARUM ES WICHTIG IST -->
 <section id="why">
   <div class="why-inner">
-    <span class="section-label">Why It Matters</span>
-    <h2>This channel runs <span class="accent">differently.</span></h2>
+    <span class="section-label">Warum es wichtig ist</span>
+    <h2>Dieser Kanal läuft <span class="accent">anders.</span></h2>
     <p class="why-body">
-      No paid promotions. No brand deals. No algorithm-chasing. We made a conscious decision when we started this: we wouldn't compromise what we make to pay for it.
+      Keine bezahlten Promotions. Keine Markendeals. Kein Algorithmus-Jagen. Als wir anfingen, haben wir eine bewusste Entscheidung getroffen: Wir würden nicht kompromittieren, was wir machen, um es zu finanzieren.
     </p>
     <p class="why-body">
-      That means <strong>3xploreWithUs is funded entirely by people who watch it.</strong> No hidden agenda. No paid placements sneaked into the edit. No mid-roll reads for a VPN we don't actually use. If something appears in our videos, it's because it's part of our real life — we bought it, we use it, we stand behind it.
+      Das bedeutet, <strong>3xploreWithUs wird vollständig von Menschen finanziert, die es sich anschauen.</strong> Keine versteckte Agenda. Keine bezahlten Platzierungen, die heimlich in den Schnitt eingebaut werden. Keine Mid-Roll-Reads für ein VPN, das wir gar nicht benutzen. Wenn etwas in unseren Videos auftaucht, dann weil es Teil unseres echten Lebens ist — wir haben es gekauft, wir benutzen es, wir stehen dahinter.
     </p>
     <p class="why-body">
-      We left behind careers, mortgages and the script most people follow. We built a truck from scratch, put a baby in it, and pointed it at the horizon. <strong>We're not going to sell that story for a cheque.</strong>
+      Wir haben Karrieren, Hypotheken und das Drehbuch, das die meisten Menschen befolgen, hinter uns gelassen. Wir haben einen Truck von Grund auf gebaut, ein Baby hineingesetzt und ihn in Richtung Horizont gelenkt. <strong>Wir werden diese Geschichte nicht für einen Scheck verkaufen.</strong>
     </p>
     <div class="why-rule"></div>
     <p class="why-body">
-      If you've ever watched one of our videos and felt something — curiosity, longing, a quiet reminder that there's another way — then this page is for you.
+      Wenn du jemals eines unserer Videos geschaut und etwas gefühlt hast — Neugier, Sehnsucht, eine stille Erinnerung, dass es einen anderen Weg gibt — dann ist diese Seite für dich.
     </p>
   </div>
 </section>
 
-<!-- PATREON CTA -->
+<!-- PATREON -->
 <section id="patreon">
   <div class="patreon-inner">
     <div class="patreon-icon">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.21 0 3.96-3.22 7.18-7.18 7.18-3.97 0-7.21-3.22-7.21-7.18 0-3.97 3.24-7.21 7.21-7.21M2 21.6h3.5V2.41H2V21.6z"/></svg>
     </div>
     <span class="section-label">Patreon</span>
-    <h2>Become a supporter.</h2>
+    <h2>Werde ein Unterstützer.</h2>
     <p>
-      Patreon is how we keep the lights on — or in our case, the solar charged and the editing drives spinning. <strong>Every contribution, no matter the size, goes directly into making the next episode better.</strong> And it means we stay independent while we do it.
+      Patreon ist, wie wir die Lichter anlassen — oder in unserem Fall, die Solaranlage geladen und die Festplatten am Drehen halten. <strong>Jeder Beitrag, egal wie groß, fließt direkt in die nächste, bessere Episode.</strong> Und es bedeutet, dass wir dabei unabhängig bleiben.
     </p>
     <a href="https://www.patreon.com/3xplorewithus" target="_blank" class="patreon-btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.21 0 3.96-3.22 7.18-7.18 7.18-3.97 0-7.21-3.22-7.21-7.18 0-3.97 3.24-7.21 7.21-7.21M2 21.6h3.5V2.41H2V21.6z"/></svg>
-      Support on Patreon
+      Auf Patreon unterstützen
     </a>
-    <p class="patreon-sub">Cancel any time. No commitment.</p>
+    <p class="patreon-sub">Jederzeit kündbar. Keine Verpflichtung.</p>
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
+<!-- STUFEN -->
 <section id="perks">
   <div class="perks-inner">
     <div class="perks-header">
-      <span class="section-label">Patreon Membership Tiers</span>
-      <h2>Find your place in the journey.</h2>
+      <span class="section-label">Patreon Mitgliedschaftsstufen</span>
+      <h2>Finde deinen Platz auf der Reise.</h2>
     </div>
-    <div class="perks-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="perks-grid">
 
       <div class="perk-card">
         <div class="perk-icon">
-          <!-- Backpack / traveller -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 1 6 0"/><path d="M5 8h14a1 1 0 0 1 1 1v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a1 1 0 0 1 1-1z"/><path d="M9 4v4"/><path d="M15 4v4"/><path d="M8 14h8"/></svg>
         </div>
-        <span class="perk-title">Mate — €4/mo</span>
-        <p class="perk-desc">You're in, mate — and we're bloody glad you are. Access to all our patron posts: the stuff that doesn't make the final cut, updates from wherever we're parked, and the honest version of what's going on. Cheers for being here.</p>
+        <span class="perk-title">Mate — €4/Mo</span>
+        <p class="perk-desc">Du bist dabei, Mate — und wir freuen uns riesig, dass du hier bist. Zugang zu allen unseren Patron-Posts: das Zeug, das es nicht in den Endschnitt geschafft hat, Updates von überall, wo wir gerade stehen, und die ehrliche Version von dem, was passiert. Cheers, dass du hier bist.</p>
         <ul style="margin-top:1rem;padding-left:1.1rem;font-size:0.83rem;color:var(--muted);font-weight:300;line-height:2;list-style:disc;">
-          <li>Patron-only posts from the road</li>
-          <li>Behind-the-scenes footage &amp; updates</li>
+          <li>Exklusive Posts von unterwegs</li>
+          <li>Hinter-den-Kulissen-Footage &amp; Updates</li>
         </ul>
       </div>
 
       <div class="perk-card" style="border-color:rgba(212,169,106,0.3);">
         <div class="perk-icon" style="color:var(--sand-lt);">
-          <!-- Film clapperboard — early access to episodes -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M2 7l4-4h12l4 4"/><line x1="7" y1="3" x2="7" y2="7"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="17" y1="3" x2="17" y2="7"/></svg>
         </div>
-        <span class="perk-title" style="color:var(--sand-lt);">Champ — €9/mo</span>
-        <p class="perk-desc">A champ is hard to find, and you're one of them. Everything in Fellow Traveller, plus early access to new episodes before they hit YouTube, and your name in the credits of every film.</p>
+        <span class="perk-title" style="color:var(--sand-lt);">Champ — €9/Mo</span>
+        <p class="perk-desc">Ein Champ ist schwer zu finden, und du bist einer davon. Alles aus der Mate-Stufe, plus früher Zugang zu neuen Episoden, bevor sie auf YouTube erscheinen, und dein Name in den Credits jedes Films.</p>
         <ul style="margin-top:1rem;padding-left:1.1rem;font-size:0.83rem;color:var(--muted);font-weight:300;line-height:2;list-style:disc;">
-          <li>All Mate benefits</li>
-          <li>Early access to new episodes</li>
-          <li>Your name in the credits</li>
+          <li>Alle Mate-Vorteile</li>
+          <li>Früher Zugang zu neuen Episoden</li>
+          <li>Dein Name in den Credits</li>
         </ul>
       </div>
 
       <div class="perk-card">
         <div class="perk-icon">
-          <!-- Postcard / envelope with stamp -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><polyline points="2,5 12,13 22,5"/><line x1="16" y1="9" x2="20" y2="9"/><line x1="16" y1="12" x2="20" y2="12"/></svg>
         </div>
-        <span class="perk-title">Bloody Legend — €18/mo</span>
-        <p class="perk-desc">You're a bloody legend. There's no other word for it. You're the reason this stays independent — no paid promotions, no compromises, just us making something we're proud of. In return, we want you in the conversation: pitch us a topic, suggest somewhere we should go, tell us what you want more of. We read everything. And we'll send you a real postcard from wherever we happen to be parked — stamp, handwriting, the lot.</p>
+        <span class="perk-title">Bloody Legend — €18/Mo</span>
+        <p class="perk-desc">Du bist eine verdammte Legende. Es gibt kein anderes Wort dafür. Du bist der Grund, warum wir unabhängig bleiben — keine bezahlten Promotions, keine Kompromisse, nur wir, die etwas machen, auf das wir stolz sind. Dafür wollen wir dich in das Gespräch einbeziehen: Schlage uns ein Thema vor, schlage vor, wohin wir gehen sollen, sag uns, was du dir mehr wünschst. Wir lesen alles. Und wir schicken dir eine echte Postkarte von wo auch immer wir gerade geparkt sind — Briefmarke, Handschrift, das volle Programm.</p>
         <ul style="margin-top:1rem;padding-left:1.1rem;font-size:0.83rem;color:var(--muted);font-weight:300;line-height:2;list-style:disc;">
-          <li>All Champ benefits</li>
-          <li>A real postcard from the road</li>
-          <li>Suggest topics &amp; destinations</li>
+          <li>Alle Champ-Vorteile</li>
+          <li>Eine echte Postkarte von unterwegs</li>
+          <li>Themen &amp; Ziele vorschlagen</li>
         </ul>
       </div>
 
@@ -538,24 +308,24 @@
   </div>
 </section>
 
-<!-- FREE WAYS TO HELP -->
+<!-- KOSTENLOSE HILFE -->
 <section id="free-help">
   <div class="free-inner">
-    <span class="section-label">Not Ready to Commit?</span>
-    <h2>You can support us for free.</h2>
-    <p>Watch a video. Leave a comment. Share an episode with one person who might need to see it. Word of mouth is how channels like ours actually survive — and it means more to us than any metric ever could.</p>
+    <span class="section-label">Noch nicht bereit?</span>
+    <h2>Du kannst uns kostenlos unterstützen.</h2>
+    <p>Schau ein Video. Hinterlasse einen Kommentar. Teile eine Episode mit einer Person, die sie sehen sollte. Mundpropaganda ist, wie Kanäle wie unserer wirklich überleben — und es bedeutet uns mehr als jede Metrik.</p>
     <div class="free-actions">
       <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn-outline">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
-        Subscribe on YouTube
+        Auf YouTube abonnieren
       </a>
       <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="btn-outline">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        Follow on Instagram
+        Auf Instagram folgen
       </a>
       <a href="mailto:adventure@3xplorewithus.com" class="btn-outline">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-        Get in Touch
+        Kontakt aufnehmen
       </a>
     </div>
   </div>
@@ -563,22 +333,21 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <div class="footer-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="support.html">Support Us</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="support.html">Unterstütze Uns</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
   </ul>
-  <p class="footer-copy">© 2026 3xploreWithUs</p>
+  <p class="footer-copy">&copy; 2026 3xploreWithUs</p>
 </footer>
 
 <script>
-/* ── MOBILE NAV ── */
 (function(){
   var burger = document.getElementById('nav-burger');
   var drawer = document.getElementById('nav-drawer');
@@ -597,6 +366,6 @@
 })();
 </script>
 
-<script src="site-animations.js"></script>
+<script src="../site-animations.js"></script>
 </body>
 </html>

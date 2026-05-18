@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJH04YSJMG"></script>
@@ -11,33 +11,22 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="EditingElements/Favicon_v1.png" />
-  <title>The Steyr 12M18 — 3xploreWithUs</title>
-  <meta name="description" content="8 months. 3,000+ hours. Every bolt replaced. The story behind the 1986 Steyr 12M18 that became home." />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>Der Steyr 12M18 — 3xploreWithUs</title>
+  <meta name="description" content="8 Monate. 3.000+ Stunden. Jede Schraube ersetzt. Die Geschichte hinter dem 1986er Steyr 12M18, der unser Zuhause wurde." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family: 'TypoGraphica';
-      src: url('TypoGraphica_demo.otf') format('opentype');
+      src: url('../TypoGraphica_demo.otf') format('opentype');
       font-display: swap;
+      unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
     }
-    @font-face {
-      font-family: 'Roboto';
-      src: url('Roboto/static/Roboto-Light.ttf') format('truetype');
-      font-weight: 300; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Roboto';
-      src: url('Roboto/static/Roboto-Regular.ttf') format('truetype');
-      font-weight: 400; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Roboto';
-      src: url('Roboto/static/Roboto-Medium.ttf') format('truetype');
-      font-weight: 500; font-display: swap;
-    }
+    @font-face { font-family: 'Roboto'; src: url('../Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'Roboto'; src: url('../Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'Roboto'; src: url('../Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
     :root {
       --teal:    #1A9090;
       --teal-lt: #5AC8C8;
@@ -83,7 +72,7 @@
     .lang-switch { font-size:1.25rem; color:rgba(245,242,236,0.7); padding:0.2rem 0.3rem; border-radius:2px; transition:opacity 0.2s; margin-left:0.4rem; line-height:1; }
     .lang-switch:hover { opacity:1; color:var(--white); }
 
-    /* ── PAGE NAV ── */
+    /* PAGE NAV */
     #page-nav { background:var(--dark-2); border-bottom:1px solid rgba(255,255,255,0.05); padding:0 2rem; display:flex; justify-content:center; position:sticky; top:72px; z-index:100; }
     .page-nav-inner { display:flex; gap:0; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
     .page-nav-inner::-webkit-scrollbar { display:none; }
@@ -91,13 +80,7 @@
     .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
 
     /* BUTTONS */
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.85rem 1.8rem; border-radius: 3px;
-      font-family: var(--fd); font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      transition: transform 0.2s, opacity 0.2s;
-    }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border-radius: 3px; font-family: var(--fd); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: transform 0.2s, opacity 0.2s; }
     .btn:hover { transform: translateY(-2px); opacity: 0.88; }
     .btn-teal       { background: var(--teal-lt); color: var(--dark); }
     .btn-ghost-cool { background: transparent; border: 1.5px solid rgba(90,200,200,0.3); color: var(--teal-lt); }
@@ -105,45 +88,22 @@
     /* SHARED */
     section { padding: 4rem 2rem; }
     .container { max-width: 1120px; margin: 0 auto; }
-    .label {
-      font-family: var(--fd); font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--teal-lt); margin-bottom: 0.75rem; display: block;
-    }
-    h2 {
-      font-family: var(--fd); font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900; color: var(--white); line-height: 1.08; margin-bottom: 1.2rem;
-      letter-spacing: 0.04em;
-    }
+    .label { font-family: var(--fd); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-lt); margin-bottom: 0.75rem; display: block; }
+    h2 { font-family: var(--fd); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.08; margin-bottom: 1.2rem; letter-spacing: 0.04em; }
     .divider { width: 40px; height: 3px; background: var(--teal); border-radius: 2px; margin: 1.2rem 0; }
     .body-text { font-size: 1.05rem; color: var(--muted); line-height: 1.85; max-width: 640px; }
     .body-text + .body-text { margin-top: 1rem; }
 
-    /* ── HERO ───────────────────────────────────────────────────────── */
+    /* HERO */
     #hero { position:relative; height:100vh; overflow:hidden; cursor:none; }
     .hero-photo-layer { position:absolute; inset:-50px; will-change:transform; transition:transform 0.1s linear; }
     .hero-photo-layer picture { width:100%; height:100%; display:block; }
     .hero-photo-layer img { width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }
-    #hero::after {
-      content:''; position:absolute; inset:0; z-index:1;
-      background:linear-gradient(135deg, rgba(5,10,10,0.15) 0%, rgba(5,10,10,0.0) 30%, rgba(13,21,21,0.9) 100%);
-      pointer-events:none;
-    }
+    #hero::after { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(135deg, rgba(5,10,10,0.15) 0%, rgba(5,10,10,0.0) 30%, rgba(13,21,21,0.9) 100%); pointer-events:none; }
     .hero-overlay-content { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:flex-end; padding:0 4rem 2.5rem; }
     .hero-text-block { margin-left:auto; max-width:520px; }
-    .hero-eyebrow {
-      font-family:var(--fd); font-size:0.68rem; font-weight:700;
-      letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt);
-      margin-bottom:1rem; display:block;
-      opacity:0; transform:translateY(18px); animation:hero-fade-up 0.7s 0.1s forwards;
-    }
-    #hero h1 {
-      font-family:var(--fd);
-      font-size:clamp(3rem, 8vw, 6rem);
-      font-weight:900; color:var(--white); line-height:1.02; margin-bottom:0;
-      letter-spacing:0.04em;
-      opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards;
-    }
+    .hero-eyebrow { font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); margin-bottom:1rem; display:block; opacity:0; transform:translateY(18px); animation:hero-fade-up 0.7s 0.1s forwards; }
+    #hero h1 { font-family:var(--fd); font-size:clamp(3rem, 8vw, 6rem); font-weight:900; color:var(--white); line-height:1.02; margin-bottom:0; letter-spacing:0.04em; opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards; }
     #hero h1 .h1-accent { color:#5AC8C8; }
     .hero-rule { width:0; height:2px; background:var(--sand); border:none; margin:1.25rem 0 0; animation:hero-grow 0.6s 0.7s forwards; }
     .hero-bottom { opacity:0; transform:translateY(16px); animation:hero-fade-up 0.7s 0.85s forwards; margin-top:1.5rem; }
@@ -152,107 +112,61 @@
     .hero-scroll { display:flex; align-items:center; gap:0.6rem; font-family:var(--fd); font-size:0.55rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:rgba(237,217,163,0.55); margin-top:1.5rem; }
     .hero-scroll-line { position:relative; width:1px; height:28px; background:rgba(237,217,163,0.18); overflow:hidden; }
     .hero-scroll-line::after { content:''; position:absolute; top:-100%; left:0; width:100%; height:100%; background:var(--sand-lt); animation:hero-scroll-tick 2s 1.5s ease-in-out infinite; }
-    /* Custom cursor */
     .hero-cursor { position:fixed; width:7px; height:7px; border-radius:50%; background:var(--sand-lt); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); mix-blend-mode:difference; transition:opacity 0.2s; }
     .hero-cursor-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(237,217,163,0.35); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:left 0.18s ease, top 0.18s ease, opacity 0.2s; }
     @keyframes hero-fade-up { to { opacity:1; transform:translateY(0); } }
     @keyframes hero-grow    { to { width:44px; } }
     @keyframes hero-scroll-tick { 0%{top:-100%} 100%{top:200%} }
 
-    /* ── STATS STRIP ────────────────────────────────────────────────── */
-    .stats-strip {
-      background: var(--dark-2);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      padding: 2.5rem 2rem;
-    }
-    .stats-inner {
-      max-width: 1120px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr); text-align: center;
-    }
+    /* STATS STRIP */
+    .stats-strip { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); padding: 2.5rem 2rem; }
+    .stats-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
     .stat-item { padding: 0.5rem 1rem; }
     .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,0.06); }
-    .stat-num {
-      font-family: var(--fd); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 900; color: var(--teal-lt); line-height: 1; display: block; letter-spacing: 0.04em;
-    }
-    .stat-lbl {
-      font-family: var(--fd); font-size: 0.64rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted); margin-top: 0.4rem; display: block;
-    }
+    .stat-num { font-family: var(--fd); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: var(--teal-lt); line-height: 1; display: block; letter-spacing: 0.04em; }
+    .stat-lbl { font-family: var(--fd); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; display: block; }
 
-    /* ── WHY A TRUCK ────────────────────────────────────────────────── */
+    /* WHY TRUCK */
     #why-truck { background: var(--dark); }
     .why-truck-inner { max-width: 1100px; margin: 0 auto; }
     .why-truck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .why-truck-photo { border-radius: 4px; overflow: hidden; position: sticky; top: 110px; }
     .why-truck-photo img { width: 100%; height: auto; display: block; object-fit: cover; }
     .why-truck-lead { font-size: 1.15rem; color: var(--text); line-height: 1.9; font-weight: 300; margin-bottom: 3rem; max-width: 720px; }
-    @media (max-width: 860px) {
-      .why-truck-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .why-truck-photo { position: static; }
-    }
-    .vehicles-label {
-      font-family: var(--fd); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--muted); display: block; margin-bottom: 1.5rem;
-    }
+    @media (max-width: 860px) { .why-truck-grid { grid-template-columns: 1fr; gap: 2.5rem; } .why-truck-photo { position: static; } }
+    .vehicles-label { font-family: var(--fd); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 1.5rem; }
     .vehicle-list { display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,0.04); margin-bottom: 2.5rem; }
     .vehicle-item { background: var(--dark-2); padding: 1.75rem 2rem; display: grid; grid-template-columns: 160px 1fr; gap: 2rem; align-items: start; }
     .vehicle-name { font-family: var(--fd); font-size: 0.9rem; font-weight: 900; color: var(--teal-lt); letter-spacing: 0.06em; padding-top: 0.1rem; }
     .vehicle-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
-    .truck-conclusion {
-      border-left: 3px solid var(--teal); padding: 1.25rem 1.75rem;
-      background: rgba(26,144,144,0.06); border-radius: 0 3px 3px 0; margin-bottom: 2.5rem;
-    }
+    .truck-conclusion { border-left: 3px solid var(--teal); padding: 1.25rem 1.75rem; background: rgba(26,144,144,0.06); border-radius: 0 3px 3px 0; margin-bottom: 2.5rem; }
     .truck-conclusion .truck-word { font-family: var(--fd); font-size: 1.6rem; font-weight: 900; color: var(--white); letter-spacing: 0.06em; display: block; margin-bottom: 0.75rem; }
     .truck-conclusion p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; font-weight: 300; }
     .truck-conclusion p + p { margin-top: 0.85rem; }
-    @media (max-width: 640px) {
-      .vehicle-item { grid-template-columns: 1fr; gap: 0.4rem; }
-    }
+    @media (max-width: 640px) { .vehicle-item { grid-template-columns: 1fr; gap: 0.4rem; } }
 
-    /* ── BUILD STORY ────────────────────────────────────────────────── */
+    /* BUILD STORY */
     #build-story { background: var(--dark-2); }
     .build-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .build-photo { border-radius: 4px; overflow: hidden; aspect-ratio: 3/4; }
     .build-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-    .build-pull {
-      margin: 2rem 0; border-left: 3px solid var(--teal);
-      padding: 1rem 1.5rem; background: rgba(26,144,144,0.06); border-radius: 0 3px 3px 0;
-    }
-    .build-pull p {
-      font-family: var(--fd); font-size: 1rem;
-      color: var(--white); line-height: 1.65; letter-spacing: 0.03em;
-    }
+    .build-pull { margin: 2rem 0; border-left: 3px solid var(--teal); padding: 1rem 1.5rem; background: rgba(26,144,144,0.06); border-radius: 0 3px 3px 0; }
+    .build-pull p { font-family: var(--fd); font-size: 1rem; color: var(--white); line-height: 1.65; letter-spacing: 0.03em; }
 
-    /* ── ANNOTATED TRUCK PROFILE ────────────────────────────────────── */
+    /* ANNOTATED TRUCK PROFILE */
     #truck-profile { background: var(--dark); }
     .profile-intro { max-width: 680px; margin-bottom: 3rem; }
     .truck-diagram-wrap { position: relative; max-width: 1000px; margin: 0 auto; background: var(--dark); }
     .truck-diagram-wrap > img { width: 100%; display: block; }
-    .truck-diagram-wrap svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-    /* ── ANNOTATION LABELS (always visible) ── */
-    .truck-diagram-wrap { position: relative; max-width: 1000px; margin: 0 auto; }
-    .truck-diagram-wrap img { width: 100%; display: block; }
     .ann-hotspot { position: absolute; }
-    .ann-card {
-      display: inline-block;
-      background: rgba(13,21,21,0.82); backdrop-filter: blur(6px);
-      border: 1px solid rgba(90,200,200,0.25); border-radius: 3px;
-      padding: 0.4rem 0.7rem 0.45rem 0.5rem;
-    }
+    .ann-card { display: inline-block; background: rgba(13,21,21,0.82); backdrop-filter: blur(6px); border: 1px solid rgba(90,200,200,0.25); border-radius: 3px; padding: 0.4rem 0.7rem 0.45rem 0.5rem; }
     .ann-desc { max-width: 220px; }
     .ann-card-head { display: flex; align-items: center; gap: 0.45rem; margin-bottom: 0.25rem; }
     .ann-num { font-family: var(--fd); font-size: 0.88rem; font-weight: 900; color: var(--teal-lt); line-height: 1; letter-spacing: 0.04em; }
     .ann-title { font-family: var(--fd); font-size: 0.79rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.3; }
     .ann-desc { font-family: var(--fb); font-size: 0.72rem; font-weight: 300; color: var(--muted); line-height: 1.55; }
-    /* flip right-side cards so they don't overflow */
     .ann-hotspot.flip-left .ann-card { text-align: right; }
     .ann-hotspot.flip-left .ann-card-head { flex-direction: row-reverse; }
-
-    /* ── MOBILE ANNOTATION LIST (hidden on desktop) ── */
     .ann-mobile-list { display: none; }
     .ann-mobile-item { display: flex; gap: 1rem; align-items: flex-start; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .ann-mobile-item:last-child { border-bottom: none; }
@@ -260,35 +174,19 @@
     .ann-mobile-title { font-family: var(--fd); font-size: 0.75rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.3; display: block; margin-bottom: 0.3rem; }
     .ann-mobile-desc { font-family: var(--fb); font-size: 0.78rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
 
-    /* ── ENGINE & UPGRADES ──────────────────────────────────────────── */
+    /* ENGINE & UPGRADES */
     #upgrades { background: var(--dark-3); }
     .upgrade-intro { max-width: 680px; margin-bottom: 3rem; }
     .upgrade-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .upgrade-card {
-      padding: 1.5rem 1.25rem; background: var(--dark-2);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-top: 2px solid var(--teal); border-radius: 0 0 3px 3px;
-    }
+    .upgrade-card { padding: 1.5rem 1.25rem; background: var(--dark-2); border: 1px solid rgba(255,255,255,0.05); border-top: 2px solid var(--teal); border-radius: 0 0 3px 3px; }
     .upg-icon { width: 26px; height: 26px; color: var(--teal-lt); margin-bottom: 0.85rem; }
     .upg-icon svg { width: 100%; height: 100%; stroke: currentColor; }
     .upg-title { font-family: var(--fd); font-size: 0.85rem; font-weight: 900; color: var(--white); margin-bottom: 0.35rem; letter-spacing: 0.03em; }
     .upg-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
-    .upg-badge {
-      display: inline-block; margin-top: 0.65rem;
-      font-family: var(--fd); font-size: 0.6rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--teal-lt); background: rgba(26,144,144,0.12);
-      border: 1px solid rgba(90,200,200,0.2); border-radius: 999px;
-      padding: 0.2rem 0.65rem;
-    }
+    .upg-badge { display: inline-block; margin-top: 0.65rem; font-family: var(--fd); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-lt); background: rgba(26,144,144,0.12); border: 1px solid rgba(90,200,200,0.2); border-radius: 999px; padding: 0.2rem 0.65rem; }
 
-    /* ── POWER & ELECTRICAL ─────────────────────────────────────────── */
-
-    /* ── STEYR vs WORLD ─────────────────────────────────────────────── */
-    #why-steyr {
-      background: url('truck_photos/P1356671.jpeg') center 72% / cover no-repeat;
-      position: relative;
-    }
+    /* WHY STEYR */
+    #why-steyr { background: url('../Photos/Truck_Photos/P1356671.jpeg') center 72% / cover no-repeat; position: relative; }
     #why-steyr::before { content: ''; position: absolute; inset: 0; background: rgba(5, 12, 12, 0.86); }
     .why-inner { position: relative; z-index: 2; }
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -304,47 +202,31 @@
     .adv-title { font-family: var(--fd); font-weight: 700; font-size: 0.88rem; color: var(--white); margin-bottom: 0.15rem; letter-spacing: 0.03em; }
     .adv-desc { font-size: 0.82rem; color: var(--muted); }
 
-    /* ── BUILD GALLERY (drifting portrait strip) ───────────────────── */
+    /* BUILD GALLERY */
     #build-gallery { background: var(--dark-2); }
     .gallery-split { display: grid; grid-template-columns: 1fr 1.25fr; gap: 5rem; align-items: center; }
     .build-flow-wrap { display: flex; flex-direction: column; gap: 0.85rem; }
     .build-flow { overflow: hidden; border-radius: 3px; cursor: grab; user-select: none; }
     .build-flow.dragging { cursor: grabbing; }
-    .build-flow-track {
-      display: flex; gap: 4px;
-      overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none;
-    }
+    .build-flow-track { display: flex; gap: 4px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; }
     .build-flow-track::-webkit-scrollbar { display: none; }
     .build-flow-item { flex: 0 0 auto; }
     .build-flow-item img { height: 480px; width: auto; object-fit: cover; display: block; pointer-events: none; }
     .gallery-controls { display: flex; justify-content: flex-end; }
-    .pause-btn {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      background: transparent; border: 1px solid rgba(90,200,200,0.25);
-      color: var(--teal-lt); border-radius: 2px;
-      font-family: var(--fd); font-size: 0.58rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 0.45rem 0.9rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
-    }
+    .pause-btn { display: inline-flex; align-items: center; gap: 0.45rem; background: transparent; border: 1px solid rgba(90,200,200,0.25); color: var(--teal-lt); border-radius: 2px; font-family: var(--fd); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.45rem 0.9rem; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
     .pause-btn:hover { border-color: rgba(90,200,200,0.6); color: var(--white); }
     .pause-btn svg { width: 10px; height: 10px; fill: currentColor; flex-shrink: 0; }
-    @media (max-width: 900px) {
-      .gallery-split { grid-template-columns: 1fr; gap: 2.5rem; }
-      .build-flow-item img { height: 55vw; }
-    }
+    @media (max-width: 900px) { .gallery-split { grid-template-columns: 1fr; gap: 2.5rem; } .build-flow-item img { height: 55vw; } }
 
-    /* ── CTA SECTION ────────────────────────────────────────────────── */
-    #cta {
-      background: url('truck_photos/CTA_section_background.jpg') center 35% / cover no-repeat;
-      position: relative; min-height: 55vh; display: flex; align-items: center;
-    }
+    /* CTA */
+    #cta { background: url('../Photos/Truck_Photos/CTA_section_background.jpg') center 35% / cover no-repeat; position: relative; min-height: 55vh; display: flex; align-items: center; }
     #cta::before { content: ''; position: absolute; inset: 0; background: rgba(5, 12, 12, 0.68); }
     .cta-inner { position: relative; z-index: 2; padding: 4rem 2rem; max-width: 680px; margin: 0 auto; text-align: center; }
     .cta-inner h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
     .cta-inner .body-text { margin: 0 auto 2rem; }
     .cta-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    /* ── FOOTER ─────────────────────────────────────────────────────── */
+    /* FOOTER */
     footer { background: #080f0f; border-top: 1px solid rgba(255,255,255,0.04); padding: 2rem 2rem; text-align: center; }
     .footer-logo img { height: 42px; width: auto; margin: 0 auto 1.25rem; }
     .footer-tagline { font-family: var(--fd); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.75rem; }
@@ -353,8 +235,7 @@
     .footer-links a:hover { color: var(--teal-lt); }
     .footer-copy { font-size: 0.7rem; color: rgba(114,136,138,0.4); }
 
-    /* ── RESPONSIVE ─────────────────────────────────────────────────── */
-    /* ── MOBILE NAV ── */
+    /* MOBILE NAV */
     .nav-burger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px; background:none; border:none; margin-left:1rem; flex-shrink:0; }
     .nav-burger span { display:block; width:22px; height:2px; background:var(--white); border-radius:2px; transition:transform 0.3s, opacity 0.3s; }
     .nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
@@ -375,7 +256,6 @@
       .nav-links { display: none; }
       .nav-social { display:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
-      /* Sub-nav sits flush under main nav */
       #page-nav { position: fixed; top: 72px; left: 0; right: 0; z-index: 150; }
       body { padding-top: 116px; }
       section { padding: 4rem 1.25rem; }
@@ -383,17 +263,11 @@
       .hero-overlay-content { padding: 0 1.25rem 1.5rem; }
       .build-grid, .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .build-photo-grid { grid-template-columns: repeat(2, 1fr); }
-      .bp.wide { grid-column: span 2; }
-      .ann-accordion { margin-top: 1.5rem; }
       .ann-hotspot { display: none; }
       .ann-mobile-list { display: block; margin-top: 1.5rem; }
       .upgrade-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 540px) {
-      .build-photo-grid { grid-template-columns: 1fr; }
-      .bp.wide { grid-column: span 1; aspect-ratio: 3/4; }
-      .ann-desc { padding-left: 1.25rem; }
       .stat-item + .stat-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
       .upgrade-grid { grid-template-columns: 1fr; }
     }
@@ -404,15 +278,15 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="EditingElements/logo_black.png" alt="3xploreWithUs" />
+    <img src="../EditingElements/logo_black.png" alt="3xploreWithUs" />
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html" class="active">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html" class="active">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="files.html">Dateien</a></li>
   </ul>
   <div class="nav-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
@@ -421,26 +295,26 @@
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="E-Mail">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
     </a>
-    <a href="de/truck.html" class="lang-switch" title="Auf Deutsch wechseln">🇩🇪</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+    <a href="../truck.html" class="lang-switch" title="Switch to English">🇦🇺</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="nav-drawer" id="nav-drawer">
-  <a href="index.html">Home</a>
-  <a href="truck.html" class="active">The Truck</a>
-  <a href="story.html">Our Story</a>
-  <a href="howwedoit.html">How We Do It</a>
-  <a href="home.html">Our Home</a>
+  <a href="index.html">Startseite</a>
+  <a href="truck.html" class="active">Der Truck</a>
+  <a href="story.html">Unsere Geschichte</a>
+  <a href="howwedoit.html">Wie Wir Es Machen</a>
+  <a href="../home.html">Unser Zuhause</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
   </div>
 </div>
 
@@ -451,20 +325,20 @@
 <section id="hero">
   <div class="hero-photo-layer" id="heroPhotoLayer">
     <picture>
-      <source media="(max-width: 768px)" srcset="Photos/Truck_Photos/Mobile_truck.jpg" />
-      <img src="Photos/Truck_Photos/P1356813.jpg" alt="Steyr 12M18 Expedition Truck" />
+      <source media="(max-width: 768px)" srcset="../Photos/Truck_Photos/Mobile_truck.jpg" />
+      <img src="../Photos/Truck_Photos/P1356813.jpg" alt="Steyr 12M18 Expeditions-LKW" />
     </picture>
   </div>
   <div class="hero-overlay-content">
     <div class="hero-text-block">
-      <span class="hero-eyebrow">1986 Steyr 12M18 — Self-Built Expedition Home</span>
-      <h1>Built to go<br /><span class="h1-accent">anywhere.</span></h1>
+      <span class="hero-eyebrow">1986 Steyr 12M18 — Selbst gebautes Expeditionsheim</span>
+      <h1>Gebaut um<br /><span class="h1-accent">überall hinzukommen.</span></h1>
       <div class="hero-rule"></div>
       <div class="hero-bottom">
-        <p class="sub">Eight months. 3,000+ hours. We bought an old Austrian army truck that had been sitting for years and turned it into our full-time home for world travel with our daughter and dog Rocket.</p>
+        <p class="sub">Acht Monate. 3.000+ Stunden. Wir kauften einen alten österreichischen Militär-LKW, der jahrelang gestanden hatte, und bauten ihn zu unserem Vollzeit-Zuhause für Weltreisen mit unserer Tochter und Hund Rocket um.</p>
         <div class="hero-ctas">
-          <a href="#why-truck" class="btn btn-teal">Read the Build Story</a>
-          <a href="index.html" class="btn btn-ghost-cool">← Back to Home</a>
+          <a href="#why-truck" class="btn btn-teal">Die Baugeschichte lesen</a>
+          <a href="index.html" class="btn btn-ghost-cool">&larr; Zurück zur Startseite</a>
         </div>
         <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll</div>
       </div>
@@ -475,298 +349,286 @@
 <!-- ANCHOR NAV -->
 <nav id="page-nav">
   <div class="page-nav-inner">
-    <a href="#why-truck" class="page-nav-link">The Build</a>
-    <a href="#truck-profile" class="page-nav-link">The Truck</a>
-    <a href="#upgrades" class="page-nav-link">Engine &amp; Upgrades</a>
-    <a href="#why-steyr" class="page-nav-link">Why the Steyr</a>
-    <a href="#build-gallery" class="page-nav-link">Build Gallery</a>
+    <a href="#why-truck" class="page-nav-link">Der Aufbau</a>
+    <a href="#truck-profile" class="page-nav-link">Der Truck</a>
+    <a href="#upgrades" class="page-nav-link">Motor &amp; Upgrades</a>
+    <a href="#why-steyr" class="page-nav-link">Warum der Steyr</a>
+    <a href="#build-gallery" class="page-nav-link">Aufbau-Galerie</a>
   </div>
 </nav>
 
-<!-- BUILD STATS -->
+<!-- STATS -->
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item">
       <span class="stat-num">8</span>
-      <span class="stat-lbl">Months of build</span>
+      <span class="stat-lbl">Monate Aufbau</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">3,000+</span>
-      <span class="stat-lbl">Hands-on hours</span>
+      <span class="stat-num">3.000+</span>
+      <span class="stat-lbl">Arbeitsstunden</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">840+</span>
-      <span class="stat-lbl">Coffees consumed</span>
+      <span class="stat-lbl">Kaffees getrunken</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">3</span>
-      <span class="stat-lbl">Months we thought it would take</span>
+      <span class="stat-lbl">Monate, die wir dachten, es würde dauern</span>
     </div>
   </div>
 </div>
 
-<!-- THE BUILD -->
+<!-- DER AUFBAU -->
 <section id="why-truck">
   <div class="why-truck-inner">
     <div class="why-truck-grid">
-      <!-- LEFT: photo -->
       <div class="why-truck-photo">
-        <img src="Photos/Truck_Photos/BuildGalleryGrid7.jpg" alt="Steyr 12M18 build" />
+        <img src="../Photos/Truck_Photos/BuildGalleryGrid7.jpg" alt="Steyr 12M18 Aufbau" />
       </div>
-      <!-- RIGHT: text -->
       <div>
-        <span class="label">The Build</span>
-        <h2>From rusted military surplus to home.</h2>
+        <span class="label">Der Aufbau</span>
+        <h2>Vom rostigen Militärüberschuss zum Zuhause.</h2>
         <div class="divider"></div>
-        <p class="body-text">We flew to Europe with a rough plan. What we found was a 1986 Steyr 12M18 that had been sitting idle for years — bolts rusted solid and an FM2 military shelter on the back with a half-finished set-up.</p>
+        <p class="body-text">Wir flogen mit einem groben Plan nach Europa. Was wir fanden, war ein 1986er Steyr 12M18, der jahrelang gestanden hatte — Schrauben festgerostet und ein FM2-Militärschutzraum auf der Ladefläche mit einem halb fertigen Ausbau.</p>
         <div class="build-pull">
-          <p>"We bought every single tool. Most of it was junk after decades of military storage… but some things were worth saving."</p>
+          <p>"Wir kauften jedes einzelne Werkzeug. Das meiste war nach Jahrzehnten der Militärlagerung Schrott… aber einige Dinge waren es wert, gerettet zu werden."</p>
         </div>
-        <p class="body-text">Neither of us had ever built a truck before. We started in our driveway, then moved into a horse farmer's shed when winter came. Right in the middle of the build, we found out Mareike was pregnant. Our daughter arrived in May 2026, just as we were finishing.</p>
-        <p class="body-text">We kept the strong military bones, completely re-wired, re-plumbed, insulated and rebuilt the interior from scratch. The result is a tough, self-contained expedition home with solar, water systems, a proper kitchen and enough storage for long stints in the middle of nowhere.</p>
-        <p class="body-text">It took eight months — five more than planned. It was hard work, but it was worth it.</p>
+        <p class="body-text">Keiner von uns hatte jemals zuvor einen LKW gebaut. Wir begannen auf unserer Einfahrt, zogen dann in den Schuppen eines Pferdezüchters um, als der Winter kam. Mitten im Aufbau erfuhren wir, dass Mareike schwanger ist. Unsere Tochter kam im Mai 2026, gerade als wir fertig wurden.</p>
+        <p class="body-text">Wir behielten die starken Militärknochen, verdrahteten, verrohrten, isolierten und bauten das Innere komplett neu. Das Ergebnis ist ein robustes, autarkes Expeditionsheim mit Solaranlage, Wasserversorgung, einer richtigen Küche und genug Stauraum für lange Aufenthalte mitten im Nirgendwo.</p>
+        <p class="body-text">Es dauerte acht Monate — fünf mehr als geplant. Es war harte Arbeit, aber es war es wert.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ANNOTATED TRUCK PROFILE -->
+<!-- IM INNEREN DES STEYR -->
 <section id="truck-profile">
   <div class="container">
     <div class="profile-intro">
-      <span class="label">The machine</span>
-      <h2>Inside the Steyr 12M18.</h2>
+      <span class="label">Die Maschine</span>
+      <h2>Im Inneren des Steyr 12M18.</h2>
       <div class="divider"></div>
-      <p class="body-text">Every component either survived military spec or was rebuilt to exceed it.</p>
+      <p class="body-text">Jede Komponente hat entweder die Militärspezifikation überstanden oder wurde neu aufgebaut, um sie zu übertreffen.</p>
     </div>
 
     <div class="truck-diagram-wrap">
       <picture>
-        <source media="(max-width: 768px)" srcset="Photos/Truck_Photos/Truck_numbers_mobile.png" />
-        <img src="Photos/Truck_Photos/Truck_numbers.png" alt="1986 Steyr 12M18 expedition truck" />
+        <source media="(max-width: 768px)" srcset="../Photos/Truck_Photos/Truck_numbers_mobile.png" />
+        <img src="../Photos/Truck_Photos/Truck_numbers.png" alt="1986 Steyr 12M18 Expeditions-LKW" />
       </picture>
 
-      <!-- ① Roof Rack & LED Light Bars -->
       <div class="ann-hotspot" style="top:12%;left:70%">
         <div class="ann-card">
-          <div class="ann-card-head"><span class="ann-num">1</span><span class="ann-title">Roof Rack <span style="font-family:var(--fb);font-weight:700">&amp;</span> LED Light Bars</span></div>
-          <p class="ann-desc">Custom-built aluminium rack across the cab roof. Carries gear and full LED bars for night driving in remote country.<br>Total weight approx. 45kg.</p>
+          <div class="ann-card-head"><span class="ann-num">1</span><span class="ann-title">Dachträger &amp; LED-Lichtbalken</span></div>
+          <p class="ann-desc">Maßgefertigter Aluminiumträger über dem Fahrerhaus. Trägt Ausrüstung und komplette LED-Balken für Nachtfahrten in abgelegenen Gebieten.<br>Gesamtgewicht ca. 45 kg.</p>
         </div>
       </div>
 
-      <!-- ② Austrian Military Cab -->
       <div class="ann-hotspot" style="top:33%;left:72%">
         <div class="ann-card">
-          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">2</span><span class="ann-title">Austrian Military Cab — Rebuilt</span></div>
-          <p class="ann-desc">Original Steyr cab, fully stripped, repainted and refurbished inside and out. Every surface touched.</p>
+          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">2</span><span class="ann-title">Österreichisches Militärfahrerhaus — Restauriert</span></div>
+          <p class="ann-desc">Originales Steyr-Fahrerhaus, komplett demontiert, neu lackiert und innen wie außen überholt. Jede Fläche wurde angefasst.</p>
         </div>
       </div>
 
-      <!-- ③ Hand-Built Living Quarters -->
       <div class="ann-hotspot flip-left" style="top:30%;left:0%">
         <div class="ann-card">
-          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">3</span><span class="ann-title">Hand-Built Living Quarters</span></div>
-          <p class="ann-desc">Fully self-sufficient. Full kitchen, bed, solar, fresh &amp; grey water, storage for a family to live for weeks on end.</p>
+          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">3</span><span class="ann-title">Handgebaute Wohnquartiere</span></div>
+          <p class="ann-desc">Vollständig autark. Komplette Küche, Bett, Solar, Frisch- &amp; Abwasser, Stauraum für eine Familie, die wochenlang irgendwo leben kann.</p>
         </div>
       </div>
 
-      <!-- ④ Ground Clearance -->
       <div class="ann-hotspot" style="top:85%;left:42%">
         <div class="ann-card">
-          <div class="ann-card-head"><span class="ann-num">4</span><span class="ann-title">40cm Ground Clearance</span></div>
-          <p class="ann-desc">Achieved with upgraded 14r20 all-terrain tyres — almost 49 inches tall. Serious clearance for serious terrain.</p>
+          <div class="ann-card-head"><span class="ann-num">4</span><span class="ann-title">40 cm Bodenfreiheit</span></div>
+          <p class="ann-desc">Erreicht mit aufgerüsteten 14r20 Geländereifen — fast 125 cm hoch. Ernsthafte Bodenfreiheit für ernstes Gelände.</p>
         </div>
       </div>
 
-      <!-- ⑤ Tyres -->
       <div class="ann-hotspot flip-left" style="top:66%;left:0%">
         <div class="ann-card">
-          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">5</span><span class="ann-title">14.00R20 All-Terrain Tyres</span></div>
-          <p class="ann-desc">Nearly 49 inches of military-grade tyre on split rims. Built for mud, rock, sand and snow — no terrain is off-limits. Reduce fuel consumption by approx. 10%.<br>Total weight per tyre and rim approx. 170kg.</p>
+          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">5</span><span class="ann-title">14.00R20 Geländereifen</span></div>
+          <p class="ann-desc">Fast 125 cm militärerprobter Reifen auf Felgen. Gebaut für Schlamm, Fels, Sand und Schnee. Reduziert den Kraftstoffverbrauch um ca. 10%.<br>Gesamtgewicht pro Reifen und Felge ca. 170 kg.</p>
         </div>
       </div>
 
-      <!-- ⑥ Differentials -->
       <div class="ann-hotspot" style="top:64%;left:70%">
         <div class="ann-card">
-          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">6</span><span class="ann-title">3 Differentials · 18 Gear Combos</span></div>
-          <p class="ann-desc">Three locking differentials, 18 forward gear combinations across high and low range, and a crawler that drops below 1&nbsp;km/h for ultimate control.</p>
+          <div class="ann-card-head" style="white-space:nowrap"><span class="ann-num">6</span><span class="ann-title">3 Differentiale · 18 Gangkombinationen</span></div>
+          <p class="ann-desc">Drei Sperrdifferentiale, 18 Vorwärtsgangkombinationen in Hoch- und Geländeuntersetzung, und ein Kriechgang, der unter 1&nbsp;km/h sinkt.</p>
         </div>
       </div>
-
     </div>
 
-    <!-- Mobile annotation list — shown below image on small screens -->
     <div class="ann-mobile-list">
       <div class="ann-mobile-item">
         <span class="ann-mobile-num">1</span>
         <div>
-          <span class="ann-mobile-title">Roof Rack &amp; LED Light Bars</span>
-          <p class="ann-mobile-desc">Custom-built aluminium rack across the cab roof. Carries gear and full LED bars for night driving in remote country. Total weight approx. 45kg.</p>
+          <span class="ann-mobile-title">Dachträger &amp; LED-Lichtbalken</span>
+          <p class="ann-mobile-desc">Maßgefertigter Aluminiumträger über dem Fahrerhaus. Trägt Ausrüstung und komplette LED-Balken für Nachtfahrten. Gesamtgewicht ca. 45 kg.</p>
         </div>
       </div>
       <div class="ann-mobile-item">
         <span class="ann-mobile-num">2</span>
         <div>
-          <span class="ann-mobile-title">Austrian Military Cab — Rebuilt</span>
-          <p class="ann-mobile-desc">Original Steyr cab, fully stripped, repainted and refurbished inside and out. Every surface touched.</p>
+          <span class="ann-mobile-title">Österreichisches Militärfahrerhaus — Restauriert</span>
+          <p class="ann-mobile-desc">Originales Steyr-Fahrerhaus, komplett demontiert, neu lackiert und überholt. Jede Fläche wurde angefasst.</p>
         </div>
       </div>
       <div class="ann-mobile-item">
         <span class="ann-mobile-num">3</span>
         <div>
-          <span class="ann-mobile-title">Hand-Built Living Quarters</span>
-          <p class="ann-mobile-desc">Fully self-sufficient. Full kitchen, bed, solar, fresh &amp; grey water, storage for a family to live for weeks on end.</p>
+          <span class="ann-mobile-title">Handgebaute Wohnquartiere</span>
+          <p class="ann-mobile-desc">Vollständig autark. Komplette Küche, Bett, Solar, Frisch- &amp; Abwasser, Stauraum für eine Familie.</p>
         </div>
       </div>
       <div class="ann-mobile-item">
         <span class="ann-mobile-num">4</span>
         <div>
-          <span class="ann-mobile-title">40cm Ground Clearance</span>
-          <p class="ann-mobile-desc">Achieved with upgraded 14R20 all-terrain tyres — almost 49 inches tall. Serious clearance for serious terrain.</p>
+          <span class="ann-mobile-title">40 cm Bodenfreiheit</span>
+          <p class="ann-mobile-desc">Erreicht mit aufgerüsteten 14R20 Geländereifen. Ernsthafte Bodenfreiheit für ernstes Gelände.</p>
         </div>
       </div>
       <div class="ann-mobile-item">
         <span class="ann-mobile-num">5</span>
         <div>
-          <span class="ann-mobile-title">14.00R20 All-Terrain Tyres</span>
-          <p class="ann-mobile-desc">Nearly 49 inches of military-grade tyre on split rims. Built for mud, rock, sand and snow — no terrain is off-limits. Reduce fuel consumption by approx. 10%. Total weight per tyre and rim approx. 170kg.</p>
+          <span class="ann-mobile-title">14.00R20 Geländereifen</span>
+          <p class="ann-mobile-desc">Militärerprobte Reifen auf Felgen. Für Schlamm, Fels, Sand und Schnee. Reduziert Kraftstoffverbrauch um ca. 10%. Gesamtgewicht pro Reifen und Felge ca. 170 kg.</p>
         </div>
       </div>
       <div class="ann-mobile-item">
         <span class="ann-mobile-num">6</span>
         <div>
-          <span class="ann-mobile-title">3 Differentials · 18 Gear Combos</span>
-          <p class="ann-mobile-desc">Three locking differentials, 18 forward gear combinations across high and low range, and a crawler that drops below 1 km/h for ultimate control.</p>
+          <span class="ann-mobile-title">3 Differentiale · 18 Gangkombinationen</span>
+          <p class="ann-mobile-desc">Drei Sperrdifferentiale, 18 Vorwärtsgangkombinationen und ein Kriechgang unter 1 km/h für maximale Kontrolle.</p>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ENGINE & UPGRADES -->
+<!-- MOTOR & UPGRADES -->
 <section id="upgrades">
   <div class="container">
     <div class="upgrade-intro">
-      <span class="label">Performance & upgrades</span>
-      <h2>The Steyr WD 612.<br />Made more capable.</h2>
+      <span class="label">Leistung &amp; Upgrades</span>
+      <h2>Der Steyr WD 612.<br />Noch leistungsfähiger gemacht.</h2>
       <div class="divider"></div>
-      <p class="body-text">The 6.6-litre turbodiesel was already a serious engine. We overhauled it, breathed new life into it, and built around it for the long haul.</p>
+      <p class="body-text">Der 6,6-Liter-Turbodiesel war bereits ein ernsthafter Motor. Wir haben ihn überholt, neues Leben eingehaucht und für die Langstrecke gerüstet.</p>
     </div>
     <div class="upgrade-grid">
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-        <div class="upg-title">Engine Overhaul</div>
-        <div class="upg-desc">New injectors throughout. Intercooler installed. Power lifted from the standard 180hp to 230hp — same displacement, significantly more air and efficiency.</div>
-        <span class="upg-badge">230HP</span>
+        <div class="upg-title">Motorüberholung</div>
+        <div class="upg-desc">Neue Einspritzdüsen durchgehend. Ladeluftkühler eingebaut. Leistung von 180 PS auf 230 PS gesteigert — gleicher Hubraum, deutlich mehr Luft und Effizienz.</div>
+        <span class="upg-badge">230 PS</span>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <div class="upg-title">6.6L Diesel Torque</div>
-        <div class="upg-desc">Enormous low-end torque from the Steyr WD 612's large-displacement diesel. In low range and crawler, this engine hauls with a composure smaller motors simply can't match.</div>
-        <span class="upg-badge">6.6L</span>
+        <div class="upg-title">6,6-L-Diesel-Drehmoment</div>
+        <div class="upg-desc">Enormes Niederdrehmoment des Steyr WD 612 Großhubraum-Diesels. Im Gelände-Untersetzung zieht dieser Motor mit einer Gelassenheit, die kleinere Motoren schlicht nicht erreichen.</div>
+        <span class="upg-badge">6,6 L</span>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 8 5 12 5 16a7 7 0 0014 0c0-4-3-8-7-14z"/><path d="M5 16h14"/></svg></div>
-        <div class="upg-title">Cyclone Air Intake</div>
-        <div class="upg-desc">High-flow cyclone filtration system feeding clean air to the upgraded engine. Essential for dusty outback conditions and for sustaining the added power output reliably.</div>
+        <div class="upg-title">Zyklon-Luftansaugung</div>
+        <div class="upg-desc">Hochdurchsatz-Zyklonfiltration, die dem aufgerüsteten Motor saubere Luft zuführt. Unerlässlich für staubige Geländebedingungen und für zuverlässigen Betrieb der erhöhten Leistung.</div>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-4.03 9-9a9 9 0 00-9-9C7.03 4 3 8.03 3 13c0 4.97 4.03 9 9 9z"/><path d="M12 8v4l3 3"/></svg></div>
-        <div class="upg-title">SEPAR Fuel Filter</div>
-        <div class="upg-desc">German-engineered dual-stage fuel filter with an integrated heating element. Prevents diesel from waxing in extreme cold. No blocked filters, no failures at -20°C.</div>
-        <span class="upg-badge">Heated</span>
+        <div class="upg-title">SEPAR-Kraftstofffilter</div>
+        <div class="upg-desc">Deutsch konstruierter zweistufiger Kraftstofffilter mit integriertem Heizelement. Verhindert das Ausflocken von Diesel bei extremer Kälte. Keine verstopften Filter bei -20°C.</div>
+        <span class="upg-badge">Beheizt</span>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div>
-        <div class="upg-title">Flame Start System</div>
-        <div class="upg-desc">Factory Austrian military cold-start technology — pre-heats the intake air before the engine fires. Engineered for alpine winters, and still works perfectly today.</div>
-        <span class="upg-badge">Factory Fitted</span>
+        <div class="upg-title">Flammstartsystem</div>
+        <div class="upg-desc">Ursprüngliche österreichische Militär-Kaltstartechnologie — erwärmt die Ansaugluft vor dem Motorstart. Für alpine Winter konstruiert und funktioniert noch heute einwandfrei.</div>
+        <span class="upg-badge">Serienmäßig</span>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="upg-title">Stainless Steel Exhaust</div>
-        <div class="upg-desc">Full stainless exhaust system. Completely corrosion-free — built to outlast everything around it across salt flats, river crossings and alpine passes.</div>
+        <div class="upg-title">Edelstahl-Auspuffanlage</div>
+        <div class="upg-desc">Komplette Edelstahlauspuffanlage. Vollständig korrosionsbeständig — gebaut, um alles um sie herum zu überdauern, über Salzseen, Flussüberquerungen und Alpenpässe hinweg.</div>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="14" height="12" rx="2"/><path d="M23 13v-3a2 2 0 00-2-2h-1v7h1a2 2 0 002-2z"/><line x1="5" y1="6" x2="5" y2="18"/><line x1="9" y1="6" x2="9" y2="18"/></svg></div>
-        <div class="upg-title">580L Fuel Capacity</div>
-        <div class="upg-desc">400 litres added alongside the standard 180-litre tank. At 25L per 100km, that's over 2,300km of range without stopping. Remote is genuinely reachable.</div>
-        <span class="upg-badge">2,300km+ Range</span>
+        <div class="upg-title">580 L Tankkapazität</div>
+        <div class="upg-desc">400 Liter zusätzlich zum Standard-180-Liter-Tank. Bei 25 L/100 km sind das über 2.300 km Reichweite ohne Tankstopp. Wirklich abgelegen ist tatsächlich erreichbar.</div>
+        <span class="upg-badge">2.300 km+ Reichweite</span>
       </div>
       <div class="upgrade-card">
         <div class="upg-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div>
-        <div class="upg-title">Full LED Lighting Package</div>
-        <div class="upg-desc">Custom roof rack with dual LED light bars, plus lighting rigs fitted all around the vehicle. Night driving in remote country, completely covered.</div>
-        <span class="upg-badge">All-round</span>
+        <div class="upg-title">Komplettes LED-Beleuchtungspaket</div>
+        <div class="upg-desc">Maßgefertigter Dachträger mit zwei LED-Lichtbalken, plus Beleuchtungseinrichtungen rund ums Fahrzeug. Nachtfahrten in abgelegenen Gebieten vollständig abgedeckt.</div>
+        <span class="upg-badge">Rundum</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- POWER & ELECTRICAL -->
-<!-- WHY THE STEYR -->
+<!-- WARUM DER STEYR -->
 <section id="why-steyr">
   <div class="container why-inner">
     <div class="why-grid">
       <div>
-        <span class="label">Why the Steyr</span>
-        <h2>The 12M18 is in a class of its own.</h2>
+        <span class="label">Warum der Steyr</span>
+        <h2>Der 12M18 ist in einer eigenen Klasse.</h2>
         <div class="divider"></div>
-        <p class="body-text">Like most people planning a serious expedition build, we started looking at Unimogs. But the deeper we dug, the more the Steyr 12M18 stood out. Overbuilt by the Austrian military, mechanically simple, incredibly capable, and still relatively under the radar.</p>
+        <p class="body-text">Wie die meisten Menschen, die einen ernsthaften Expeditionsaufbau planen, haben wir zunächst nach Unimogs geschaut. Aber je tiefer wir gruben, desto mehr stach der Steyr 12M18 hervor. Vom österreichischen Militär überdimensioniert gebaut, mechanisch einfach, unglaublich leistungsfähig und immer noch relativ unbekannt.</p>
         <div class="spec-table">
-          <div class="spec-row"><div class="spec-key">Base</div><div class="spec-val">Steyr 12M18 — Austrian Military</div></div>
-          <div class="spec-row"><div class="spec-key">Year</div><div class="spec-val">1986</div></div>
-          <div class="spec-row"><div class="spec-key">Drive</div><div class="spec-val">4×4, 3 locking differentials</div></div>
-          <div class="spec-row"><div class="spec-key">Engine</div><div class="spec-val">Steyr WD 612, 6.6L turbodiesel</div></div>
-          <div class="spec-row"><div class="spec-key">Power</div><div class="spec-val">230hp (upgraded; 180hp standard)</div></div>
-          <div class="spec-row"><div class="spec-key">Gears</div><div class="spec-val">8 + crawler = 18 forward combinations (high &amp; low range)</div></div>
-          <div class="spec-row"><div class="spec-key">Clearance</div><div class="spec-val">40cm with upgraded 14r20 all-terrain tyres</div></div>
-          <div class="spec-row"><div class="spec-key">Tyres</div><div class="spec-val">14r20 — nearly 49 inches tall</div></div>
-          <div class="spec-row"><div class="spec-key">Fuel</div><div class="spec-val">580L total (180L standard + 400L auxiliary)</div></div>
-          <div class="spec-row"><div class="spec-key">Range</div><div class="spec-val">2,300km+ at 25L/100km</div></div>
-          <div class="spec-row"><div class="spec-key">Build</div><div class="spec-val">100% hand-built living quarters</div></div>
+          <div class="spec-row"><div class="spec-key">Basis</div><div class="spec-val">Steyr 12M18 — Österreichisches Militär</div></div>
+          <div class="spec-row"><div class="spec-key">Baujahr</div><div class="spec-val">1986</div></div>
+          <div class="spec-row"><div class="spec-key">Antrieb</div><div class="spec-val">4×4, 3 Sperrdifferentiale</div></div>
+          <div class="spec-row"><div class="spec-key">Motor</div><div class="spec-val">Steyr WD 612, 6,6 L Turbodiesel</div></div>
+          <div class="spec-row"><div class="spec-key">Leistung</div><div class="spec-val">230 PS (aufgerüstet; 180 PS serienmäßig)</div></div>
+          <div class="spec-row"><div class="spec-key">Gänge</div><div class="spec-val">8 + Kriechgang = 18 Vorwärtskombinationen (Hoch- &amp; Geländeuntersetzung)</div></div>
+          <div class="spec-row"><div class="spec-key">Bodenfreiheit</div><div class="spec-val">40 cm mit aufgerüsteten 14r20 Geländereifen</div></div>
+          <div class="spec-row"><div class="spec-key">Reifen</div><div class="spec-val">14r20 — fast 125 cm hoch</div></div>
+          <div class="spec-row"><div class="spec-key">Kraftstoff</div><div class="spec-val">580 L gesamt (180 L Standard + 400 L Zusatztank)</div></div>
+          <div class="spec-row"><div class="spec-key">Reichweite</div><div class="spec-val">2.300 km+ bei 25 L/100 km</div></div>
+          <div class="spec-row"><div class="spec-key">Aufbau</div><div class="spec-val">100% handgebaute Wohnquartiere</div></div>
         </div>
       </div>
       <div>
-        <span class="label">Why the Steyr wins</span>
-        <h2>Built by an army.<br />Built to last.</h2>
+        <span class="label">Warum der Steyr gewinnt</span>
+        <h2>Von einer Armee gebaut.<br />Gebaut um zu halten.</h2>
         <div class="divider"></div>
         <div class="advantage-list">
           <div class="advantage">
             <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
             <div>
-              <div class="adv-title">18 forward gear combinations</div>
-              <div class="adv-desc">8 gears plus a crawler — all doubled by low-range — gives 18 distinct forward ratios. Crawler in low range drops below 1km/h for terrain where control matters more than speed.</div>
+              <div class="adv-title">18 Vorwärtsgangkombinationen</div>
+              <div class="adv-desc">8 Gänge plus ein Kriechgang — alle verdoppelt durch die Geländeuntersetzung — ergeben 18 verschiedene Vorwärtsübersetzungen. Der Kriechgang in Geländeuntersetzung fällt auf unter 1 km/h.</div>
             </div>
           </div>
           <div class="advantage">
             <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
             <div>
-              <div class="adv-title">Military-grade chassis</div>
-              <div class="adv-desc">These trucks were built to take punishment that destroys civilian vehicles. The frame, axles and drivetrain are massively over-engineered by design.</div>
+              <div class="adv-title">Militärerprobtes Fahrgestell</div>
+              <div class="adv-desc">Diese LKWs wurden gebaut, um Belastungen standzuhalten, die zivile Fahrzeuge zerstören. Rahmen, Achsen und Antriebsstrang sind by Design massiv überdimensioniert.</div>
             </div>
           </div>
           <div class="advantage">
             <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg></div>
             <div>
-              <div class="adv-title">Mechanically simple</div>
-              <div class="adv-desc">No complex electronics to fail in the middle of nowhere. Every system can be understood, diagnosed and fixed in the field with basic tools.</div>
+              <div class="adv-title">Mechanisch einfach</div>
+              <div class="adv-desc">Keine komplexe Elektronik, die mitten im Nirgendwo versagt. Jedes System kann mit Grundwerkzeug verstanden, diagnostiziert und im Gelände repariert werden.</div>
             </div>
           </div>
           <div class="advantage">
             <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
             <div>
-              <div class="adv-title">Payload for real life</div>
-              <div class="adv-desc">Water, food, tools, baby gear, camera equipment — the 12M18 carries a full home without complaint.</div>
+              <div class="adv-title">Nutzlast fürs echte Leben</div>
+              <div class="adv-desc">Wasser, Essen, Werkzeug, Babyausstattung, Kameraequipment — der 12M18 trägt ein komplettes Zuhause ohne Murren.</div>
             </div>
           </div>
           <div class="advantage">
             <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
             <div>
-              <div class="adv-title">Global diesel compatibility</div>
-              <div class="adv-desc">Runs on diesel available in virtually every country in the world. No special fuel, no additives, no drama.</div>
+              <div class="adv-title">Globale Dieselkompatibilität</div>
+              <div class="adv-desc">Läuft mit Diesel, der in praktisch jedem Land der Welt erhältlich ist. Kein Spezialkraftstoff, keine Zusätze, keine Probleme.</div>
             </div>
           </div>
         </div>
@@ -775,42 +637,40 @@
   </div>
 </section>
 
-<!-- BUILD GALLERY -->
+<!-- AUFBAU-GALERIE -->
 <section id="build-gallery">
   <div class="container">
     <div class="gallery-split">
-      <!-- LEFT: text -->
       <div>
-        <span class="label">The build in pictures</span>
-        <h2>Eight months.<br />Six days a week. Every week.</h2>
+        <span class="label">Der Aufbau in Bildern</span>
+        <h2>Acht Monate.<br />Sechs Tage die Woche. Jede Woche.</h2>
         <div class="divider"></div>
-        <p class="body-text">Our Steyr came with an FM2 Zeppelin military shelter already fitted — furniture included, though most of it needed to be completely reimagined to suit our needs. What followed was eight months of learning, rebuilding and transforming a military relic into our home.</p>
+        <p class="body-text">Unser Steyr kam bereits mit einem FM2-Zeppelin-Militärschutzraum — Möbel inklusive, obwohl das meiste davon vollständig neu gedacht werden musste. Was folgte, waren acht Monate des Lernens, Umbauens und der Verwandlung eines Militärrelikts in unser Zuhause.</p>
       </div>
-      <!-- RIGHT: drifting portrait strip -->
       <div class="build-flow-wrap">
         <div class="build-flow" id="buildFlow">
           <div class="build-flow-track" id="buildFlowTrack">
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1259693.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1308225.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1296856.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1308251.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1259724.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1308519.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1296860.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1308522.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1259793.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1308654.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1331594.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1260120.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1332543.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1332554_1.jpg"  alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1356671.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1380618.jpg"    alt="The build" loading="lazy" /></div>
-          <div class="build-flow-item"><img src="Photos/Truck_Photos/P1380909.jpg"    alt="The build" loading="lazy" /></div>
-        </div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1259693.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1308225.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1296856.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1308251.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1259724.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1308519.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1296860.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1308522.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1259793.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1308654.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1331594.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1260120.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1332543.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1332554_1.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1356671.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1380618.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          <div class="build-flow-item"><img src="../Photos/Truck_Photos/P1380909.jpg" alt="Der Aufbau" loading="lazy" /></div>
+          </div>
         </div>
         <div class="gallery-controls">
-          <button class="pause-btn" id="galleryPauseBtn" aria-label="Pause gallery">
+          <button class="pause-btn" id="galleryPauseBtn" aria-label="Galerie pausieren">
             <svg id="pauseIcon" viewBox="0 0 10 10"><rect x="1" y="1" width="3" height="8"/><rect x="6" y="1" width="3" height="8"/></svg>
             <svg id="playIcon" viewBox="0 0 10 10" style="display:none;"><polygon points="1,1 9,5 1,9"/></svg>
             <span id="pauseLabel">Pause</span>
@@ -824,13 +684,13 @@
 <!-- CTA -->
 <section id="cta">
   <div class="cta-inner">
-    <span class="label">And then we drove away.</span>
-    <h2>The truck is built.<br />The road is waiting.</h2>
+    <span class="label">Und dann sind wir losgefahren.</span>
+    <h2>Der Truck steht.<br />Die Straße wartet.</h2>
     <div class="divider" style="margin: 1.2rem auto;"></div>
-    <p class="body-text" style="max-width:500px; margin: 0 auto 2rem;">Now the real adventure begins — as a family of three plus Rocket in our self-built Steyr.</p>
+    <p class="body-text" style="max-width:500px; margin: 0 auto 2rem;">Jetzt beginnt das echte Abenteuer — als Familie zu dritt plus Rocket in unserem selbst gebauten Steyr.</p>
     <div class="cta-ctas">
-      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-teal">Watch on YouTube</a>
-      <a href="index.html" class="btn btn-ghost-cool">Back to Home</a>
+      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-teal">Auf YouTube ansehen</a>
+      <a href="index.html" class="btn btn-ghost-cool">Zurück zur Startseite</a>
     </div>
   </div>
 </section>
@@ -838,38 +698,31 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="EditingElements/logo_black.png" alt="3xploreWithUs" />
+    <img src="../EditingElements/logo_black.png" alt="3xploreWithUs" />
   </div>
-
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="files.html">Dateien</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
   </ul>
-  <p class="footer-copy">© 2026 3xploreWithUs · Built on diesel dreams and 3,000 hours of hard work.</p>
+  <p class="footer-copy">&copy; 2026 3xploreWithUs &middot; Gebaut auf Dieselträumen und 3.000 Stunden harter Arbeit.</p>
 </footer>
 
 <script>
-// ── BUILD FLOW — drifting portrait strip ─────────────────────────────
 (function () {
   const track = document.getElementById('buildFlowTrack');
   const wrap  = document.getElementById('buildFlow');
   if (!track) return;
-
-  // Clone items for seamless infinite loop
   const origItems = Array.from(track.querySelectorAll('.build-flow-item'));
   origItems.forEach(function (item) { track.appendChild(item.cloneNode(true)); });
   [...origItems].reverse().forEach(function (item) { track.insertBefore(item.cloneNode(true), track.firstChild); });
-
   let setW = 0, pos = 0, isDragging = false, dragStartX = 0, scrollAtDragStart = 0;
   let isPaused = false;
-
-  // Pause button
   var pauseBtn   = document.getElementById('galleryPauseBtn');
   var pauseIcon  = document.getElementById('pauseIcon');
   var playIcon   = document.getElementById('playIcon');
@@ -877,56 +730,24 @@
   if (pauseBtn) {
     pauseBtn.addEventListener('click', function () {
       isPaused = !isPaused;
-      pauseIcon.style.display  = isPaused ? 'none'         : '';
-      playIcon.style.display   = isPaused ? ''             : 'none';
-      pauseLabel.textContent   = isPaused ? 'Play'         : 'Pause';
+      pauseIcon.style.display  = isPaused ? 'none' : '';
+      playIcon.style.display   = isPaused ? '' : 'none';
+      pauseLabel.textContent   = isPaused ? 'Play' : 'Pause';
     });
   }
-
-  function clamp() {
-    if (!setW) return;
-    if (pos < setW * 0.05)  pos += setW;
-    if (pos > setW * 2.95)  pos -= setW;
-  }
-
-  function tick() {
-    if (!isDragging && !isPaused) { pos += 0.52; clamp(); track.scrollLeft = pos; }
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('load', function () {
-    setW = track.scrollWidth / 3;
-    pos  = setW;
-    track.scrollLeft = pos;
-    requestAnimationFrame(tick);
-  });
-
-  // Mouse drag
-  wrap.addEventListener('mousedown', function (e) {
-    isDragging = true; dragStartX = e.clientX; scrollAtDragStart = pos;
-    wrap.classList.add('dragging'); e.preventDefault();
-  });
-  window.addEventListener('mousemove', function (e) {
-    if (!isDragging) return;
-    pos = scrollAtDragStart - (e.clientX - dragStartX); clamp(); track.scrollLeft = pos;
-  });
-  window.addEventListener('mouseup', function () {
-    isDragging = false; wrap.classList.remove('dragging');
-  });
-
-  // Touch drag
-  wrap.addEventListener('touchstart', function (e) {
-    isDragging = true; dragStartX = e.touches[0].clientX; scrollAtDragStart = pos;
-  }, { passive: true });
-  wrap.addEventListener('touchmove', function (e) {
-    pos = scrollAtDragStart - (e.touches[0].clientX - dragStartX); clamp(); track.scrollLeft = pos;
-  }, { passive: true });
+  function clamp() { if (!setW) return; if (pos < setW * 0.05) pos += setW; if (pos > setW * 2.95) pos -= setW; }
+  function tick() { if (!isDragging && !isPaused) { pos += 0.52; clamp(); track.scrollLeft = pos; } requestAnimationFrame(tick); }
+  window.addEventListener('load', function () { setW = track.scrollWidth / 3; pos = setW; track.scrollLeft = pos; requestAnimationFrame(tick); });
+  wrap.addEventListener('mousedown', function (e) { isDragging = true; dragStartX = e.clientX; scrollAtDragStart = pos; wrap.classList.add('dragging'); e.preventDefault(); });
+  window.addEventListener('mousemove', function (e) { if (!isDragging) return; pos = scrollAtDragStart - (e.clientX - dragStartX); clamp(); track.scrollLeft = pos; });
+  window.addEventListener('mouseup', function () { isDragging = false; wrap.classList.remove('dragging'); });
+  wrap.addEventListener('touchstart', function (e) { isDragging = true; dragStartX = e.touches[0].clientX; scrollAtDragStart = pos; }, { passive: true });
+  wrap.addEventListener('touchmove', function (e) { pos = scrollAtDragStart - (e.touches[0].clientX - dragStartX); clamp(); track.scrollLeft = pos; }, { passive: true });
   wrap.addEventListener('touchend', function () { isDragging = false; });
 })();
 </script>
 
 <script>
-/* ── HERO PARALLAX ── */
 (function () {
   const section = document.getElementById('hero');
   const photo   = document.getElementById('heroPhotoLayer');
@@ -941,19 +762,13 @@
     cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
     ring.style.left   = e.clientX + 'px'; ring.style.top   = e.clientY + 'px';
   });
-  section.addEventListener('mouseleave', function () {
-    photo.style.transform = 'translate(0,0)';
-    cursor.style.opacity = '0'; ring.style.opacity = '0';
-  });
-  section.addEventListener('mouseenter', function () {
-    cursor.style.opacity = '1'; ring.style.opacity = '1';
-  });
+  section.addEventListener('mouseleave', function () { photo.style.transform = 'translate(0,0)'; cursor.style.opacity = '0'; ring.style.opacity = '0'; });
+  section.addEventListener('mouseenter', function () { cursor.style.opacity = '1'; ring.style.opacity = '1'; });
   cursor.style.opacity = '0'; ring.style.opacity = '0';
 })();
 </script>
 
 <script>
-/* ── MOBILE NAV ── */
 (function(){
   var burger = document.getElementById('nav-burger');
   var drawer = document.getElementById('nav-drawer');
@@ -972,6 +787,6 @@
 })();
 </script>
 
-<script src="site-animations.js"></script>
+<script src="../site-animations.js"></script>
 </body>
 </html>

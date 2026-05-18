@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJH04YSJMG"></script>
@@ -11,28 +11,27 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="EditingElements/Favicon_v1.png" />
-  <title>Our Story — 3xploreWithUs</title>
-  <meta name="description" content="From a chance meeting in a small brewery in Bremer Bay to a life built on the open road." />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>Unsere Geschichte — 3xploreWithUs</title>
+  <meta name="description" content="Was als zufälliges Treffen in einer kleinen Brauerei in Bremer Bay begann, wurde schnell zum Anfang des größten Abenteuers unseres Lebens." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family:'TypoGraphica';
-      src:url('TypoGraphica_demo.otf') format('opentype');
+      src:url('../TypoGraphica_demo.otf') format('opentype');
       font-display:swap;
       unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
     }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
-    @font-face { font-family:'Roboto'; src:url('Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
     :root {
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
       --text:#F2EEE4; --muted:#9AAFB1; --white:#F5F2EC;
       --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
-      /* Warm accent for this page */
       --accent: var(--sand-lt);
       --accent-bar: var(--sand);
     }
@@ -69,7 +68,7 @@
     .page-nav-link:hover { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
     .page-nav-link.active { color:var(--sand-lt); border-bottom-color:var(--sand-lt); }
 
-    /* ── HERO — full bleed parallax ── */
+    /* ── HERO ── */
     #hero-split {
       position:relative;
       height:85vh;
@@ -104,10 +103,7 @@
       display:flex; flex-direction:column; justify-content:flex-end;
       padding:0 4rem 5rem;
     }
-    .hero-text-block {
-      margin-left:auto;
-      max-width:520px;
-    }
+    .hero-text-block { margin-left:auto; max-width:520px; }
     .section-label {
       font-family:var(--fd); font-size:0.72rem; font-weight:700;
       letter-spacing:0.22em; text-transform:uppercase;
@@ -161,7 +157,6 @@
       background:var(--sand-lt);
       animation:hero-scroll-tick 1.8s 1.2s ease-in-out infinite;
     }
-    /* Custom cursor */
     .hero-cursor { position:fixed; width:7px; height:7px; border-radius:50%; background:var(--sand-lt); pointer-events:none; z-index:999; transform:translate(-50%,-50%); mix-blend-mode:difference; }
     .hero-cursor-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(237,217,163,0.35); pointer-events:none; z-index:998; transform:translate(-50%,-50%); transition:left 0.18s ease, top 0.18s ease; }
     @keyframes hero-fade-up { to { opacity:1; transform:translateY(0); } }
@@ -190,13 +185,8 @@
     .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
 
     /* ── HOW WE MET ── */
-    #how-we-met {
-      background:var(--dark);
-      padding:4rem 2rem;
-    }
-    .story-inner {
-      max-width:1040px; margin:0 auto;
-    }
+    #how-we-met { background:var(--dark); padding:4rem 2rem; }
+    .story-inner { max-width:1040px; margin:0 auto; }
     #how-we-met h2 {
       font-family:var(--fd);
       font-size:clamp(1.8rem,4vw,3rem);
@@ -209,7 +199,7 @@
     .story-body p:last-child { margin-bottom:0; }
     .story-body strong { color:var(--text); font-weight:500; }
 
-    /* ── STORY BEATS — 2-col alternating ── */
+    /* ── STORY BEATS ── */
     .story-beat {
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -217,10 +207,8 @@
       align-items:center;
       margin-bottom:3.5rem;
     }
-    .story-beat-text { }
     .story-beat--flip .story-beat-text { order:2; }
     .story-beat--flip .story-beat-images { order:1; }
-    .story-closing { margin-top:1rem; }
     @media(max-width:800px) {
       .story-beat { grid-template-columns:1fr; gap:2rem; margin-bottom:3.5rem; }
       .story-beat--flip .story-beat-text { order:0; }
@@ -229,20 +217,7 @@
       .story-beat--flip .story-beat-images .story-polaroids { justify-content:center; }
     }
 
-    /* ── WARM PHOTO BREAK — full bleed, no crop ── */
-    .photo-break-warm {
-      position:relative; overflow:hidden;
-    }
-    .photo-break-warm img {
-      width:100%; display:block; height:auto;
-    }
-    .photo-break-warm::after {
-      content:'';
-      position:absolute; inset:0;
-      background:linear-gradient(to bottom, rgba(13,21,21,0.15) 0%, rgba(13,21,21,0.05) 50%, rgba(13,21,21,0.3) 100%);
-    }
-
-    /* ── INLINE STORY POLAROIDS ── */
+    /* ── POLAROIDS ── */
     .story-polaroids {
       display:flex; gap:0; align-items:flex-start; justify-content:flex-start;
       flex-wrap:nowrap; margin:0;
@@ -288,9 +263,6 @@
     .v-img { aspect-ratio:4/3; overflow:hidden; background:var(--dark-3); position:relative; }
     .v-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; display:block; }
     .v-card:hover .v-img img { transform:scale(1.05); }
-    .v-placeholder { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; }
-    .v-placeholder svg { opacity:0.12; }
-    .v-placeholder span { font-family:var(--fd); font-size:0.55rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(114,136,138,0.3); }
     .v-body { padding:0.9rem 1rem 1.1rem; }
     .v-num { font-family:var(--fd); font-size:0.58rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--sand-lt); margin-bottom:0.25rem; display:block; }
     .v-name { font-family:var(--fd); font-size:0.8rem; font-weight:900; color:var(--white); letter-spacing:0.03em; margin-bottom:0.3rem; line-height:1.2; }
@@ -328,17 +300,7 @@
       pointer-events:none;
       user-select:none;
     }
-    .choice-inner {
-      max-width:780px;
-      margin:0 auto;
-      position:relative;
-    }
-    .choice-questions {
-      margin:2rem 0 2.5rem;
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-    }
+    .choice-inner { max-width:780px; margin:0 auto; position:relative; }
     .choice-q {
       font-family:var(--fd);
       font-size:clamp(1rem,2.2vw,1.35rem);
@@ -347,25 +309,6 @@
       letter-spacing:0.02em;
       line-height:1.45;
     }
-    .choice-q span { color:var(--sand-lt); }
-    .choice-q-white {
-      font-family:'Roboto','Montserrat',sans-serif;
-      font-size:clamp(1rem,2.2vw,1.35rem);
-      font-weight:500;
-      color:var(--white);
-      letter-spacing:0.01em;
-      line-height:1.55;
-    }
-    .choice-q-white span { color:inherit; }
-    .choice-q-sand {
-      font-family:'Roboto','Montserrat',sans-serif;
-      font-size:clamp(1rem,2.2vw,1.35rem);
-      font-weight:500;
-      color:var(--sand);
-      letter-spacing:0.01em;
-      line-height:1.55;
-    }
-    .choice-q-sand span { color:var(--sand-lt); }
     .choice-body {
       font-size:1.05rem;
       color:var(--muted);
@@ -375,44 +318,6 @@
     .choice-body p { margin-bottom:1.5rem; }
     .choice-body p:last-child { margin-bottom:0; }
     .choice-body strong { color:var(--text); font-weight:500; }
-    .choice-pull {
-      border-left:3px solid var(--sand);
-      padding:1rem 1.5rem;
-      margin:2rem 0;
-      background:rgba(212,169,106,0.05);
-      border-radius:0 3px 3px 0;
-    }
-    .choice-pull p {
-      font-size:1.1rem;
-      color:var(--sand-lt);
-      font-style:italic;
-      font-weight:300;
-      line-height:1.8;
-      margin:0;
-    }
-    .choice-closing {
-      margin-top:2.5rem;
-      padding-top:2rem;
-      border-top:1px solid rgba(255,255,255,0.07);
-      text-align:center;
-    }
-    .choice-closing-title {
-      font-family:var(--fd);
-      font-size:clamp(1.4rem,3vw,2.2rem);
-      font-weight:900;
-      color:var(--white);
-      letter-spacing:0.06em;
-      display:block;
-      margin-bottom:0.5rem;
-    }
-    .choice-closing-sub {
-      font-family:var(--fd);
-      font-size:0.85rem;
-      font-weight:700;
-      letter-spacing:0.2em;
-      text-transform:uppercase;
-      color:var(--sand-lt);
-    }
 
     /* ── STEYR CTA ── */
     #steyr-cta {
@@ -451,9 +356,6 @@
       .nav-social { display:none; }
       .nav-logo img { height:auto; max-height:44px; max-width:none; }
       .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
-      #hero-split { grid-template-columns:1fr; }
-      .split-text { padding:3rem 1.5rem 2rem; min-height:auto; }
-      .split-photo { min-height:55vw; }
       .v-grid { grid-template-columns:repeat(3,1fr); }
     }
   </style>
@@ -461,14 +363,14 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <a href="index.html" class="nav-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html" class="active">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html" class="active">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="files.html">Dateien</a></li>
   </ul>
   <div class="nav-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
@@ -477,48 +379,48 @@
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
-    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="Email">
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="E-Mail">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
     </a>
-    <a href="de/story.html" class="lang-switch" title="Auf Deutsch wechseln">🇩🇪</a>
-    <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+    <a href="../story.html" class="lang-switch" title="Switch to English">🇦🇺</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
 <div class="nav-drawer" id="nav-drawer">
-  <a href="index.html">Home</a>
-  <a href="truck.html">The Truck</a>
-  <a href="story.html" class="active">Our Story</a>
-  <a href="howwedoit.html">How We Do It</a>
-  <a href="home.html">Our Home</a>
+  <a href="index.html">Startseite</a>
+  <a href="truck.html">Der Truck</a>
+  <a href="story.html" class="active">Unsere Geschichte</a>
+  <a href="howwedoit.html">Wie Wir Es Machen</a>
+  <a href="../home.html">Unser Zuhause</a>
   <div class="drawer-socials">
     <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
     <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="mailto:adventure@3xplorewithus.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
   </div>
 </div>
 
-<!-- Custom cursor -->
+<!-- Cursor -->
 <div class="hero-cursor" id="heroCursor"></div>
 <div class="hero-cursor-ring" id="heroCursorRing"></div>
 
-<!-- HERO — parallax full bleed -->
+<!-- HERO -->
 <section id="hero-split">
   <div class="hero-photo-layer" id="heroPhotoLayer">
     <picture>
-      <source media="(max-width: 768px)" srcset="Photos/OurStory/Mobile_OurStory.jpg" />
-      <img src="Photos/OurStory/Others/DJI_0026_1.jpg" alt="Jason and Mareike" />
+      <source media="(max-width: 768px)" srcset="../Photos/OurStory/Mobile_OurStory.jpg" />
+      <img src="../Photos/OurStory/Others/DJI_0026_1.jpg" alt="Jason und Mareike" />
     </picture>
   </div>
   <div class="hero-overlay-content">
     <div class="hero-text-block">
-      <span class="hero-eyebrow">Our Story</span>
-      <h1>Our<br /><span class="accent">Story.</span></h1>
+      <span class="hero-eyebrow">Unsere Geschichte</span>
+      <h1>Unsere<br /><span class="accent">Geschichte.</span></h1>
       <div class="hero-rule"></div>
       <div class="hero-bottom">
-        <p class="hero-lead">What started as a chance meeting in a small brewery in Bremer Bay quickly became the beginning of the greatest adventure of our lives.</p>
+        <p class="hero-lead">Was als zufälliges Treffen in einer kleinen Brauerei in Bremer Bay begann, wurde schnell zum Anfang des größten Abenteuers unseres Lebens.</p>
         <div class="hero-scroll">
           <div class="hero-scroll-line"></div>
           Scroll
@@ -531,55 +433,55 @@
 <!-- ANCHOR NAV -->
 <nav id="page-nav">
   <div class="page-nav-inner">
-    <a href="#how-we-met" class="page-nav-link">How We Met</a>
-    <a href="#our-choice" class="page-nav-link">Our Choice</a>
-    <a href="#vehicles" class="page-nav-link">The Vehicles</a>
+    <a href="#how-we-met" class="page-nav-link">Wie wir uns kennenlernten</a>
+    <a href="#our-choice" class="page-nav-link">Unsere Entscheidung</a>
+    <a href="#vehicles" class="page-nav-link">Die Fahrzeuge</a>
   </div>
 </nav>
 
-<!-- HOW WE MET — full story -->
+<!-- WIE WIR UNS KENNENLERNTEN -->
 <section id="how-we-met">
   <div class="story-inner">
-    <span class="warm-label">Our Story</span>
-    <h2>Western Australia, May 2023.</h2>
+    <span class="warm-label">Unsere Geschichte</span>
+    <h2>Westaustralien, Mai 2023.</h2>
     <div class="warm-divider"></div>
 
-    <!-- Beat 1: text left, images right -->
+    <!-- Beat 1 -->
     <div class="story-beat">
       <div class="story-beat-text story-body">
-        <p>We met in May 2023 in a small town on the south coast of Western Australia. Easy conversation, plenty of laughs, and the strange feeling we'd known each other for years. Both of us had already <span class="accent">walked away from stable corporate jobs</span> to chase something more meaningful. By the time we met, we were both fully committed to a different kind of life.</p>
+        <p>Wir lernten uns im Mai 2023 in einer kleinen Stadt an der Südküste Westaustraliens kennen. Leichte Gespräche, viel Lachen und das seltsame Gefühl, uns schon jahrelang zu kennen. Wir beide hatten bereits <span class="accent">stabile Bürojobs aufgegeben</span>, um etwas Bedeutungsvollerem nachzujagen. Als wir uns kennenlernten, waren wir beide voll entschlossen, ein anderes Leben zu führen.</p>
       </div>
       <div class="story-beat-images">
         <div class="story-polaroids">
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/BluffKnoll_WA.jpg" alt="Bluff Knoll, WA" loading="lazy" /><div class="s-pol-cap">Bluff Knoll, WA</div></div>
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/Porongurup_WA.jpg" alt="Porongurup, WA" loading="lazy" /><div class="s-pol-cap">Porongurup, WA</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/BluffKnoll_WA.jpg" alt="Bluff Knoll, WA" loading="lazy" /><div class="s-pol-cap">Bluff Knoll, WA</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/Porongurup_WA.jpg" alt="Porongurup, WA" loading="lazy" /><div class="s-pol-cap">Porongurup, WA</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Beat 2: images left, text right -->
+    <!-- Beat 2 -->
     <div class="story-beat story-beat--flip">
       <div class="story-beat-text story-body">
-        <p>Together we bought a <span class="accent">Toyota Troopy</span> and turned it into a home on wheels. Months roaming <span class="accent">Australia</span> — seven of them in <span class="accent">Tasmania</span>, the <span class="accent">Overland Track</span>, surprise family visits in <span class="accent">Queensland</span>, wild hikes and long drives. Every challenge brought us closer. In January 2025 we got married in a <span class="accent">sunrise ceremony</span> on the beach. No fuss. Just us and the ocean.</p>
+        <p>Gemeinsam kauften wir einen <span class="accent">Toyota Troopy</span> und bauten ihn zu einem rollenden Zuhause um. Monate des Herumstreifens durch <span class="accent">Australien</span> — sieben davon in <span class="accent">Tasmanien</span>, dem <span class="accent">Overland Track</span>, überraschende Familienbesuche in <span class="accent">Queensland</span>, wilde Wanderungen und lange Fahrten. Jede Herausforderung brachte uns näher zusammen. Im Januar 2025 heirateten wir bei einer <span class="accent">Sonnenaufgangszeremonie</span> am Strand. Kein Aufwand. Nur wir und der Ozean.</p>
       </div>
       <div class="story-beat-images">
         <div class="story-polaroids">
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/CapeRaoul_TAS.jpg" alt="Cape Raoul, TAS" loading="lazy" /><div class="s-pol-cap">Cape Raoul, TAS</div></div>
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/BremerBay_WA.jpg" alt="Bremer Bay, WA" loading="lazy" /><div class="s-pol-cap">Bremer Bay, WA</div></div>
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/MtKosciuszko_NSW.jpg" alt="Mt Kosciuszko, NSW" loading="lazy" /><div class="s-pol-cap">Mt Kosciuszko, NSW</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/CapeRaoul_TAS.jpg" alt="Cape Raoul, TAS" loading="lazy" /><div class="s-pol-cap">Cape Raoul, TAS</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/BremerBay_WA.jpg" alt="Bremer Bay, WA" loading="lazy" /><div class="s-pol-cap">Bremer Bay, WA</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/MtKosciuszko_NSW.jpg" alt="Mt Kosciuszko, NSW" loading="lazy" /><div class="s-pol-cap">Mt Kosciuszko, NSW</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Beat 3: text left, images right — The Decision -->
+    <!-- Beat 3 -->
     <div class="story-beat">
       <div class="story-beat-text story-body">
-        <p>Bremer Bay had a hold on us — we even <span class="accent">bought a piece of land</span> there. But when we asked ourselves honestly what we really wanted, something bigger was pulling at us. So we sold the land, sold the vehicles, and started looking for a serious expedition truck in Europe. We found our <span class="accent">1986 Steyr 12M18</span>. Our team — <span class="accent">Rocket</span> the dog, a baby on the way, and the two of us — needed a proper home on wheels.</p>
+        <p>Bremer Bay hatte uns in seinen Bann gezogen — wir kauften sogar <span class="accent">ein Stück Land</span> dort. Aber als wir uns ehrlich fragten, was wir wirklich wollten, zog uns etwas Größeres an. Also verkauften wir das Land, verkauften die Fahrzeuge und suchten in Europa nach einem ernsthaften Expeditions-LKW. Wir fanden unseren <span class="accent">1986er Steyr 12M18</span>. Unser Team — <span class="accent">Rocket</span> der Hund, ein Baby unterwegs und wir beide — brauchte ein richtiges rollendes Zuhause.</p>
       </div>
       <div class="story-beat-images">
         <div class="story-polaroids">
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/OurLandBremer.jpg" alt="Our land in Bremer Bay" loading="lazy" /><div class="s-pol-cap">Our land, Bremer Bay</div></div>
-          <div class="s-pol"><img src="Photos/OurStory/Polaroid/BuyingSteyr.jpg" alt="Buying the Steyr" loading="lazy" /><div class="s-pol-cap">Buying the Steyr</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/OurLandBremer.jpg" alt="Unser Land in Bremer Bay" loading="lazy" /><div class="s-pol-cap">Unser Land, Bremer Bay</div></div>
+          <div class="s-pol"><img src="../Photos/OurStory/Polaroid/BuyingSteyr.jpg" alt="Kauf des Steyr" loading="lazy" /><div class="s-pol-cap">Kauf des Steyr</div></div>
         </div>
       </div>
     </div>
@@ -587,76 +489,76 @@
   </div>
 </section>
 
-<!-- OUR CHOICE -->
+<!-- UNSERE ENTSCHEIDUNG -->
 <section id="our-choice">
   <div class="choice-inner">
-    <span class="warm-label">Our Choice</span>
+    <span class="warm-label">Unsere Entscheidung</span>
     <div class="warm-divider"></div>
     <div class="choice-body">
-      <p class="choice-q" style="margin-bottom:1.5rem;">We almost took the safe path.</p>
-      <p>We bought a piece of land in Bremer Bay, the small town where we first met. We were ready to settle down, take over a local business, and do the "responsible" thing. On paper it looked perfect.</p>
-      <p>But when we stood on that land, something felt wrong.</p>
-      <p>The life most people live isn't really a choice — it's the default. Mortgage, car payments, a job you tolerate, weekends that disappear too fast. You follow the next logical step everyone around you is taking… until one day you realise the years are gone.</p>
-      <p>Jason's dad died relatively young, before he ever got to retire. It made one thing brutally clear: we don't know when our time runs out. We refuse to spend the best years of our lives building someone else's dream just to afford a life we barely get to live.</p>
-      <p>So we sold the land. We sold the vehicles. We bet on the unknown.</p>
-      <p>We chose to build the truck instead of the house. We chose time together. We chose to live now — not one day. Now.</p>
-      <p><em>This is not for everyone. But it's the only life that feels honest to us.</em></p>
+      <p class="choice-q" style="margin-bottom:1.5rem;">Wir wären fast den sicheren Weg gegangen.</p>
+      <p>Wir kauften ein Stück Land in Bremer Bay, der kleinen Stadt, in der wir uns zum ersten Mal getroffen hatten. Wir waren bereit, uns niederzulassen, ein lokales Unternehmen zu übernehmen und das "Verantwortliche" zu tun. Auf dem Papier sah es perfekt aus.</p>
+      <p>Aber als wir auf diesem Land standen, fühlte sich etwas falsch an.</p>
+      <p>Das Leben, das die meisten Menschen führen, ist keine wirkliche Wahl — es ist die Voreinstellung. Hypothek, Ratenzahlungen für das Auto, ein Job, den man toleriert, Wochenenden, die zu schnell verschwinden. Man folgt dem nächsten logischen Schritt, den alle um einen herum gehen&hellip; bis man eines Tages merkt, dass die Jahre vergangen sind.</p>
+      <p>Jasons Vater starb relativ jung, bevor er jemals in Rente gehen konnte. Es machte eines brutal klar: Wir wissen nicht, wann unsere Zeit abläuft. Wir weigern uns, die besten Jahre unseres Lebens damit zu verbringen, den Traum anderer zu verwirklichen, nur um uns ein Leben leisten zu können, das wir kaum leben.</p>
+      <p>Also verkauften wir das Land. Wir verkauften die Fahrzeuge. Wir setzten auf das Unbekannte.</p>
+      <p>Wir entschieden uns, den Truck anstatt das Haus zu bauen. Wir entschieden uns für Zeit zusammen. Wir entschieden uns, jetzt zu leben — nicht irgendwann. Jetzt.</p>
+      <p><em>Das ist nicht für jeden. Aber es ist das einzige Leben, das sich für uns ehrlich anfühlt.</em></p>
     </div>
   </div>
 </section>
 
-<!-- THE VEHICLES -->
+<!-- DIE FAHRZEUGE -->
 <section id="vehicles">
   <div class="vehicles-header">
-    <span class="warm-label">The Vehicles</span>
-    <h2>Five vehicles.<br />One destination.</h2>
+    <span class="warm-label">Die Fahrzeuge</span>
+    <h2>Fünf Fahrzeuge.<br />Ein Ziel.</h2>
     <div class="warm-divider"></div>
-    <p>Before the Steyr, we explored Australia across five different vehicles — each one teaching us something new about what we really needed.</p>
+    <p>Vor dem Steyr erkundeten wir Australien mit fünf verschiedenen Fahrzeugen — jedes lehrte uns etwas Neues darüber, was wir wirklich brauchten.</p>
   </div>
   <div class="v-grid">
 
     <div class="v-card">
-      <div class="v-img"><img src="Photos/VehicleCards/ISZUZU2.jpg" alt="Isuzu Ute + Canopy" loading="lazy" /></div>
+      <div class="v-img"><img src="../Photos/VehicleCards/ISZUZU2.jpg" alt="Isuzu Ute + Aufbau" loading="lazy" /></div>
       <div class="v-body">
         <span class="v-num">01</span>
-        <div class="v-name">Isuzu Ute + Canopy</div>
-        <div class="v-desc">A rooftop tent and a big dream. The beginning of everything.</div>
+        <div class="v-name">Isuzu Ute + Aufbau</div>
+        <div class="v-desc">Ein Dachzelt und ein großer Traum. Der Anfang von allem.</div>
       </div>
     </div>
 
     <div class="v-card">
-      <div class="v-img"><img src="Photos/VehicleCards/Troopy.jpg" alt="Toyota Troopcarrier Bruce" loading="lazy" /></div>
+      <div class="v-img"><img src="../Photos/VehicleCards/Troopy.jpg" alt="Toyota Troopcarrier Bruce" loading="lazy" /></div>
       <div class="v-body">
         <span class="v-num">02</span>
         <div class="v-name">Toyota Troopcarrier "Bruce"</div>
-        <div class="v-desc">30,000 km. Seven months in Tasmania. Rocket joined us en route.</div>
+        <div class="v-desc">30.000 km. Sieben Monate in Tasmanien. Rocket stieß unterwegs dazu.</div>
       </div>
     </div>
 
     <div class="v-card">
-      <div class="v-img"><img src="Photos/VehicleCards/Hilux.jpg" alt="Single Cab Hilux" loading="lazy" /></div>
+      <div class="v-img"><img src="../Photos/VehicleCards/Hilux.jpg" alt="Single Cab Hilux" loading="lazy" /></div>
       <div class="v-body">
         <span class="v-num">03</span>
         <div class="v-name">Single Cab Hilux</div>
-        <div class="v-desc">Slide-on camper, then stripped back to a swag under the stars.</div>
+        <div class="v-desc">Slide-on-Camper, dann auf eine Schlafrolle unter den Sternen reduziert.</div>
       </div>
     </div>
 
     <div class="v-card">
-      <div class="v-img"><img src="Photos/VehicleCards/79series.jpg" alt="Toyota 79 Series Land Cruiser" loading="lazy" /></div>
+      <div class="v-img"><img src="../Photos/VehicleCards/79series.jpg" alt="Toyota 79 Series" loading="lazy" /></div>
       <div class="v-body">
         <span class="v-num">04</span>
         <div class="v-name">Toyota 79 Series</div>
-        <div class="v-desc">Extended chassis, GVM upgrade. Capable — but still not quite home.</div>
+        <div class="v-desc">Verlängertes Fahrgestell, GVM-Upgrade. Leistungsstark — aber immer noch nicht ganz wie zu Hause.</div>
       </div>
     </div>
 
     <div class="v-card">
-      <div class="v-img"><img src="Photos/VehicleCards/Truck.jpg" alt="1986 Steyr 12M18" loading="lazy" /></div>
+      <div class="v-img"><img src="../Photos/VehicleCards/Truck.jpg" alt="1986 Steyr 12M18" loading="lazy" /></div>
       <div class="v-body">
-        <span class="v-num">05 — This is home.</span>
+        <span class="v-num">05 — Das ist unser Zuhause.</span>
         <div class="v-name">1986 Steyr 12M18</div>
-        <div class="v-desc">Eight months. 3,000+ hours. This truck is our life.</div>
+        <div class="v-desc">Acht Monate. Über 3.000 Stunden. Dieser Truck ist unser Leben.</div>
       </div>
     </div>
 
@@ -664,62 +566,57 @@
 
   <div class="vehicle-lessons">
     <div class="vl-item">
-      <div class="vl-name">The Ute</div>
-      <div class="vl-desc">Perfect for quick trips out bush, but in cold weather and heavy rain it felt too exposed — with nowhere comfortable to retreat to.</div>
+      <div class="vl-name">Der Ute</div>
+      <div class="vl-desc">Perfekt für schnelle Ausflüge ins Outback, aber bei Kälte und starkem Regen fühlte es sich zu exponiert an — ohne einen komfortablen Rückzugsort.</div>
     </div>
     <div class="vl-item">
-      <div class="vl-name">The Troopy</div>
-      <div class="vl-desc">Incredible — capable, reliable, and full of character — but with three people and a dog, it simply became too small. It gave us shelter from the weather, but not the space we needed for full-time living.</div>
+      <div class="vl-name">Der Troopy</div>
+      <div class="vl-desc">Unglaublich — leistungsstark, zuverlässig und voller Charakter — aber mit drei Menschen und einem Hund wurde er schlicht zu klein. Er bot Schutz vor dem Wetter, aber nicht den Platz, den wir für ein Vollzeit-Leben brauchten.</div>
     </div>
     <div class="vl-item">
-      <div class="vl-name">The Slide-On Camper</div>
-      <div class="vl-desc">A fantastic setup that gave us more room, but it still felt like only part of the solution. We wanted a dedicated home on wheels — something built specifically for long-term travel and everyday life. Staying within the vehicle's GVM was always a challenge, and while there are some amazing camper setups out there, we realised that for a similar investment, we could build something that truly suited us.</div>
+      <div class="vl-name">Der Slide-on-Camper</div>
+      <div class="vl-desc">Ein fantastisches Setup, das uns mehr Platz bot, aber es fühlte sich immer noch wie nur ein Teil der Lösung an. Wir wollten ein dediziertes Zuhause auf Rädern — etwas, das speziell für Langzeitreisen und das tägliche Leben gebaut wurde. Das GVM-Limit einzuhalten war immer eine Herausforderung, und obwohl es tolle Camper-Setups gibt, erkannten wir, dass wir für eine ähnliche Investition etwas bauen könnten, das wirklich zu uns passt.</div>
     </div>
   </div>
 
   <div class="chose-truck">
-    <span class="truck-word">So we chose a truck.</span>
-    <p>We found a tired 1986 Steyr 12M18 that had been sitting in a yard for years. We weren't afraid of the hard work. With the right base, we knew we could build exactly the home we needed — tough enough for serious expedition travel, comfortable enough for full-time family life with our daughter and Rocket.</p>
+    <span class="truck-word">Also entschieden wir uns für einen Truck.</span>
+    <p>Wir fanden einen müden 1986er Steyr 12M18, der jahrelang auf einem Hof gestanden hatte. Wir scheuten die harte Arbeit nicht. Mit der richtigen Basis wussten wir, dass wir genau das Zuhause bauen konnten, das wir brauchten — robust genug für ernstes Expeditionsreisen, komfortabel genug für das Vollzeit-Familienleben mit unserer Tochter und Rocket.</p>
   </div>
 </section>
 
-<!-- STEYR CTA -->
+<!-- CTA -->
 <section id="steyr-cta">
-  <span class="warm-label">The Build</span>
-  <h2>Want to see inside?</h2>
-  <p>Every system, every decision, every corner of the space we call home — all the details of how we built our life on wheels.</p>
-  <a href="home.html" class="btn btn-ghost">See our home →</a>
+  <span class="warm-label">Der Aufbau</span>
+  <h2>Willst du es von innen sehen?</h2>
+  <p>Jedes System, jede Entscheidung, jede Ecke des Raums, den wir unser Zuhause nennen — alle Details, wie wir unser Leben auf Rädern gebaut haben.</p>
+  <a href="../home.html" class="btn btn-ghost">Unser Zuhause entdecken &rarr;</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <div class="footer-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
   <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="truck.html">The Truck</a></li>
-    <li><a href="story.html">Our Story</a></li>
-    <li><a href="howwedoit.html">How We Do It</a></li>
-    <li><a href="home.html">Our Home</a></li>
-    <li><a href="files.html">Files</a></li>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Der Truck</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie Wir Es Machen</a></li>
+    <li><a href="../home.html">Unser Zuhause</a></li>
+    <li><a href="files.html">Dateien</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
   </ul>
-  <p class="footer-copy">© 2026 3xploreWithUs</p>
+  <p class="footer-copy">&copy; 2026 3xploreWithUs</p>
 </footer>
 
 <script>
-// ── HERO PARALLAX + CUSTOM CURSOR ────────────────────────────────
 (function () {
   const section = document.getElementById('hero-split');
   const photo   = document.getElementById('heroPhotoLayer');
   const cursor  = document.getElementById('heroCursor');
   const ring    = document.getElementById('heroCursorRing');
   if (!section || !photo) return;
-
-  let mx = 0, my = 0;
-
   section.addEventListener('mousemove', function (e) {
-    mx = e.clientX; my = e.clientY;
     const rect = section.getBoundingClientRect();
     const dx = (e.clientX - rect.left  - rect.width  / 2) / rect.width;
     const dy = (e.clientY - rect.top   - rect.height / 2) / rect.height;
@@ -729,27 +626,18 @@
     ring.style.left   = e.clientX + 'px';
     ring.style.top    = e.clientY + 'px';
   });
-
   section.addEventListener('mouseleave', function () {
     photo.style.transform = 'translate(0,0)';
+    cursor.style.opacity = '0'; ring.style.opacity = '0';
   });
-
-  // Show/hide cursor only inside the hero
   section.addEventListener('mouseenter', function () {
-    cursor.style.opacity = '1';
-    ring.style.opacity   = '1';
+    cursor.style.opacity = '1'; ring.style.opacity = '1';
   });
-  section.addEventListener('mouseleave', function () {
-    cursor.style.opacity = '0';
-    ring.style.opacity   = '0';
-  });
-  cursor.style.opacity = '0';
-  ring.style.opacity   = '0';
+  cursor.style.opacity = '0'; ring.style.opacity = '0';
 })();
 </script>
 
 <script>
-/* ── MOBILE NAV ── */
 (function(){
   var burger = document.getElementById('nav-burger');
   var drawer = document.getElementById('nav-drawer');
@@ -769,16 +657,13 @@
 </script>
 
 <script>
-  // Vehicle card 3D tilt
   const TILT_MAX = 8;
   document.querySelectorAll('.v-card').forEach(card => {
     const imgWrap = card.querySelector('.v-img');
     if (!imgWrap) return;
     const glare = document.createElement('div');
-    glare.className = 'v-glare';
     glare.style.cssText = 'position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity 0.2s;';
     imgWrap.appendChild(glare);
-
     card.addEventListener('mousemove', e => {
       const r = card.getBoundingClientRect();
       const rx = ((e.clientY - r.top  - r.height/2) / (r.height/2)) * -TILT_MAX;
@@ -797,38 +682,6 @@
     });
   });
 </script>
-<script src="site-animations.js"></script>
-
-<script>
-/* ── PAGE NAV SCROLLSPY ── */
-(function () {
-  var links = document.querySelectorAll('.page-nav-link');
-  var sectionIds = Array.from(links).map(function(l){ return l.getAttribute('href').replace('#',''); });
-  var sections = sectionIds.map(function(id){ return document.getElementById(id); });
-
-  function setActive(id) {
-    links.forEach(function(l){
-      if (l.getAttribute('href') === '#' + id) {
-        l.classList.add('active');
-      } else {
-        l.classList.remove('active');
-      }
-    });
-  }
-
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        setActive(entry.target.id);
-      }
-    });
-  }, {
-    rootMargin: '-30% 0px -60% 0px',
-    threshold: 0
-  });
-
-  sections.forEach(function(s){ if(s) observer.observe(s); });
-})();
-</script>
+<script src="../site-animations.js"></script>
 </body>
 </html>

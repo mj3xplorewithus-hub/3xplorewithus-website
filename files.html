@@ -65,195 +65,128 @@
     .container { max-width:1180px; margin:0 auto; }
 
     /* ── HERO ── */
-    .hero { text-align:center; margin-bottom:6rem; }
+    .hero { text-align:center; margin-bottom:5rem; }
     .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.5rem; }
     h1 { font-family:var(--fd); font-size:clamp(2.5rem,7vw,5.5rem); font-weight:900; color:var(--white); line-height:0.95; letter-spacing:0.04em; margin-bottom:1.5rem; }
     h1 .accent { color:var(--sand-lt); }
     .divider { width:40px; height:3px; background:var(--red); border-radius:2px; margin:1.5rem auto; }
     .lead { font-size:1.1rem; color:var(--muted); line-height:1.9; font-weight:300; max-width:620px; margin:0 auto; }
 
-    /* ── SHELF (category section) ── */
-    .shelf { margin-top:5.5rem; }
-    .shelf-head {
-      display:grid; grid-template-columns:auto 1fr 1.1fr;
-      gap:2.5rem; align-items:end;
-      padding:1.75rem 1.75rem 1.5rem;
-      background:var(--dark-2);
-      border-top:3px solid var(--sand);
-      box-shadow:inset 0 -1px 0 var(--line-2);
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display:flex; align-items:center; gap:0.6rem;
+      margin-bottom:3rem; flex-wrap:wrap;
     }
-    .shelf.teal .shelf-head { border-top-color:var(--teal-lt); }
-    .shelf.red  .shelf-head { border-top-color:var(--red); }
-    .shelf-num {
-      font-family:var(--fd); font-weight:900;
-      font-size:3.5rem; letter-spacing:0.04em;
-      line-height:0.9; color:var(--white);
-      padding-bottom:4px;
+    .filter-btn {
+      font-family:var(--fd); font-size:0.58rem; font-weight:700;
+      letter-spacing:0.2em; text-transform:uppercase;
+      padding:0.45rem 1.1rem; border-radius:2px; border:1.5px solid transparent;
+      cursor:pointer; background:transparent; color:var(--muted);
+      border-color:var(--line-2);
+      transition:color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .shelf-titleblock { min-width:0; }
-    .shelf-eyebrow {
-      font-family:var(--fd); font-size:0.6rem;
-      letter-spacing:0.22em; text-transform:uppercase;
-      font-weight:700; margin-bottom:0.5rem;
-    }
-    .shelf-title {
-      font-family:var(--fd); font-weight:900;
-      font-size:2.4rem; letter-spacing:0.04em;
-      line-height:0.95; color:var(--white);
-      text-transform:uppercase;
-    }
-    .shelf-blurb {
-      font-size:0.95rem; color:var(--muted);
-      font-weight:300; line-height:1.7;
-      padding-bottom:0.5rem;
-    }
-    .shelf.sand .shelf-num,
-    .shelf.sand .shelf-eyebrow { color:var(--sand-lt); }
-    .shelf.teal .shelf-num,
-    .shelf.teal .shelf-eyebrow { color:var(--teal-lt); }
-    .shelf.red .shelf-num,
-    .shelf.red .shelf-eyebrow { color:var(--red); }
+    .filter-btn:hover { color:var(--white); border-color:rgba(255,255,255,0.2); }
+    .filter-btn.active { color:var(--dark); background:var(--white); border-color:var(--white); }
+    .filter-btn.active.f-sand { background:var(--sand-lt); border-color:var(--sand-lt); color:var(--dark); }
+    .filter-btn.active.f-teal { background:var(--teal-lt); border-color:var(--teal-lt); color:var(--dark); }
+    .filter-btn.active.f-red  { background:var(--red);     border-color:var(--red);     color:var(--white); }
 
-    /* ── ENTRY (item row) ── */
-    .entries { display:grid; padding:0 1.75rem; }
-    .entry {
+    /* ── CARD GRID ── */
+    .card-grid {
       display:grid;
-      grid-template-columns:64px 1fr auto;
-      gap:2.25rem;
-      padding:2.2rem 0 2rem;
-      border-bottom:1px solid var(--line-2);
+      grid-template-columns:repeat(4, 1fr);
+      gap:1.25rem;
       align-items:start;
-      text-decoration:none; color:inherit;
-      transition:background var(--t-fast), padding-left var(--t-fast);
-      position:relative;
-      cursor:pointer;
     }
-    .entry:last-child { border-bottom:none; }
-    .entry::before {
-      content:''; position:absolute; left:-1.75rem; top:0; bottom:0;
-      width:3px; background:var(--sand);
-      transform:scaleY(0); transform-origin:center;
-      transition:transform 0.3s var(--ease-out);
-    }
-    .shelf.teal .entry::before { background:var(--teal-lt); }
-    .shelf.red  .entry::before { background:var(--red); }
-    .entry:hover { background:rgba(255,255,255,0.02); padding-left:0.75rem; }
-    .entry:hover::before { transform:scaleY(1); }
 
-    /* desktop: entry-row is invisible — num/body/chevron grid handles layout */
-    .entry-row { display:none; }
+    /* hidden by filter */
+    .card.hidden { display:none; }
 
-    /* desktop: desc+meta+cta collapsed, title always visible */
-    .entry-detail {
+    /* ── CARD ── */
+    .card {
+      background:var(--dark-2);
+      border:1px solid var(--line-2);
+      border-radius:4px;
       overflow:hidden;
-      max-height:0;
-      opacity:0;
-      transition:max-height 0.38s ease, opacity 0.25s ease;
+      display:flex; flex-direction:column;
+      text-decoration:none; color:inherit;
+      transition:transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), border-color 0.2s;
+      position:relative;
     }
-    .entry.open .entry-detail {
-      max-height:20rem;
-      opacity:1;
+    .card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 16px 40px rgba(0,0,0,0.45);
     }
+    .card.sand { border-top:2px solid var(--sand); }
+    .card.sand:hover { border-color:var(--sand-lt); }
+    .card.teal { border-top:2px solid var(--teal-lt); }
+    .card.teal:hover { border-color:var(--teal-lt); box-shadow:0 16px 40px rgba(26,144,144,0.15); }
+    .card.red  { border-top:2px solid var(--red); }
+    .card.red:hover  { border-color:var(--red); box-shadow:0 16px 40px rgba(184,74,47,0.15); }
 
-    /* desktop: standalone chevron as third grid column */
-    .entry-chevron-desktop {
-      display:flex; align-items:flex-start; justify-content:center;
-      padding-top:10px; flex-shrink:0;
+    /* thumbnail */
+    .card-thumb {
+      width:100%; aspect-ratio:3/2; overflow:hidden;
+      background:var(--dark-3); position:relative;
+    }
+    .card-thumb img {
+      width:100%; height:100%; object-fit:cover; object-position:top center;
+      transition:transform 0.4s var(--ease-out);
+      display:block;
+    }
+    .card:hover .card-thumb img { transform:scale(1.04); }
+
+    /* card body */
+    .card-body { padding:1.25rem 1.35rem 1.4rem; flex:1; display:flex; flex-direction:column; gap:0.5rem; }
+
+    .card-tag {
+      font-family:var(--fd); font-size:0.54rem; font-weight:700;
+      letter-spacing:0.2em; text-transform:uppercase;
       color:var(--muted);
-      transition:transform 0.3s ease, color 0.2s;
     }
-    .entry-chevron-desktop svg { width:14px; height:14px; }
-    .entry.open .entry-chevron-desktop { transform:rotate(180deg); color:var(--sand-lt); }
-    .shelf.teal .entry.open .entry-chevron-desktop { color:var(--teal-lt); }
-    .shelf.red  .entry.open  .entry-chevron-desktop { color:var(--red); }
+    .card.sand .card-tag { color:var(--sand); }
+    .card.teal .card-tag { color:var(--teal-lt); }
+    .card.red  .card-tag { color:var(--red); }
 
-    /* mobile chevron hidden on desktop */
-    .entry-chevron { display:none; }
-
-    .entry-num {
+    .card-title {
       font-family:var(--fd); font-weight:900;
-      font-size:1.6rem; letter-spacing:0.04em;
-      line-height:1; color:rgba(245,242,236,0.18);
-      padding-top:6px;
-      transition:color var(--t-fast);
-    }
-    .entry:hover .entry-num { color:var(--sand-lt); }
-    .shelf.teal .entry:hover .entry-num { color:var(--teal-lt); }
-    .shelf.red  .entry:hover .entry-num { color:var(--red); }
-
-    .entry-body { min-width:0; }
-    .entry-type {
-      font-family:var(--fd); font-weight:700;
-      font-size:0.58rem; letter-spacing:0.22em;
-      text-transform:uppercase; color:var(--muted);
-      margin-bottom:0.7rem;
-      display:flex; align-items:center; gap:0.7rem;
-    }
-    .entry-type .swatch {
-      display:inline-block; width:8px; height:8px;
-      background:var(--sand); border-radius:1px;
-    }
-    .shelf.teal .entry-type .swatch { background:var(--teal-lt); }
-    .shelf.red  .entry-type .swatch { background:var(--red); }
-
-    .entry-title {
-      font-family:var(--fd); font-weight:900;
-      font-size:1.85rem; letter-spacing:0.04em;
-      line-height:1.05; color:var(--white);
+      font-size:1.2rem; letter-spacing:0.03em;
+      line-height:1.1; color:var(--white);
       text-transform:uppercase;
-      margin-bottom:0.85rem;
-      text-wrap:balance;
     }
-    .entry-desc {
-      font-size:0.95rem; line-height:1.7;
-      color:var(--text); font-weight:300;
-      max-width:62ch; margin-bottom:1rem;
-    }
-    .entry-desc strong { color:var(--white); font-weight:500; }
 
-    .entry-meta {
-      display:flex; flex-wrap:wrap; gap:0 1.5rem;
-      font-family:var(--fd); font-size:0.58rem;
+    .card-desc {
+      font-size:0.84rem; line-height:1.6;
+      color:var(--muted); font-weight:300;
+      flex:1;
+    }
+
+    .card-footer {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-top:0.75rem; padding-top:0.75rem;
+      border-top:1px solid var(--line);
+    }
+    .card-meta {
+      font-family:var(--fd); font-size:0.52rem;
+      letter-spacing:0.16em; text-transform:uppercase;
+      color:rgba(154,175,177,0.55); font-weight:700;
+    }
+    .card-open {
+      font-family:var(--fd); font-size:0.6rem; font-weight:700;
       letter-spacing:0.18em; text-transform:uppercase;
-      color:var(--muted); font-weight:700;
-      list-style:none;
+      display:inline-flex; align-items:center; gap:0.4rem;
     }
-    .entry-meta li { display:inline-flex; align-items:center; gap:0.5rem; }
-    .entry-meta li + li::before {
-      content:'·'; color:var(--muted);
-      font-size:1rem; margin-right:1.5rem;
-      margin-left:-1rem; transform:translateY(-2px);
-    }
-
-    .entry-cta {
-      display:inline-flex; flex-direction:column; align-items:flex-end;
-      gap:0.4rem; padding-top:8px; white-space:nowrap;
-    }
-    .entry-cta .primary {
-      display:inline-flex; align-items:center; gap:0.55rem;
-      font-family:var(--fd); font-weight:700;
-      font-size:0.74rem; letter-spacing:0.22em;
-      text-transform:uppercase; color:var(--sand-lt);
-      transition:color var(--t-fast);
-    }
-    .shelf.teal .entry-cta .primary { color:var(--teal-lt); }
-    .shelf.red  .entry-cta .primary { color:var(--red); }
-    .entry-cta .primary .arrow {
-      font-weight:400; font-size:1.25rem;
-      transition:transform 0.3s var(--ease-out);
+    .card.sand .card-open { color:var(--sand-lt); }
+    .card.teal .card-open { color:var(--teal-lt); }
+    .card.red  .card-open { color:var(--red); }
+    .card-open .arr {
       display:inline-block;
+      transition:transform 0.25s var(--ease-out);
     }
-    .entry:hover .entry-cta .primary .arrow { transform:translateX(8px); }
-    .entry-cta .secondary {
-      font-family:var(--fd); font-weight:700;
-      font-size:0.54rem; letter-spacing:0.18em;
-      text-transform:uppercase; color:var(--muted);
-      transition:color var(--t-fast);
-    }
-    .entry-cta .secondary:hover { color:var(--sand-lt); }
+    .card:hover .card-open .arr { transform:translateX(5px); }
 
     /* ── CTA row ── */
-    .cta-row { text-align:center; margin-top:6rem; }
+    .cta-row { text-align:center; margin-top:5rem; }
     .btn { display:inline-flex; align-items:center; gap:0.4rem; padding:0.9rem 2rem; border-radius:2px; font-family:var(--fd); font-size:0.76rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:transform 0.2s,opacity 0.2s; }
     .btn:hover { transform:translateY(-2px); opacity:0.88; }
     .btn-ghost { background:transparent; border:1.5px solid rgba(237,217,163,0.4); color:var(--sand-lt); }
@@ -270,105 +203,16 @@
       nav { padding:0 1.25rem; }
       .nav-links { display:none; }
       .nav-logo img { height:auto; max-height:44px; }
-
       main { padding:5rem 1rem 4rem; }
       .hero { margin-bottom:3rem; }
       h1 { font-size:clamp(2rem,12vw,3.5rem); }
+      .card-grid { grid-template-columns:repeat(2, 1fr); gap:1rem; }
+    }
 
-      /* ── SHELF: compact header ── */
-      .shelf { margin-top:2.5rem; }
-      .shelf-head {
-        grid-template-columns:auto 1fr;
-        gap:0.6rem 1rem;
-        padding:1rem 1.1rem 0.9rem;
-        align-items:center;
-      }
-      .shelf-num { font-size:1.8rem; padding-bottom:0; line-height:1; }
-      .shelf-title { font-size:1.4rem; }
-      .shelf-eyebrow { margin-bottom:0.25rem; }
-
-      /* shelf blurb: hidden by default, toggled by JS */
-      .shelf-blurb {
-        grid-column:1/-1;
-        font-size:0.85rem;
-        padding:0 0 0.5rem;
-        overflow:hidden;
-        max-height:0;
-        opacity:0;
-        transition:max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
-      }
-      .shelf-blurb.open {
-        max-height:8rem;
-        opacity:1;
-        padding-bottom:0.75rem;
-      }
-
-      /* ── ENTRIES: compact rows ── */
-      .entries { padding:0 0.75rem; }
-
-      .entry {
-        grid-template-columns:1fr auto;
-        grid-template-rows:auto auto;
-        gap:0;
-        padding:0;
-        border-bottom:1px solid var(--line-2);
-        align-items:stretch;
-        position:relative;
-        display:block; /* override to block so we can control inner layout */
-      }
-      .entry::before { left:-0.75rem; }
-      .entry:hover { padding-left:0; background:none; }
-      .entry:hover::before { transform:scaleY(0); }
-
-      /* compact always-visible row */
-      .entry-row {
-        display:grid;
-        grid-template-columns:1fr auto;
-        align-items:center;
-        gap:0.5rem;
-        padding:0.85rem 0;
-        cursor:pointer;
-      }
-      .entry-row-left { min-width:0; }
-      .entry-type { margin-bottom:0.2rem; font-size:0.54rem; }
-      .entry-title { font-size:1.05rem; margin-bottom:0; line-height:1.15; }
-
-      /* chevron */
-      .entry-chevron {
-        width:28px; height:28px; flex-shrink:0;
-        display:flex; align-items:center; justify-content:center;
-        color:var(--muted);
-        transition:transform 0.3s ease, color 0.2s;
-      }
-      .entry-chevron svg { width:14px; height:14px; }
-      .entry.open .entry-chevron { transform:rotate(180deg); color:var(--sand-lt); }
-      .shelf.teal .entry.open .entry-chevron { color:var(--teal-lt); }
-      .shelf.red  .entry.open .entry-chevron { color:var(--red); }
-
-      /* expandable detail */
-      .entry-detail {
-        overflow:hidden;
-        max-height:0;
-        opacity:0;
-        transition:max-height 0.38s ease, opacity 0.25s ease, padding 0.25s ease;
-        padding:0 0 0;
-      }
-      .entry.open .entry-detail {
-        max-height:20rem;
-        opacity:1;
-        padding:0 0 1rem;
-      }
-      .entry-desc { font-size:0.88rem; margin-bottom:0.65rem; }
-      .entry-meta { font-size:0.54rem; margin-bottom:0.75rem; }
-      .entry-cta { align-items:flex-start; padding-top:0; }
-
-      /* hide the old entry-num on mobile */
-      .entry-num { display:none; }
-      /* hide desktop-only type+title from entry-body (entry-row handles these on mobile) */
-      .entry-body > .entry-type { display:none !important; }
-      .entry-body > .entry-title { display:none !important; }
-      /* also hide the desktop chevron on mobile */
-      .entry-chevron-desktop { display:none !important; }
+    @media (max-width:480px) {
+      .card-grid { grid-template-columns:1fr; }
+      .filter-bar { gap:0.4rem; }
+      .filter-btn { font-size:0.52rem; padding:0.4rem 0.8rem; }
     }
   </style>
 <script type='text/javascript' nonce='DezhP6ADjPtKv3NYMjKmtA==' src='https://claude.ai/PG-Wa4AE6lFR7VFA1ZvcstzEIdCoYxia1ckS16USZOaJm-l-EKnvDD4O8OHfEP7vVvYEu7BQVfEkuwphW-li4Ay5qRwCTe77mcNLmBlTYUzrynxs2w1hnx1HFxsnq9t0fz4gVROj7k7aGp5FnVwNI6kZT6auk2Jq-9avKkF2HUPxQqj4B2rqqTntM5lVtSUFh5H0ApqF7hK7pHHV2BIMK8NJ-_Q-I0dLeSaTSGe4tM1RPGi8qzNzbm-W8iAI_MUQKyHSmlxqylFXQwMGEl6y33AB9JhUDuKRMx1h4HWEkqw1YEh_9pzRjs-l0JLpqro_-ZVL8pD-_ud9JiIPrG0ITaA42qzi4pu5ipZMISGAjexd_oDryamvIXyMznoA9jc3mSPTz9fab3cLWrTXPrwl_VPCDKZlR3Jqt62nLxZjGc0bEalD4Nhyi7k9xq6UQn56TO_ez_Pb5oIoxjrlz-tcU2Pg5XBljXtizkEbPisH2Vk_-7ME6LVLxYb1qiCVOCZfcvvL5YOqVXQ5XwkuhQnXUmAglX0eXu7aHPo8HY48WfwhR50'></script></head>
@@ -401,212 +245,104 @@
 <main>
   <div class="container">
 
-    <!-- ── HERO ────────────────────────────────────── -->
+    <!-- ── HERO ── -->
     <div class="hero">
       <span class="section-label">DOWNLOADS</span>
       <h1>Files &amp;<br/><span class="accent">Guides.</span></h1>
       <div class="divider"></div>
-      <p class="lead">Guides, routes, and from-scratch recipes from our life on the road. 
-Information we wish we'd had when we started. 
-</p>
+      <p class="lead">Guides, routes, and from-scratch recipes from our life on the road.</p>
     </div>
 
+    <!-- ── FILTER BAR ── -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn f-sand" data-filter="sand">Travel</button>
+      <button class="filter-btn f-teal" data-filter="teal">How To</button>
+      <button class="filter-btn f-red"  data-filter="red">From Scratch</button>
+    </div>
 
-    <!-- ═════════════════════════════════════════════
-         01 · TRAVEL
-         ═════════════════════════════════════════════ -->
-    <section class="shelf sand" data-screen-label="01 Travel">
-      <header class="shelf-head">
-        <div class="shelf-num">01</div>
-        <div class="shelf-titleblock">
-          <h2 class="shelf-title">Travel</h2>
+    <!-- ── ALL CARDS ── -->
+    <div class="card-grid">
+
+      <a class="card sand" data-cat="sand" href="Files/_Online/packing-list.html">
+        <div class="card-thumb">
+          <img src="Files/_Online/thumbs/packing-list.jpg" alt="Packing List preview" loading="lazy"/>
         </div>
-        <p class="shelf-blurb">Routes, packing, and the practical side of being permanently on the move. What to bring, where to point the truck, and what we learned the hard way.</p>
-      </header>
-
-      <div class="entries">
-        <a class="entry" href="Files/_Online/packing-list.html" data-href="Files/_Online/packing-list.html">
-          <div class="entry-num">01</div>
-          <div class="entry-row">
-            <div class="entry-row-left">
-              <div class="entry-type"><span class="swatch"></span>Guide</div>
-              <h3 class="entry-title">Packing List &mdash; Family + Dog</h3>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <div class="card-body">
+          <div class="card-tag">Travel &middot; Guide</div>
+          <div class="card-title">Packing List &mdash; Family + Dog</div>
+          <p class="card-desc">12 categories, 150+ items. Real-world tested across 30,000&nbsp;km of Australia.</p>
+          <div class="card-footer">
+            <span class="card-meta">14 pages &middot; Free</span>
+            <span class="card-open">Open <span class="arr">&rarr;</span></span>
           </div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Guide</div>
-            <h3 class="entry-title">Packing List &mdash; Family + Dog</h3>
-            <div class="entry-detail">
-              <p class="entry-desc">Everything we pack for two adults, a baby, and Rocket &mdash; <strong>12 categories, 150+ items</strong>, real-world tested across 30,000&nbsp;km of Australia and one European winter.</p>
-              <ul class="entry-meta">
-                <li>14 pages</li>
-                <li>HTML</li>
-                <li>A4 printable</li>
-                <li>Free</li>
-              </ul>
-              <div class="entry-cta">
-                <span class="primary">Open <span class="arrow">&rarr;</span></span>
-              </div>
-            </div>
-          </div>
-              <div class="entry-chevron-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </a>
-      </div>
-    </section>
-
-
-    <!-- ═════════════════════════════════════════════
-         02 · HOW TO
-         ═════════════════════════════════════════════ -->
-    <section class="shelf teal" data-screen-label="02 How To">
-      <header class="shelf-head">
-        <div class="shelf-num">02</div>
-        <div class="shelf-titleblock">
-          <h2 class="shelf-title">How To</h2>
         </div>
-        <p class="shelf-blurb">The practical stuff. Build knowledge and safety kit &mdash; the bits no one tells you until you've already learned them the hard way.</p>
-      </header>
+      </a>
 
-      <div class="entries">
-        <a class="entry" href="Files/_Online/first-aid-kit.html" data-href="Files/_Online/first-aid-kit.html">
-          <div class="entry-num">01</div>
-          <div class="entry-row">
-            <div class="entry-row-left">
-              <div class="entry-type"><span class="swatch"></span>Guide</div>
-              <h3 class="entry-title">First Aid Kit &mdash; Newborn Edition</h3>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-          </div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Guide</div>
-            <h3 class="entry-title">First Aid Kit &mdash; Newborn Edition</h3>
-            <div class="entry-detail">
-              <p class="entry-desc">The compact, multi-use kit we carry for a newborn in the truck &mdash; essentials, natural remedies, camper-specific extras, and the medical reminders worth keeping in mind.</p>
-              <ul class="entry-meta">
-                <li>7 pages</li>
-                <li>HTML</li>
-                <li>A4 printable</li>
-                <li>Free</li>
-              </ul>
-              <div class="entry-cta">
-                <span class="primary">Open <span class="arrow">&rarr;</span></span>
-              </div>
-            </div>
-          </div>
-              <div class="entry-chevron-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </a>
-      </div>
-    </section>
-
-
-    <!-- ═════════════════════════════════════════════
-         03 · FROM SCRATCH
-         ═════════════════════════════════════════════ -->
-    <section class="shelf red" data-screen-label="03 From Scratch">
-      <header class="shelf-head">
-        <div class="shelf-num">03</div>
-        <div class="shelf-titleblock">
-          <h2 class="shelf-title">From Scratch</h2>
+      <a class="card teal" data-cat="teal" href="Files/_Online/first-aid-kit.html">
+        <div class="card-thumb">
+          <img src="Files/_Online/thumbs/first-aid-kit.jpg" alt="First Aid Kit preview" loading="lazy"/>
         </div>
-        <p class="shelf-blurb">Recipes for the kitchen and the cleaning cupboard &mdash; soaps, detergents and meals we make from a handful of ingredients in the back of the truck.</p>
-      </header>
-
-      <div class="entries">
-
-        <a class="entry" href="Files/_Online/recipe-gentle-hand-soap.html" data-href="Files/_Online/recipe-gentle-hand-soap.html">
-          <div class="entry-num">01</div>
-          <div class="entry-row">
-            <div class="entry-row-left">
-              <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-              <h3 class="entry-title">Gentle Hand Soap</h3>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <div class="card-body">
+          <div class="card-tag">How To &middot; Guide</div>
+          <div class="card-title">First Aid Kit &mdash; Newborn Edition</div>
+          <p class="card-desc">The compact kit we carry for a newborn in the truck &mdash; essentials, natural remedies, and camper-specific extras.</p>
+          <div class="card-footer">
+            <span class="card-meta">7 pages &middot; Free</span>
+            <span class="card-open">Open <span class="arr">&rarr;</span></span>
           </div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Gentle Hand Soap</h3>
-            <div class="entry-detail">
-              <p class="entry-desc">A simple liquid hand soap from grated natural bar soap, glycerin and distilled water. Gentle on sensitive skin &mdash; works in a pump or foaming dispenser. Makes <strong>250&ndash;300&nbsp;ml</strong>.</p>
-              <ul class="entry-meta">
-                <li>2 pages</li>
-                <li>HTML</li>
-                <li>3 ingredients</li>
-                <li>Free</li>
-              </ul>
-              <div class="entry-cta">
-                <span class="primary">Open <span class="arrow">&rarr;</span></span>
-                <a href="Files/Recipe_GentleHandSoap.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
-              </div>
-            </div>
-          </div>
-              <div class="entry-chevron-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </a>
+        </div>
+      </a>
 
-        <a class="entry" href="Files/_Online/recipe-liquid-dishwashing-soap.html" data-href="Files/_Online/recipe-liquid-dishwashing-soap.html">
-          <div class="entry-num">02</div>
-          <div class="entry-row">
-            <div class="entry-row-left">
-              <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-              <h3 class="entry-title">Liquid Dishwashing Soap</h3>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      <a class="card red" data-cat="red" href="Files/_Online/recipe-gentle-hand-soap.html">
+        <div class="card-thumb">
+          <img src="Files/_Online/thumbs/recipe-gentle-hand-soap.jpg" alt="Gentle Hand Soap preview" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">From Scratch &middot; Recipe</div>
+          <div class="card-title">Gentle Hand Soap</div>
+          <p class="card-desc">3 ingredients. Makes 250&ndash;300&nbsp;ml. Works in a pump or foaming dispenser.</p>
+          <div class="card-footer">
+            <span class="card-meta">1 page &middot; Free</span>
+            <span class="card-open">Open <span class="arr">&rarr;</span></span>
           </div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Liquid Dishwashing Soap</h3>
-            <div class="entry-detail">
-              <p class="entry-desc">An effective washing-up liquid from bar soap, washing soda and glycerin. Makes <strong>500&ndash;600&nbsp;ml</strong>. Cuts through grease without the chemicals.</p>
-              <ul class="entry-meta">
-                <li>2 pages</li>
-                <li>HTML</li>
-                <li>3 ingredients + opt.</li>
-                <li>Free</li>
-              </ul>
-              <div class="entry-cta">
-                <span class="primary">Open <span class="arrow">&rarr;</span></span>
-                <a href="Files/Recipe_LiquidDishwashingSoap.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
-              </div>
-            </div>
-          </div>
-              <div class="entry-chevron-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </a>
+        </div>
+      </a>
 
-        <a class="entry" href="Files/_Online/recipe-laundry-detergent.html" data-href="Files/_Online/recipe-laundry-detergent.html">
-          <div class="entry-num">03</div>
-          <div class="entry-row">
-            <div class="entry-row-left">
-              <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-              <h3 class="entry-title">Laundry Detergent</h3>
-            </div>
-            <span class="entry-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      <a class="card red" data-cat="red" href="Files/_Online/recipe-liquid-dishwashing-soap.html">
+        <div class="card-thumb">
+          <img src="Files/_Online/thumbs/recipe-liquid-dishwashing-soap.jpg" alt="Liquid Dishwashing Soap preview" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">From Scratch &middot; Recipe</div>
+          <div class="card-title">Liquid Dishwashing Soap</div>
+          <p class="card-desc">Bar soap, washing soda, glycerin. Makes 500&ndash;600&nbsp;ml. Cuts grease without the chemicals.</p>
+          <div class="card-footer">
+            <span class="card-meta">1 page &middot; Free</span>
+            <span class="card-open">Open <span class="arr">&rarr;</span></span>
           </div>
-          <div class="entry-body">
-            <div class="entry-type"><span class="swatch"></span>Recipe &middot; DIY</div>
-            <h3 class="entry-title">Laundry Detergent</h3>
-            <div class="entry-detail">
-              <p class="entry-desc">A dry powder detergent that makes <strong>30&ndash;50 loads</strong>. Just bar soap, baking soda, and washing soda. Works in any machine &mdash; safe for babies with the essential oils omitted.</p>
-              <ul class="entry-meta">
-                <li>2 pages</li>
-                <li>HTML</li>
-                <li>3 ingredients + opt.</li>
-                <li>Free</li>
-              </ul>
-              <div class="entry-cta">
-                <span class="primary">Open <span class="arrow">&rarr;</span></span>
-                <a href="Files/Recipe_LaundryDetergent.pdf" download="" class="secondary" onclick="event.stopPropagation();">Or grab PDF &darr;</a>
-              </div>
-            </div>
+        </div>
+      </a>
+
+      <a class="card red" data-cat="red" href="Files/_Online/recipe-laundry-detergent.html">
+        <div class="card-thumb">
+          <img src="Files/_Online/thumbs/recipe-laundry-detergent.jpg" alt="Laundry Detergent preview" loading="lazy"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">From Scratch &middot; Recipe</div>
+          <div class="card-title">Laundry Detergent</div>
+          <p class="card-desc">Dry powder. Makes 30&ndash;50 loads. Safe for babies with essential oils left out.</p>
+          <div class="card-footer">
+            <span class="card-meta">1 page &middot; Free</span>
+            <span class="card-open">Open <span class="arr">&rarr;</span></span>
           </div>
-              <div class="entry-chevron-desktop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </a>
+        </div>
+      </a>
 
-      </div>
-    </section>
-
+    </div>
 
     <div class="cta-row">
-      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-ghost">Follow along on YouTube →</a>
+      <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="btn btn-ghost">Follow along on YouTube &rarr;</a>
     </div>
 
   </div>
@@ -629,45 +365,28 @@ Information we wish we'd had when we started. 
   <p class="footer-copy">© 2026 3xploreWithUs</p>
 </footer>
 
+
 <script>
 (function () {
-  var MOBILE_BP = 900;
+  var btns  = document.querySelectorAll('.filter-btn');
+  var cards = document.querySelectorAll('.card-grid .card');
 
-  function isMobile() { return window.innerWidth <= MOBILE_BP; }
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.getAttribute('data-filter');
 
-  /* ── ENTRY ACCORDION (desktop + mobile) ── */
-  document.querySelectorAll('.entry').forEach(function (entry) {
-    entry.addEventListener('click', function (e) {
-      // Let PDF/secondary links through always
-      if (e.target.closest('.secondary')) return;
+      // Update active button
+      btns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
 
-      e.preventDefault();
-
-      var isOpen = entry.classList.contains('open');
-
-      // Close all others
-      document.querySelectorAll('.entry.open').forEach(function (el) {
-        if (el !== entry) el.classList.remove('open');
+      // Show / hide cards
+      cards.forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
       });
-
-      if (isOpen) {
-        // Second click on already-open entry → navigate
-        var href = entry.getAttribute('href');
-        if (href) window.location.href = href;
-      } else {
-        entry.classList.add('open');
-      }
-    });
-  });
-
-  /* ── SHELF BLURB TOGGLE ── */
-  document.querySelectorAll('.shelf-head').forEach(function (head) {
-    var blurb = head.querySelector('.shelf-blurb');
-    if (!blurb) return;
-    head.style.cursor = 'pointer';
-    head.addEventListener('click', function () {
-      if (!isMobile()) return;
-      blurb.classList.toggle('open');
     });
   });
 })();

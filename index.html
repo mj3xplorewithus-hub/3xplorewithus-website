@@ -19,8 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <style>
     @font-face {
-      font-family:'TypoGraphica';
-      src:url('TypoGraphica_demo.otf') format('opentype');
+      font-family:'ProtestStrike';
+      src:url('Protest_Strike/ProtestStrike-Regular.ttf') format('truetype');
       font-display:swap;
       /* Limit to letters & numbers only — punctuation (? ' - " etc.) falls through to Montserrat */
       unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
@@ -32,7 +32,7 @@
       --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
       --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
       --text:#F2EEE4; --muted:#9AAFB1; --white:#F5F2EC;
-      --fd:'TypoGraphica','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+      --fd:'ProtestStrike','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
@@ -77,9 +77,9 @@
     .hero-text-col { display:flex; flex-direction:column; justify-content:center; padding:7rem 3.5rem 4rem 3.5rem; background:var(--dark); position:relative; overflow:hidden; }
     .hero-topo-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; opacity:0.18; pointer-events:none; z-index:0; }
     .hero-text-block { position:relative; z-index:1; }
-    .hero-text-block { max-width:360px; }
+    .hero-text-block { max-width:460px; }
     .hero-eyebrow { font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--teal-lt); margin-bottom:1rem; display:block; opacity:0; transform:translateY(18px); animation:hero-fade-up 0.7s 0.1s forwards; }
-    #hero h1 { font-family:var(--fd); font-size:clamp(1.3rem,1.9vw,2rem); font-weight:900; color:var(--white); line-height:1.2; letter-spacing:0.03em; opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards; }
+    #hero h1 { font-family:var(--fd); font-size:clamp(1.9rem,3vw,3rem); font-weight:900; color:var(--white); line-height:1.2; letter-spacing:0.03em; opacity:0; transform:translateY(28px); animation:hero-fade-up 0.8s 0.25s forwards; }
     .ix-accent { color:var(--sand-lt); }
     .hero-rule { width:0; height:2px; background:var(--sand); border:none; margin:1.25rem 0 0; animation:hero-grow 0.6s 0.7s forwards; }
     .hero-bottom { opacity:0; transform:translateY(16px); animation:hero-fade-up 0.7s 0.85s forwards; margin-top:1.5rem; }

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>Kontakt — 3xploreWithUs</title>
+  <style>
+@font-face{font-family:'ProtestStrike';src:url('../Protest_Strike/ProtestStrike-Regular.ttf') format('truetype');font-display:swap}
+@font-face{font-family:'Roboto';src:url('../Roboto/static/Roboto-Light.ttf') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Roboto';src:url('../Roboto/static/Roboto-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Roboto';src:url('../Roboto/static/Roboto-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+:root{--teal:#1A9090;--teal-lt:#5AC8C8;--sand:#D4A96A;--sand-lt:#EDD9A3;--dark:#0D1515;--dark-2:#131C1C;--text:#F2EEE4;--muted:#9AAFB1;--white:#F5F2EC;--fd:'ProtestStrike',system-ui,sans-serif;--fb:'Roboto',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--dark);color:var(--text);font-family:var(--fb);line-height:1.75;font-size:1rem}
+a{color:var(--teal-lt);text-decoration:none}
+a:hover{color:var(--sand-lt);text-decoration:underline}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 2rem;background:var(--dark-2);border-bottom:1px solid rgba(255,255,255,0.05)}
+.bar img{height:38px;width:auto;display:block}
+.bar-r{display:flex;gap:1.4rem;align-items:center;font-family:var(--fd);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.bar-r a{color:var(--muted)}
+.bar-r a:hover{color:var(--sand-lt);text-decoration:none}
+main.legal{max-width:760px;margin:0 auto;padding:4rem 1.5rem 5rem}
+main.legal h1{font-family:var(--fd);font-weight:400;font-size:clamp(2rem,5vw,3rem);color:var(--white);letter-spacing:.02em;margin-bottom:.4rem}
+main.legal .stand{color:var(--muted);font-size:.85rem;margin-bottom:2.5rem}
+main.legal h2{font-family:var(--fd);font-weight:400;font-size:1.25rem;color:var(--sand-lt);letter-spacing:.03em;margin:2.4rem 0 .6rem}
+main.legal p,main.legal ul{margin-bottom:1rem;color:var(--text)}
+main.legal ul{padding-left:1.4rem}
+main.legal li{margin-bottom:.4rem}
+footer{background:#080f0f;border-top:1px solid rgba(255,255,255,0.04);padding:3rem 2rem;text-align:center}
+.footer-logo img{height:42px;width:auto;margin:0 auto 1rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;list-style:none;margin-bottom:1.5rem}
+.footer-links a{font-family:var(--fd);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.footer-links a:hover{color:var(--sand-lt);text-decoration:none}
+.footer-copy{font-size:.68rem;color:rgba(114,136,138,.5)}
+@media(max-width:600px){.bar{padding:1rem}.footer-links{gap:1.1rem}}
+
+.cf{display:grid;gap:1.1rem;margin-top:1.5rem}
+.cf label{display:grid;gap:.35rem;font-size:.9rem;color:var(--muted)}
+.cf input[type=text],.cf input[type=email],.cf textarea{width:100%;background:var(--dark-2);color:var(--text);border:1px solid rgba(255,255,255,.14);border-radius:4px;padding:.8rem .9rem;font:inherit;font-size:1rem}
+.cf input:focus,.cf textarea:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+.cf textarea{min-height:170px;resize:vertical}
+.cf .chk{display:flex;gap:.6rem;align-items:flex-start;font-size:.85rem;line-height:1.5}
+.cf .chk input{margin-top:.25rem;flex:0 0 auto}
+.cf .hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.cf button{justify-self:start;cursor:pointer;font-family:var(--fd);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;padding:.85rem 2rem;border-radius:3px;border:1px solid var(--teal-lt);background:transparent;color:var(--white)}
+.cf button:hover,.cf button:focus-visible{background:var(--teal);outline:none}
+.cf button[disabled]{opacity:.5;cursor:wait}
+#cf-status{min-height:1.5rem;font-size:.95rem}
+#cf-status.ok{color:var(--teal-lt)}#cf-status.err{color:#e58a6e}
+.cf-fallback{margin-top:1.5rem;padding:1.1rem 1.2rem;border:1px solid rgba(255,255,255,.14);border-radius:4px;background:var(--dark-2)}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a href="index.html" class="logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <div class="bar-r">
+    <a href="index.html">&larr; Startseite</a>
+    <a href="../contact.html" hreflang="en" lang="en">EN</a>
+  </div>
+</header>
+<main class="legal">
+  <h1>Kontakt</h1>
+  <p class="stand">Wir antworten in der Regel innerhalb weniger Tage.</p>
+  <p>Fragen, Kooperationsideen oder einfach Hallo sagen? Schreib uns eine Nachricht. Du erreichst uns auch direkt per E-Mail: <a href="mailto:adventure@3xplorewithus.com">adventure@3xplorewithus.com</a>.</p>
+  <form id="cf" class="cf" novalidate>
+    <label>Name (optional)<input type="text" name="name" autocomplete="name" maxlength="120"></label>
+    <label>E-Mail *<input type="email" name="email" autocomplete="email" required maxlength="200"></label>
+    <label>Nachricht *<textarea name="message" required maxlength="5000"></textarea></label>
+    <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honeypot" tabindex="-1" autocomplete="off"></label></div>
+    <label class="chk"><input type="checkbox" name="consent" required><span>Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Beantwortung meiner Nachricht verwendet werden. *</span></label>
+    <button type="submit" id="cf-btn">Nachricht senden</button>
+    <p id="cf-status" role="status" aria-live="polite"></p>
+  </form>
+  <div id="cf-fallback" class="cf-fallback" hidden>Das Kontaktformular ist gerade nicht verfügbar. Bitte schreib uns per E-Mail an <a href="mailto:adventure@3xplorewithus.com">adventure@3xplorewithus.com</a>.</div>
+  <script>
+  (function () {
+    // Paste the Formspark form URL here (looks like https://submit-form.com/XXXXXXXX). Leave empty to show the email fallback.
+    var ENDPOINT = 'https://submit-form.com/oeoXCDK7E';
+    var form = document.getElementById('cf'), btn = document.getElementById('cf-btn'),
+        status = document.getElementById('cf-status'), fb = document.getElementById('cf-fallback');
+    if (!ENDPOINT) { form.hidden = true; fb.hidden = false; return; }
+    function say(msg, cls) { status.textContent = msg; status.className = cls || ''; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { say('Bitte fülle alle Pflichtfelder aus.', 'err'); form.reportValidity(); return; }
+      var data = { name: form.name.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() };
+      if (form._honeypot.value) { say('Danke! Deine Nachricht wurde gesendet.', 'ok'); form.reset(); return; }
+      btn.disabled = true; var label = btn.textContent; btn.textContent = 'Wird gesendet…'; say('');
+      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); say('Danke! Deine Nachricht wurde gesendet.', 'ok'); form.reset(); })
+        .catch(function () { say('Das hat leider nicht geklappt. Bitte schreib uns direkt an' + ' adventure@3xplorewithus.com', 'err'); })
+        .then(function () { btn.disabled = false; btn.textContent = label; });
+    });
+  })();
+  </script>
+</main>
+<footer>
+  <div class="footer-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://www.instagram.com/3xplorewithus" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+    <li><a href="datenschutz.html">Datenschutz</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 3xploreWithUs · Fotos &amp; Videos © Mareike &amp; Jason Klaassen, sofern nicht anders angegeben</p>
+</footer>
+<script src="../consent.js" defer></script>
+</body>
+</html>

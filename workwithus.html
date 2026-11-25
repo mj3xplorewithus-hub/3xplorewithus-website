@@ -61,7 +61,7 @@
     .drawer-socials svg { width:24px; height:24px; }
 
     /* ── HERO ── */
-    #hero { position:relative; height:78vh; min-height:500px; display:flex; align-items:flex-end; overflow:hidden; }
+    #hero { position:relative; min-height:78vh; display:flex; align-items:flex-end; overflow:hidden; padding-top:120px; }
     .hero-bg { position:absolute; inset:0; }
     .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 55%; transform:scale(1.03); }
     .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(13,21,21,0.35) 0%, rgba(13,21,21,0.35) 40%, rgba(13,21,21,0.8) 75%, rgba(13,21,21,1) 100%); }
@@ -243,7 +243,7 @@
       .page-nav-inner { justify-content:flex-start; gap:1.5rem; }
     }
     @media(max-width:700px) {
-      #hero { height:88vh; }
+      #hero { min-height:88vh; }
       .hero-content { padding:0 1.5rem 3rem; }
       section.block { padding:4.5rem 1.25rem; }
       .rule { grid-template-columns:40px 1fr; padding:1.2rem; gap:0.9rem; }

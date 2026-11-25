@@ -47,7 +47,7 @@
     '#to-top:hover{background:rgba(13,21,21,.95);border-color:var(--sand-lt);}',
     '#to-top svg{width:16px;height:16px;}',
     /* Reduced-motion override */
-    '@media (prefers-reduced-motion: reduce){[data-reveal],[data-reveal-rule]{opacity:1!important;transform:none!important;width:40px!important;}}',
+    '@media (prefers-reduced-motion: reduce){[data-reveal],[data-reveal-rule]{opacity:1!important;transform:none!important;}[data-reveal-rule]{width:40px!important;}}',
   ].join('');
   var style = document.createElement('style');
   style.id = 'site-animations-css';

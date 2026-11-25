@@ -225,6 +225,12 @@
     .media.yt iframe { width:100%; height:100%; border:0; display:block; }
     .yt-note { font-size:0.68rem; color:var(--muted); padding:0.5rem 1.5rem 0; }
 
+    .rule-chips { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:2.2rem; }
+    .rule-chips span { font-size:0.8rem; color:var(--text); border:1px solid rgba(90,200,200,0.35); border-radius:999px; padding:0.4rem 0.9rem; }
+    .rule-chips span::before { content:'✓ '; color:var(--teal-lt); }
+    .gear-teaser { display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .gear-teaser h2 { font-family:var(--fd); font-size:clamp(1.6rem,3.5vw,2.4rem); color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:0.6rem; }
+    .gear-teaser p { color:var(--muted); font-weight:300; max-width:520px; }
     /* ── RESPONSIVE ── */
     @media(max-width:900px) {
       nav { padding:0 1.25rem; }
@@ -315,90 +321,14 @@
 
 <div id="page-nav" role="navigation" aria-label="Auf dieser Seite">
   <div class="page-nav-inner">
-    <a href="#why">Warum wir</a>
-    <a href="#film">Was wir filmen</a>
     <a href="#work">Unsere Arbeit</a>
+    <a href="#film">Was wir filmen</a>
     <a href="#services">Leistungen</a>
-    <a href="#gear">Unsere Ausrüstung</a>
-    <a href="#how">So arbeiten wir</a>
     <a href="#contact">Kontakt</a>
+    <a href="gear.html">Unsere Ausrüstung →</a>
     <a href="../Files/3xploreWithUs_Mediakit_2026_DE.pdf" target="_blank" class="mk-pill">Mediakit ↓</a>
   </div>
 </div>
-
-<!-- WHY US -->
-<section id="why" class="block">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="section-label">Warum wir</span>
-      <h2>Euer Produkt in einem Leben, <span class="accent">das Menschen sehen wollen.</span></h2>
-      <div class="divider"></div>
-      <p class="sec-intro">Wir filmen Ausrüstung nicht auf der Küchenarbeitsplatte. Wir filmen sie bei der Arbeit: im Truck auf dem Bergpass, auf dem verregneten Campingplatz an der Küste, mit Baby und Hund an Bord.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card" data-reveal>
-        <span class="num">01</span>
-        <h3>Wir nutzen es wirklich.</h3>
-        <p>Unser ganzes Zuhause hat etwa 8&nbsp;m². Alles darin muss sich seinen Platz verdienen. Was in unserem Content vorkommt, gehört zu unserem Alltag.</p>
-      </div>
-      <div class="why-card" data-reveal>
-        <span class="num">02</span>
-        <h3>Der Blick eines Filmemachers.</h3>
-        <p>Jason produziert, dreht und schneidet seit zwanzig Jahren und hat an einer Universität Film unterrichtet. Ihr bekommt Content, der natürlich und echt wirkt, mit gutem Licht, sauberem Bildaufbau, gutem Ton und starken ersten zwei Sekunden.</p>
-      </div>
-      <div class="why-card" data-reveal>
-        <span class="num">03</span>
-        <h3>Eine Kulisse, die kein Studio hat.</h3>
-        <p>Ein ehemaliger Militär-Truck von 1986, alle paar Tage ein neuer Ort und jedes Wetter. Wir reisen Vollzeit durch Europa. Diesen Winter sind wir in Portugal und Südspanien unterwegs, vielleicht auch in Marokko.</p>
-      </div>
-    </div>
-
-    <div class="stats" data-reveal>
-      <div class="stat"><div class="n">16 %</div><div class="l">Instagram-Engagement<br />pro erreichtem Konto</div></div>
-      <div class="stat"><div class="n">81 %</div><div class="l">unserer YouTube-Zuschauer<br />sind neu bei uns</div></div>
-      <div class="stat"><div class="n">150,7K</div><div class="l">Instagram-Aufrufe<br />Aug. – Nov. 2026</div></div>
-      <div class="stat"><div class="n">1.000+</div><div class="l">Instagram-Follower<br />plus 310 auf YouTube</div></div>
-    </div>
-    <p class="stat-note">Ein junger Kanal mit echter Aufmerksamkeit. Wir wachsen mit Partnern, die früh einsteigen. Quellen: Meta Business Suite und YouTube Studio, Nov. 2026.</p>
-  </div>
-</section>
-
-<!-- WHAT WE FILM -->
-<section id="film" class="block alt">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="section-label">Was wir filmen</span>
-      <h2>Drei Welten, <span class="accent">in denen wir leben.</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="niche-grid">
-      <div class="niche" data-reveal>
-        <img src="../Photos/Truck_Photos/P1356813.jpg" alt="Der Steyr im Schnee" loading="lazy" />
-        <div class="shade"></div>
-        <div class="txt">
-          <h3>Overlanding &amp; Camping</h3>
-          <p>Heizung, Wasser, Strom, Bergung, Stauraum und Werkzeug, im echten Einsatz getestet an einem 40 Jahre alten Truck, in jeder Jahreszeit.</p>
-        </div>
-      </div>
-      <div class="niche" data-reveal>
-        <img src="../Photos/Team/Rocket2.jpg" alt="Rocket, unser Cockapoo, im Truck" loading="lazy" />
-        <div class="shade"></div>
-        <div class="txt">
-          <h3>Outdoor-Familie &amp; Hund</h3>
-          <p>Kleidung, Taschen, Babyausstattung, Naturkosmetik und alles, was Rocket braucht. Familienleben auf kleinem Raum, ehrlich gezeigt.</p>
-        </div>
-      </div>
-      <div class="niche" data-reveal>
-        <img src="../Photos/INTERIOR/P1392127.jpg" alt="Im Inneren unseres Trucks" loading="lazy" />
-        <div class="shade"></div>
-        <div class="txt">
-          <h3>Technik &amp; Creator-Ausrüstung</h3>
-          <p>Kameras, Speicher, Internet, Apps und die Creator-Ausrüstung, mit der wir aus dem Truck heraus arbeiten.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- OUR WORK -->
 <section id="work" class="block">
@@ -449,6 +379,61 @@
   </div>
 </section>
 
+<!-- NUMBERS -->
+<section id="why" class="block alt">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="section-label">In Zahlen</span>
+      <h2>Ein junger Kanal mit <span class="accent">echter Aufmerksamkeit.</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="stats" data-reveal>
+      <div class="stat"><div class="n">16 %</div><div class="l">Instagram-Engagement<br />pro erreichtem Konto</div></div>
+      <div class="stat"><div class="n">81 %</div><div class="l">unserer YouTube-Zuschauer<br />sind neu bei uns</div></div>
+      <div class="stat"><div class="n">150,7K</div><div class="l">Instagram-Aufrufe<br />Aug. – Nov. 2026</div></div>
+      <div class="stat"><div class="n">1.000+</div><div class="l">Instagram-Follower<br />plus 310 auf YouTube</div></div>
+    </div>
+    <p class="stat-note">Ein junger Kanal mit echter Aufmerksamkeit. Wir wachsen mit Partnern, die früh einsteigen. Quellen: Meta Business Suite und YouTube Studio, Nov. 2026.</p>
+  </div>
+</section>
+
+<!-- WHAT WE FILM -->
+<section id="film" class="block">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="section-label">Was wir filmen</span>
+      <h2>Drei Welten, <span class="accent">in denen wir leben.</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="niche-grid">
+      <div class="niche" data-reveal>
+        <img src="../Photos/Truck_Photos/P1356813.jpg" alt="Der Steyr im Schnee" loading="lazy" />
+        <div class="shade"></div>
+        <div class="txt">
+          <h3>Overlanding &amp; Camping</h3>
+          <p>Heizung, Wasser, Strom, Bergung, Stauraum und Werkzeug, im echten Einsatz getestet an einem 40 Jahre alten Truck, in jeder Jahreszeit.</p>
+        </div>
+      </div>
+      <div class="niche" data-reveal>
+        <img src="../Photos/Team/Rocket2.jpg" alt="Rocket, unser Cockapoo, im Truck" loading="lazy" />
+        <div class="shade"></div>
+        <div class="txt">
+          <h3>Outdoor-Familie &amp; Hund</h3>
+          <p>Kleidung, Taschen, Babyausstattung, Naturkosmetik und alles, was Rocket braucht. Familienleben auf kleinem Raum, ehrlich gezeigt.</p>
+        </div>
+      </div>
+      <div class="niche" data-reveal>
+        <img src="../Photos/INTERIOR/P1392127.jpg" alt="Im Inneren unseres Trucks" loading="lazy" />
+        <div class="shade"></div>
+        <div class="txt">
+          <h3>Technik &amp; Creator-Ausrüstung</h3>
+          <p>Kameras, Speicher, Internet, Apps und die Creator-Ausrüstung, mit der wir aus dem Truck heraus arbeiten.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services" class="block alt">
   <div class="wrap">
@@ -493,89 +478,11 @@
         <div class="price">Nur für Produkte, die wir nutzen</div>
       </div>
     </div>
+    <div class="rule-chips"><span>Nur, was wir ohnehin nutzen</span><span>Immer als Werbung gekennzeichnet</span><span>Familie zuerst</span><span>Klares Briefing, fester Termin</span></div>
   </div>
 </section>
 
-<!-- GEAR WE USE -->
-<section id="gear" class="block">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="section-label">Unsere Ausrüstung</span>
-      <h2>Was wirklich <span class="accent">in unserem Truck lebt.</span></h2>
-      <div class="divider"></div>
-      <p class="sec-intro">Das ist die Ausrüstung, die wir jeden Tag nutzen und Freunden empfehlen würden. <strong>Niemand hat dafür bezahlt, auf dieser Liste zu stehen.</strong> Wenn uns eine Marke etwas geschenkt hat, sagen wir das.</p>
-    </div>
-
-    <div class="proof" data-reveal>
-      <figure><img src="../Photos/WorkWithUs/gear/washer.jpg" alt="MOBORV-Waschmaschine im Heckstaufach des Trucks" loading="lazy" style="object-position:center 45%" /><figcaption><b>MOBORV</b>-Waschmaschine im Heckstaufach</figcaption></figure>
-      
-      <figure><img src="../Photos/WorkWithUs/gear/box2.jpg" alt="Mareike mit der VEVOR-Werkzeugkiste vor dem Truck" loading="lazy" style="object-position:center 70%" /><figcaption><b>VEVOR</b>-Werkzeugkiste, Baby an Bord</figcaption></figure>
-      <figure><img src="../Photos/WorkWithUs/gear/brantho.jpg" alt="Brantho-Korrux-Rostschutz wird aufs Fahrgestell aufgetragen" loading="lazy" style="object-position:center 72%" /><figcaption><b>Brantho-Korrux</b> auf dem Fahrgestell</figcaption></figure>
-      <figure><img src="../Photos/WorkWithUs/gear/osprey_sts_forest.jpg" alt="Osprey-Rucksack und Sea-to-Summit-Isomatte in einem Wald in Tasmanien" loading="lazy" style="object-position:65% center" /><figcaption><b>Osprey</b> &amp; <b>Sea to Summit</b>, Tasmanien</figcaption></figure>
-    </div>
-
-    <div class="gear-group" data-reveal>
-      <h3>Truck &amp; Straße</h3>
-      <div class="gear-grid">
-        <div class="gear"><div class="brand">Autoterm</div><div class="what">Air 2D (Planar) Diesel-Luftstandheizung · 2 kW, 24 V, Höhenkit, Comfort Control</div><p>Unsere warmen Morgen. Läuft an jedem kalten Tag im Jahr, mit Baby an Bord.</p></div>
-        <div class="gear"><div class="brand">Elgena</div><div class="what">Nautic Therm E Boiler · 24 V</div><p>Warmes Wasser für Dusche, Abwasch und Babybad, alles auf 8&nbsp;m².</p></div>
-        <div class="gear"><div class="brand">Wolfbox</div><div class="what">G900 Pro Dashcam &amp; Rückfahrkamera</div><p>Unsere Augen hinter einem Militär-Truck von 1986, auf engen Campingplätzen und in Stadtstraßen.</p></div>
-        <div class="gear"><div class="brand">Reolink</div><div class="what">Argus PT Ultra Kamera</div><p>Hinten am Truck. Behält alles im Blick, wenn wir irgendwo Neues stehen.</p><span class="gift">Geschenkt von Reolink</span><div class="buy"><a href="https://reolink.com/product/argus-pt-ultra/?aff=2026" target="_blank" rel="sponsored noopener">Reolink-Shop*</a><a href="https://amzn.to/4fm8M8C" target="_blank" rel="sponsored noopener">Amazon*</a></div></div>
-        <div class="gear"><div class="brand">Proxxon</div><div class="what">Präzisions-Werkzeugset</div><p>Kompakt genug zum Mitnehmen und gut genug, um einen 40 Jahre alten Truck am Straßenrand zu reparieren.</p></div>
-        <div class="gear"><div class="brand">MOBORV</div><div class="what">Kompakte Waschmaschine</div><p>Waschtag ohne Waschsalon, im Heckstaufach.</p></div>
-        <div class="gear"><div class="brand">Trelino</div><div class="what">Trenntoilette</div><p>Keine Chemie und keine Entsorgungsstationen.</p></div>
-        <div class="gear"><div class="brand">VEVOR</div><div class="what">Alu-Werkzeugkiste</div><p>Zusätzlicher Außenstauraum für das Schwere.</p></div>
-        <div class="gear"><div class="brand">Owatrol · Brantho-Korrux</div><div class="what">Rostschutz</div><p>Damit haben wir beim Ausbau ein 40 Jahre altes Fahrgestell geschützt.</p></div>
-        <div class="gear"><div class="brand">Leatherman</div><div class="what">Multitool</div><p>Das eine Werkzeug, das wir immer dabeihaben.</p></div>
-        <div class="gear"><div class="brand">Park4Night</div><div class="what">App</div><p>So finden wir die meisten unserer Schlafplätze.</p></div>
-      </div>
-    </div>
-
-    <div class="gear-group" data-reveal>
-      <h3>Outdoor, Familie &amp; Alltag</h3>
-      <div class="gear-grid">
-        <div class="gear"><div class="brand">Osprey</div><div class="what">Wanderrucksäcke</div><p>Auf Mehrtageswanderungen in Tasmanien getragen und noch immer im Einsatz.</p></div>
-        <div class="gear"><div class="brand">Sea to Summit</div><div class="what">Isomatte &amp; Gamaschen</div><p>Leicht, klein verpackbar und nach Jahren voller Wanderungen noch dabei.</p></div>
-        <div class="gear"><div class="brand">Kathmandu · Jack Wolfskin</div><div class="what">Regenjacken &amp; Fleece</div><p>Unsere Außenschicht, vom australischen Outback bis an die Atlantikküste.</p></div>
-        <div class="gear"><div class="brand">Blundstone</div><div class="what">Stiefel</div><p>Lagerfeuer, Werkstatt und Stadt, alles in einem Paar.</p></div>
-        <div class="gear"><div class="brand">Emsa</div><div class="what">Thermobecher</div><p>Heißer Kaffee, der auch holprige Straßen übersteht.</p></div>
-        <div class="gear"><div class="brand">Thule</div><div class="what">Alltagsrucksäcke</div><p>Unsere Tagesrucksäcke. Einer davon ist gleichzeitig die Wickeltasche.</p></div>
-      </div>
-    </div>
-
-    <div class="gear-group" data-reveal>
-      <h3>Technik &amp; Kamera</h3>
-      <div class="gear-grid">
-        <div class="gear"><div class="brand">Panasonic Lumix S1</div><div class="what">Hauptkamera</div><p>Alles, was ihr auf unserem YouTube-Kanal seht, beginnt hier.</p></div>
-        <div class="gear"><div class="brand">Vintage-Objektive</div><div class="what">Leica R · Super Takumar · Flektogon</div><p>Alte Objektive an Adaptern. Sie geben unseren Filmen ihren weicheren, filmischen Look.</p></div>
-        <div class="gear"><div class="brand">DJI Mini 3 Pro</div><div class="what">Drohne unter 250 g</div><p>Die Luftaufnahmen vom Truck unterwegs und von unseren Stellplätzen.</p></div>
-        <div class="gear"><div class="brand">DJI Mic Mini</div><div class="what">2 TX + 1 RX + Ladecase</div><p>Sauberer Ton für uns beide, sogar im Atlantikwind.</p></div>
-        <div class="gear"><div class="brand">GoPro HERO13 Black</div><div class="what">5,3K-Actioncam · HyperSmooth 6.0</div><p>Am Truck montiert, für Fahraufnahmen und raue Pisten.</p></div>
-        <div class="gear"><div class="brand">SanDisk</div><div class="what">Externe SSDs</div><p>Wir sind zu SanDisk zurück, nachdem uns eine billige SSD einen Monat Material gekostet hat.</p></div>
-        <div class="gear"><div class="brand">NordVPN</div><div class="what">VPN</div><p>Für WLAN auf Campingplätzen und in Cafés und fürs Online-Banking, egal wo wir sind.</p></div>
-      </div>
-    </div>
-
-    <p class="gear-note">*Affiliate-Links: Wenn ihr darüber kauft, bekommen wir eine kleine Provision. Für euch ändert sich der Preis nicht.<br />Ihr stellt etwas von dieser Liste her? <a href="#contact" style="color:var(--sand-lt);">Wir freuen uns, von euch zu hören.</a></p>
-  </div>
-</section>
-
-<!-- HOW WE WORK -->
-<section id="how" class="block alt">
-  <div class="wrap">
-    <div class="sec-head" data-reveal>
-      <span class="section-label">So arbeiten wir</span>
-      <h2>Ein paar Dinge, <span class="accent">bei denen wir nicht nachgeben.</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="rules">
-      <div class="rule" data-reveal><span class="n">1</span><div><h3>Nur, was wir ohnehin nutzen würden</h3><p>Passt ein Produkt nicht zu unserem Leben, sagen wir Nein, auch bei gutem Honorar. Deshalb haben unsere Empfehlungen Gewicht.</p></div></div>
-      <div class="rule" data-reveal><span class="n">2</span><div><h3>Ehrlich und gekennzeichnet</h3><p>Wir zeigen, was funktioniert und was nicht. Alles Bezahlte oder Geschenkte auf unseren Kanälen ist klar als Werbung gekennzeichnet.</p></div></div>
-      <div class="rule" data-reveal><span class="n">3</span><div><h3>Familie zuerst</h3><p>Wir entscheiden, welche Teile unseres Familienlebens vor die Kamera kommen. Rocket spielt immer gern die Hauptrolle.</p></div></div>
-      <div class="rule" data-reveal><span class="n">4</span><div><h3>Klare Absprachen, realistische Zeitpläne</h3><p>Wir leben mit einem Baby auf der Straße. Briefing, Anzahl der Korrekturschleifen und Liefertermin legen wir vorab fest, und daran halten wir uns.</p></div></div>
-    </div>
-  </div>
-</section>
+<section id="gear-teaser" class="block"><div class="wrap gear-teaser" data-reveal><div><span class="section-label">Unsere Ausrüstung</span><h2>Was wirklich <span class="accent">in unserem Truck lebt.</span></h2><p>Heizung, Boiler, Kameras, Werkzeug: die ganze Liste, mit Fotos. Niemand hat dafür bezahlt.</p></div><a href="gear.html" class="btn btn-primary">Zur Ausrüstung →</a></div></section>
 
 <!-- MEDIA KIT -->
 <section id="mediakit">
@@ -620,6 +527,7 @@
     <li><a href="howwedoit.html">Wie wir's machen</a></li>
     <li><a href="files.html">Dateien</a></li>
     <li><a href="workwithus.html">Zusammenarbeit</a></li>
+    <li><a href="gear.html">Ausrüstung</a></li>
     <li><a href="support.html">Unterstützen</a></li>
     <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
     <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>

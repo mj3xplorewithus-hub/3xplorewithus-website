@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../EditingElements/Favicon_v1.png" />
+  <title>3xploreWithUs — Unsere Ausrüstung</title>
+  <meta name="description" content="Die Ausrüstung, die wirklich in unserem Steyr-Expeditionstruck von 1986 lebt: Heizung, Wasser, Werkzeug, Outdoor-Ausrüstung und unsere Kamera. Niemand hat dafür bezahlt." />
+  <style>
+    @font-face { font-family:'Montserrat'; src:url('../Montserrat/Montserrat-Variable.ttf') format('truetype'); font-weight:100 900; font-style:normal; font-display:swap; }
+    @font-face {
+      font-family:'ProtestStrike';
+      src:url('../Protest_Strike/ProtestStrike-Regular.ttf') format('truetype');
+      font-display:swap;
+      unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0030-0039, U+0020;
+    }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Light.ttf') format('truetype'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Roboto'; src:url('../Roboto/static/Roboto-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    :root {
+      --teal:#1A9090; --teal-lt:#5AC8C8; --sand:#D4A96A; --sand-lt:#EDD9A3;
+      --red:#B84A2F; --dark:#0D1515; --dark-2:#131C1C; --dark-3:#1A2626;
+      --text:#F2EEE4; --muted:#9AAFB1; --white:#F5F2EC;
+      --fd:'ProtestStrike','Montserrat',sans-serif; --fb:'Roboto','Montserrat',sans-serif;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--dark); color:var(--text); font-family:var(--fb); line-height:1.7; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    img { display:block; max-width:100%; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
+      padding:0 2.5rem; height:72px;
+      background:rgba(13,21,21,0); border-bottom:1px solid rgba(255,255,255,0);
+      transition:background 0.4s, border-color 0.4s;
+    }
+    nav.scrolled { background:rgba(13,21,21,0.96); border-bottom-color:rgba(255,255,255,0.05); }
+    .nav-logo img { height:55px; width:auto; }
+    .nav-links { display:flex; gap:1.8rem; list-style:none; }
+    .nav-links a { font-family:var(--fd); font-size:0.63rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,242,236,0.72); transition:color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color:var(--sand-lt); }
+    .nav-socials { display:flex; gap:0.6rem; align-items:center; justify-self:end; }
+    .nav-social { color:rgba(245,242,236,0.6); transition:color 0.2s; display:flex; align-items:center; }
+    .nav-social:hover { color:var(--teal-lt); }
+    .nav-social svg { width:19px; height:19px; }
+    .lang-switch { font-size:1.25rem; color:rgba(245,242,236,0.7); padding:0.2rem 0.3rem; border-radius:2px; margin-left:0.4rem; line-height:1; }
+    .nav-burger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px; background:none; border:none; margin-left:1rem; flex-shrink:0; }
+    .nav-burger span { display:block; width:22px; height:2px; background:var(--white); border-radius:2px; transition:transform 0.3s, opacity 0.3s; }
+    .nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity:0; }
+    .nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .nav-drawer { position:fixed; inset:0; top:72px; background:rgba(13,21,21,0.98); backdrop-filter:blur(14px); z-index:190; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.2rem; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+    .nav-drawer.open { opacity:1; pointer-events:auto; }
+    .nav-drawer a { font-family:var(--fd); font-size:1.15rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text); }
+    .nav-drawer a.active { color:var(--teal-lt); }
+    .drawer-socials { display:flex; gap:1.5rem; margin-top:0.5rem; }
+    .drawer-socials a { color:var(--muted); display:flex; align-items:center; }
+    .drawer-socials svg { width:24px; height:24px; }
+
+    /* ── HERO ── */
+    #hero { position:relative; height:78vh; min-height:500px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; }
+    .hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 55%; transform:scale(1.03); }
+    .hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(13,21,21,0.35) 0%, rgba(13,21,21,0.35) 40%, rgba(13,21,21,0.8) 75%, rgba(13,21,21,1) 100%); }
+    .hero-content { position:relative; z-index:10; padding:0 4rem 4.5rem; max-width:720px; }
+    .hero-eyebrow { font-family:var(--fd); font-size:0.68rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.1rem; }
+    .hero-content h1 { font-family:var(--fd); font-size:clamp(2.4rem,6vw,4.4rem); font-weight:900; color:var(--white); line-height:1.02; letter-spacing:0.04em; }
+    .accent { color:var(--sand-lt); }
+    .hero-rule { width:44px; height:2px; background:var(--sand); margin:1.25rem 0 1.5rem; }
+    .hero-lead { font-size:clamp(0.98rem,1.8vw,1.1rem); color:rgba(237,232,220,0.85); font-weight:300; line-height:1.85; max-width:560px; }
+    .hero-ctas { display:flex; gap:0.9rem; flex-wrap:wrap; margin-top:1.8rem; }
+
+    .btn { display:inline-flex; align-items:center; gap:0.55rem; font-family:var(--fd); font-size:0.7rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:0.95rem 1.5rem; border-radius:2px; transition:background 0.2s, color 0.2s, border-color 0.2s; }
+    .btn-primary { background:var(--sand-lt); color:var(--dark); }
+    .btn-primary:hover { background:var(--white); }
+    .btn-ghost { border:1px solid rgba(245,242,236,0.35); color:var(--white); }
+    .btn-ghost:hover { border-color:var(--teal-lt); color:var(--teal-lt); }
+    .btn svg { width:16px; height:16px; }
+
+    /* ── ON-PAGE NAV ── */
+    #page-nav { overflow:hidden; position:sticky; top:72px; z-index:150; background:rgba(13,21,21,0.94); backdrop-filter:blur(12px); border-top:1px solid rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); }
+    .page-nav-inner { max-width:1100px; margin:0 auto; display:flex; min-width:0; justify-content:center; gap:2rem; padding:0.9rem 1.5rem; overflow-x:auto; scrollbar-width:none; }
+    .page-nav-inner::-webkit-scrollbar { display:none; }
+    .page-nav-inner a { font-family:var(--fd); font-size:0.62rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); white-space:nowrap; transition:color 0.2s; }
+    .page-nav-inner a:hover { color:var(--sand-lt); }
+
+    /* ── SECTIONS ── */
+    section.block { padding:6rem 2rem; scroll-margin-top:120px; }
+    section.alt { background:var(--dark-2); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
+    .wrap { max-width:1100px; margin:0 auto; }
+    .sec-head { text-align:center; max-width:720px; margin:0 auto 3rem; }
+    .section-label { font-family:var(--fd); font-size:0.72rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal-lt); display:block; margin-bottom:1.1rem; }
+    .sec-head h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.9rem); font-weight:900; color:var(--white); line-height:1.1; letter-spacing:0.04em; }
+    .divider { width:40px; height:3px; background:var(--red); border-radius:2px; margin:1.1rem auto 1.4rem; }
+    .sec-intro { font-size:1.02rem; color:var(--muted); font-weight:300; line-height:1.9; }
+    .sec-intro strong { color:var(--text); font-weight:500; }
+
+    /* Why us */
+    .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .why-card { background:var(--dark-2); border-top:2px solid var(--teal); border-radius:2px; padding:2rem 1.75rem; }
+    .why-card .num { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.2em; color:var(--sand); }
+    .why-card h3 { font-family:var(--fd); font-size:1.05rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); margin:0.6rem 0 0.8rem; line-height:1.3; }
+    .why-card p { font-size:0.92rem; color:var(--muted); font-weight:300; line-height:1.8; }
+
+    /* Stats strip */
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border-radius:2px; overflow:hidden; margin-top:3rem; }
+    .stat { background:var(--dark); padding:1.6rem 1rem; text-align:center; }
+    .stat .n { font-family:var(--fd); font-size:clamp(1.5rem,3vw,2.1rem); color:var(--sand-lt); line-height:1.1; }
+    .stat .l { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-top:0.5rem; line-height:1.5; }
+    .stat-note { text-align:center; font-size:0.75rem; color:rgba(154,175,177,0.7); margin-top:1rem; }
+
+    /* What we film */
+    .niche-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .niche { position:relative; aspect-ratio:3/4; overflow:hidden; border-radius:2px; background:var(--dark-3); }
+    .niche img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+    .niche:hover img { transform:scale(1.04); }
+    .niche .shade { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(13,21,21,0) 35%, rgba(13,21,21,0.92) 100%); }
+    .niche .txt { position:absolute; left:0; right:0; bottom:0; padding:1.6rem; }
+    .niche h3 { font-family:var(--fd); font-size:1.1rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); margin-bottom:0.5rem; }
+    .niche p { font-size:0.86rem; color:rgba(237,232,220,0.8); font-weight:300; line-height:1.65; }
+
+    /* Our work */
+    .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .work-card { background:var(--dark); border-radius:2px; overflow:hidden; display:flex; flex-direction:column; border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s; }
+    .work-card:hover { border-color:rgba(90,200,200,0.35); }
+    .work-card .media { aspect-ratio:16/10; overflow:hidden; background:var(--dark-3); }
+    .work-card .media img { width:100%; height:100%; object-fit:cover; }
+    .work-card .body { padding:1.4rem 1.5rem 1.6rem; display:flex; flex-direction:column; flex:1; }
+    .tag { align-self:flex-start; font-family:var(--fd); font-size:0.56rem; letter-spacing:0.16em; text-transform:uppercase; padding:0.3rem 0.6rem; border-radius:2px; margin-bottom:0.9rem; }
+    .tag.brand { background:rgba(212,169,106,0.15); color:var(--sand-lt); }
+    .tag.own { background:rgba(26,144,144,0.18); color:var(--teal-lt); }
+    .work-card h3 { font-family:var(--fd); font-size:0.95rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--white); margin-bottom:0.5rem; line-height:1.35; }
+    .work-card p { font-size:0.88rem; color:var(--muted); font-weight:300; line-height:1.7; }
+    .work-card .metric { margin-top:auto; padding-top:1rem; font-size:0.8rem; color:var(--teal-lt); font-weight:500; }
+    .quote { max-width:760px; margin:3rem auto 0; border-left:3px solid var(--red); padding:0.4rem 0 0.4rem 1.5rem; }
+    .quote p { font-size:1.08rem; font-style:italic; font-weight:300; color:var(--text); line-height:1.75; }
+    .quote span { display:block; font-size:0.8rem; color:var(--muted); margin-top:0.6rem; }
+
+    /* Services */
+    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .svc { background:var(--dark-2); border-radius:2px; padding:2rem 1.75rem; border-top:2px solid var(--sand); display:flex; flex-direction:column; }
+    .svc.t2 { border-top-color:var(--teal); }
+    .svc.t3 { border-top-color:var(--red); }
+    .svc h3 { font-family:var(--fd); font-size:1.05rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); line-height:1.3; }
+    .svc .for { font-size:0.8rem; color:var(--sand-lt); margin:0.5rem 0 1rem; }
+    .svc ul { list-style:none; margin-bottom:1.2rem; }
+    .svc li { font-size:0.9rem; color:var(--muted); font-weight:300; line-height:1.6; padding-left:1.1rem; position:relative; margin-bottom:0.55rem; }
+    .svc li::before { content:''; position:absolute; left:0; top:0.62em; width:5px; height:5px; border-radius:50%; background:var(--teal-lt); }
+    .svc .price { margin-top:auto; font-family:var(--fd); font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--white); border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem; }
+
+    /* Gear */
+    .gear-group { margin-bottom:2.75rem; }
+    .gear-group:last-of-type { margin-bottom:0; }
+    .gear-group h3 { font-family:var(--fd); font-size:0.8rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand-lt); margin-bottom:1rem; padding-bottom:0.6rem; border-bottom:1px solid rgba(255,255,255,0.07); }
+    .gear-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:1rem; }
+    .gear { display:block; transition:border-color 0.2s; background:var(--dark); border:1px solid rgba(255,255,255,0.05); border-radius:2px; padding:1.2rem 1.3rem; }
+    .gear .brand { font-family:var(--fd); font-size:0.9rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--white); }
+    .gear .what { font-size:0.75rem; color:var(--teal-lt); letter-spacing:0.04em; margin:0.15rem 0 0.55rem; }
+    .gear p { font-size:0.86rem; color:var(--muted); font-weight:300; line-height:1.65; }
+    a.gear:hover { border-color:rgba(90,200,200,0.35); }
+    .gear .buy { display:flex; gap:0.5rem; margin-top:0.7rem; flex-wrap:wrap; }
+    .gear .buy a { font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--dark); background:var(--sand-lt); padding:0.3rem 0.6rem; border-radius:2px; }
+    .gear .buy a:hover { background:var(--white); }
+    .gear .gift { display:inline-block; margin-top:0.6rem; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--sand-lt); }
+    .gear-note { text-align:center; font-size:0.85rem; color:var(--muted); font-weight:300; margin-top:2.5rem; line-height:1.8; }
+    .gear-note strong { color:var(--text); font-weight:500; }
+
+    /* How we work */
+    .rules { max-width:820px; margin:0 auto; display:grid; gap:1rem; }
+    .rule { display:grid; grid-template-columns:56px 1fr; gap:1.25rem; align-items:start; background:var(--dark-2); border-radius:2px; padding:1.4rem 1.6rem; }
+    .rule .n { font-family:var(--fd); font-size:1.6rem; color:var(--teal); line-height:1; }
+    .rule h3 { font-family:var(--fd); font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); margin-bottom:0.35rem; }
+    .rule p { font-size:0.9rem; color:var(--muted); font-weight:300; line-height:1.7; }
+
+    /* Contact */
+    #contact { background:var(--teal); padding:5rem 2rem; text-align:center; scroll-margin-top:120px; }
+    #contact h2 { font-family:var(--fd); font-size:clamp(1.8rem,4vw,2.8rem); color:var(--white); letter-spacing:0.04em; line-height:1.1; }
+    #contact p { color:rgba(245,242,236,0.9); font-weight:300; font-size:1.02rem; max-width:600px; margin:1.1rem auto 2rem; line-height:1.8; }
+    #contact .btn-primary { font-size:0.78rem; }
+    #contact .small { font-size:0.82rem; margin:1.2rem auto 0; }
+    #contact .small a { text-decoration:underline; text-underline-offset:3px; }
+
+    /* Footer */
+    footer { background:#080f0f; border-top:1px solid rgba(255,255,255,0.04); padding:3rem 2rem; text-align:center; }
+    .footer-logo img { height:42px; width:auto; margin:0 auto 1rem; }
+    .footer-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; list-style:none; margin-bottom:1.5rem; }
+    .footer-links a { font-family:var(--fd); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); transition:color 0.2s; }
+    .footer-links a:hover { color:var(--sand-lt); }
+    .footer-copy { font-size:0.68rem; color:rgba(114,136,138,0.35); }
+
+
+    .proof { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-bottom:3rem; }
+    .proof figure { position:relative; aspect-ratio:4/5; overflow:hidden; border-radius:2px; background:var(--dark-3); }
+    .proof img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+    .proof figure:hover img { transform:scale(1.04); }
+    .proof figcaption { position:absolute; left:0; right:0; bottom:0; padding:2rem 0.9rem 0.8rem; font-size:0.8rem; color:var(--text); line-height:1.4; background:linear-gradient(to bottom, rgba(13,21,21,0), rgba(13,21,21,0.92)); }
+    .proof figcaption b { color:var(--sand-lt); font-weight:500; }
+    .typ { font-size:0.82rem; color:var(--text); background:var(--dark-3); border-radius:2px; padding:0.55rem 0.8rem; margin:-0.2rem 0 1.1rem; line-height:1.5; }
+    .mk-pill { color:var(--dark) !important; background:var(--sand-lt); padding:0.3rem 0.75rem; border-radius:2px; }
+    .mk-pill:hover { background:var(--white); }
+    #mediakit { background:var(--dark-2); border-top:1px solid rgba(255,255,255,0.04); padding:4rem 2rem; }
+    .mk-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; border:1px solid rgba(212,169,106,0.35); border-radius:2px; padding:2.5rem 3rem; }
+    .mk-inner h2 { font-family:var(--fd); font-size:clamp(1.5rem,3vw,2.2rem); color:var(--white); letter-spacing:0.04em; line-height:1.15; }
+    .mk-inner p { color:var(--muted); font-weight:300; margin-top:0.5rem; }
+    .mk-btn { font-size:0.78rem; padding:1.1rem 1.7rem; }
+    .brief { max-width:620px; margin:0 auto 2rem; text-align:left; background:rgba(13,21,21,0.25); border-radius:2px; padding:1.5rem 1.75rem; }
+    .brief h3 { font-family:var(--fd); font-size:0.85rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--white); margin-bottom:0.8rem; }
+    .brief ul { list-style:none; }
+    .brief li { position:relative; padding-left:1.6rem; font-size:0.95rem; color:rgba(245,242,236,0.92); font-weight:300; line-height:1.6; margin-bottom:0.5rem; }
+    .brief li::before { content:'✓'; position:absolute; left:0; top:0; color:var(--sand-lt); font-weight:500; }
+    .brief li b { font-weight:500; color:var(--white); }
+    @media(max-width:900px){ .proof { grid-template-columns:repeat(2,1fr); } .mk-inner { padding:2rem 1.5rem; } }
+
+
+    .media.yt { position:relative; }
+    .yt-play { all:unset; cursor:pointer; display:block; width:100%; height:100%; position:relative; }
+    .yt-play img { width:100%; height:100%; object-fit:cover; }
+    .yt-btn { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(13,21,21,0.15); transition:background 0.2s; }
+    .yt-btn svg { width:64px; height:45px; filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5)); }
+    .yt-play:hover .yt-btn { background:rgba(13,21,21,0); }
+    .yt-play:focus-visible { outline:2px solid var(--teal-lt); outline-offset:2px; }
+    .media.yt iframe { width:100%; height:100%; border:0; display:block; }
+    .yt-note { font-size:0.68rem; color:var(--muted); padding:0.5rem 1.5rem 0; }
+
+    .rule-chips { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:2.2rem; }
+    .rule-chips span { font-size:0.8rem; color:var(--text); border:1px solid rgba(90,200,200,0.35); border-radius:999px; padding:0.4rem 0.9rem; }
+    .rule-chips span::before { content:'✓ '; color:var(--teal-lt); }
+    .gear-teaser { display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+    .gear-teaser h2 { font-family:var(--fd); font-size:clamp(1.6rem,3.5vw,2.4rem); color:var(--white); letter-spacing:0.04em; line-height:1.1; margin-bottom:0.6rem; }
+    .gear-teaser p { color:var(--muted); font-weight:300; max-width:520px; }
+    #hero.hero-short { height:58vh; min-height:420px; }
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      nav { padding:0 1.25rem; }
+      .nav-links, .nav-social { display:none; }
+      .nav-logo img { height:auto; max-height:44px; }
+      .nav-burger { display:flex; min-width:44px; min-height:44px; padding:10px; }
+      .why-grid, .niche-grid, .work-grid, .svc-grid { grid-template-columns:1fr; }
+      .niche { aspect-ratio:4/3; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .page-nav-inner { justify-content:flex-start; gap:1.5rem; }
+    }
+    @media(max-width:700px) {
+      #hero { height:88vh; }
+      .hero-content { padding:0 1.5rem 3rem; }
+      section.block { padding:4.5rem 1.25rem; }
+      .rule { grid-template-columns:40px 1fr; padding:1.2rem; gap:0.9rem; }
+      .btn { padding:0.9rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Unser Truck</a></li>
+    <li><a href="home.html">Unser Zuhause</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie wir's machen</a></li>
+    <li><a href="files.html">Dateien</a></li>
+    <li><a href="workwithus.html">Zusammenarbeit</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" class="nav-social" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" class="nav-social" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:adventure@3xplorewithus.com" class="nav-social" aria-label="E-Mail">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    </a>
+    <a href="../gear.html" class="lang-switch" title="Switch to English">🇦🇺</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <a href="index.html">Startseite</a>
+  <a href="truck.html">Unser Truck</a>
+  <a href="home.html">Unser Zuhause</a>
+  <a href="story.html">Unsere Geschichte</a>
+  <a href="howwedoit.html">Wie wir's machen</a>
+  <a href="files.html">Dateien</a>
+  <a href="workwithus.html">Zusammenarbeit</a>
+  <div class="drawer-socials">
+    <a href="https://www.youtube.com/@3xplorewithus" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.2 5 12 5 12 5s-4.2 0-7 .2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S2 9.7 2 11.3v1.5c0 1.6.2 3.2.2 3.2s.2 1.5.8 2.1c.8.8 1.8.8 2.2.8C6.8 19 12 19 12 19s4.2 0 7-.2c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.6.2-3.2v-1.5C22 9.7 21.8 8 21.8 8zM10 15V9l5.5 3L10 15z"/></svg></a>
+    <a href="https://www.instagram.com/3xplorewithus" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="mailto:adventure@3xplorewithus.com" aria-label="E-Mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></a>
+  </div>
+</div>
+
+<section id="hero" class="hero-short">
+  <div class="hero-bg"><img src="../Photos/INTERIOR/P1392127.jpg" alt="Im Inneren unseres Trucks" /></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content" data-reveal="major">
+    <span class="hero-eyebrow">Unsere Ausrüstung</span>
+    <h1>Getestet <span class="accent">unterwegs.</span></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-lead">Alles hier lebt in unserem Truck und ist jede Woche im Einsatz. Niemand hat dafür bezahlt, auf dieser Liste zu stehen.</p>
+  </div>
+</section>
+
+<!-- GEAR WE USE -->
+<section id="gear" class="block">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="section-label">Unsere Ausrüstung</span>
+      <h2>Was wirklich <span class="accent">in unserem Truck lebt.</span></h2>
+      <div class="divider"></div>
+      <p class="sec-intro">Das ist die Ausrüstung, die wir jeden Tag nutzen und Freunden empfehlen würden. <strong>Niemand hat dafür bezahlt, auf dieser Liste zu stehen.</strong> Wenn uns eine Marke etwas geschenkt hat, sagen wir das.</p>
+    </div>
+
+    <div class="proof" data-reveal>
+      <figure><img src="../Photos/WorkWithUs/gear/washer.jpg" alt="MOBORV-Waschmaschine im Heckstaufach des Trucks" loading="lazy" style="object-position:center 45%" /><figcaption><b>MOBORV</b>-Waschmaschine im Heckstaufach</figcaption></figure>
+      
+      <figure><img src="../Photos/WorkWithUs/gear/box2.jpg" alt="Mareike mit der VEVOR-Werkzeugkiste vor dem Truck" loading="lazy" style="object-position:center 70%" /><figcaption><b>VEVOR</b>-Werkzeugkiste, Baby an Bord</figcaption></figure>
+      <figure><img src="../Photos/WorkWithUs/gear/brantho.jpg" alt="Brantho-Korrux-Rostschutz wird aufs Fahrgestell aufgetragen" loading="lazy" style="object-position:center 72%" /><figcaption><b>Brantho-Korrux</b> auf dem Fahrgestell</figcaption></figure>
+      <figure><img src="../Photos/WorkWithUs/gear/osprey_sts_forest.jpg" alt="Osprey-Rucksack und Sea-to-Summit-Isomatte in einem Wald in Tasmanien" loading="lazy" style="object-position:65% center" /><figcaption><b>Osprey</b> &amp; <b>Sea to Summit</b>, Tasmanien</figcaption></figure>
+    </div>
+
+    <div class="gear-group" data-reveal>
+      <h3>Truck &amp; Straße</h3>
+      <div class="gear-grid">
+        <div class="gear"><div class="brand">Autoterm</div><div class="what">Air 2D (Planar) Diesel-Luftstandheizung · 2 kW, 24 V, Höhenkit, Comfort Control</div><p>Unsere warmen Morgen. Läuft an jedem kalten Tag im Jahr, mit Baby an Bord.</p></div>
+        <div class="gear"><div class="brand">Elgena</div><div class="what">Nautic Therm E Boiler · 24 V</div><p>Warmes Wasser für Dusche, Abwasch und Babybad, alles auf 8&nbsp;m².</p></div>
+        <div class="gear"><div class="brand">Wolfbox</div><div class="what">G900 Pro Dashcam &amp; Rückfahrkamera</div><p>Unsere Augen hinter einem Militär-Truck von 1986, auf engen Campingplätzen und in Stadtstraßen.</p></div>
+        <div class="gear"><div class="brand">Reolink</div><div class="what">Argus PT Ultra Kamera</div><p>Hinten am Truck. Behält alles im Blick, wenn wir irgendwo Neues stehen.</p><span class="gift">Geschenkt von Reolink</span><div class="buy"><a href="https://reolink.com/product/argus-pt-ultra/?aff=2026" target="_blank" rel="sponsored noopener">Reolink-Shop*</a><a href="https://amzn.to/4fm8M8C" target="_blank" rel="sponsored noopener">Amazon*</a></div></div>
+        <div class="gear"><div class="brand">Proxxon</div><div class="what">Präzisions-Werkzeugset</div><p>Kompakt genug zum Mitnehmen und gut genug, um einen 40 Jahre alten Truck am Straßenrand zu reparieren.</p></div>
+        <div class="gear"><div class="brand">MOBORV</div><div class="what">Kompakte Waschmaschine</div><p>Waschtag ohne Waschsalon, im Heckstaufach.</p></div>
+        <div class="gear"><div class="brand">Trelino</div><div class="what">Trenntoilette</div><p>Keine Chemie und keine Entsorgungsstationen.</p></div>
+        <div class="gear"><div class="brand">VEVOR</div><div class="what">Alu-Werkzeugkiste</div><p>Zusätzlicher Außenstauraum für das Schwere.</p></div>
+        <div class="gear"><div class="brand">Owatrol · Brantho-Korrux</div><div class="what">Rostschutz</div><p>Damit haben wir beim Ausbau ein 40 Jahre altes Fahrgestell geschützt.</p></div>
+        <div class="gear"><div class="brand">Leatherman</div><div class="what">Multitool</div><p>Das eine Werkzeug, das wir immer dabeihaben.</p></div>
+        <div class="gear"><div class="brand">Park4Night</div><div class="what">App</div><p>So finden wir die meisten unserer Schlafplätze.</p></div>
+      </div>
+    </div>
+
+    <div class="gear-group" data-reveal>
+      <h3>Outdoor, Familie &amp; Alltag</h3>
+      <div class="gear-grid">
+        <div class="gear"><div class="brand">Osprey</div><div class="what">Wanderrucksäcke</div><p>Auf Mehrtageswanderungen in Tasmanien getragen und noch immer im Einsatz.</p></div>
+        <div class="gear"><div class="brand">Sea to Summit</div><div class="what">Isomatte &amp; Gamaschen</div><p>Leicht, klein verpackbar und nach Jahren voller Wanderungen noch dabei.</p></div>
+        <div class="gear"><div class="brand">Kathmandu · Jack Wolfskin</div><div class="what">Regenjacken &amp; Fleece</div><p>Unsere Außenschicht, vom australischen Outback bis an die Atlantikküste.</p></div>
+        <div class="gear"><div class="brand">Blundstone</div><div class="what">Stiefel</div><p>Lagerfeuer, Werkstatt und Stadt, alles in einem Paar.</p></div>
+        <div class="gear"><div class="brand">Emsa</div><div class="what">Thermobecher</div><p>Heißer Kaffee, der auch holprige Straßen übersteht.</p></div>
+        <div class="gear"><div class="brand">Thule</div><div class="what">Alltagsrucksäcke</div><p>Unsere Tagesrucksäcke. Einer davon ist gleichzeitig die Wickeltasche.</p></div>
+      </div>
+    </div>
+
+    <div class="gear-group" data-reveal>
+      <h3>Technik &amp; Kamera</h3>
+      <div class="gear-grid">
+        <div class="gear"><div class="brand">Panasonic Lumix S1</div><div class="what">Hauptkamera</div><p>Alles, was ihr auf unserem YouTube-Kanal seht, beginnt hier.</p></div>
+        <div class="gear"><div class="brand">Vintage-Objektive</div><div class="what">Leica R · Super Takumar · Flektogon</div><p>Alte Objektive an Adaptern. Sie geben unseren Filmen ihren weicheren, filmischen Look.</p></div>
+        <div class="gear"><div class="brand">DJI Mini 3 Pro</div><div class="what">Drohne unter 250 g</div><p>Die Luftaufnahmen vom Truck unterwegs und von unseren Stellplätzen.</p></div>
+        <div class="gear"><div class="brand">DJI Mic Mini</div><div class="what">2 TX + 1 RX + Ladecase</div><p>Sauberer Ton für uns beide, sogar im Atlantikwind.</p></div>
+        <div class="gear"><div class="brand">GoPro HERO13 Black</div><div class="what">5,3K-Actioncam · HyperSmooth 6.0</div><p>Am Truck montiert, für Fahraufnahmen und raue Pisten.</p></div>
+        <div class="gear"><div class="brand">SanDisk</div><div class="what">Externe SSDs</div><p>Wir sind zu SanDisk zurück, nachdem uns eine billige SSD einen Monat Material gekostet hat.</p></div>
+        <div class="gear"><div class="brand">NordVPN</div><div class="what">VPN</div><p>Für WLAN auf Campingplätzen und in Cafés und fürs Online-Banking, egal wo wir sind.</p></div>
+      </div>
+    </div>
+
+    <p class="gear-note">*Affiliate-Links: Wenn ihr darüber kauft, bekommen wir eine kleine Provision. Für euch ändert sich der Preis nicht.<br />Ihr stellt etwas von dieser Liste her? <a href="workwithus.html#contact" style="color:var(--sand-lt);">Wir freuen uns, von euch zu hören.</a></p>
+  </div>
+</section>
+
+<section id="mediakit">
+  <div class="mk-inner" data-reveal>
+    <div>
+      <span class="section-label">Für Marken</span>
+      <h2>Ihr stellt etwas von dieser Liste her?</h2>
+      <p>Wir filmen Ausrüstung so, wie wir sie nutzen. So arbeiten wir mit Marken.</p>
+    </div>
+    <a href="workwithus.html" class="btn btn-primary mk-btn">Zusammenarbeit →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="../EditingElements/logo_black.png" alt="3xploreWithUs" /></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="truck.html">Unser Truck</a></li>
+    <li><a href="home.html">Unser Zuhause</a></li>
+    <li><a href="story.html">Unsere Geschichte</a></li>
+    <li><a href="howwedoit.html">Wie wir's machen</a></li>
+    <li><a href="files.html">Dateien</a></li>
+    <li><a href="workwithus.html">Zusammenarbeit</a></li>
+    <li><a href="gear.html">Ausrüstung</a></li>
+    <li><a href="support.html">Unterstützen</a></li>
+    <li><a href="https://www.youtube.com/@3xplorewithus" target="_blank">YouTube</a></li>
+    <li><a href="https://www.instagram.com/3xplorewithus" target="_blank">Instagram</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="impressum.html">Impressum</a></li>
+    <li><a href="datenschutz.html">Datenschutz</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 3xploreWithUs · Fotos &amp; Videos © Mareike &amp; Jason Klaassen, sofern nicht anders angegeben</p>
+</footer>
+
+<script>
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 60); });
+  var burger = document.getElementById('nav-burger');
+  var drawer = document.getElementById('nav-drawer');
+  burger.addEventListener('click', function () {
+    burger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      burger.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow = '';
+    });
+  });
+</script>
+<script src="../site-animations.js"></script>
+<script src="../consent.js" defer></script>
+</body>
+</html>
